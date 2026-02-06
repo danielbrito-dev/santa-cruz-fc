@@ -1,0 +1,8 @@
+.claude/
+.playwright-mcp/
+*.png
+!images/*.png
+*.html
+!index.html
+Santa Cruz Futebol Clube*
+C\*scratchpad*
