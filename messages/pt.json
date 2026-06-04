@@ -1,5 +1,34 @@
 {
   "nav": { "news": "Notícias", "calendar": "Calendário", "tvCoral": "TV Coral", "login": "Entrar", "tickets": "Ingressos", "shop": "Loja", "menu": "Menu" },
   "common": { "allNews": "Todas as notícias", "matchCenter": "Match Center", "becomeMember": "Seja Sócio Coral", "skipToContent": "Pular para o conteúdo" },
-  "calendar": { "title": "Calendário" }
+  "calendar": { "title": "Calendário" },
+  "drawer": {
+    "home": "Início",
+    "contact": "Contato",
+    "sections": {
+      "club": "Clube",
+      "football": "Futebol",
+      "marketing": "Marketing",
+      "press": "Imprensa"
+    },
+    "items": {
+      "history": "História",
+      "board": "Diretoria",
+      "symbols": "Símbolos",
+      "stadium": "Estádio do Arruda",
+      "council": "Conselho Deliberativo",
+      "squad": "Elenco Profissional",
+      "coachingStaff": "Comissão Técnica",
+      "youth": "Base",
+      "women": "Feminino",
+      "member": "Sócio Coral",
+      "shop": "Loja",
+      "sponsors": "Patrocinadores",
+      "licensed": "Licenciados",
+      "news": "Notícias",
+      "tvCoral": "TV Coral",
+      "gallery": "Galeria",
+      "pressContact": "Contato Imprensa"
+    }
+  }
 }

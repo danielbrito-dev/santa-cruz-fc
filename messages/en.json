@@ -1,5 +1,34 @@
 {
   "nav": { "news": "News", "calendar": "Schedule", "tvCoral": "Coral TV", "login": "Sign in", "tickets": "Tickets", "shop": "Shop", "menu": "Menu" },
   "common": { "allNews": "All news", "matchCenter": "Match Center", "becomeMember": "Become a Member", "skipToContent": "Skip to content" },
-  "calendar": { "title": "Schedule" }
+  "calendar": { "title": "Schedule" },
+  "drawer": {
+    "home": "Home",
+    "contact": "Contact",
+    "sections": {
+      "club": "Club",
+      "football": "Football",
+      "marketing": "Marketing",
+      "press": "Press"
+    },
+    "items": {
+      "history": "History",
+      "board": "Board",
+      "symbols": "Symbols",
+      "stadium": "Arruda Stadium",
+      "council": "Deliberative Council",
+      "squad": "Professional Squad",
+      "coachingStaff": "Coaching Staff",
+      "youth": "Youth Academy",
+      "women": "Women's Team",
+      "member": "Coral Membership",
+      "shop": "Shop",
+      "sponsors": "Sponsors",
+      "licensed": "Licensed",
+      "news": "News",
+      "tvCoral": "Coral TV",
+      "gallery": "Gallery",
+      "pressContact": "Press Contact"
+    }
+  }
 }
