@@ -1,0 +1,5 @@
+{
+  "nav": { "news": "Notícias", "calendar": "Calendário", "tvCoral": "TV Coral", "login": "Entrar", "tickets": "Ingressos", "shop": "Loja", "menu": "Menu" },
+  "common": { "allNews": "Todas as notícias", "matchCenter": "Match Center", "becomeMember": "Seja Sócio Coral", "skipToContent": "Pular para o conteúdo" },
+  "calendar": { "title": "Calendário" }
+}

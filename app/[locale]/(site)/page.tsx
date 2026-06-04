@@ -1,3 +1,6 @@
+import { useTranslations } from 'next-intl';
+
 export default function HomePage() {
-  return <main>Santa Cruz FC</main>;
+  const t = useTranslations('nav');
+  return <main>{t('news')}</main>;
 }
