@@ -9,4 +9,8 @@ describe('resolveLocalized', () => {
   it('falls back to pt when the locale value is missing', () => {
     expect(resolveLocalized({ pt: 'Só PT' } as any, 'en')).toBe('Só PT');
   });
+  it('returns an explicit empty string without falling back to pt', () => {
+    // Locks the `??` (not `||`) contract: "" is a valid, intentional translation.
+    expect(resolveLocalized({ pt: 'Texto PT', en: '' }, 'en')).toBe('');
+  });
 });
