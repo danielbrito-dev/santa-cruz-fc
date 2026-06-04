@@ -1,0 +1,393 @@
+{
+  "hero": {
+    "titleLine1": { "pt": "Coral não", "en": "Coral never" },
+    "titleLine2": { "pt": "recua.", "en": "backs down." },
+    "tagline": { "pt": "Coral não recua.", "en": "Coral never backs down." },
+    "ctaLabel": { "pt": "Garantir ingresso", "en": "Get tickets" },
+    "ctaUrl": "#",
+    "backdrop": "/images/torcida1.jpg"
+  },
+  "matches": [
+    {
+      "id": "pernambucano-santa-nautico-2026-05-25",
+      "competition": "Pernambucano",
+      "comp": "pernambucano",
+      "opponent": "Náutico",
+      "opponentShort": "NAU",
+      "isHome": true,
+      "status": { "pt": "DOM 25 MAI · FINAL", "en": "SUN MAY 25 · FINAL" },
+      "scoreHome": 2,
+      "scoreAway": 0,
+      "matchCenterUrl": "#"
+    },
+    {
+      "id": "pernambucano-retro-santa-2026-05-21",
+      "competition": "Pernambucano",
+      "comp": "pernambucano",
+      "opponent": "Retrô",
+      "opponentShort": "RET",
+      "isHome": false,
+      "status": { "pt": "QUA 21 MAI · FINAL", "en": "WED MAY 21 · FINAL" },
+      "scoreHome": 0,
+      "scoreAway": 2,
+      "matchCenterUrl": "#"
+    },
+    {
+      "id": "nordeste-santa-bahia-2026-05-17",
+      "competition": "Nordeste",
+      "comp": "nordeste",
+      "opponent": "Bahia",
+      "opponentShort": "BAH",
+      "isHome": true,
+      "status": { "pt": "SÁB 17 MAI · FINAL", "en": "SAT MAY 17 · FINAL" },
+      "scoreHome": 1,
+      "scoreAway": 1,
+      "matchCenterUrl": "#"
+    },
+    {
+      "id": "copa-br-crb-santa-2026-05-14",
+      "competition": "Copa do Brasil",
+      "comp": "copa-br",
+      "opponent": "CRB",
+      "opponentShort": "CRB",
+      "isHome": false,
+      "status": { "pt": "QUA 14 MAI · FINAL", "en": "WED MAY 14 · FINAL" },
+      "scoreHome": 1,
+      "scoreAway": 2,
+      "matchCenterUrl": "#"
+    },
+    {
+      "id": "pernambucano-santa-salgueiro-2026-05-30",
+      "competition": "Pernambucano",
+      "comp": "pernambucano",
+      "opponent": "Salgueiro",
+      "opponentShort": "SAL",
+      "isHome": true,
+      "status": { "pt": "SÁB 30 MAI · 19h30", "en": "SAT MAY 30 · 7:30 PM" },
+      "scoreHome": null,
+      "scoreAway": null,
+      "matchCenterUrl": "#"
+    },
+    {
+      "id": "nordeste-csa-santa-2026-06-03",
+      "competition": "Nordeste",
+      "comp": "nordeste",
+      "opponent": "CSA",
+      "opponentShort": "CSA",
+      "isHome": false,
+      "status": { "pt": "QUA 03 JUN · 21h30", "en": "WED JUN 03 · 9:30 PM" },
+      "scoreHome": null,
+      "scoreAway": null,
+      "matchCenterUrl": "#"
+    },
+    {
+      "id": "pernambucano-santa-retro-2026-06-06",
+      "competition": "Pernambucano",
+      "comp": "pernambucano",
+      "opponent": "Retrô",
+      "opponentShort": "RET",
+      "isHome": true,
+      "status": { "pt": "SÁB 06 JUN · 16h30", "en": "SAT JUN 06 · 4:30 PM" },
+      "scoreHome": null,
+      "scoreAway": null,
+      "matchCenterUrl": "#"
+    },
+    {
+      "id": "copa-br-santa-vasco-2026-06-10",
+      "competition": "Copa do Brasil",
+      "comp": "copa-br",
+      "opponent": "Vasco",
+      "opponentShort": "VAS",
+      "isHome": true,
+      "status": { "pt": "QUA 10 JUN · 19h00", "en": "WED JUN 10 · 7:00 PM" },
+      "scoreHome": null,
+      "scoreAway": null,
+      "matchCenterUrl": "#"
+    }
+  ],
+  "news": [
+    {
+      "id": "arruda-lotado-32mil-ingressos",
+      "slug": "arruda-lotado-32-mil-ingressos",
+      "tag": { "pt": "Destaque", "en": "Featured" },
+      "title": { "pt": "Arruda lotado: 32 mil ingressos vendidos para o clássico do Pernambucano", "en": "Packed Arruda: 32,000 tickets sold for the Pernambucano derby" },
+      "excerpt": { "pt": "", "en": "" },
+      "coverImage": "/images/estadio_arruda_em_2020_700_5.jpg",
+      "photoCount": 0,
+      "publishedAt": "2026-05-27T14:20:00",
+      "featured": true,
+      "position": 0
+    },
+    {
+      "id": "patrick-allan-renova-contrato",
+      "slug": "patrick-allan-renova-contrato",
+      "tag": { "pt": "Futebol Masculino", "en": "Men's Football" },
+      "title": { "pt": "Patrick Allan renova contrato com o Tricolor até 2027", "en": "Patrick Allan extends contract with Tricolor until 2027" },
+      "excerpt": { "pt": "", "en": "" },
+      "coverImage": "/images/patrick_allan.jpg",
+      "photoCount": 24,
+      "publishedAt": "2026-05-27T00:00:00",
+      "featured": false,
+      "position": 1
+    },
+    {
+      "id": "willian-jr-eleito-craque-do-mes",
+      "slug": "willian-jr-eleito-craque-do-mes",
+      "tag": { "pt": "Eleição", "en": "Fan Vote" },
+      "title": { "pt": "Willian Jr é eleito craque do mês pela torcida tricolor", "en": "Willian Jr voted player of the month by tricolor fans" },
+      "excerpt": { "pt": "", "en": "" },
+      "coverImage": "/images/willian_Jr_10.jpg",
+      "photoCount": 12,
+      "publishedAt": "2026-05-27T00:00:00",
+      "featured": false,
+      "position": 2
+    },
+    {
+      "id": "vitinho-marca-dois-santa-vence-nautico",
+      "slug": "vitinho-marca-dois-santa-vence-nautico",
+      "tag": { "pt": "Pernambucano", "en": "Pernambucano" },
+      "title": { "pt": "Vitinho marca dois e Santa vence o Náutico no Arruda", "en": "Vitinho scores twice as Santa beats Náutico at Arruda" },
+      "excerpt": { "pt": "", "en": "" },
+      "coverImage": "/images/vitinho_19.jpg",
+      "photoCount": 36,
+      "publishedAt": "2026-05-27T00:00:00",
+      "featured": false,
+      "position": 3
+    },
+    {
+      "id": "rockenedy-invencibilidade-arruda",
+      "slug": "rockenedy-invencibilidade-arruda",
+      "tag": { "pt": "Goleiro", "en": "Goalkeeper" },
+      "title": { "pt": "Rockenedy mantém invencibilidade no Arruda há 9 jogos", "en": "Rockenedy keeps Arruda unbeaten run to 9 games" },
+      "excerpt": { "pt": "", "en": "" },
+      "coverImage": "/images/rockenedy_goleiro.jpg",
+      "photoCount": 16,
+      "publishedAt": "2026-05-27T00:00:00",
+      "featured": false,
+      "position": 4
+    },
+    {
+      "id": "sub-20-semifinais-pernambucano",
+      "slug": "sub-20-semifinais-pernambucano",
+      "tag": { "pt": "Base", "en": "Youth" },
+      "title": { "pt": "Sub-20 garante vaga nas semifinais do Pernambucano", "en": "U-20 secures semifinal spot in the Pernambucano" },
+      "excerpt": { "pt": "", "en": "" },
+      "coverImage": "/images/torcida_santa_cruz_mosaico.jpg",
+      "photoCount": 14,
+      "publishedAt": "2026-05-27T00:00:00",
+      "featured": false,
+      "position": 5
+    }
+  ],
+  "banners": [
+    {
+      "id": "banner-socio-coral",
+      "eyebrow": { "pt": "Sócio Coral", "en": "Coral Membership" },
+      "title": { "pt": "Sua paixão é tricolor. Seu plano também.", "en": "Your passion is tricolor. So is your plan." },
+      "ctaLabel": { "pt": "Seja sócio", "en": "Become a member" },
+      "ctaUrl": "https://socio-santacruz.futebolcard.com/",
+      "image": "/images/torcida_santa_cruz_mosaico.jpg",
+      "size": "normal",
+      "position": 0
+    },
+    {
+      "id": "banner-loja-oficial",
+      "eyebrow": { "pt": "Loja Oficial", "en": "Official Store" },
+      "title": { "pt": "Camisa nova 26 disponível na loja.", "en": "New 26 jersey available in store." },
+      "ctaLabel": { "pt": "Comprar", "en": "Shop now" },
+      "ctaUrl": "#",
+      "image": "/images/estadio_arruda_em_2020_700_5.jpg",
+      "size": "normal",
+      "position": 1
+    }
+  ],
+  "institutional": [
+    {
+      "id": "inst-social",
+      "eyebrow": { "pt": "Social", "en": "Social" },
+      "title": { "pt": "Santa pela Comunidade", "en": "Santa for the Community" },
+      "ctaLabel": { "pt": "Descobrir", "en": "Discover" },
+      "ctaUrl": "#",
+      "image": "/images/torcida_santa_cruz_mosaico.jpg",
+      "size": "span",
+      "position": 0
+    },
+    {
+      "id": "inst-tour-arruda",
+      "eyebrow": { "pt": "Visita", "en": "Visit" },
+      "title": { "pt": "Tour do Arruda", "en": "Arruda Tour" },
+      "ctaLabel": { "pt": "Reservar visita", "en": "Book a visit" },
+      "ctaUrl": "#",
+      "image": "/images/estadio_arruda_em_2020_700_5.jpg",
+      "size": "span",
+      "position": 1
+    },
+    {
+      "id": "inst-podcast",
+      "eyebrow": { "pt": "Áudio", "en": "Audio" },
+      "title": { "pt": "Podcast Cobra Coral", "en": "Cobra Coral Podcast" },
+      "ctaLabel": { "pt": "Ouvir", "en": "Listen" },
+      "ctaUrl": "#",
+      "image": "/images/patrick_allan.jpg",
+      "size": "normal",
+      "position": 2
+    },
+    {
+      "id": "inst-memoria-tricolor",
+      "eyebrow": { "pt": "História", "en": "History" },
+      "title": { "pt": "Memória Tricolor", "en": "Tricolor Memory" },
+      "ctaLabel": { "pt": "Explorar", "en": "Explore" },
+      "ctaUrl": "#",
+      "image": "/images/arruda antigo.webp",
+      "size": "normal",
+      "position": 3
+    }
+  ],
+  "sponsors": [
+    {
+      "id": "bet-da-sorte",
+      "name": "Bet da Sorte",
+      "logo": "/patrocinadores/betdasorte_master.png",
+      "url": "#",
+      "tier": "master",
+      "position": 0
+    },
+    {
+      "id": "reebok",
+      "name": "Reebok",
+      "logo": "/patrocinadores/reebok_fornecedor.png",
+      "url": "https://www.reebok.com.br/",
+      "tier": "fornecedor",
+      "position": 1
+    },
+    {
+      "id": "armazem-jenipapo",
+      "name": "Armazém Jenipapo",
+      "logo": "/patrocinadores/armazemjenipapo.png",
+      "url": "#",
+      "tier": "apoio",
+      "position": 2
+    },
+    {
+      "id": "goldtech",
+      "name": "Goldtech",
+      "logo": "/patrocinadores/goldtech.png",
+      "url": "#",
+      "tier": "apoio",
+      "position": 3
+    },
+    {
+      "id": "iquine",
+      "name": "Iquine",
+      "logo": "/patrocinadores/iquine.png",
+      "url": "https://www.iquine.com.br/",
+      "tier": "apoio",
+      "position": 4
+    },
+    {
+      "id": "lideri",
+      "name": "Líderi",
+      "logo": "/patrocinadores/lideri.png",
+      "url": "#",
+      "tier": "apoio",
+      "position": 5
+    },
+    {
+      "id": "lp-saude",
+      "name": "LP Saúde",
+      "logo": "/patrocinadores/lpsaude.png",
+      "url": "#",
+      "tier": "apoio",
+      "position": 6
+    },
+    {
+      "id": "medinterv",
+      "name": "Medinterv",
+      "logo": "/patrocinadores/medinterv.png",
+      "url": "#",
+      "tier": "apoio",
+      "position": 7
+    },
+    {
+      "id": "nord-pharma",
+      "name": "Nord-Pharma",
+      "logo": "/patrocinadores/nordpharma.png",
+      "url": "https://nord-pharma.com.br/",
+      "tier": "apoio",
+      "position": 8
+    },
+    {
+      "id": "pitu",
+      "name": "Pitú",
+      "logo": "/patrocinadores/pitu.png",
+      "url": "#",
+      "tier": "apoio",
+      "position": 9
+    },
+    {
+      "id": "prefeitura-recife",
+      "name": "Prefeitura do Recife",
+      "logo": "/patrocinadores/prefeituradorecife.png",
+      "url": "https://www2.recife.pe.gov.br/",
+      "tier": "apoio",
+      "position": 10
+    },
+    {
+      "id": "rhp",
+      "name": "RHP",
+      "logo": "/patrocinadores/rhp.png",
+      "url": "#",
+      "tier": "apoio",
+      "position": 11
+    }
+  ],
+  "social": [
+    { "id": "facebook", "network": "facebook", "url": "https://www.facebook.com/SantaCruzFC" },
+    { "id": "instagram", "network": "instagram", "url": "https://www.instagram.com/SantaCruzFC" },
+    { "id": "x", "network": "x", "url": "https://twitter.com/SantaCruzFC" },
+    { "id": "youtube", "network": "youtube", "url": "https://www.youtube.com/user/TVcoralPE" },
+    { "id": "tiktok", "network": "tiktok", "url": "#" },
+    { "id": "whatsapp", "network": "whatsapp", "url": "#" }
+  ],
+  "footer": {
+    "brandBlurb": {
+      "pt": "Fundado em 3 de fevereiro de 1914. A torcida mais apaixonada do Nordeste. Cobra Coral, do bairro da Boa Vista para o mundo.",
+      "en": "Founded on February 3, 1914. The most passionate fanbase in the Northeast. Cobra Coral, from the Boa Vista neighborhood to the world."
+    },
+    "columns": [
+      {
+        "heading": { "pt": "Clube", "en": "Club" },
+        "links": [
+          { "label": { "pt": "História", "en": "History" }, "url": "#" },
+          { "label": { "pt": "Diretoria", "en": "Board" }, "url": "#" },
+          { "label": { "pt": "Símbolos", "en": "Symbols" }, "url": "#" },
+          { "label": { "pt": "Estádio do Arruda", "en": "Arruda Stadium" }, "url": "#" },
+          { "label": { "pt": "Conselho Deliberativo", "en": "Deliberative Council" }, "url": "#" }
+        ]
+      },
+      {
+        "heading": { "pt": "Serviços", "en": "Services" },
+        "links": [
+          { "label": { "pt": "Sócio Coral", "en": "Coral Membership" }, "url": "https://socio-santacruz.futebolcard.com/" },
+          { "label": { "pt": "Ingressos", "en": "Tickets" }, "url": "#" },
+          { "label": { "pt": "Loja Oficial", "en": "Official Store" }, "url": "#" },
+          { "label": { "pt": "TV Coral", "en": "TV Coral" }, "url": "#" },
+          { "label": { "pt": "Patrocinadores", "en": "Sponsors" }, "url": "#" }
+        ]
+      },
+      {
+        "heading": { "pt": "Ajuda", "en": "Help" },
+        "links": [
+          { "label": { "pt": "Contato", "en": "Contact" }, "url": "#" },
+          { "label": { "pt": "Contato Imprensa", "en": "Press Contact" }, "url": "#" },
+          { "label": { "pt": "Política de Privacidade", "en": "Privacy Policy" }, "url": "#" },
+          { "label": { "pt": "Cookies", "en": "Cookies" }, "url": "#" },
+          { "label": { "pt": "Termos de uso", "en": "Terms of Use" }, "url": "#" }
+        ]
+      }
+    ],
+    "chantLine1": { "pt": "É", "en": "It's" },
+    "chantEmphasis": { "pt": "tradição", "en": "tradition" },
+    "chantLine2": { "pt": ", não é moda.", "en": ", not a trend." }
+  }
+}

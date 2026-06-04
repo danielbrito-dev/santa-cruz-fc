@@ -1,0 +1,22 @@
+import { describe, it, expect } from 'vitest';
+import { JsonContentSource } from '@/server/content/json-source';
+
+describe('JsonContentSource', () => {
+  const source = new JsonContentSource();
+  it('loads site content from content/site.json', async () => {
+    const c = await source.getSiteContent();
+    expect(c.hero.titleLine1.pt).toBe('Coral não');
+    expect(c.hero.titleLine1.en).toBeTruthy();
+  });
+  it('exposes a featured news item at position 0', async () => {
+    const c = await source.getSiteContent();
+    const featured = c.news.find((n) => n.featured);
+    expect(featured).toBeDefined();
+    expect(featured!.position).toBe(0);
+  });
+  it('has 8 matches and 12 sponsors', async () => {
+    const c = await source.getSiteContent();
+    expect(c.matches).toHaveLength(8);
+    expect(c.sponsors).toHaveLength(12);
+  });
+});
