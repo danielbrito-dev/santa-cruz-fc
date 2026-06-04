@@ -1,0 +1,1782 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Santa Cruz Futebol Clube — Site Oficial</title>
+<meta name="description" content="Site oficial do Santa Cruz Futebol Clube — Recife/PE. Notícias, calendário, ingressos, sócio coral.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ============== RESET ============== */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:#FFFFFF;
+  color:#0A0A0A;
+  -webkit-font-smoothing:antialiased;
+  font-size:16px;
+  line-height:1.5;
+  min-height:100vh;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+ul{list-style:none}
+
+:root{
+  --black:#000000;
+  --white:#FFFFFF;
+  --red:#DD0000;
+  --gold:#C9B896;
+  --gray:#D6D7D8;
+  --ink:#0A0A0A;
+  /* Fita Azul — referência ao título de 1979 (excursão internacional invicta).
+     Usada onde o vermelho da marca tocaria o preto, separando os dois conforme regra do BRAND.md. */
+  --fita-azul:#0A1A3D;
+  --ink-2:#3A3A3A;
+  --muted:#6E6E6E;
+  --line:#E5E5E5;
+  --bg-2:#F5F5F5;
+  --bg-3:#FAFAFA;
+}
+
+.container{max-width:1320px;margin:0 auto;padding:0 24px}
+@media (max-width:768px){.container{padding:0 16px}}
+
+/* ============== HEADER (smart: transparent → white on scroll-up, hidden on scroll-down) ============== */
+.site-header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:transparent;
+  color:var(--white);
+  transition:transform .35s cubic-bezier(.4,0,.2,1), background .25s ease, color .25s ease, border-color .25s ease;
+  border-bottom:1px solid transparent;
+}
+.site-header.scrolled{
+  background:var(--white);
+  color:var(--ink);
+  border-bottom-color:var(--line);
+  box-shadow:0 1px 0 rgba(0,0,0,.04), 0 10px 30px -20px rgba(0,0,0,.15);
+}
+.site-header.hide{ transform:translateY(-110%); }
+
+/* Header layout PSG-fidelity: MENU + CREST + links | spacer | ENTRAR + INGRESSOS + LOJA + PT▾ */
+.header-inner{
+  display:flex;
+  align-items:center;
+  height:64px;
+  padding:0 24px;
+  gap:28px;
+}
+.header-left{display:flex;align-items:center;gap:26px;flex:0 0 auto}
+.header-center{display:none}
+.header-right{display:flex;align-items:center;justify-content:flex-end;gap:24px;margin-left:auto}
+
+.menu-trigger{
+  display:flex;align-items:center;gap:8px;
+  font-weight:800;text-transform:uppercase;letter-spacing:.16em;font-size:13px;
+  padding:4px 2px;
+  color:currentColor;
+  transition:opacity .2s;
+}
+.menu-trigger:hover{opacity:.7}
+.menu-trigger .bars{display:inline-flex;flex-direction:column;gap:3px}
+.menu-trigger .bars span{display:block;width:18px;height:2px;background:currentColor;transition:transform .25s, opacity .2s}
+
+.header-logo{display:flex;align-items:center}
+.header-logo img{height:50px;width:auto;transition:filter .25s ease,height .25s ease}
+.site-header:not(.scrolled) .header-logo img{filter:drop-shadow(0 2px 8px rgba(0,0,0,.45))}
+.header-logo-text{display:none}
+
+.header-lang{
+  display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;
+  color:inherit;
+  transition:color .25s ease;
+  position:relative;cursor:pointer;
+}
+.header-lang::after{
+  content:"";display:inline-block;
+  width:6px;height:6px;margin-left:6px;
+  border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;
+  transform:rotate(45deg) translate(-2px,-2px);
+}
+.header-lang a{padding:2px 0;transition:color .2s}
+.header-lang a:hover,.header-lang a.active{color:currentColor}
+.header-lang a.active{font-weight:800}
+
+.header-link{
+  font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.14em;
+  color:inherit;padding:4px 0;
+  display:inline-flex;align-items:center;gap:7px;
+  position:relative;
+}
+.header-link::after{
+  content:"";position:absolute;left:0;right:0;bottom:-3px;
+  height:1px;background:currentColor;
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .25s ease;
+}
+.header-link:hover::after{transform:scaleX(1)}
+.header-link svg{width:14px;height:14px}
+
+.btn-pill{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:8px 14px;border-radius:999px;
+  font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;
+  background:var(--red);color:var(--white);
+  /* Contorno branco fino — separa o vermelho de qualquer fundo (regra BRAND.md) */
+  box-shadow:0 0 0 1.5px var(--white);
+  transition:transform .2s, background .2s, box-shadow .2s;
+}
+.btn-pill:hover{transform:translateY(-1px);background:#B80000;box-shadow:0 0 0 1.5px var(--white), 0 6px 16px -6px rgba(221,0,0,.6)}
+.btn-pill--ghost{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.3)}
+.btn-pill--ghost:hover{background:var(--white);color:var(--ink);border-color:var(--white)}
+
+@media (max-width:1024px){
+  .header-right .header-link.hide-mobile{display:none}
+}
+@media (max-width:768px){
+  .header-inner{grid-template-columns:auto 1fr auto;height:60px;padding:0 16px}
+  .header-logo-text{display:none}
+  .header-logo img{height:38px}
+  .menu-trigger span.label{display:none}
+  .header-lang{display:none}
+  .header-right .header-link{display:none}
+}
+
+/* ============== DRAWER (sidebar menu) ============== */
+.drawer-overlay{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.5);
+  opacity:0;pointer-events:none;
+  transition:opacity .3s;
+  z-index:200;
+}
+.drawer-overlay.open{opacity:1;pointer-events:auto}
+
+.drawer{
+  position:fixed;top:0;left:0;bottom:0;
+  width:380px;max-width:90vw;
+  background:var(--white);
+  transform:translateX(-100%);
+  transition:transform .35s cubic-bezier(.4,.0,.2,1);
+  z-index:210;
+  overflow-y:auto;
+  display:flex;flex-direction:column;
+}
+.drawer.open{transform:translateX(0)}
+
+.drawer-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:24px 28px;border-bottom:1px solid var(--line);
+}
+.drawer-head img{height:42px}
+.drawer-close{
+  width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;color:var(--ink);
+  transition:background .2s;
+}
+.drawer-close:hover{background:var(--bg-2)}
+
+.drawer-nav{padding:8px 0;flex:1}
+.drawer-item{border-bottom:1px solid var(--line)}
+.drawer-item-trigger{
+  display:flex;align-items:center;justify-content:space-between;
+  width:100%;text-align:left;
+  padding:20px 28px;
+  font-size:18px;font-weight:700;letter-spacing:-.01em;
+  color:var(--ink);
+  transition:background .2s,color .2s;
+}
+.drawer-item-trigger:hover{background:var(--bg-2);color:var(--red)}
+.drawer-item-trigger .chevron{
+  width:10px;height:10px;
+  border-right:2px solid currentColor;border-bottom:2px solid currentColor;
+  transform:rotate(-45deg);
+  transition:transform .25s;
+}
+.drawer-item.open .drawer-item-trigger .chevron{transform:rotate(45deg)}
+.drawer-sub{
+  max-height:0;overflow:hidden;
+  transition:max-height .35s ease;
+  background:var(--bg-3);
+}
+.drawer-item.open .drawer-sub{max-height:500px}
+.drawer-sub a{
+  display:block;padding:14px 28px 14px 44px;
+  font-size:14px;font-weight:400;color:var(--ink-2);
+  border-top:1px solid var(--line);
+  transition:color .2s,background .2s;
+}
+.drawer-sub a:hover{color:var(--red);background:var(--white)}
+
+.drawer-foot{
+  padding:24px 28px;border-top:1px solid var(--line);
+  display:flex;flex-direction:column;gap:12px;
+}
+.drawer-foot a{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 18px;border-radius:8px;
+  font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+  transition:background .2s;
+}
+.drawer-foot a.primary{background:var(--red);color:var(--white)}
+.drawer-foot a.primary:hover{background:#B80000}
+.drawer-foot a.outline{background:var(--bg-2);color:var(--ink)}
+.drawer-foot a.outline:hover{background:var(--line)}
+
+/* ============== HERO PSG-fidelity (foto + gradient navy + calendar carrossel — Fita Azul unifica tudo) ============== */
+.hero{
+  position:relative;
+  /* Alvorada vertical: ouro denso herda do header → champagne → branco puro exatamente onde o
+     calendário pousa (≈82% da altura do hero). Cor-ouro alinhada com BRAND.md (#C9B896). */
+  background:linear-gradient(
+    180deg,
+    #C9B896 0%,
+    #C9B896 18%,
+    #E5D9BD 45%,
+    #F6F0E2 70%,
+    #FFFFFF 82%,
+    #FFFFFF 100%
+  );
+  display:flex;flex-direction:column;
+}
+.hero-stage{
+  position:relative;
+  flex:0 0 auto;
+  /* Stage ocupa a maior parte do viewport — calendar peek mostra título + stripe + primeira linha (comp · date) */
+  height:calc(100vh - 130px);
+  min-height:580px;
+  overflow:hidden;
+  background:transparent;
+}
+/* Camada 1: foto da apresentação — full bleed, sem filtros agressivos */
+.hero-backdrop{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;object-position:center top;
+  filter:brightness(.95) saturate(1.05) contrast(1.04);
+  z-index:0;
+}
+/* Overlay editorial: amarrar a foto ao gradient vertical do .hero — dourado no topo (zona do
+   header), transparente no meio (foto livre, hero card legível) e branco-difuso na base
+   (handoff suave para o calendário branco). Sem vignette dramático. */
+.hero-grad{
+  position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:
+    linear-gradient(180deg,
+      rgba(201,184,150,.62) 0%,
+      rgba(201,184,150,.32) 14%,
+      rgba(229,217,189,.12) 32%,
+      rgba(255,255,255,0)    52%,
+      rgba(255,255,255,0)    70%,
+      rgba(255,255,255,.7)   92%,
+      rgba(255,255,255,1)    100%
+    );
+}
+/* .hero-bg removido — agora só o backdrop full-bleed faz o trabalho visual */
+/* Camada 4: grain noise pra textura cinematográfica */
+.hero-grain{
+  position:absolute;inset:0;pointer-events:none;z-index:3;
+  filter:url(#grain);opacity:.5;mix-blend-mode:overlay;
+}
+/* Camada 5: fade pro preto na base — costura com o carrossel */
+/* (.hero-stage::after removido — sem fade no rodapé do hero) */
+@media (max-width:900px){
+  .hero-bg{left:65%;height:90%;opacity:.45}
+}
+/* Hero card centralizado verticalmente, ancorado à esquerda do palco */
+/* Hero card justificado à esquerda, mas posicionado mais pro centro (não cola na borda esquerda) — PSG style */
+.hero-card{
+  position:absolute;
+  left:14%;bottom:80px;
+  max-width:560px;
+  text-align:left;
+  color:var(--ink);
+  z-index:5;
+  opacity:0;transform:translateY(24px);
+  animation:heroIn 1s .4s cubic-bezier(.2,.7,.2,1) forwards;
+}
+@keyframes heroIn{ to{ opacity:1; transform:translateY(0) } }
+@media (max-width:1100px){.hero-card{left:6%;bottom:60px;max-width:460px}}
+/* (heroIn definido inline acima — translateX -50% mantido) */
+
+/* Indicador editorial: chapter mark + tag categoria */
+.hero-eyebrow{
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:18px;
+  font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.28em;
+}
+.hero-eyebrow .num{
+  color:var(--gold);font-variant-numeric:tabular-nums;
+}
+.hero-eyebrow .div{
+  flex:0 0 32px;height:1px;background:rgba(0,0,0,.25);
+}
+.hero-eyebrow .cat{color:rgba(0,0,0,.75)}
+
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 11px;background:var(--red);color:var(--white);
+  font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.2em;
+  margin-bottom:18px;
+}
+.hero-tag::before{
+  content:"";width:6px;height:6px;border-radius:50%;
+  background:var(--white);box-shadow:0 0 0 2px rgba(255,255,255,.35);
+  animation:livePulse 1.6s infinite ease-out;
+}
+@keyframes livePulse{
+  0%{ box-shadow:0 0 0 0 rgba(255,255,255,.6) }
+  70%{ box-shadow:0 0 0 8px rgba(255,255,255,0) }
+  100%{ box-shadow:0 0 0 0 rgba(255,255,255,0) }
+}
+.hero-title{
+  font-size:clamp(40px,5.4vw,68px);font-weight:900;line-height:1.02;letter-spacing:-.025em;
+  margin-bottom:22px;text-transform:uppercase;
+  text-shadow:0 2px 16px rgba(255,255,255,.85), 0 0 32px rgba(255,255,255,.6);
+}
+.hero-title .ht-l1,
+.hero-title .ht-l2{display:block}
+/* Segunda linha começa alinhada com o "A" de CORAL (~3 caracteres de offset no peso 900 uppercase) */
+.hero-title .ht-l2{padding-left:2.05em}
+.hero-title q{text-shadow:0 1px 10px rgba(255,255,255,.85)}
+/* "DO TRICOLOR" volta a vermelho — sem stroke (BRAND.md: separação branco/preto não se aplica em bg light) */
+.hero-title em{
+  color:var(--red);font-style:normal;
+}
+.hero-title q{
+  font-weight:600;color:rgba(10,10,10,.85);quotes:'"' '"';
+  display:block;font-size:.74em;letter-spacing:-.02em;margin-top:6px;
+}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:0;background:transparent;color:var(--ink);
+  font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:.18em;
+  transition:gap .25s, color .25s;
+  border-bottom:1px solid rgba(0,0,0,.4);padding-bottom:6px;
+}
+.hero-cta:hover{gap:16px;color:var(--red);border-color:var(--red)}
+.hero-cta svg{width:14px;height:14px}
+
+@media (max-width:768px){
+  .hero-card{left:20px;right:20px;bottom:32px}
+}
+
+/* Calendar bg sólido — transição smokey feita pelo ::before com backdrop-filter blur */
+.hero-calendar{
+  position:relative;
+  z-index:2;
+  padding:14px 0 26px;
+  color:var(--ink);
+  /* Calendário pousa em branco puro — o handoff cromático já aconteceu no .hero gradient */
+  background:var(--white);
+  /* Drop-shadow branco difuso pra cima: dissolve a borda superior do calendar contra o
+     gradient champagne, costurando a transição sem deixar costura visível */
+  box-shadow:
+    0 -32px 56px -8px rgba(255,255,255,.95),
+    0 -12px 24px -6px rgba(255,255,255,.85);
+}
+/* Pseudo de transição mantido como blur sutil — a costura cromática vem do .hero gradient */
+.hero-calendar::before{
+  content:"";
+  position:absolute;
+  left:0;right:0;
+  top:-40px;height:40px;
+  backdrop-filter:blur(10px) saturate(1.02);
+  -webkit-backdrop-filter:blur(10px) saturate(1.02);
+  background:linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 60%, rgba(255,255,255,.7) 100%);
+  mask-image:linear-gradient(180deg, transparent 0%, #000 50%, #000 100%);
+  -webkit-mask-image:linear-gradient(180deg, transparent 0%, #000 50%, #000 100%);
+  pointer-events:none;
+  z-index:1;
+}
+/* Inner sem max-width — só o título alinha com o hero card (14%); cards tomam a tela toda */
+.hero-calendar-inner{
+  max-width:none;
+  padding:0;
+}
+.hero-calendar-head{padding-left:14%;padding-right:24px}
+.carousel-wrap{padding-left:24px}
+@media (max-width:1100px){
+  .hero-calendar-head{padding-left:6%}
+}
+.hero-calendar-head{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:14px;
+}
+.hero-calendar-title{
+  display:flex;align-items:center;gap:16px;
+  font-size:28px;font-weight:800;letter-spacing:-.01em;text-transform:uppercase;line-height:1;
+}
+.hero-calendar-title .dot{
+  width:7px;height:7px;border-radius:50%;background:var(--gold);
+}
+.hero-calendar-title a{
+  color:var(--muted);font-size:13px;font-weight:700;letter-spacing:.16em;
+  margin-left:10px;transition:color .2s;
+}
+.hero-calendar-title a:hover{color:var(--ink)}
+.cal-controls{display:flex;gap:8px}
+.cal-btn{
+  width:34px;height:34px;border-radius:50%;
+  background:rgba(0,0,0,.04);
+  border:1px solid rgba(0,0,0,.12);
+  color:var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s, border-color .2s, opacity .2s, transform .2s;
+}
+.cal-btn:hover{background:rgba(0,0,0,.08);border-color:rgba(0,0,0,.25)}
+.cal-btn:active{transform:scale(.94)}
+.cal-btn:disabled{opacity:.25;cursor:default}
+.cal-btn svg{width:14px;height:14px}
+
+.carousel-wrap{
+  position:relative;
+}
+.carousel-wrap::before,
+.carousel-wrap::after{
+  content:"";position:absolute;top:0;bottom:0;width:28px;pointer-events:none;z-index:2;
+}
+.carousel-wrap::before{left:0;background:linear-gradient(90deg, rgba(255,255,255,.85), transparent)}
+.carousel-wrap::after {right:0;background:linear-gradient(270deg, rgba(255,255,255,.85), transparent)}
+
+.carousel{
+  display:flex;gap:10px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  scrollbar-width:none;
+  padding:6px 4px 12px;
+}
+.carousel::-webkit-scrollbar{display:none}
+
+/* Match card PSG-fidelity: width 293px + clip-corner 24px no canto inferior-direito + stripe top */
+.match{
+  flex:0 0 293px;
+  scroll-snap-align:start;
+  background:var(--bg-2);color:var(--ink);
+  display:flex;flex-direction:column;
+  overflow:hidden;
+  transition:transform .2s, box-shadow .2s;
+  cursor:pointer;
+  position:relative;
+  padding:0;
+  /* PSG signature: corner clip bottom-right 24px diagonal */
+  clip-path:polygon(0 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%);
+}
+.match:hover{transform:translateY(-2px);box-shadow:0 10px 24px -14px rgba(0,0,0,.25)}
+/* Stripe top — 2px de margem branca acima separa o vermelho do preto da calendar bg (BRAND.md compliance) */
+.match::before{
+  content:"";position:absolute;left:0;right:0;top:2px;
+  height:4px;background:var(--red);z-index:1;
+}
+.match[data-comp="nordeste"]::before{background:var(--gold);top:2px}
+.match[data-comp="copa-br"]::before {background:var(--gold);top:0}
+
+/* Comp + status inline numa única linha: COMP · WEEKDAY DATE · TIME/FINAL */
+.match-comp{
+  display:flex;align-items:center;gap:6px;flex-wrap:nowrap;
+  padding:22px 22px 14px;
+  font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.match-comp .badge{
+  padding:0;background:none;box-shadow:none;
+  font-size:10px;letter-spacing:.12em;font-weight:800;color:var(--ink);
+  text-shadow:none;overflow:visible;
+}
+.match-comp .badge::before{display:none}
+.match-comp .badge.red,.match-comp .badge.gold{background:none}
+.match-comp .badge::after{
+  content:"·";display:inline-block;margin:0 6px;color:var(--muted);font-weight:700;
+}
+.match-comp .status{color:var(--muted);font-size:10px;letter-spacing:.12em;font-weight:700}
+.match-comp .status.live{color:var(--red);font-weight:900}
+
+/* 2 rows verticais de team — cada uma com shield+nome esquerda e score/data direita (estilo PSG match preview) */
+.match-rows{
+  display:flex;flex-direction:column;gap:16px;
+  padding:14px 22px 22px;
+}
+.match-row{
+  display:flex;align-items:center;gap:14px;
+}
+.match-row-shield{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--white);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:10px;letter-spacing:.04em;color:var(--ink);
+  border:1px solid var(--line);
+  flex-shrink:0;overflow:hidden;
+}
+.match-row-shield.home{background:transparent;border:none;width:40px;height:40px}
+.match-row-shield img{width:100%;height:100%;object-fit:contain}
+.match-row-name{
+  font-size:15px;font-weight:800;color:var(--ink);
+  text-transform:uppercase;letter-spacing:.02em;
+  flex:1;min-width:0;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.match-row-score{
+  font-size:22px;font-weight:900;color:var(--ink);
+  letter-spacing:-.02em;min-width:22px;text-align:right;
+}
+.match-comp .status{color:var(--muted);font-size:9px;letter-spacing:.14em}
+.match-comp .status.live{color:var(--red);font-weight:900}
+
+/* Match center link — single link no rodapé do card */
+.match-center{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 22px 22px;
+  font-size:13px;font-weight:800;color:var(--ink);text-transform:uppercase;letter-spacing:.14em;
+  border-top:1px solid var(--line);margin-top:auto;
+  text-decoration:none;
+  transition:color .2s, gap .2s;
+}
+.match-center::after{content:"→";font-size:15px;margin-left:8px}
+.match-center:hover{color:var(--red)}
+
+@media (max-width:768px){
+  .hero-stage{min-height:480px}
+  .hero-card{left:20px;right:20px;bottom:32px}
+  .hero-calendar{padding:16px 0 28px}
+  .carousel-wrap::before,.carousel-wrap::after{width:32px}
+  .match{flex:0 0 220px}
+}
+
+/* ============== SECTION HEAD (compartilhado) ============== */
+.section-head{
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+  margin-bottom:28px;flex-wrap:wrap;
+}
+.section-title{
+  font-size:clamp(22px,2.4vw,30px);font-weight:900;letter-spacing:-.01em;line-height:1;
+  text-transform:uppercase;
+}
+.section-title em{color:var(--gold);font-style:normal}
+.section-link{
+  font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.16em;
+  display:inline-flex;align-items:center;gap:6px;
+  color:var(--white);transition:color .2s,gap .2s;
+}
+.section-link:hover{color:var(--gold);gap:10px}
+.section-link svg{width:12px;height:12px}
+
+/* ============== NEWS (PSG-style: featured sticky cinemático + strip vertical) ============== */
+.news-section{padding:64px 0 72px;background:var(--black);color:var(--white)}
+.news-grid{
+  display:grid;
+  grid-template-columns:1.05fr 1fr;
+  gap:28px;
+  align-items:start; /* CRITICAL: align-items:start permite o sticky funcionar */
+}
+
+/* FEATURED — cartaz sticky: imagem full-bleed, gradient bottom-up, texto overlaid */
+.news-feature{
+  position:sticky;
+  top:96px;
+  display:block;
+  overflow:hidden;
+  aspect-ratio:4/5;
+  text-decoration:none;
+  background:var(--ink);
+  isolation:isolate;
+  clip-path:polygon(0 0, 100% 0, 100% calc(100% - 28px), calc(100% - 28px) 100%, 0 100%);
+}
+.news-feature .img-wrap{
+  position:absolute;inset:0;
+  aspect-ratio:auto;overflow:hidden;
+  z-index:0;
+}
+.news-feature .img-wrap img{
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform .8s cubic-bezier(.2,.7,.2,1);
+}
+.news-feature:hover .img-wrap img{transform:scale(1.04)}
+/* Gradient DENTRO da imagem: transparente no topo, preto denso na base — texto pousa nele */
+.news-feature::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,
+    rgba(0,0,0,0)   30%,
+    rgba(0,0,0,.35) 55%,
+    rgba(0,0,0,.78) 82%,
+    rgba(0,0,0,.92) 100%
+  );
+  z-index:1;pointer-events:none;
+}
+.news-feature .meta{
+  position:absolute;left:0;right:0;bottom:0;
+  padding:0 36px 38px;
+  z-index:2;color:var(--white);
+}
+.news-feature .tag{
+  display:inline-flex;align-items:center;
+  padding:5px 10px;
+  background:var(--gold);color:var(--ink);
+  font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.18em;
+  margin-bottom:18px;
+}
+.news-feature h3{
+  font-size:clamp(24px,2.4vw,38px);
+  font-weight:900;line-height:1.04;letter-spacing:-.02em;
+  text-transform:uppercase;
+  color:var(--white);margin-bottom:14px;
+  text-shadow:0 2px 12px rgba(0,0,0,.45);
+}
+.news-feature .date{
+  font-size:11px;color:rgba(255,255,255,.78);
+  font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+}
+
+/* GRID 2-col — tiles menores que o featured, rolam enquanto o sticky segura */
+.news-list{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  align-content:start;
+}
+.news-item{
+  position:relative;display:block;
+  overflow:hidden;
+  aspect-ratio:3/4;
+  text-decoration:none;
+  background:var(--ink);
+  isolation:isolate;
+  transition:transform .3s;
+}
+.news-item:hover{transform:translateY(-3px)}
+.news-item .thumb{
+  position:absolute;inset:0;
+  aspect-ratio:auto;overflow:hidden;
+  z-index:0;
+}
+.news-item .thumb img{
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform .6s cubic-bezier(.2,.7,.2,1);
+}
+.news-item:hover .thumb img{transform:scale(1.05)}
+.news-item::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,
+    rgba(0,0,0,0)   38%,
+    rgba(0,0,0,.45) 68%,
+    rgba(0,0,0,.88) 100%
+  );
+  z-index:1;pointer-events:none;
+}
+.news-item .body{
+  position:absolute;left:0;right:0;bottom:0;
+  padding:0 16px 16px;
+  z-index:2;color:var(--white);
+  display:flex;flex-direction:column;gap:5px;
+}
+.news-item .tag{
+  align-self:flex-start;
+  display:inline-flex;
+  padding:3px 7px;
+  background:var(--gold);color:var(--ink);
+  font-size:8.5px;font-weight:800;text-transform:uppercase;letter-spacing:.16em;
+  margin-bottom:4px;
+}
+.news-item h4{
+  font-size:14px;font-weight:800;line-height:1.18;letter-spacing:-.005em;
+  color:var(--white);
+  text-shadow:0 2px 8px rgba(0,0,0,.45);
+}
+.news-item .photo-count{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:10px;color:rgba(255,255,255,.85);font-weight:600;margin-top:2px;
+}
+.news-item .photo-count svg{width:10px;height:10px}
+
+@media (max-width:900px){
+  .news-grid{grid-template-columns:1fr}
+  .news-feature{position:static;aspect-ratio:16/10;clip-path:none}
+  .news-feature .meta{padding:0 24px 24px}
+}
+@media (max-width:540px){
+  .news-list{grid-template-columns:1fr}
+}
+
+/* ============== INSTITUTIONAL CARDS (3 col mixed-size, estilo Rouge et Bleu) ============== */
+.inst-section{padding:64px 0 80px;background:var(--black);color:var(--white)}
+.inst-section .section-head{margin-bottom:24px}
+.inst-section .section-title{font-size:11px;font-weight:800;letter-spacing:.2em;color:rgba(255,255,255,.85)}
+.inst-section .section-title em{color:var(--gold)}
+.inst-grid{
+  display:grid;
+  grid-template-columns:1fr 1.4fr 1fr;
+  grid-template-rows:repeat(2,minmax(180px,1fr));
+  gap:14px;
+  min-height:520px;
+}
+.inst-card{
+  position:relative;
+  overflow:hidden;
+  background:var(--ink);
+  color:var(--white);
+  text-decoration:none;
+}
+.inst-card.span-rows{grid-row:span 2}
+.inst-card img{
+  position:absolute;inset:0;
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .6s,filter .3s;
+  filter:brightness(.7);
+}
+.inst-card:hover img{transform:scale(1.06);filter:brightness(.55)}
+.inst-card .grad{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.85) 100%);
+}
+.inst-card .body{
+  position:absolute;left:0;right:0;bottom:0;
+  padding:24px 22px;
+  display:flex;flex-direction:column;gap:8px;
+}
+.inst-card .eyebrow{
+  font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.16em;
+  color:rgba(255,255,255,.7);
+}
+.inst-card h3{
+  font-size:20px;font-weight:800;line-height:1.1;letter-spacing:-.01em;text-transform:uppercase;
+}
+.inst-card.span-rows h3{font-size:28px}
+.inst-card .cta{
+  display:inline-flex;align-items:center;gap:6px;
+  align-self:flex-start;margin-top:6px;
+  font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;
+  color:rgba(255,255,255,.95);
+  border-bottom:2px solid var(--gold);padding-bottom:3px;
+  transition:gap .2s,color .2s;
+}
+.inst-card:hover .cta{gap:10px;color:var(--gold)}
+.inst-card .cta svg{width:11px;height:11px}
+
+@media (max-width:900px){
+  .inst-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;min-height:auto}
+  .inst-card.span-rows{grid-row:auto;grid-column:1/-1}
+  .inst-card{aspect-ratio:4/3}
+}
+@media (max-width:540px){
+  .inst-grid{grid-template-columns:1fr}
+  .inst-card.span-rows{grid-column:auto}
+}
+
+/* ============== BANNER STRIP (2 cards lado-a-lado) ============== */
+.banner-strip{
+  padding:24px 0 56px;background:var(--black);
+}
+.banner-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:20px;
+}
+.banner-card{
+  position:relative;
+  aspect-ratio:21/9;
+  overflow:hidden;
+  background:var(--ink);color:var(--white);
+  text-decoration:none;
+  display:flex;align-items:stretch;
+  transition:transform .3s;
+}
+.banner-card:hover{transform:translateY(-3px)}
+.banner-card img{
+  position:absolute;inset:0;
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .6s, filter .3s;
+  filter:brightness(.55);
+}
+.banner-card:hover img{transform:scale(1.05);filter:brightness(.42)}
+.banner-card .grad{
+  position:absolute;inset:0;
+  background:linear-gradient(90deg, rgba(0,0,0,.85) 0%, rgba(0,0,0,.3) 60%, rgba(0,0,0,.1) 100%);
+}
+.banner-card .body{
+  position:relative;z-index:2;
+  padding:32px 36px;
+  display:flex;flex-direction:column;justify-content:center;gap:8px;
+  max-width:60%;
+}
+.banner-card .eyebrow{
+  font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.22em;
+  color:var(--gold);
+}
+.banner-card h3{
+  font-size:clamp(20px,1.8vw,26px);font-weight:800;line-height:1.05;letter-spacing:-.015em;
+  text-transform:uppercase;
+}
+.banner-card .cta{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:10px;align-self:flex-start;
+  font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.18em;
+  color:var(--white);border-bottom:1px solid rgba(255,255,255,.5);padding-bottom:4px;
+  transition:gap .2s, color .2s, border-color .2s;
+}
+.banner-card:hover .cta{gap:14px;color:var(--gold);border-color:var(--gold)}
+.banner-card .cta svg{width:11px;height:11px}
+@media (max-width:768px){
+  .banner-grid{grid-template-columns:1fr;gap:14px}
+  .banner-card{aspect-ratio:16/9}
+}
+
+/* ============== SPONSORS (master + fornecedor grandes em cima · resto pequeno abaixo, sem labels) ============== */
+.sponsors-section{padding:72px 0 72px;background:var(--black);border-top:1px solid rgba(255,255,255,.18);color:var(--white)}
+
+/* Master + Fornecedor — linha centralizada, logos grandes, sem moldura */
+.sponsors-master{
+  display:flex;justify-content:center;align-items:center;
+  gap:120px;
+  margin:0 auto 56px;
+  flex-wrap:wrap;
+}
+.sponsors-master .item{
+  display:inline-flex;align-items:center;justify-content:center;
+  text-decoration:none;
+  transition:opacity .25s, transform .25s;
+}
+.sponsors-master .item:hover{opacity:.7;transform:translateY(-1px)}
+.sponsors-master .item img{height:64px;width:auto;display:block;object-fit:contain}
+
+/* Outros patrocinadores — menores, centralizados, grid auto-wrap */
+.sponsors-grid{
+  display:flex;justify-content:center;align-items:center;
+  gap:56px 64px;flex-wrap:wrap;
+  max-width:1200px;margin:0 auto;
+}
+.sponsors-grid .item{
+  display:inline-flex;align-items:center;justify-content:center;
+  transition:opacity .2s, transform .2s;
+}
+.sponsors-grid .item:hover{opacity:.65;transform:translateY(-1px)}
+.sponsors-grid .item img{height:34px;width:auto;display:block;object-fit:contain}
+
+/* Logos monocromáticas brancas — no bg escuro do index_10 ficam visíveis nativamente */
+.sponsors-section img{filter:none}
+
+@media (max-width:768px){
+  .sponsors-master{gap:48px}
+  .sponsors-grid{gap:36px 40px}
+  .sponsors-master .item img{height:48px}
+  .sponsors-grid .item img{height:28px}
+}
+
+/* ============== PARALLAX REVEAL — footer fixo no fundo do viewport, conteúdo sobe e revela ============== */
+body{ background:var(--red) }
+/* todas as seções principais sentam por cima do footer */
+.hero,
+.news-section,
+.banner-strip,
+.inst-section,
+.sponsors-section{
+  position:relative;
+  z-index:2;
+}
+
+/* ============== FOOTER (fixed, revealed by parallax) — Fita Azul ============== */
+.site-footer{
+  position:fixed;left:0;right:0;bottom:0;
+  z-index:0;
+  background:var(--red);color:var(--white);
+  padding:72px 0 24px;
+  overflow:hidden;
+}
+/* Mobile/tablet: parallax desligado (footer rola normalmente) — evita corte vertical em viewports menores */
+@media (max-width:900px){
+  .site-footer{position:static}
+  body{padding-bottom:0 !important}
+}
+
+/* ---- social strip (fundo branco, entre patrocinadores e footer escuro) ---- */
+.social-strip{
+  background:var(--white);color:var(--ink);
+  padding:36px 0 40px;
+  position:relative;z-index:2;
+}
+.social-strip .row{
+  display:flex;justify-content:center;align-items:center;gap:28px;flex-wrap:wrap;
+}
+.social-strip a{
+  width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--ink);transition:color .2s, transform .2s;
+}
+.social-strip a:hover{color:var(--red);transform:translateY(-2px)}
+.social-strip svg{width:18px;height:18px;fill:currentColor}
+
+/* ---- chant final — slogan da torcida no FIM absoluto, centralizado, staggered ---- */
+.footer-chant{
+  position:relative;
+  padding:88px 0 72px;
+  border-top:1px solid rgba(0,0,0,.22);
+  overflow:hidden;
+}
+.footer-chant .container{
+  max-width:1200px;
+}
+.chant{
+  position:relative;
+  display:block;
+  font-size:clamp(44px,9.5vw,140px);
+  font-weight:900;line-height:1.1;letter-spacing:-.04em;
+  text-transform:uppercase;color:var(--white);
+}
+.chant .line{display:block;white-space:nowrap}
+.chant .line-2{margin-left:28%}
+/* TRADIÇÃO preto com contorno branco sobre bandeira vermelha — regra BRAND.md cumprida ao pé da letra */
+.chant em{
+  color:var(--black); font-style:normal;
+  -webkit-text-stroke:2.5px var(--white);
+  paint-order:stroke fill;
+  /* Sombra suave pra dar peso de cartaz */
+  text-shadow:0 4px 0 rgba(0,0,0,.18);
+}
+
+.chant-meta{
+  position:absolute;top:48px;right:32px;
+  display:flex;flex-direction:column;gap:18px;text-align:right;
+}
+.chant-stat small{
+  display:block;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.32em;
+  color:rgba(255,255,255,.72);
+}
+.chant-stat strong{
+  display:block;margin-top:6px;
+  font-size:13px;font-weight:800;letter-spacing:.04em;color:var(--white);
+}
+/* Tri-Supercampeonato — feito exclusivo do clube (1957, 1976, 1983).
+   3 estrelas tricolor; em bandeira vermelha, a estrela vermelha ganha contorno branco pra
+   sobreviver (regra BRAND.md: branco separa preto/vermelho). */
+.chant-stat--tri .stars{
+  display:flex;justify-content:flex-end;gap:3px;
+  margin-top:6px;font-size:14px;line-height:1;
+}
+.chant-stat--tri .stars i{font-style:normal}
+.chant-stat--tri .s-black{color:#000;-webkit-text-stroke:.7px rgba(255,255,255,.55)}
+.chant-stat--tri .s-white{color:#fff}
+.chant-stat--tri .s-red  {
+  color:var(--red);
+  -webkit-text-stroke:1px var(--white);
+  paint-order:stroke fill;
+}
+.chant-stat--tri strong{margin-top:5px;font-size:11px;color:rgba(255,255,255,.92)}
+@media (max-width:900px){
+  .footer-chant{padding:56px 0 44px}
+  .chant .line-2{margin-left:18%}
+  .chant-meta{position:static;text-align:left;margin-bottom:18px}
+}
+.footer-top{
+  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1.4fr;gap:48px;
+  padding-bottom:48px;border-bottom:1px solid rgba(0,0,0,.22);
+}
+.footer-col--apps{display:flex;flex-direction:column}
+.footer-apps-blurb{font-size:13px;color:rgba(255,255,255,.82);line-height:1.55;margin-top:-4px;margin-bottom:16px;max-width:300px}
+.footer-col--apps .footer-apps{display:flex;flex-direction:column;gap:10px}
+.footer-brand img{height:64px;margin-bottom:20px;display:block}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,.85);line-height:1.5;max-width:320px}
+.footer-col h5{
+  font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.16em;
+  margin-bottom:18px;color:var(--white);
+}
+.footer-col ul{display:flex;flex-direction:column;gap:10px}
+.footer-col a{font-size:13px;color:rgba(255,255,255,.88);transition:color .2s, transform .2s, padding-left .2s}
+.footer-col a:hover{color:var(--gold);padding-left:4px}
+
+.footer-mid{
+  display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:center;
+  padding:32px 0;border-bottom:1px solid rgba(0,0,0,.22);
+}
+.footer-social{display:flex;gap:14px}
+.footer-social a{
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(0,0,0,.22);
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s, transform .2s;
+}
+.footer-social a:hover{background:rgba(0,0,0,.45);box-shadow:0 0 0 1.5px var(--white);transform:translateY(-2px)}
+.footer-social svg{width:16px;height:16px;fill:var(--white)}
+
+.footer-apps{display:flex;gap:12px}
+.footer-app{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 16px;border-radius:8px;
+  background:rgba(0,0,0,.22);
+  font-size:12px;color:rgba(255,255,255,.92);
+  transition:background .2s, transform .2s;
+}
+.footer-app:hover{background:rgba(0,0,0,.45);box-shadow:0 0 0 1.5px var(--white);transform:translateY(-1px)}
+.footer-app strong{display:block;font-size:13px;color:var(--white);font-weight:700;letter-spacing:-.01em}
+.footer-app span{font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.78)}
+
+.footer-langs{
+  display:flex;gap:6px;align-items:center;
+  font-size:11px;color:rgba(255,255,255,.78);text-transform:uppercase;letter-spacing:.1em;
+}
+.footer-langs a{padding:4px 8px;transition:color .2s}
+.footer-langs a:hover{color:var(--white)}
+.footer-langs a.active{color:var(--gold);font-weight:800}
+
+.footer-bottom{
+  padding-top:24px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:11px;color:rgba(255,255,255,.72);letter-spacing:.05em;
+  flex-wrap:wrap;gap:16px;
+}
+.footer-bottom-links{display:flex;gap:18px}
+.footer-bottom-links a{transition:color .2s}
+.footer-bottom-links a:hover{color:var(--gold)}
+
+@media (max-width:1100px){
+  .footer-top{grid-template-columns:1fr 1fr 1fr;gap:36px}
+  .footer-brand,.footer-col--apps{grid-column:span 1}
+}
+@media (max-width:720px){
+  .footer-top{grid-template-columns:1fr 1fr;gap:28px}
+  .footer-brand,.footer-col--apps{grid-column:span 2}
+}
+
+/* ============== UTILS ============== */
+.no-scroll{overflow:hidden}
+</style>
+</head>
+<body>
+
+<!-- ============== HEADER ============== -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-left">
+      <button class="menu-trigger" id="menuTrigger" aria-label="Abrir menu">
+        <span class="bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span class="label">Menu</span>
+      </button>
+      <a href="/" class="header-logo">
+        <img src="images/logo.png" alt="Escudo Santa Cruz FC">
+      </a>
+      <a href="#noticias" class="header-link hide-mobile">Notícias</a>
+      <a href="#calendario" class="header-link hide-mobile">Calendário</a>
+      <a href="#" class="header-link hide-mobile">TV Coral</a>
+    </div>
+
+    <div class="header-right">
+      <a href="#" class="header-link hide-mobile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+        Entrar
+      </a>
+      <a href="#" class="header-link hide-mobile">Ingressos</a>
+      <a href="#" class="header-link hide-mobile">Loja</a>
+      <div class="header-lang">
+        <a href="#" class="active">PT</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============== DRAWER ============== -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<aside class="drawer" id="drawer" aria-label="Menu principal">
+  <div class="drawer-head">
+    <a href="/"><img src="images/logo.png" alt="Santa Cruz FC"></a>
+    <button class="drawer-close" id="drawerClose" aria-label="Fechar menu">✕</button>
+  </div>
+
+  <nav class="drawer-nav">
+    <div class="drawer-item">
+      <a href="#" class="drawer-item-trigger" style="display:flex">
+        Início
+      </a>
+    </div>
+
+    <div class="drawer-item">
+      <button class="drawer-item-trigger">
+        Clube
+        <span class="chevron"></span>
+      </button>
+      <div class="drawer-sub">
+        <a href="#historia">História</a>
+        <a href="#">Diretoria</a>
+        <a href="#">Símbolos</a>
+        <a href="#">Estádio do Arruda</a>
+        <a href="#">Conselho Deliberativo</a>
+      </div>
+    </div>
+
+    <div class="drawer-item">
+      <button class="drawer-item-trigger">
+        Futebol
+        <span class="chevron"></span>
+      </button>
+      <div class="drawer-sub">
+        <a href="#elenco">Elenco Profissional</a>
+        <a href="#">Comissão Técnica</a>
+        <a href="#">Base</a>
+        <a href="#">Feminino</a>
+      </div>
+    </div>
+
+    <div class="drawer-item">
+      <button class="drawer-item-trigger">
+        Marketing
+        <span class="chevron"></span>
+      </button>
+      <div class="drawer-sub">
+        <a href="https://socio-santacruz.futebolcard.com/" target="_blank">Sócio Coral</a>
+        <a href="#">Loja</a>
+        <a href="#patrocinadores">Patrocinadores</a>
+        <a href="#">Licenciados</a>
+      </div>
+    </div>
+
+    <div class="drawer-item">
+      <button class="drawer-item-trigger">
+        Imprensa
+        <span class="chevron"></span>
+      </button>
+      <div class="drawer-sub">
+        <a href="#noticias">Notícias</a>
+        <a href="#">TV Coral</a>
+        <a href="#">Galeria</a>
+        <a href="#">Contato Imprensa</a>
+      </div>
+    </div>
+
+    <div class="drawer-item">
+      <a href="#" class="drawer-item-trigger" style="display:flex">
+        Contato
+      </a>
+    </div>
+  </nav>
+
+  <div class="drawer-foot">
+    <a href="https://socio-santacruz.futebolcard.com/" target="_blank" class="primary">
+      Seja Sócio Coral
+      <span>→</span>
+    </a>
+    <a href="#" class="outline">
+      Ingressos
+      <span>→</span>
+    </a>
+  </div>
+</aside>
+
+<!-- SVG chroma-key filter: pixels brancos viram transparentes.
+     Necessário porque o PNG do Everaldo foi exportado sem canal alpha. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="greenKey" x="-2%" y="-2%" width="104%" height="104%">
+      <!-- Chroma key forte: alpha agressivo + thresholding discreto pra binarizar a borda sem fringe -->
+      <feColorMatrix type="matrix" values="
+        1 0 0 0 0
+        0 1 0 0 0
+        0 0 1 0 0
+        4 -9 4 0 2.5" result="keyed"/>
+      <!-- Quantiza o canal alpha: tudo abaixo de ~0.55 vira 0, acima fica opaco — corta fringe verde -->
+      <feComponentTransfer in="keyed">
+        <feFuncA type="table" tableValues="0 0 0 0 0 0.2 0.7 1 1 1 1"/>
+      </feComponentTransfer>
+    </filter>
+    <!-- Unsharp mask — aumenta nitidez perceptual da foto do hero, simula a "crispness" PSG -->
+    <filter id="sharpen">
+      <feConvolveMatrix order="3" preserveAlpha="true"
+        kernelMatrix="0 -0.6 0  -0.6 3.4 -0.6  0 -0.6 0"/>
+    </filter>
+    <!-- Grain noise turbulento — atmosfera cinematográfica -->
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .12 0"/>
+    </filter>
+  </defs>
+</svg>
+
+<!-- ============== HERO ============== -->
+<section class="hero" id="calendario">
+  <div class="hero-stage">
+    <img src="images/torcida1.jpg" alt="Torcida do Santa Cruz lotando o Arruda" class="hero-backdrop">
+    <div class="hero-grad"></div>
+    <div class="hero-grain"></div>
+    <div class="hero-card">
+      <h1 class="hero-title">
+        <span class="ht-l1">Coral <em>não</em></span>
+        <span class="ht-l2"><em>recua</em>.</span>
+      </h1>
+      <a href="#" class="hero-cta">
+        Garantir ingresso
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Calendário absorvido pelo hero — carrossel horizontal de 1 linha -->
+  <div class="hero-calendar">
+    <div class="hero-calendar-inner">
+      <div class="hero-calendar-head">
+        <div class="hero-calendar-title">
+          <span class="dot"></span>
+          Calendário
+        </div>
+        <div class="cal-controls">
+          <button class="cal-btn" id="calPrev" aria-label="Anterior" disabled>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <button class="cal-btn" id="calNext" aria-label="Próximo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="carousel-wrap">
+        <div class="carousel" id="calCarousel">
+          <article class="match" data-comp="pernambucano">
+            <div class="match-comp">
+              <span class="badge">Pernambucano</span>
+              <span class="status">DOM 25 MAI · FINAL</span>
+            </div>
+            <div class="match-rows">
+              <div class="match-row">
+                <div class="match-row-shield home"><img src="images/logo.png" alt="Santa"></div>
+                <span class="match-row-name">Santa</span>
+                <span class="match-row-score">2</span>
+              </div>
+              <div class="match-row">
+                <div class="match-row-shield">NAU</div>
+                <span class="match-row-name">Náutico</span>
+                <span class="match-row-score">0</span>
+              </div>
+            </div>
+            <a href="#" class="match-center">Match Center</a>
+          </article>
+
+          <article class="match" data-comp="pernambucano">
+            <div class="match-comp">
+              <span class="badge">Pernambucano</span>
+              <span class="status">QUA 21 MAI · FINAL</span>
+            </div>
+            <div class="match-rows">
+              <div class="match-row">
+                <div class="match-row-shield">RET</div>
+                <span class="match-row-name">Retrô</span>
+                <span class="match-row-score">0</span>
+              </div>
+              <div class="match-row">
+                <div class="match-row-shield home"><img src="images/logo.png" alt="Santa"></div>
+                <span class="match-row-name">Santa</span>
+                <span class="match-row-score">2</span>
+              </div>
+            </div>
+            <a href="#" class="match-center">Match Center</a>
+          </article>
+
+          <article class="match" data-comp="nordeste">
+            <div class="match-comp">
+              <span class="badge">Nordeste</span>
+              <span class="status">SÁB 17 MAI · FINAL</span>
+            </div>
+            <div class="match-rows">
+              <div class="match-row">
+                <div class="match-row-shield home"><img src="images/logo.png" alt="Santa"></div>
+                <span class="match-row-name">Santa</span>
+                <span class="match-row-score">1</span>
+              </div>
+              <div class="match-row">
+                <div class="match-row-shield">BAH</div>
+                <span class="match-row-name">Bahia</span>
+                <span class="match-row-score">1</span>
+              </div>
+            </div>
+            <a href="#" class="match-center">Match Center</a>
+          </article>
+
+          <article class="match" data-comp="copa-br">
+            <div class="match-comp">
+              <span class="badge">Copa do Brasil</span>
+              <span class="status">QUA 14 MAI · FINAL</span>
+            </div>
+            <div class="match-rows">
+              <div class="match-row">
+                <div class="match-row-shield">CRB</div>
+                <span class="match-row-name">CRB</span>
+                <span class="match-row-score">1</span>
+              </div>
+              <div class="match-row">
+                <div class="match-row-shield home"><img src="images/logo.png" alt="Santa"></div>
+                <span class="match-row-name">Santa</span>
+                <span class="match-row-score">2</span>
+              </div>
+            </div>
+            <a href="#" class="match-center">Match Center</a>
+          </article>
+
+          <article class="match" data-comp="pernambucano">
+            <div class="match-comp">
+              <span class="badge">Pernambucano</span>
+              <span class="status">SÁB 30 MAI · 19h30</span>
+            </div>
+            <div class="match-rows">
+              <div class="match-row">
+                <div class="match-row-shield home"><img src="images/logo.png" alt="Santa"></div>
+                <span class="match-row-name">Santa</span>
+              </div>
+              <div class="match-row">
+                <div class="match-row-shield">SAL</div>
+                <span class="match-row-name">Salgueiro</span>
+              </div>
+            </div>
+            <a href="#" class="match-center">Match Center</a>
+          </article>
+
+          <article class="match" data-comp="nordeste">
+            <div class="match-comp">
+              <span class="badge">Nordeste</span>
+              <span class="status">QUA 03 JUN · 21h30</span>
+            </div>
+            <div class="match-rows">
+              <div class="match-row">
+                <div class="match-row-shield">CSA</div>
+                <span class="match-row-name">CSA</span>
+              </div>
+              <div class="match-row">
+                <div class="match-row-shield home"><img src="images/logo.png" alt="Santa"></div>
+                <span class="match-row-name">Santa</span>
+              </div>
+            </div>
+            <a href="#" class="match-center">Match Center</a>
+          </article>
+
+          <article class="match" data-comp="pernambucano">
+            <div class="match-comp">
+              <span class="badge">Pernambucano</span>
+              <span class="status">SÁB 06 JUN · 16h30</span>
+            </div>
+            <div class="match-rows">
+              <div class="match-row">
+                <div class="match-row-shield home"><img src="images/logo.png" alt="Santa"></div>
+                <span class="match-row-name">Santa</span>
+              </div>
+              <div class="match-row">
+                <div class="match-row-shield">RET</div>
+                <span class="match-row-name">Retrô</span>
+              </div>
+            </div>
+            <a href="#" class="match-center">Match Center</a>
+          </article>
+
+          <article class="match" data-comp="copa-br">
+            <div class="match-comp">
+              <span class="badge">Copa do Brasil</span>
+              <span class="status">QUA 10 JUN · 19h00</span>
+            </div>
+            <div class="match-rows">
+              <div class="match-row">
+                <div class="match-row-shield home"><img src="images/logo.png" alt="Santa"></div>
+                <span class="match-row-name">Santa</span>
+              </div>
+              <div class="match-row">
+                <div class="match-row-shield">VAS</div>
+                <span class="match-row-name">Vasco</span>
+              </div>
+            </div>
+            <a href="#" class="match-center">Match Center</a>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== NEWS ============== -->
+<section class="news-section" id="noticias">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-title">Notícias <em>do Clube</em></h2>
+      <a href="#" class="section-link">
+        Todas as notícias
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="news-grid">
+      <a href="#" class="news-feature">
+        <div class="img-wrap">
+          <img src="images/estadio_arruda_em_2020_700_5.jpg" alt="Estádio do Arruda lotado">
+        </div>
+        <div class="meta">
+          <span class="tag">Destaque</span>
+          <h3>Arruda lotado: 32 mil ingressos vendidos para o clássico do Pernambucano</h3>
+          <span class="date">27 maio 2026 · 14:20</span>
+        </div>
+      </a>
+
+      <div class="news-list">
+        <a href="#" class="news-item">
+          <div class="thumb"><img src="images/patrick_allan.jpg" alt=""></div>
+          <div class="body">
+            <span class="tag">Futebol Masculino</span>
+            <h4>Patrick Allan renova contrato com o Tricolor até 2027</h4>
+            <span class="photo-count">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3"/></svg>
+              24 fotos
+            </span>
+          </div>
+        </a>
+
+        <a href="#" class="news-item">
+          <div class="thumb"><img src="images/willian_Jr_10.jpg" alt=""></div>
+          <div class="body">
+            <span class="tag">Eleição</span>
+            <h4>Willian Jr é eleito craque do mês pela torcida tricolor</h4>
+            <span class="photo-count">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3"/></svg>
+              12 fotos
+            </span>
+          </div>
+        </a>
+
+        <a href="#" class="news-item">
+          <div class="thumb"><img src="images/vitinho_19.jpg" alt=""></div>
+          <div class="body">
+            <span class="tag">Pernambucano</span>
+            <h4>Vitinho marca dois e Santa vence o Náutico no Arruda</h4>
+            <span class="photo-count">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3"/></svg>
+              36 fotos
+            </span>
+          </div>
+        </a>
+
+        <a href="#" class="news-item">
+          <div class="thumb"><img src="images/rockenedy_goleiro.jpg" alt=""></div>
+          <div class="body">
+            <span class="tag">Goleiro</span>
+            <h4>Rockenedy mantém invencibilidade no Arruda há 9 jogos</h4>
+            <span class="photo-count">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3"/></svg>
+              16 fotos
+            </span>
+          </div>
+        </a>
+
+        <a href="#" class="news-item">
+          <div class="thumb"><img src="images/torcida_santa_cruz_mosaico.jpg" alt=""></div>
+          <div class="body">
+            <span class="tag">Base</span>
+            <h4>Sub-20 garante vaga nas semifinais do Pernambucano</h4>
+            <span class="photo-count">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3"/></svg>
+              14 fotos
+            </span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== BANNER (2 cards lado-a-lado) ============== -->
+<section class="banner-strip">
+  <div class="container">
+    <div class="banner-grid">
+      <a href="https://socio-santacruz.futebolcard.com/" target="_blank" class="banner-card">
+        <img src="images/torcida_santa_cruz_mosaico.jpg" alt="Torcida do Santa Cruz">
+        <div class="grad"></div>
+        <div class="body">
+          <span class="eyebrow">Sócio Coral</span>
+          <h3>Sua paixão é tricolor.<br>Seu plano também.</h3>
+          <span class="cta">Seja sócio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <a href="#" target="_blank" class="banner-card">
+        <img src="images/estadio_arruda_em_2020_700_5.jpg" alt="Estádio do Arruda">
+        <div class="grad"></div>
+        <div class="body">
+          <span class="eyebrow">Loja Oficial</span>
+          <h3>Camisa nova 26 disponível na loja.</h3>
+          <span class="cta">Comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== INSTITUTIONAL CARDS ============== -->
+<section class="inst-section">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-title">Identidade <em>Coral</em></h2>
+    </div>
+
+    <div class="inst-grid">
+      <a href="#" class="inst-card span-rows">
+        <img src="images/torcida_santa_cruz_mosaico.jpg" alt="Santa Cruz pela Comunidade">
+        <div class="grad"></div>
+        <div class="body">
+          <span class="eyebrow">Social</span>
+          <h3>Santa pela Comunidade</h3>
+          <span class="cta">Descobrir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <a href="#" class="inst-card span-rows">
+        <img src="images/estadio_arruda_em_2020_700_5.jpg" alt="Tour do Arruda">
+        <div class="grad"></div>
+        <div class="body">
+          <span class="eyebrow">Visita</span>
+          <h3>Tour do Arruda</h3>
+          <span class="cta">Reservar visita <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <a href="#" class="inst-card">
+        <img src="images/patrick_allan.jpg" alt="Podcast Cobra Coral">
+        <div class="grad"></div>
+        <div class="body">
+          <span class="eyebrow">Áudio</span>
+          <h3>Podcast Cobra Coral</h3>
+          <span class="cta">Ouvir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <a href="#" class="inst-card">
+        <img src="images/arruda antigo.webp" alt="Memória Tricolor">
+        <div class="grad"></div>
+        <div class="body">
+          <span class="eyebrow">História</span>
+          <h3>Memória Tricolor</h3>
+          <span class="cta">Explorar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SPONSORS ============== -->
+<section class="sponsors-section" id="patrocinadores">
+  <div class="container">
+    <div class="sponsors-master">
+      <a href="#" class="item" target="_blank" rel="noopener"><img src="patrocinadores/betdasorte_master.png" alt="Bet da Sorte — Patrocinador Master"></a>
+      <a href="https://www.reebok.com.br/" class="item" target="_blank" rel="noopener"><img src="patrocinadores/reebok_fornecedor.png" alt="Reebok — Fornecedor Oficial"></a>
+    </div>
+
+    <div class="sponsors-grid">
+      <a href="#" class="item" target="_blank" rel="noopener"><img src="patrocinadores/armazemjenipapo.png" alt="Armazém Jenipapo"></a>
+      <a href="#" class="item" target="_blank" rel="noopener"><img src="patrocinadores/goldtech.png" alt="Goldtech"></a>
+      <a href="https://www.iquine.com.br/" class="item" target="_blank" rel="noopener"><img src="patrocinadores/iquine.png" alt="Iquine"></a>
+      <a href="#" class="item" target="_blank" rel="noopener"><img src="patrocinadores/lideri.png" alt="Líderi"></a>
+      <a href="#" class="item" target="_blank" rel="noopener"><img src="patrocinadores/lpsaude.png" alt="LP Saúde"></a>
+      <a href="#" class="item" target="_blank" rel="noopener"><img src="patrocinadores/medinterv.png" alt="Medinterv"></a>
+      <a href="https://nord-pharma.com.br/" class="item" target="_blank" rel="noopener"><img src="patrocinadores/nordpharma.png" alt="Nord-Pharma"></a>
+      <a href="#" class="item" target="_blank" rel="noopener"><img src="patrocinadores/pitu.png" alt="Pitú"></a>
+      <a href="https://www2.recife.pe.gov.br/" class="item" target="_blank" rel="noopener"><img src="patrocinadores/prefeituradorecife.png" alt="Prefeitura do Recife"></a>
+      <a href="#" class="item" target="_blank" rel="noopener"><img src="patrocinadores/rhp.png" alt="RHP"></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SOCIAL STRIP (fundo branco, entre sponsors e footer) ============== -->
+<section class="social-strip">
+  <div class="row">
+    <a href="https://www.facebook.com/SantaCruzFC" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073"/></svg></a>
+    <a href="https://www.instagram.com/SantaCruzFC" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.39-.67.67-1.08 1.34-1.39 2.13C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.39 2.13.67.67 1.34 1.08 2.13 1.39.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.39.67-.67 1.08-1.34 1.39-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.39-2.13C21.46.79 20.79.38 20 .07 19.24-.23 18.36-.43 17.09-.49 15.81-.55 15.4-.56 12-.56zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zm0 10.16a4 4 0 110-8 4 4 0 010 8zm6.41-10.4a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/></svg></a>
+    <a href="https://twitter.com/SantaCruzFC" target="_blank" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zM17.083 19.77h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="https://www.youtube.com/user/TVcoralPE" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+    <a href="#" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.07A6.33 6.33 0 005.8 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1.84-.1z"/></svg></a>
+    <a href="#" target="_blank" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.93 11.93 0 0 0 12.04 0C5.45 0 .07 5.37.07 11.96c0 2.11.55 4.17 1.6 5.99L0 24l6.21-1.63a11.94 11.94 0 0 0 5.83 1.49h.01c6.59 0 11.96-5.37 11.96-11.96 0-3.19-1.24-6.19-3.49-8.42zM12.04 21.79h-.01a9.87 9.87 0 0 1-5.02-1.37l-.36-.21-3.69.97.99-3.6-.23-.37a9.81 9.81 0 0 1-1.51-5.26C2.2 6.49 6.6 2.09 12.05 2.09c2.62 0 5.09 1.02 6.94 2.88a9.74 9.74 0 0 1 2.87 6.94c0 5.45-4.4 9.88-9.82 9.88z"/></svg></a>
+  </div>
+</section>
+
+<!-- ============== FOOTER (parallax reveal) ============== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="images/logo.png" alt="Santa Cruz FC">
+        <p>Fundado em 3 de fevereiro de 1914. A torcida mais apaixonada do Nordeste. Cobra Coral, do bairro da Boa Vista para o mundo.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Clube</h5>
+        <ul>
+          <li><a href="#">História</a></li>
+          <li><a href="#">Diretoria</a></li>
+          <li><a href="#">Símbolos</a></li>
+          <li><a href="#">Estádio do Arruda</a></li>
+          <li><a href="#">Conselho Deliberativo</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Serviços</h5>
+        <ul>
+          <li><a href="https://socio-santacruz.futebolcard.com/" target="_blank">Sócio Coral</a></li>
+          <li><a href="#">Ingressos</a></li>
+          <li><a href="#">Loja Oficial</a></li>
+          <li><a href="#">TV Coral</a></li>
+          <li><a href="#">Patrocinadores</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Ajuda</h5>
+        <ul>
+          <li><a href="#">Contato</a></li>
+          <li><a href="#">Contato Imprensa</a></li>
+          <li><a href="#">Política de Privacidade</a></li>
+          <li><a href="#">Cookies</a></li>
+          <li><a href="#">Termos de uso</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-col--apps">
+        <h5>Baixe o app</h5>
+        <p class="footer-apps-blurb">O app oficial do torcedor tricolor, disponível para iOS e Android.</p>
+        <div class="footer-apps">
+          <a href="#" class="footer-app">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.08zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+            <div><span>Baixe na</span><strong>App Store</strong></div>
+          </a>
+          <a href="#" class="footer-app">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734c0-.392.241-.736.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.197 2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.31 12l2.388-2.49zM5.864 2.658L16.802 8.99l-2.302 2.302-8.636-8.634z"/></svg>
+            <div><span>Disponível</span><strong>Google Play</strong></div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Chant da torcida no FIM absoluto — slogan gigante "É TRADIÇÃO, NÃO É MODA" -->
+  <div class="footer-chant">
+    <div class="container">
+      <div class="chant-meta">
+        <div class="chant-stat"><small>Desde</small><strong>1914</strong></div>
+        <div class="chant-stat chant-stat--tri">
+          <small>Tri Super</small>
+          <span class="stars">
+            <i class="s s-black">&#9733;</i><i class="s s-white">&#9733;</i><i class="s s-red">&#9733;</i>
+          </span>
+          <strong>57 &middot; 76 &middot; 83</strong>
+        </div>
+        <div class="chant-stat"><small>Fita Azul</small><strong>1979</strong></div>
+      </div>
+      <h3 class="chant">
+        <span class="line">É <em>tradição</em>,</span>
+        <span class="line line-2">não é moda.</span>
+      </h3>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* ---------- DRAWER ---------- */
+  const trigger = document.getElementById('menuTrigger');
+  const drawer = document.getElementById('drawer');
+  const overlay = document.getElementById('drawerOverlay');
+  const closeBtn = document.getElementById('drawerClose');
+
+  function openDrawer(){
+    drawer.classList.add('open');
+    overlay.classList.add('open');
+    document.body.classList.add('no-scroll');
+  }
+  function closeDrawer(){
+    drawer.classList.remove('open');
+    overlay.classList.remove('open');
+    document.body.classList.remove('no-scroll');
+  }
+
+  trigger.addEventListener('click', openDrawer);
+  closeBtn.addEventListener('click', closeDrawer);
+  overlay.addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeDrawer(); });
+
+  document.querySelectorAll('.drawer-item-trigger').forEach(btn => {
+    if(btn.tagName !== 'BUTTON') return;
+    btn.addEventListener('click', () => btn.parentElement.classList.toggle('open'));
+  });
+  document.querySelectorAll('.drawer-sub a, .drawer-foot a').forEach(a => {
+    a.addEventListener('click', () => setTimeout(closeDrawer, 100));
+  });
+
+  /* ---------- SMART HEADER (transparent → white on scroll-up, hide on scroll-down) ---------- */
+  const header = document.querySelector('.site-header');
+  let lastY = window.scrollY;
+  let ticking = false;
+  const THRESHOLD = 80;   // px past which header turns white
+  const DELTA = 6;        // ignore tiny jitter
+
+  function syncHeader(){
+    const y = window.scrollY;
+    const delta = y - lastY;
+
+    // Background: transparent at top, white once scrolled past threshold
+    header.classList.toggle('scrolled', y > THRESHOLD);
+
+    // Hide / show based on scroll direction (only after threshold)
+    if (y > THRESHOLD && Math.abs(delta) > DELTA) {
+      if (delta > 0) {
+        // scrolling down → hide
+        if (!drawer.classList.contains('open')) header.classList.add('hide');
+      } else {
+        // scrolling up → show
+        header.classList.remove('hide');
+      }
+    }
+    if (y <= THRESHOLD) header.classList.remove('hide');
+
+    lastY = y;
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking){
+      window.requestAnimationFrame(syncHeader);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  /* ---------- PARALLAX FOOTER (spacer = footer height) ---------- */
+  const footer = document.querySelector('.site-footer');
+  const parallaxMQ = window.matchMedia('(min-width: 901px)');
+  function setFooterSpacer(){
+    if (!footer) return;
+    if (!parallaxMQ.matches) {
+      document.body.style.paddingBottom = '0';
+      return;
+    }
+    document.body.style.paddingBottom = footer.offsetHeight + 'px';
+  }
+  setFooterSpacer();
+  window.addEventListener('resize', setFooterSpacer);
+  window.addEventListener('load', setFooterSpacer);
+  parallaxMQ.addEventListener('change', setFooterSpacer);
+
+  /* ---------- CALENDAR CAROUSEL ---------- */
+  const cal = document.getElementById('calCarousel');
+  const prev = document.getElementById('calPrev');
+  const next = document.getElementById('calNext');
+
+  function step(){
+    // scroll by ~2 cards
+    const card = cal.querySelector('.match');
+    if (!card) return 240;
+    const cs = getComputedStyle(cal);
+    const gap = parseFloat(cs.gap) || 10;
+    return (card.getBoundingClientRect().width + gap) * 2;
+  }
+  function syncCalBtns(){
+    const maxScroll = cal.scrollWidth - cal.clientWidth - 2;
+    prev.disabled = cal.scrollLeft <= 1;
+    next.disabled = cal.scrollLeft >= maxScroll;
+  }
+  if (cal && prev && next){
+    prev.addEventListener('click', () => cal.scrollBy({ left: -step(), behavior:'smooth' }));
+    next.addEventListener('click', () => cal.scrollBy({ left:  step(), behavior:'smooth' }));
+    cal.addEventListener('scroll', () => requestAnimationFrame(syncCalBtns), { passive:true });
+    window.addEventListener('resize', syncCalBtns);
+    syncCalBtns();
+  }
+})();
+</script>
+
+</body>
+</html>

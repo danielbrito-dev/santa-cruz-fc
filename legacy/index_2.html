@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Santa Cruz Futebol Clube</title>
+<meta name="description" content="Site oficial do Santa Cruz Futebol Clube. Fundado em 1914, em Recife, Pernambuco. A Cobra Coral do Nordeste.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   SANTA CRUZ FC — INSTITUCIONAL (v2)
+   Conforme BRAND.md (Manual da Marca 2025)
+   ============================================ */
+
+/* RESET */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  background:#fff;
+  color:#000;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-size:16px;
+  line-height:1.5;
+}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+ul{list-style:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+/* TOKENS — BRAND.md */
+:root{
+  --red:#DD0000;
+  --red-hover:#A30000;
+  --black:#000;
+  --white:#FFF;
+  --gold:#C9B896;
+  --gray:#D6D7D8;
+  --gray-bg:#F5F5F5;
+  --gray-border:#E5E5E5;
+  --gray-text:#666;
+  --container:1280px;
+}
+
+
+/* ========= HERO BG PARALLAX (scroll-driven) =========
+   Imagem da torcida sobe levemente conforme rolagem, criando profundidade dentro do hero pinado.
+   Browsers que não suportam scroll-timeline simplesmente mantêm a imagem estática. */
+@supports (animation-timeline: scroll()){
+  @keyframes hero-parallax{from{transform:translateY(0) scale(1.05)}to{transform:translateY(-25%) scale(1.15)}}
+  .hero-bg{animation:hero-parallax linear;animation-timeline:scroll(root);animation-range:0 80vh;will-change:transform}
+}
+
+/* ========= CARDS COM HOVER 3D ========= */
+.news-card,.video-card,.player-card,.game-card{perspective:1200px;transform-style:preserve-3d}
+.news-card-image,.video-thumb{transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.news-card:hover .news-card-image{transform:translateZ(20px) rotateX(2deg)}
+.video-card:hover .video-thumb{transform:translateZ(20px) rotateX(2deg)}
+.player-card{transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.player-card:hover{transform:translateY(-6px) rotateX(3deg) rotateY(-2deg)}
+
+/* ========= REVEAL ANIMATIONS =========
+   Elementos entram com fade-up quando passam pelo viewport.
+   Aplicado via IntersectionObserver no script no fim do body. */
+.reveal{opacity:0;transform:translateY(50px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.reveal.is-visible{opacity:1;transform:none}
+/* Stagger: cada filho de um grid revela com delay crescente */
+.reveal-stagger > *{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.reveal-stagger.is-visible > *{opacity:1;transform:none}
+.reveal-stagger.is-visible > *:nth-child(2){transition-delay:.08s}
+.reveal-stagger.is-visible > *:nth-child(3){transition-delay:.16s}
+.reveal-stagger.is-visible > *:nth-child(4){transition-delay:.24s}
+.reveal-stagger.is-visible > *:nth-child(5){transition-delay:.32s}
+.reveal-stagger.is-visible > *:nth-child(6){transition-delay:.4s}
+.reveal-stagger.is-visible > *:nth-child(7){transition-delay:.48s}
+.reveal-stagger.is-visible > *:nth-child(8){transition-delay:.56s}
+/* Respeitar preferência do usuário por movimento reduzido */
+@media (prefers-reduced-motion:reduce){
+  .reveal,.reveal-stagger > *{opacity:1;transform:none;transition:none}
+}
+
+/* TYPOGRAPHY HELPERS */
+h1,h2,h3,h4,h5,h6{font-family:'Inter';font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.container{max-width:var(--container);margin:0 auto;padding:0 24px}
+.section-padding{padding:80px 0}
+@media (max-width:768px){.section-padding{padding:48px 0}}
+
+/* SECTION HEADERS */
+.section-header{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:32px;flex-wrap:wrap}
+.section-title h2{font-size:clamp(28px,4vw,40px);font-weight:900;text-transform:uppercase}
+.section-title h2::after{content:"";display:block;width:48px;height:4px;background:var(--red);margin-top:12px}
+.section-title{display:flex;flex-direction:column;gap:8px}
+.read-more{font-size:14px;font-weight:600;color:var(--black);text-transform:uppercase;letter-spacing:.05em;padding-bottom:6px;transition:color .2s;position:relative;display:inline-block}
+.read-more::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--red)}
+.read-more:hover{color:var(--red)}
+.section-widgets{display:flex;gap:8px;flex-wrap:wrap}
+.pill-btn{display:inline-flex;align-items:center;padding:8px 18px;border:1.5px solid var(--black);border-radius:999px;font-size:13px;font-weight:600;color:var(--black);background:transparent;transition:all .2s;text-transform:uppercase;letter-spacing:.03em}
+.pill-btn:hover,.pill-btn.active{background:var(--black);color:var(--white)}
+.pill-btn--red{border-color:var(--red);color:var(--red)}
+.pill-btn--red:hover,.pill-btn--red.active{background:var(--red);color:var(--white)}
+
+/* ========= HEADER ========= */
+.site-header{position:sticky;top:0;background:var(--white);z-index:100;border-bottom:1px solid var(--gray-border)}
+.header-top{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:var(--container);margin:0 auto;gap:16px}
+.header-logo{display:flex;align-items:center;gap:14px}
+.header-logo img{width:48px;height:48px;object-fit:contain}
+.header-logo-text{font-family:'Inter';font-weight:900;font-size:14px;line-height:1.1;letter-spacing:.04em;text-transform:uppercase}
+.header-logo-text span{color:var(--red)}
+.header-cta{display:flex;gap:10px;align-items:center}
+.btn-solid{display:inline-flex;align-items:center;justify-content:center;padding:11px 22px;background:var(--red);color:var(--white);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;border-radius:4px;transition:background .2s}
+.btn-solid:hover{background:var(--red-hover)}
+.btn-outline{display:inline-flex;align-items:center;justify-content:center;padding:11px 22px;border:1.5px solid var(--black);color:var(--black);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;border-radius:4px;transition:all .2s}
+.btn-outline:hover{background:var(--black);color:var(--white)}
+
+.header-bottom{border-top:1px solid var(--gray-border);background:var(--white)}
+.header-bottom-inner{max-width:var(--container);margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.main-nav ul{display:flex;gap:4px}
+.main-nav li{position:relative}
+.main-nav>ul>li>a{display:inline-block;padding:18px 16px;font-size:14px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;transition:color .2s;position:relative}
+.main-nav>ul>li>a:hover{color:var(--red)}
+.main-nav>ul>li>a::after{content:"";position:absolute;bottom:12px;left:16px;right:16px;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.main-nav>ul>li:hover>a::after,.main-nav>ul>li>a.active::after{transform:scaleX(1)}
+.sub-menu{position:absolute;top:100%;left:0;background:var(--white);min-width:220px;border:1px solid var(--gray-border);box-shadow:0 8px 32px rgba(0,0,0,.08);opacity:0;visibility:hidden;transform:translateY(-6px);transition:all .2s;padding:8px 0;display:block !important}
+.main-nav li:hover>.sub-menu{opacity:1;visibility:visible;transform:translateY(0)}
+.sub-menu li a{display:block;padding:10px 18px;font-size:14px;font-weight:500;transition:all .2s}
+.sub-menu li a:hover{background:var(--gray-bg);color:var(--red)}
+.header-lang{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;text-transform:uppercase;color:var(--gray-text)}
+.header-lang select{border:none;background:transparent;font:inherit;color:inherit;cursor:pointer;padding:4px}
+
+.menu-toggle{display:none;padding:8px;font-size:24px;color:var(--black)}
+@media (max-width:980px){
+  .main-nav{display:none}
+  .menu-toggle{display:block}
+}
+
+/* ========= SOCIAL SIDEBAR ========= */
+.social-sidebar{position:fixed;left:16px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px;z-index:50}
+.social-sidebar a{display:flex;align-items:center;justify-content:center;width:36px;height:36px;background:var(--white);border:1px solid var(--gray-border);border-radius:50%;color:var(--black);transition:all .2s}
+.social-sidebar a:hover{background:var(--red);border-color:var(--red);color:var(--white)}
+.social-sidebar svg{width:16px;height:16px}
+@media (max-width:980px){.social-sidebar{display:none}}
+
+/* ========= HERO ========= */
+/* Sticky: o hero fica pinado enquanto as próximas seções sobem por cima — efeito "tela sobreposta" */
+.hero{position:sticky;top:0;height:calc(100vh - 130px);min-height:560px;max-height:780px;overflow:hidden;background:var(--black);z-index:0}
+/* Só o hero fica pinado — única transição "tela sobre tela" é hero→news.
+   Todo o resto flui em scroll normal. Evita seções longas (como Notícias) serem cortadas. */
+.sticky-zone{position:relative}
+.news-section,.games-section,.banner-strip,.videos-section,.players-section,.history-strip,.sponsors-section,.site-footer{position:relative;z-index:1}
+/* Quando navegar via âncora, descontar a altura do header sticky */
+section[id]{scroll-margin-top:140px}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85;z-index:0}
+.hero-video{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+.hero-video iframe{position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-height:100%;min-width:177.78vh;transform:translate(-50%,-50%);border:0}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.2) 0%,rgba(0,0,0,.6) 70%,rgba(0,0,0,.9) 100%);z-index:2}
+.hero-content{position:absolute;left:0;right:0;bottom:0;padding:0 0 64px;z-index:3}
+.hero-content-inner{max-width:var(--container);margin:0 auto;padding:0 24px;color:var(--white)}
+.hero-eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--red);background:var(--white);padding:6px 14px;margin-bottom:20px}
+.hero-title{font-size:clamp(40px,8vw,96px);font-weight:900;line-height:.95;text-transform:uppercase;letter-spacing:-.03em;max-width:900px}
+.hero-title span{color:var(--red)}
+.hero-sub{margin-top:18px;font-size:clamp(15px,1.5vw,18px);font-weight:400;max-width:540px;opacity:.85}
+.hero-actions{margin-top:32px;display:flex;gap:12px;flex-wrap:wrap}
+.hero-actions .btn-solid{padding:14px 28px;font-size:14px}
+.hero-actions .btn-outline{padding:14px 28px;font-size:14px;border-color:var(--white);color:var(--white)}
+.hero-actions .btn-outline:hover{background:var(--white);color:var(--black)}
+
+/* ========= NEWS ========= */
+.news-section{background:var(--white)}
+.news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.news-card{display:block;background:var(--white);transition:transform .25s}
+.news-card:hover{transform:translateY(-4px)}
+.news-card-image{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--gray-bg)}
+.news-card-image img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.news-card:hover .news-card-image img{transform:scale(1.04)}
+.news-card-tag{position:absolute;top:12px;left:12px;background:var(--red);color:var(--white);padding:4px 10px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.news-card-content{padding:18px 0 0}
+.news-card-date{font-size:12px;color:var(--gray-text);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+.news-card-title{font-size:18px;font-weight:700;line-height:1.3;color:var(--black);transition:color .2s}
+.news-card:hover .news-card-title{color:var(--red)}
+
+/* Featured + Grid */
+.news-featured-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:24px;margin-bottom:32px}
+.news-featured{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--black)}
+.news-featured img{width:100%;height:100%;object-fit:cover;opacity:.85;transition:all .35s}
+.news-featured:hover img{transform:scale(1.04);opacity:.7}
+.news-featured-content{position:absolute;left:0;right:0;bottom:0;padding:32px;color:var(--white);z-index:1;background:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.85) 100%)}
+.news-featured-tag{display:inline-block;background:var(--red);color:var(--white);padding:5px 12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+.news-featured-title{font-size:clamp(22px,3vw,32px);font-weight:800;line-height:1.15}
+.news-featured-side{display:flex;flex-direction:column;gap:16px}
+.news-side-card{display:flex;gap:14px;align-items:flex-start;padding-bottom:16px;border-bottom:1px solid var(--gray-border)}
+.news-side-card:last-child{border-bottom:none}
+.news-side-img{width:110px;height:80px;flex-shrink:0;background:var(--gray-bg);overflow:hidden}
+.news-side-img img{width:100%;height:100%;object-fit:cover}
+.news-side-content{flex:1;min-width:0}
+.news-side-date{font-size:11px;color:var(--gray-text);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;font-weight:600}
+.news-side-title{font-size:14px;font-weight:600;line-height:1.3}
+@media (max-width:768px){
+  .news-featured-grid{grid-template-columns:1fr}
+}
+
+/* ========= GLORY MARKS =========
+   Marcas d'água do passado de glória na seção de Jogos.
+   Anos: 1934 (7×0 no Sport), 1957/1976/1983 (Tri-Supercampeão), 1972 (Arruda),
+   1979 (Fita Azul), 2013 (Tri estadual + Série C), 2015 (Centenário), 2016 (Copa NE).
+   Sem legenda — quem souber, entende. */
+.games-section{position:relative;overflow:hidden}
+.glory-marks{position:absolute;inset:0;pointer-events:none;z-index:0;user-select:none;overflow:hidden}
+.gm{position:absolute;font-family:'Inter';font-weight:900;letter-spacing:-.04em;line-height:.85;color:rgba(255,255,255,.045);white-space:nowrap}
+.gm-l1{font-size:clamp(48px,8vw,128px)}                            /* anos médios */
+.gm-l2{font-size:clamp(72px,12vw,196px);color:rgba(255,255,255,.04)} /* anos grandes */
+.gm-l3{font-size:clamp(42px,6.5vw,108px);color:rgba(255,255,255,.05)} /* anos pequenos */
+.gm-l4{font-size:clamp(36px,5.5vw,88px);color:rgba(255,255,255,.04)}  /* anos extra-pequenos */
+.gm-score{font-size:clamp(64px,10vw,160px);color:rgba(255,255,255,.06);font-weight:900;letter-spacing:-.05em}
+.gm-tag{font-size:clamp(11px,1vw,14px);font-weight:600;letter-spacing:.3em;color:rgba(255,255,255,.35);text-transform:uppercase}
+.gm-phrase{font-size:clamp(14px,1.4vw,20px);font-weight:500;font-style:italic;letter-spacing:.02em;color:rgba(255,255,255,.1)}
+.games-section .container{position:relative;z-index:1}
+
+/* ========= GAMES ========= */
+.games-section{background:var(--black);color:var(--white)}
+.games-section .section-title h2{color:var(--white)}
+.games-section .section-title h2::after{background:var(--red)}
+.games-section .read-more{color:var(--white)}
+.games-section .read-more:hover{color:var(--red)}
+.games-section .pill-btn{border-color:var(--white);color:var(--white)}
+.games-section .pill-btn:hover{background:var(--white);color:var(--black)}
+.games-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.game-card{background:#1a1a1a;border:1px solid #2a2a2a;padding:24px;display:flex;flex-direction:column;gap:16px;transition:all .2s;position:relative;overflow:hidden}
+.game-card:hover{border-color:var(--red);transform:translateY(-2px)}
+.game-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.game-card:hover::before{transform:scaleX(1)}
+.game-card-header{display:flex;justify-content:space-between;align-items:center;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--gray)}
+.game-card-tournament{font-weight:700}
+.game-card-date{font-weight:500}
+.game-card-teams{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 0}
+.game-card-team{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.game-card-team img{width:48px;height:48px;object-fit:contain}
+.game-card-team-name{font-weight:700;font-size:14px;text-transform:uppercase}
+.game-card-vs{font-size:24px;font-weight:900;color:var(--red);letter-spacing:.05em}
+.game-card-footer{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:14px;border-top:1px solid #2a2a2a;font-size:12px;color:var(--gray)}
+.game-card-place{display:flex;align-items:center;gap:6px}
+.game-card-place svg{width:12px;height:12px;color:var(--red)}
+.game-card-ticket{background:var(--red);color:var(--white);padding:7px 14px;border-radius:3px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;transition:background .2s}
+.game-card-ticket:hover{background:var(--red-hover)}
+
+/* ========= BANNER STRIP ========= */
+.banner-strip{padding:0}
+.banner-strip a{display:block;position:relative;height:300px;background:var(--red);overflow:hidden;border-top:3px solid var(--white)}
+.banner-strip .banner-content{position:relative;height:100%;max-width:var(--container);margin:0 auto;padding:0 48px;display:flex;align-items:center;justify-content:space-between;color:var(--white);gap:24px}
+.banner-strip-text h3{font-size:clamp(28px,4vw,42px);font-weight:900;text-transform:uppercase;line-height:1;letter-spacing:-.02em}
+.banner-strip-text p{margin-top:10px;font-size:16px;opacity:.85;max-width:480px}
+.banner-strip-text .btn-cta{margin-top:18px;display:inline-flex;padding:14px 28px;background:var(--white);color:var(--red);font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.05em;border-radius:4px;transition:all .2s}
+.banner-strip-text .btn-cta:hover{background:var(--black);color:var(--white)}
+.banner-strip::after{content:"";position:absolute;right:-80px;top:-80px;width:340px;height:340px;background:rgba(255,255,255,.07);border-radius:50%}
+.banner-strip-icon{font-size:160px;font-weight:900;color:rgba(255,255,255,.12);line-height:1;letter-spacing:-.05em}
+@media (max-width:680px){
+  .banner-strip a{height:auto;min-height:240px}
+  .banner-strip .banner-content{padding:36px 24px;flex-direction:column;align-items:flex-start;text-align:left}
+  .banner-strip-icon{display:none}
+}
+
+/* ========= VIDEOS ========= */
+.videos-section{background:var(--gray-bg)}
+.videos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.video-card{background:var(--white);overflow:hidden;transition:transform .25s;cursor:pointer}
+.video-card:hover{transform:translateY(-4px)}
+.video-thumb{position:relative;aspect-ratio:16/9;background:var(--black);overflow:hidden}
+.video-thumb img{width:100%;height:100%;object-fit:cover;opacity:.9}
+.video-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.video-play svg{width:56px;height:56px;color:var(--white);filter:drop-shadow(0 4px 12px rgba(0,0,0,.5))}
+.video-duration{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.85);color:var(--white);padding:3px 8px;font-size:11px;font-weight:600;border-radius:2px}
+.video-info{padding:16px}
+.video-title{font-size:15px;font-weight:700;line-height:1.3}
+.video-meta{margin-top:6px;font-size:12px;color:var(--gray-text);font-weight:500}
+
+/* ========= PLAYERS ========= */
+.players-section{background:var(--black);color:var(--white);position:relative;overflow:hidden}
+.players-section::before{content:"SCFC";position:absolute;right:-40px;top:50%;transform:translateY(-50%);font-size:380px;font-weight:900;color:rgba(221,0,0,.06);letter-spacing:-.05em;line-height:1;pointer-events:none;user-select:none}
+.players-section .section-title h2{color:var(--white)}
+.players-section .read-more{color:var(--white)}
+.players-section .pill-btn{border-color:var(--white);color:var(--white)}
+.players-section .pill-btn:hover{background:var(--red);border-color:var(--red);color:var(--white);box-shadow:0 0 0 1px var(--white)}
+.players-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;position:relative;z-index:1}
+.player-card{position:relative;aspect-ratio:3/4;overflow:hidden;background:linear-gradient(180deg,#222 0%,#0a0a0a 100%);transition:transform .25s}
+.player-card:hover{transform:translateY(-4px)}
+.player-card img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:all .35s;filter:grayscale(20%)}
+.player-card:hover img{filter:grayscale(0%);transform:scale(1.04)}
+.player-card::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.95) 100%);z-index:1;pointer-events:none}
+.player-card-content{position:absolute;left:0;right:0;bottom:0;padding:20px;z-index:2;color:var(--white)}
+.player-card-position{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--red);margin-bottom:4px}
+.player-card-name{font-size:18px;font-weight:800;line-height:1.1;text-transform:uppercase}
+.player-card-number{position:absolute;top:14px;right:14px;font-size:42px;font-weight:900;color:var(--white);line-height:1;text-shadow:2px 2px 0 var(--red);z-index:2}
+
+/* ========= HISTORY STRIP ========= */
+.history-strip{background:var(--white);padding:80px 0;text-align:center}
+.history-strip h2{font-size:clamp(28px,4vw,42px);font-weight:900;text-transform:uppercase;margin-bottom:16px}
+.history-strip h2 span{color:var(--red)}
+.history-strip>.container>p{max-width:680px;margin:0 auto 48px;font-size:17px;color:var(--gray-text);line-height:1.6}
+.history-timeline{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:24px;max-width:1000px;margin:0 auto}
+.history-item{display:flex;flex-direction:column;align-items:center;gap:8px}
+.history-item-year{font-size:24px;font-weight:900;color:var(--red)}
+.history-item-label{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--gray-text)}
+
+/* ============================================
+   REGRA BRAND.md: preto nunca toca vermelho.
+   Branco SEMPRE separa os dois.
+   Abaixo as compensações em pontos onde a
+   adjacência preto/vermelho aconteceria.
+   ============================================ */
+
+/* TÉCNICA "COBRINHA CORAL" — qualquer barra/elemento vermelho sobre fundo escuro
+   ganha outline branco fino (1px) para nunca tocar o preto.
+   Mesma técnica usada no hero do index 1, abaixo do nome Santa Cruz. */
+.games-section .section-title h2::after,
+.players-section .section-title h2::after{box-shadow:0 0 0 1px var(--white)}
+
+/* read-more (Calendário completo / Ver elenco completo / Canal no YouTube) em seções pretas */
+.games-section .read-more::after,
+.players-section .read-more::after{box-shadow:0 0 0 1px var(--white)}
+
+/* GAMES — cards passam a ser BRANCOS sobre seção preta
+   (a seção preta + card branco = preto/branco/vermelho ok) */
+.game-card{background:var(--white);color:var(--black);border:1px solid var(--white)}
+.game-card:hover{border-color:var(--white);box-shadow:0 0 0 2px var(--red),0 0 0 4px var(--white)}
+.game-card-header{color:var(--gray-text)}
+.game-card-team-name{color:var(--black)}
+.game-card-team div[style]{background:var(--gray-bg) !important;color:var(--black) !important;border:1px solid var(--gray-border)}
+.game-card-footer{color:var(--gray-text);border-top:1px solid var(--gray-border)}
+.game-card-place svg{color:var(--red)}
+.game-card-ticket{box-shadow:0 0 0 2px var(--white)} /* botão vermelho sobre card branco — branco já separa, mantém por consistência caso card mude */
+
+/* PLAYERS — onde tinha vermelho sobre o gradiente preto, vira branco */
+.player-card-position{color:var(--white)}
+/* number: branco com sombra vermelha; outline branco fino ao redor da sombra usando múltiplas shadows */
+.player-card-number{text-shadow:2px 2px 0 var(--red),3px 3px 0 var(--white),1px 3px 0 var(--white),3px 1px 0 var(--white)}
+.players-section::before{color:rgba(255,255,255,.04)} /* watermark SCFC era vermelho; vira branco translúcido */
+
+/* FOOTER social hover — era vermelho sobre preto, vira branco */
+.footer-social a:hover{background:var(--white);border-color:var(--white);color:var(--black)}
+
+/* BANNER STRIP (fundo vermelho) — botão preto no hover precisa de borda branca */
+.banner-strip-text .btn-cta:hover{background:var(--black);color:var(--white);box-shadow:0 0 0 2px var(--white)}
+
+/* NEWS TAGS — badges vermelhas que podem encostar em áreas pretas da foto */
+.news-card-tag,.news-featured-tag{box-shadow:0 0 0 2px var(--white)}
+
+/* HERO — botões vermelhos sobre o vídeo escuro precisam de outline branca */
+.hero-actions .btn-solid{box-shadow:0 0 0 2px var(--white)}
+/* HERO TITLE span (texto vermelho) sobre fundo escuro: stroke branco fino separa */
+.hero-title span{-webkit-text-stroke:1px var(--white);paint-order:stroke fill}
+
+
+/* ========= SPONSORS (grid uniforme, fundo claro, cores originais) ========= */
+.sponsors-section{background:var(--white);color:var(--black);padding:80px 0}
+.sponsors-master{display:flex;justify-content:center;align-items:center;gap:96px;margin:0 auto 56px;flex-wrap:wrap;padding:0 24px}
+.sponsors-master .item{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;transition:opacity .25s, transform .25s}
+.sponsors-master .item:hover{opacity:.65;transform:translateY(-1px)}
+.sponsors-master .item img{height:72px;width:auto;display:block;object-fit:contain}
+.sponsors-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:36px 28px;max-width:1200px;margin:0 auto;align-items:center;justify-items:center;padding:0 24px}
+.sponsors-grid .item{display:flex;align-items:center;justify-content:center;height:60px;width:100%;padding:6px;transition:opacity .2s, transform .2s;text-decoration:none}
+.sponsors-grid .item:hover{opacity:.65;transform:translateY(-1px)}
+.sponsors-grid .item img{max-height:100%;max-width:100%;object-fit:contain}
+/* Logos monocromáticas brancas — em bg claro invertemos pra preto */
+.sponsors-section img{filter:brightness(0)}
+@media (max-width:768px){
+  .sponsors-master{gap:48px}
+  .sponsors-master .item img{height:52px}
+  .sponsors-grid{grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:24px 16px}
+  .sponsors-grid .item{height:48px}
+}
+
+/* ========= FOOTER ========= */
+.site-footer{background:var(--black);color:var(--white);padding:64px 0 24px}
+.footer-top{display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:40px;margin-bottom:48px}
+.footer-brand{display:flex;flex-direction:column;gap:18px}
+.footer-brand img{width:80px;height:auto}
+.footer-brand h3{font-size:20px;font-weight:900;text-transform:uppercase;line-height:1.1}
+.footer-brand p{font-size:14px;opacity:.7;max-width:300px}
+.footer-social{display:flex;gap:10px;margin-top:8px}
+.footer-social a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:50%;color:var(--white);transition:all .2s}
+.footer-social a:hover{background:var(--red);border-color:var(--red)}
+.footer-social svg{width:18px;height:18px}
+.footer-col h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px;color:var(--white);position:relative;padding-top:14px}
+.footer-col h4::before{content:"";position:absolute;top:0;left:0;width:28px;height:2px;background:var(--red);box-shadow:0 0 0 1px var(--white)}
+.footer-col ul{display:flex;flex-direction:column;gap:10px}
+.footer-col a{font-size:14px;font-weight:400;opacity:.75;transition:all .2s}
+.footer-col a:hover{opacity:1;color:var(--white)}
+.footer-bottom{padding-top:24px;border-top:1px solid #1a1a1a;display:flex;justify-content:space-between;align-items:center;font-size:12px;opacity:.5;flex-wrap:wrap;gap:12px}
+@media (max-width:768px){
+  .footer-top{grid-template-columns:1fr 1fr;gap:32px}
+}
+@media (max-width:480px){
+  .footer-top{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ========= HEADER ========= -->
+<header class="site-header">
+  <div class="header-top">
+    <a href="/" class="header-logo">
+      <img src="images/logo.png" alt="Escudo Santa Cruz FC">
+      <div class="header-logo-text">SANTA <span>CRUZ</span><br>FUTEBOL CLUBE</div>
+    </a>
+    <div class="header-cta">
+      <a href="https://socio-santacruz.futebolcard.com/" class="btn-solid" target="_blank">Seja Sócio Coral</a>
+      <a href="#proxjogo" class="btn-outline">Ingressos</a>
+    </div>
+  </div>
+  <div class="header-bottom">
+    <div class="header-bottom-inner">
+      <button class="menu-toggle" aria-label="Menu">☰</button>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#" class="active">Início</a></li>
+          <li>
+            <a href="#">Clube</a>
+            <ul class="sub-menu">
+              <li><a href="#historia">História</a></li>
+              <li><a href="#">Diretoria</a></li>
+              <li><a href="#">Símbolos</a></li>
+              <li><a href="#">Estádio do Arruda</a></li>
+              <li><a href="#">Conselho Deliberativo</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Futebol</a>
+            <ul class="sub-menu">
+              <li><a href="#elenco">Elenco Profissional</a></li>
+              <li><a href="#">Comissão Técnica</a></li>
+              <li><a href="#">Base</a></li>
+              <li><a href="#">Feminino</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Marketing</a>
+            <ul class="sub-menu">
+              <li><a href="https://socio-santacruz.futebolcard.com/" target="_blank">Sócio Coral</a></li>
+              <li><a href="#">Loja</a></li>
+              <li><a href="#patrocinadores">Patrocinadores</a></li>
+              <li><a href="#">Licenciados</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Imprensa</a>
+            <ul class="sub-menu">
+              <li><a href="#noticias">Notícias</a></li>
+              <li><a href="#tv">TV Coral</a></li>
+              <li><a href="#">Galeria</a></li>
+              <li><a href="#">Contato Imprensa</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Contato</a></li>
+        </ul>
+      </nav>
+      <div class="header-lang">
+        <select onchange="location = this.value;">
+          <option value="#" selected>PT</option>
+          <option value="#">EN</option>
+          <option value="#">ES</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ========= SOCIAL SIDEBAR ========= -->
+<aside class="social-sidebar" aria-label="Redes sociais">
+  <a href="https://www.instagram.com/SantaCruzFC" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="18" cy="6" r="1" fill="currentColor"/></svg></a>
+  <a href="https://twitter.com/SantaCruzFC" target="_blank" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zM17.083 19.77h1.833L7.084 4.126H5.117z"/></svg></a>
+  <a href="https://www.youtube.com/user/TVcoralPE" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"/><polygon points="9.75,15.02 15.5,11.75 9.75,8.48" fill="#fff"/></svg></a>
+  <a href="#" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.07A6.33 6.33 0 005.8 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1.84-.10z"/></svg></a>
+  <a href="https://www.facebook.com/SantaCruzFC" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073"/></svg></a>
+</aside>
+
+<!-- ========= STICKY-ZONE =========
+     Hero → History ficam num container — quando a zona termina, o cascade libera
+     e sponsors + footer fluem em scroll normal. Evita o footer cobrir patrocinadores. -->
+<main class="sticky-zone">
+
+<!-- ========= HERO ========= -->
+<section class="hero">
+  <img src="images/torcida_santa_cruz_mosaico.jpg" alt="Torcida do Santa Cruz" class="hero-bg">
+  <div class="hero-video">
+    <iframe
+      src="https://www.youtube.com/embed/-VeNzRldYW8?autoplay=1&mute=1&start=468&controls=0&modestbranding=1&playsinline=1&rel=0"
+      title="Santa Cruz FC"
+      allow="autoplay; encrypted-media; picture-in-picture"
+      allowfullscreen></iframe>
+  </div>
+  <div class="hero-content">
+    <div class="hero-content-inner">
+      <span class="hero-eyebrow">Fundado em 1914</span>
+      <h1 class="hero-title">A mais<br>apaixonada<br><span>do Nordeste</span></h1>
+      <p class="hero-sub">Tradição, raça e amor pela Cobra Coral. Mais de um século de história escritos pela torcida mais apaixonada do futebol brasileiro.</p>
+      <div class="hero-actions">
+        <a href="https://socio-santacruz.futebolcard.com/" target="_blank" class="btn-solid">Seja Sócio Coral</a>
+        <a href="#historia" class="btn-outline">Nossa História</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= NEWS ========= -->
+<section id="noticias" class="news-section section-padding">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-title">
+        <h2>Notícias</h2>
+        <a href="#" class="read-more">Ver todas →</a>
+      </div>
+      <div class="section-widgets">
+        <a href="#" class="pill-btn active">Todas</a>
+        <a href="#" class="pill-btn">Masculino</a>
+        <a href="#" class="pill-btn">Base</a>
+        <a href="#" class="pill-btn">Institucional</a>
+      </div>
+    </div>
+
+    <div class="news-featured-grid">
+      <a href="#" class="news-featured">
+        <img src="images/estadio_arruda_em_2020_700_5.jpg" alt="Estádio do Arruda">
+        <div class="news-featured-content">
+          <span class="news-featured-tag">Destaque</span>
+          <h3 class="news-featured-title">Santa Cruz inicia preparação para o clássico das multidões no Arruda</h3>
+        </div>
+      </a>
+      <div class="news-featured-side">
+        <a href="#" class="news-side-card">
+          <div class="news-side-img"><img src="images/patrick_allan.jpg" alt=""></div>
+          <div class="news-side-content">
+            <div class="news-side-date">22 maio 2026</div>
+            <h4 class="news-side-title">Patrick Allan renova contrato até 2027</h4>
+          </div>
+        </a>
+        <a href="#" class="news-side-card">
+          <div class="news-side-img"><img src="images/willian_Jr_10.jpg" alt=""></div>
+          <div class="news-side-content">
+            <div class="news-side-date">21 maio 2026</div>
+            <h4 class="news-side-title">Willian Jr. é eleito craque do mês pela torcida</h4>
+          </div>
+        </a>
+        <a href="#" class="news-side-card">
+          <div class="news-side-img"><img src="images/vitinho_19.jpg" alt=""></div>
+          <div class="news-side-content">
+            <div class="news-side-date">20 maio 2026</div>
+            <h4 class="news-side-title">Vitinho marca dois e Tricolor vence em casa</h4>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="news-grid">
+      <a href="#" class="news-card">
+        <div class="news-card-image">
+          <span class="news-card-tag">Elenco</span>
+          <img src="images/rockenedy_goleiro.jpg" alt="">
+        </div>
+        <div class="news-card-content">
+          <div class="news-card-date">19 maio 2026</div>
+          <h3 class="news-card-title">Rockenedy fecha o gol e mantém invencibilidade no Arruda</h3>
+        </div>
+      </a>
+      <a href="#" class="news-card">
+        <div class="news-card-image">
+          <span class="news-card-tag">Base</span>
+          <img src="images/torcida_santa_cruz_mosaico.jpg" alt="">
+        </div>
+        <div class="news-card-content">
+          <div class="news-card-date">18 maio 2026</div>
+          <h3 class="news-card-title">Sub-20 garante vaga nas semifinais do Pernambucano</h3>
+        </div>
+      </a>
+      <a href="#" class="news-card">
+        <div class="news-card-image">
+          <span class="news-card-tag">Sócio Coral</span>
+          <img src="images/estadio_arruda_em_2020_700_5.jpg" alt="">
+        </div>
+        <div class="news-card-content">
+          <div class="news-card-date">17 maio 2026</div>
+          <h3 class="news-card-title">Plano Sócio Coral ultrapassa 25 mil associados ativos</h3>
+        </div>
+      </a>
+      <a href="#" class="news-card">
+        <div class="news-card-image">
+          <span class="news-card-tag">Institucional</span>
+          <img src="images/logo.png" alt="" style="object-fit:contain;background:#f5f0e8;padding:32px">
+        </div>
+        <div class="news-card-content">
+          <div class="news-card-date">16 maio 2026</div>
+          <h3 class="news-card-title">Manual de marca 2025 é apresentado em coletiva no clube</h3>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========= GAMES ========= -->
+<section id="proxjogo" class="games-section section-padding">
+  <!-- Marcas d'água do passado de glória — visíveis mas sem legenda.
+       Quem souber da história entende cada número. -->
+  <div class="glory-marks" aria-hidden="true">
+    <span class="gm gm-l1" style="top:3%;left:4%">1957</span>
+    <span class="gm gm-score" style="top:6%;left:38%">7×0</span>
+    <span class="gm gm-l1" style="top:4%;right:4%">1976</span>
+    <span class="gm gm-l2" style="top:42%;left:8%">1983</span>
+    <span class="gm gm-l2" style="top:48%;right:6%">2013</span>
+    <span class="gm gm-l3" style="bottom:6%;left:12%">1972</span>
+    <span class="gm gm-l1" style="bottom:3%;right:18%">2015</span>
+    <span class="gm gm-l3" style="bottom:42%;left:48%">1979</span>
+    <span class="gm gm-l4" style="top:38%;right:32%">2016</span>
+    <span class="gm gm-tag" style="top:1%;left:50%;transform:translateX(-50%)">·1934·</span>
+    <span class="gm gm-tag" style="bottom:1%;left:50%;transform:translateX(-50%);letter-spacing:.6em">PERNAMBUCO</span>
+    <!-- Trecho do canto do Fita Azul 1979: "A América toda viu, Santa Cruz nunca perdeu" -->
+    <span class="gm gm-phrase" style="top:30%;left:6%;transform:rotate(-4deg)">A América toda viu</span>
+  </div>
+  <div class="container">
+    <div class="section-header">
+      <div class="section-title">
+        <h2>Próximos Jogos</h2>
+        <a href="#" class="read-more">Calendário completo →</a>
+      </div>
+      <div class="section-widgets">
+        <a href="#" class="pill-btn active">Profissional</a>
+        <a href="#" class="pill-btn">Base</a>
+      </div>
+    </div>
+
+    <div class="games-grid">
+      <div class="game-card">
+        <div class="game-card-header">
+          <span class="game-card-tournament">Série C • Brasileirão</span>
+          <span class="game-card-date">SÁB · 24/05 · 16:00</span>
+        </div>
+        <div class="game-card-teams">
+          <div class="game-card-team">
+            <img src="images/logo.png" alt="Santa Cruz">
+            <span class="game-card-team-name">Santa Cruz</span>
+          </div>
+          <span class="game-card-vs">×</span>
+          <div class="game-card-team">
+            <div style="width:48px;height:48px;background:#2a2a2a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">SAM</div>
+            <span class="game-card-team-name">Sampaio Corrêa</span>
+          </div>
+        </div>
+        <div class="game-card-footer">
+          <span class="game-card-place"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Arruda</span>
+          <a href="#" class="game-card-ticket">Comprar</a>
+        </div>
+      </div>
+
+      <div class="game-card">
+        <div class="game-card-header">
+          <span class="game-card-tournament">Série C • Brasileirão</span>
+          <span class="game-card-date">QUA · 28/05 · 19:30</span>
+        </div>
+        <div class="game-card-teams">
+          <div class="game-card-team">
+            <div style="width:48px;height:48px;background:#2a2a2a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">CSA</div>
+            <span class="game-card-team-name">CSA</span>
+          </div>
+          <span class="game-card-vs">×</span>
+          <div class="game-card-team">
+            <img src="images/logo.png" alt="Santa Cruz">
+            <span class="game-card-team-name">Santa Cruz</span>
+          </div>
+        </div>
+        <div class="game-card-footer">
+          <span class="game-card-place"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Rei Pelé</span>
+          <a href="#" class="game-card-ticket">Visitante</a>
+        </div>
+      </div>
+
+      <div class="game-card">
+        <div class="game-card-header">
+          <span class="game-card-tournament">Série C • Brasileirão</span>
+          <span class="game-card-date">DOM · 01/06 · 17:00</span>
+        </div>
+        <div class="game-card-teams">
+          <div class="game-card-team">
+            <img src="images/logo.png" alt="Santa Cruz">
+            <span class="game-card-team-name">Santa Cruz</span>
+          </div>
+          <span class="game-card-vs">×</span>
+          <div class="game-card-team">
+            <div style="width:48px;height:48px;background:#2a2a2a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">NÁU</div>
+            <span class="game-card-team-name">Náutico</span>
+          </div>
+        </div>
+        <div class="game-card-footer">
+          <span class="game-card-place"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Arruda</span>
+          <a href="#" class="game-card-ticket">Comprar</a>
+        </div>
+      </div>
+
+      <div class="game-card">
+        <div class="game-card-header">
+          <span class="game-card-tournament">Copa do Nordeste</span>
+          <span class="game-card-date">SÁB · 07/06 · 16:30</span>
+        </div>
+        <div class="game-card-teams">
+          <div class="game-card-team">
+            <div style="width:48px;height:48px;background:#2a2a2a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">FOR</div>
+            <span class="game-card-team-name">Fortaleza</span>
+          </div>
+          <span class="game-card-vs">×</span>
+          <div class="game-card-team">
+            <img src="images/logo.png" alt="Santa Cruz">
+            <span class="game-card-team-name">Santa Cruz</span>
+          </div>
+        </div>
+        <div class="game-card-footer">
+          <span class="game-card-place"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Castelão</span>
+          <a href="#" class="game-card-ticket">Visitante</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= BANNER STRIP ========= -->
+<section class="banner-strip">
+  <a href="https://socio-santacruz.futebolcard.com/" target="_blank">
+    <div class="banner-content">
+      <div class="banner-strip-text">
+        <h3>Sócio Coral<br>vale por você</h3>
+        <p>Faça parte do maior programa de sócio-torcedor do Nordeste. Ingressos garantidos, descontos exclusivos e bastidores da Cobra Coral.</p>
+        <span class="btn-cta">Quero ser sócio →</span>
+      </div>
+      <div class="banner-strip-icon">#TS</div>
+    </div>
+  </a>
+</section>
+
+<!-- ========= VIDEOS ========= -->
+<section id="tv" class="videos-section section-padding">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-title">
+        <h2>TV Coral</h2>
+        <a href="https://www.youtube.com/user/TVcoralPE" class="read-more" target="_blank">Canal no YouTube →</a>
+      </div>
+    </div>
+
+    <div class="videos-grid">
+      <div class="video-card">
+        <div class="video-thumb">
+          <img src="images/estadio_arruda_em_2020_700_5.jpg" alt="">
+          <div class="video-play"><svg fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="rgba(0,0,0,.6)"/><path d="M10 8l6 4-6 4V8z" fill="#fff"/></svg></div>
+          <span class="video-duration">12:34</span>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Bastidores: Santa Cruz no Arruda lotado</h3>
+          <p class="video-meta">12K visualizações • há 3 dias</p>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-thumb">
+          <img src="images/patrick_allan.jpg" alt="">
+          <div class="video-play"><svg fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="rgba(0,0,0,.6)"/><path d="M10 8l6 4-6 4V8z" fill="#fff"/></svg></div>
+          <span class="video-duration">04:18</span>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Patrick Allan: "Vestir o manto é responsabilidade"</h3>
+          <p class="video-meta">8K visualizações • há 5 dias</p>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-thumb">
+          <img src="images/willian_Jr_10.jpg" alt="">
+          <div class="video-play"><svg fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="rgba(0,0,0,.6)"/><path d="M10 8l6 4-6 4V8z" fill="#fff"/></svg></div>
+          <span class="video-duration">07:52</span>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Os 5 melhores gols de Willian Jr. no Coral</h3>
+          <p class="video-meta">22K visualizações • há 1 semana</p>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-thumb">
+          <img src="images/torcida_santa_cruz_mosaico.jpg" alt="">
+          <div class="video-play"><svg fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="rgba(0,0,0,.6)"/><path d="M10 8l6 4-6 4V8z" fill="#fff"/></svg></div>
+          <span class="video-duration">03:45</span>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">A torcida que jamais abandona — mosaico no Arruda</h3>
+          <p class="video-meta">35K visualizações • há 2 semanas</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= PLAYERS ========= -->
+<section id="elenco" class="players-section section-padding">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-title">
+        <h2>Elenco</h2>
+        <a href="#" class="read-more">Ver elenco completo →</a>
+      </div>
+      <div class="section-widgets">
+        <a href="#" class="pill-btn active">Profissional</a>
+        <a href="#" class="pill-btn">Sub-20</a>
+        <a href="#" class="pill-btn">Feminino</a>
+      </div>
+    </div>
+
+    <div class="players-grid">
+      <a href="#" class="player-card">
+        <span class="player-card-number">01</span>
+        <img src="images/rockenedy_goleiro.jpg" alt="Rockenedy">
+        <div class="player-card-content">
+          <div class="player-card-position">Goleiro</div>
+          <div class="player-card-name">Rockenedy</div>
+        </div>
+      </a>
+      <a href="#" class="player-card">
+        <span class="player-card-number">07</span>
+        <img src="images/patrick_allan.jpg" alt="Patrick Allan">
+        <div class="player-card-content">
+          <div class="player-card-position">Meia</div>
+          <div class="player-card-name">Patrick Allan</div>
+        </div>
+      </a>
+      <a href="#" class="player-card">
+        <span class="player-card-number">10</span>
+        <img src="images/willian_Jr_10.jpg" alt="Willian Jr.">
+        <div class="player-card-content">
+          <div class="player-card-position">Meia-atacante</div>
+          <div class="player-card-name">Willian Jr.</div>
+        </div>
+      </a>
+      <a href="#" class="player-card">
+        <span class="player-card-number">19</span>
+        <img src="images/vitinho_19.jpg" alt="Vitinho">
+        <div class="player-card-content">
+          <div class="player-card-position">Atacante</div>
+          <div class="player-card-name">Vitinho</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========= HISTORY ========= -->
+<section id="historia" class="history-strip">
+  <div class="container">
+    <h2>É tradição não é <span>moda!</span></h2>
+    <p>Mais de um século escrevendo glória. Da fundação no bairro da Boa Vista ao Tri-Supercampeonato, da Fita Azul à Copa do Nordeste — cada conquista nascida da paixão da maior torcida do Nordeste.</p>
+    <div class="history-timeline">
+      <div class="history-item">
+        <span class="history-item-year">1914</span>
+        <span class="history-item-label">Fundação</span>
+      </div>
+      <div class="history-item">
+        <span class="history-item-year">1979</span>
+        <span class="history-item-label">Fita Azul</span>
+      </div>
+      <div class="history-item">
+        <span class="history-item-year">1983</span>
+        <span class="history-item-label">Tri-Super</span>
+      </div>
+      <div class="history-item">
+        <span class="history-item-year">2013</span>
+        <span class="history-item-label">Série C</span>
+      </div>
+      <div class="history-item">
+        <span class="history-item-year">2015</span>
+        <span class="history-item-label">Campeão Centenário do Pernambucano</span>
+      </div>
+      <div class="history-item">
+        <span class="history-item-year">2016</span>
+        <span class="history-item-label">Copa do Nordeste</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main><!-- /.sticky-zone -->
+
+<!-- ========= SPONSORS ========= -->
+<section class="sponsors-section" id="patrocinadores">
+  <div class="container">
+    <div class="sponsors-master">
+      <a href="#" class="item" target="_blank" rel="noopener"><img src="patrocinadores/betdasorte_master.png" alt="Bet da Sorte — Patrocinador Master"></a>
+      <a href="https://www.reebok.com.br/" class="item" target="_blank" rel="noopener"><img src="patrocinadores/reebok_fornecedor.png" alt="Reebok — Fornecedor Oficial"></a>
+    </div>
+    <div class="sponsors-grid">
+      <a href="#" class="item" target="_blank" rel="noopener"><img src="patrocinadores/armazemjenipapo.png" alt="Armazém Jenipapo"></a>
+      <a href="#" class="item" target="_blank" rel="noopener"><img src="patrocinadores/goldtech.png" alt="Goldtech"></a>
+      <a href="https://www.iquine.com.br/" class="item" target="_blank" rel="noopener"><img src="patrocinadores/iquine.png" alt="Iquine"></a>
+      <a href="#" class="item" target="_blank" rel="noopener"><img src="patrocinadores/lideri.png" alt="Líderi"></a>
+      <a href="#" class="item" target="_blank" rel="noopener"><img src="patrocinadores/lpsaude.png" alt="LP Saúde"></a>
+      <a href="#" class="item" target="_blank" rel="noopener"><img src="patrocinadores/medinterv.png" alt="Medinterv"></a>
+      <a href="https://nord-pharma.com.br/" class="item" target="_blank" rel="noopener"><img src="patrocinadores/nordpharma.png" alt="Nord-Pharma"></a>
+      <a href="#" class="item" target="_blank" rel="noopener"><img src="patrocinadores/pitu.png" alt="Pitú"></a>
+      <a href="https://www2.recife.pe.gov.br/" class="item" target="_blank" rel="noopener"><img src="patrocinadores/prefeituradorecife.png" alt="Prefeitura do Recife"></a>
+      <a href="#" class="item" target="_blank" rel="noopener"><img src="patrocinadores/rhp.png" alt="RHP"></a>
+    </div>
+  </div>
+</section>
+
+<!-- ========= FOOTER ========= -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="images/logo.png" alt="Santa Cruz FC">
+        <h3>Santa Cruz<br>Futebol Clube</h3>
+        <p>Fundado em 1914 no bairro da Boa Vista, Recife / PE. A mais apaixonada do Nordeste.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/SantaCruzFC" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="18" cy="6" r="1" fill="currentColor"/></svg></a>
+          <a href="https://twitter.com/SantaCruzFC" target="_blank" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zM17.083 19.77h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://www.youtube.com/user/TVcoralPE" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"/><polygon points="9.75,15.02 15.5,11.75 9.75,8.48" fill="#fff"/></svg></a>
+          <a href="https://www.facebook.com/SantaCruzFC" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073"/></svg></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Clube</h4>
+        <ul>
+          <li><a href="#">Diretoria</a></li>
+          <li><a href="#historia">Nossa história</a></li>
+          <li><a href="#">Símbolos</a></li>
+          <li><a href="#">Estádio do Arruda</a></li>
+          <li><a href="#">Conselho</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Torcedor</h4>
+        <ul>
+          <li><a href="https://socio-santacruz.futebolcard.com/" target="_blank">Sócio Coral</a></li>
+          <li><a href="#proxjogo">Ingressos</a></li>
+          <li><a href="#">Loja Oficial</a></li>
+          <li><a href="#tv">TV Coral</a></li>
+          <li><a href="#">App Coral</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Imprensa</h4>
+        <ul>
+          <li><a href="#noticias">Notícias</a></li>
+          <li><a href="#">Galeria de fotos</a></li>
+          <li><a href="#">Coletivas</a></li>
+          <li><a href="#">Fale conosco</a></li>
+          <li><a href="#">Trabalhe conosco</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Santa Cruz Futebol Clube. Todos os direitos reservados.</span>
+      <span>Rua São Benedito, 254 — Recife / PE</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ========= REVEAL ANIMATIONS =========
+  // Aplica fade-up suave em cards/seções quando entram no viewport.
+  (function(){
+    // Marca grids como stagger e seus filhos vão revelando em sequência
+    document.querySelectorAll('.news-grid, .games-grid, .videos-grid, .players-grid, .history-timeline, .sponsors-master, .sponsors-grid, .sponsors-partners-grid, .news-featured-grid')
+      .forEach(function(el){ el.classList.add('reveal-stagger'); });
+
+    // Elementos individuais que ganham reveal simples
+    document.querySelectorAll('.section-header, .news-featured, .banner-strip a, .footer-col')
+      .forEach(function(el){ el.classList.add('reveal'); });
+
+    if (!('IntersectionObserver' in window)){
+      // Fallback: mostra tudo
+      document.querySelectorAll('.reveal, .reveal-stagger').forEach(function(el){ el.classList.add('is-visible'); });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+    document.querySelectorAll('.reveal, .reveal-stagger').forEach(function(el){ observer.observe(el); });
+  })();
+
+</script>
+</body>
+</html>

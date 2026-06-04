@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Santa Cruz FC · Mockups</title>
+<meta name="description" content="Quatro direções de identidade visual para avaliação do clube">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:#0A0A0A;
+  color:#FFF;
+  -webkit-font-smoothing:antialiased;
+  font-size:16px;
+  line-height:1.5;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+
+/* Background grid lines */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+  background-size:80px 80px;
+  z-index:0;
+}
+
+.wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:48px 32px 64px}
+
+/* HEADER */
+.brand{display:flex;align-items:center;gap:14px;margin-bottom:80px}
+.brand-mono{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#888}
+.brand-dot{width:6px;height:6px;background:#DD0000;border-radius:50%;box-shadow:0 0 0 1px #FFF}
+
+/* TITLE BLOCK */
+.title-block{margin-bottom:80px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:end}
+.title-eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:#888;margin-bottom:16px}
+.title{font-size:clamp(56px,11vw,160px);font-weight:900;line-height:.9;letter-spacing:-.04em;text-transform:uppercase}
+.title em{font-style:normal;color:#DD0000;-webkit-text-stroke:1px #FFF;paint-order:stroke fill}
+.title-meta{font-family:'JetBrains Mono',monospace;font-size:12px;color:#888;text-align:right;line-height:1.6;letter-spacing:.05em}
+.title-meta strong{color:#FFF;font-weight:500}
+
+.intro{max-width:680px;font-size:17px;line-height:1.6;color:#B0B0B0;margin-bottom:64px;font-weight:400}
+.intro strong{color:#FFF;font-weight:600}
+
+/* GRID OF MOCKUPS */
+.mockups{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+@media (max-width:840px){.mockups{grid-template-columns:1fr}}
+
+/* Card de destaque ocupa toda largura.
+   O iframe usa as mesmas regras % do showcase — escala automática pelo container. */
+.mock--feature{grid-column:1/-1}
+.mock--feature .mock-info{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:end;padding:36px}
+.mock--feature .mock-name{font-size:36px;letter-spacing:-.02em}
+.mock--feature .mock-desc{max-width:60ch}
+.mock--feature .mock-cta{justify-self:end}
+@media (max-width:840px){
+  .mock--feature .mock-info{grid-template-columns:1fr;gap:18px}
+  .mock--feature .mock-cta{justify-self:start}
+}
+
+.mock{
+  position:relative;
+  background:#141414;
+  border:1px solid #222;
+  overflow:hidden;
+  cursor:pointer;
+  transition:border-color .3s ease,transform .3s ease;
+  display:flex;
+  flex-direction:column;
+}
+.mock:hover{border-color:#DD0000;transform:translateY(-4px)}
+.mock:hover .mock-preview iframe{transform:scale(.258)}
+.mock:hover .mock-overlay{opacity:1}
+
+/* Preview area: live scaled iframe via percentage trick.
+   iframe ocupa 400% do container e é reduzido a .25 — sempre cabe perfeitamente. */
+.mock-preview{
+  position:relative;
+  aspect-ratio:16/10;
+  overflow:hidden;
+  background:#0E0E10;
+  pointer-events:none;
+}
+.mock-preview iframe{
+  position:absolute;
+  top:0;left:0;
+  width:400%;
+  height:400%;
+  transform:scale(.25);
+  transform-origin:top left;
+  border:0;
+  transition:transform .6s cubic-bezier(.16,1,.3,1);
+  pointer-events:none;
+}
+
+/* Overlay with CTA */
+.mock-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:flex-end;
+  justify-content:flex-end;
+  padding:24px;
+  background:linear-gradient(135deg,transparent 40%,rgba(0,0,0,.4) 100%);
+  opacity:0;
+  transition:opacity .3s ease;
+  pointer-events:none;
+  z-index:1;
+}
+.mock-overlay span{
+  background:#DD0000;
+  color:#FFF;
+  padding:10px 18px;
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  box-shadow:0 0 0 2px #FFF;
+}
+
+/* Label badge: nr */
+.mock-nr{
+  position:absolute;
+  top:16px;
+  left:16px;
+  z-index:2;
+  background:#000;
+  color:#FFF;
+  padding:6px 10px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.15em;
+  border:1px solid #FFF;
+}
+
+/* Card info */
+.mock-info{padding:24px 24px 28px}
+.mock-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#888;margin-bottom:10px}
+.mock-tag::before{content:"";display:inline-block;width:12px;height:1px;background:#DD0000;vertical-align:middle;margin-right:8px}
+.mock-name{font-size:28px;font-weight:800;letter-spacing:-.02em;margin-bottom:10px;line-height:1.1}
+.mock-desc{font-size:14px;color:#999;line-height:1.5;max-width:48ch}
+.mock-cta{margin-top:18px;display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#FFF}
+.mock-cta::after{content:"→";color:#DD0000;font-weight:700;transition:transform .3s ease}
+.mock:hover .mock-cta::after{transform:translateX(6px)}
+
+/* FOOTER */
+footer{margin-top:120px;padding-top:32px;border-top:1px solid #1A1A1A;display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#666;gap:16px;flex-wrap:wrap}
+footer span:nth-child(1){color:#888}
+footer span:nth-child(2){color:#888}
+footer span strong{color:#FFF}
+
+/* Loading state hint */
+.mock-preview::after{
+  content:"carregando";
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:#444;
+  z-index:0;
+}
+
+@media (max-width:600px){
+  .wrap{padding:32px 20px 48px}
+  .brand{margin-bottom:48px}
+  .title-block{grid-template-columns:1fr;gap:24px}
+  .title-meta{text-align:left}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="brand">
+    <span class="brand-dot"></span>
+    <span class="brand-mono">SCFC · Mockups · v.1</span>
+  </div>
+
+  <div class="title-block">
+    <div>
+      <div class="title-eyebrow">Direções de identidade · 2026</div>
+      <h1 class="title">Mockups<br>do <em>Coral</em></h1>
+    </div>
+    <div class="title-meta">
+      <div><strong>08</strong> direções</div>
+      <div><strong>22</strong> mai · 26</div>
+      <div><strong>Sta.</strong> Cruz FC</div>
+    </div>
+  </div>
+
+  <p class="intro">
+    Quatro caminhos possíveis para a próxima identidade digital do Santa Cruz Futebol Clube. Cada mockup é uma <strong>direção</strong> distinta — do cordel nordestino ao manifesto editorial — explorando como o clube pode se apresentar online sem perder a alma. Clique em qualquer um para ver ao vivo.
+  </p>
+
+  <div class="mockups">
+
+    <a href="index_1.html" class="mock" target="_blank" rel="noopener">
+      <span class="mock-nr">01</span>
+      <div class="mock-preview"><iframe src="index_1.html" loading="lazy" scrolling="no" aria-hidden="true"></iframe></div>
+      <div class="mock-overlay"><span>Abrir mockup</span></div>
+      <div class="mock-info">
+        <div class="mock-tag">Cordel · Xilogravura</div>
+        <div class="mock-name">Tradição Nordestina</div>
+        <div class="mock-desc">Estética cordel/xilogravura, ruídos SVG, tipografia robusta. Conexão emocional com a cultura pernambucana. Inicial — fora do manual oficial mas com forte personalidade regional.</div>
+        <span class="mock-cta">Ver versão</span>
+      </div>
+    </a>
+
+    <a href="index_2.html" class="mock" target="_blank" rel="noopener">
+      <span class="mock-nr">02</span>
+      <div class="mock-preview"><iframe src="index_2.html" loading="lazy" scrolling="no" aria-hidden="true"></iframe></div>
+      <div class="mock-overlay"><span>Abrir mockup</span></div>
+      <div class="mock-info">
+        <div class="mock-tag">Institucional · Light</div>
+        <div class="mock-name">Padrão Clube</div>
+        <div class="mock-desc">Inspirado nos sites contemporâneos de futebol brasileiro. Layout limpo, cards organizados, hierarquia clara. Conforme manual de marca 2025 — Inter, <code style="color:#DD0000">#DD0000</code>, paleta restrita.</div>
+        <span class="mock-cta">Ver versão</span>
+      </div>
+    </a>
+
+    <a href="index_3.html" class="mock" target="_blank" rel="noopener">
+      <span class="mock-nr">03</span>
+      <div class="mock-preview"><iframe src="index_3.html" loading="lazy" scrolling="no" aria-hidden="true"></iframe></div>
+      <div class="mock-overlay"><span>Abrir mockup</span></div>
+      <div class="mock-info">
+        <div class="mock-tag">Institucional · Dark</div>
+        <div class="mock-name">Manto Negro</div>
+        <div class="mock-desc">Mesma estrutura do institucional, mas em paleta dark. Superfícies pretas, cards elevados, sponsors em silhueta branca. O vermelho da marca ganha mais protagonismo.</div>
+        <span class="mock-cta">Ver versão</span>
+      </div>
+    </a>
+
+    <a href="index_4.html" class="mock" target="_blank" rel="noopener">
+      <span class="mock-nr">04</span>
+      <div class="mock-preview"><iframe src="index_4.html" loading="lazy" scrolling="no" aria-hidden="true"></iframe></div>
+      <div class="mock-overlay"><span>Abrir mockup</span></div>
+      <div class="mock-info">
+        <div class="mock-tag">Premium · Photo-forward</div>
+        <div class="mock-name">Manto Cinematográfico</div>
+        <div class="mock-desc">Photography como elemento principal de design. Hero full-viewport, photo bands cinematográficos com overlay refinado, elenco em grid fotográfico. Tipografia Inter refinada (peso 200-800), motion sutil — premium europeu.</div>
+        <span class="mock-cta">Ver versão</span>
+      </div>
+    </a>
+
+    <a href="index_5.html" class="mock" target="_blank" rel="noopener">
+      <span class="mock-nr">05</span>
+      <div class="mock-preview"><iframe src="index_5.html" loading="lazy" scrolling="no" aria-hidden="true"></iframe></div>
+      <div class="mock-overlay"><span>Abrir mockup</span></div>
+      <div class="mock-info">
+        <div class="mock-tag">Editorial · Heritage</div>
+        <div class="mock-name">Arruda Heritage</div>
+        <div class="mock-desc">Antítese de site de futebol. Tipografia <strong style="color:#FFF">Fraunces serif</strong> + Bricolage Grotesque, capítulos em romanos, grão fotográfico. Como revista impressa. Exploração além do manual.</div>
+        <span class="mock-cta">Ver versão</span>
+      </div>
+    </a>
+
+    <a href="index_6.html" class="mock" target="_blank" rel="noopener">
+      <span class="mock-nr">06</span>
+      <div class="mock-preview"><iframe src="index_6.html" loading="lazy" scrolling="no" aria-hidden="true"></iframe></div>
+      <div class="mock-overlay"><span>Abrir mockup</span></div>
+      <div class="mock-info">
+        <div class="mock-tag">Bento · Moderno</div>
+        <div class="mock-name">Coral Bento</div>
+        <div class="mock-desc">Bento grid moderno com efeitos: spotlight cursor, contadores animados, marquee, magnetic hovers, tile reveals. Inter, #DD0000. <strong style="color:#FFF">Fiel ao manual</strong>.</div>
+        <span class="mock-cta">Ver versão</span>
+      </div>
+    </a>
+
+    <a href="index_7.html" class="mock" target="_blank" rel="noopener">
+      <span class="mock-nr">07 · NOVO</span>
+      <div class="mock-preview"><iframe src="index_7.html" loading="lazy" scrolling="no" aria-hidden="true"></iframe></div>
+      <div class="mock-overlay"><span>Abrir mockup</span></div>
+      <div class="mock-info">
+        <div class="mock-tag">Bento · Cordel</div>
+        <div class="mock-name">Coral Bento Cordel</div>
+        <div class="mock-desc">Upgrade do cordel original com bento + efeitos. Sol nordestino em SVG no hero, tile com listras coral (preto/branco/vermelho), marquee em vermelho como faixa de cartaz cordel. <strong style="color:#FFF">Bento moderno com alma nordestina</strong>.</div>
+        <span class="mock-cta">Ver versão</span>
+      </div>
+    </a>
+
+    <a href="index_8.html" class="mock" target="_blank" rel="noopener">
+      <span class="mock-nr">08</span>
+      <div class="mock-preview"><iframe src="index_8.html" loading="lazy" scrolling="no" aria-hidden="true"></iframe></div>
+      <div class="mock-overlay"><span>Abrir mockup</span></div>
+      <div class="mock-info">
+        <div class="mock-tag">Bento · Light Institucional</div>
+        <div class="mock-name">Coral Bento Light</div>
+        <div class="mock-desc">Upgrade do institucional light (index_2) com bento + efeitos. Mesma essência do bento moderno (spotlight cursor, contadores, marquee, magnetic) mas em <strong style="color:#FFF">tema claro corporativo</strong>. Sombras refinadas no hover dos tiles, paleta papel branco / texto preto / red accents.</div>
+        <span class="mock-cta">Ver versão</span>
+      </div>
+    </a>
+
+    <a href="index_9.html" class="mock" target="_blank" rel="noopener">
+      <span class="mock-nr">09</span>
+      <div class="mock-preview"><iframe src="index_9.html" loading="lazy" scrolling="no" aria-hidden="true"></iframe></div>
+      <div class="mock-overlay"><span>Abrir mockup</span></div>
+      <div class="mock-info">
+        <div class="mock-tag">Editorial · Hero preto</div>
+        <div class="mock-name">Manto Internacional</div>
+        <div class="mock-desc">Direção editorial cinematográfica. Header com botão <strong style="color:#FFF">MENU</strong> lateral que abre drawer com a IA completa. Hero notícia com foto da apresentação + scrim escuro, calendário em carrossel horizontal, news 1+4, banners Sócio/Loja, cards institucionais, patrocinadores tier-hierarchy, footer parallax preto com slogan da torcida e marcos históricos (Fita Azul, Tri-Super).</div>
+        <span class="mock-cta">Ver versão</span>
+      </div>
+    </a>
+
+    <a href="index_10.html" class="mock mock--feature" target="_blank" rel="noopener">
+      <span class="mock-nr">10 · NOVO</span>
+      <div class="mock-preview"><iframe src="index_10.html" loading="lazy" scrolling="no" aria-hidden="true"></iframe></div>
+      <div class="mock-overlay"><span>Abrir mockup</span></div>
+      <div class="mock-info">
+        <div>
+          <div class="mock-tag">Editorial · Atmosfera Dourada sobre Preto</div>
+          <div class="mock-name">Manto Dourado</div>
+        </div>
+        <div class="mock-desc">Variação cromática do mock 09 dentro da paleta oficial — preto + dourado <code style="color:#DD0000">#C9B896</code> (cor de apoio oficial do estatuto). Substrato em <strong style="color:#FFF">preto</strong> com gradient + radial <strong style="color:#FFF">dourado quente</strong> nas bordas — atmosfera de troféu/medalha. <strong style="color:#FFF">Dourado pode tocar preto direto</strong> per BRAND.md (regra de separação só vale entre preto e vermelho). Glass-morphism blur dourado→preto na transição hero→calendar. Mesma anatomia PSG-fidelity (drawer lateral, cards 293px clip-corner, news 1+4, parallax). Visual premium, com referência editorial a clubes que usam paleta dourada (Real Madrid third kits, Roma trofeu collections).</div>
+        <span class="mock-cta">Ver versão</span>
+      </div>
+    </a>
+
+  </div>
+
+  <footer>
+    <span>SCFC · Mockups <strong>·</strong> Maio 2026</span>
+    <span><strong>10</strong> direções <strong>·</strong> Escolha aberta ao clube</span>
+  </footer>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+# Mockups e iterações de design (não usados pelo index.html)
+/*.png
+/*.svg
+
+# Site oficial salvo (referência, não precisa subir)
+Santa Cruz Futebol Clube*
+
+# Scratchpad temporário do Claude
+C:Users*
+
+# Lixo do sistema
+nul
+*.exe
+
+# Imagens dentro de images/ que não são referenciadas pelo HTML
+images/*.exe
+images/Captura*

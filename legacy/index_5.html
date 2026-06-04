@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Santa Cruz F.C. — Arruda Heritage</title>
+<meta name="description" content="Cento e dez anos contados como um patrimônio. O Santa Cruz Futebol Clube em capítulos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Tipografia exploratória além do manual: Fraunces (display) + Bricolage Grotesque (sans) -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<style>
+/* ===========================================================
+   ARRUDA HERITAGE — Santa Cruz F.C.
+   Luxury editorial. Como uma edição limitada de magazine.
+   Tipografia: Fraunces (display) + Bricolage Grotesque (sans).
+   Exploração além do manual oficial — pra a apreciação do clube.
+   =========================================================== */
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Bricolage Grotesque','Inter',system-ui,sans-serif;
+  background:#F4EFE5;
+  color:#1A1A1A;
+  -webkit-font-smoothing:antialiased;
+  font-size:17px;
+  line-height:1.55;
+  overflow-x:hidden;
+  font-feature-settings:'ss01','ss02','tnum','case','liga';
+  font-optical-sizing:auto;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+ul,ol{list-style:none}
+
+:root{
+  --bone:#F4EFE5;        /* off-white quente (papel) */
+  --bone-2:#EAE3D2;
+  --ink:#1A1A1A;
+  --ink-soft:#3C3936;
+  --muted:#8A8175;
+  --rule:#D5CCB8;
+  --red:#DD0000;
+  --bronze:#A89070;      /* gold/bronze quente */
+  --grain-op:.05;
+}
+
+.serif{font-family:'Fraunces','Times New Roman',serif;font-optical-sizing:auto;font-variation-settings:"opsz" 144,"SOFT" 50,"WONK" 0}
+.italic{font-style:italic;font-variation-settings:"opsz" 144,"SOFT" 50,"WONK" 1}
+
+/* Grão fotográfico sutil em todo o body */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:200;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity:var(--grain-op);
+  mix-blend-mode:multiply;
+}
+
+/* ============ NAV ============ */
+.nav{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:100;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  padding:22px 44px;
+  gap:32px;
+  transition:background .5s ease,padding .4s ease,backdrop-filter .4s ease,border-color .4s ease;
+  border-bottom:1px solid transparent;
+}
+.nav.scrolled{
+  background:rgba(244,239,229,.94);
+  backdrop-filter:saturate(180%) blur(16px);
+  -webkit-backdrop-filter:saturate(180%) blur(16px);
+  padding:14px 44px;
+  border-bottom-color:var(--rule);
+}
+.nav-mark{display:flex;align-items:center;gap:14px;line-height:1}
+.nav-mark img{width:32px;height:32px;object-fit:contain}
+.nav-mark-text{display:flex;flex-direction:column;gap:3px}
+.nav-mark-text small{font-size:9px;letter-spacing:.34em;text-transform:uppercase;font-weight:600;color:var(--muted)}
+.nav-mark-text strong{font-family:'Fraunces',serif;font-size:18px;font-weight:600;letter-spacing:-.005em;font-variation-settings:"opsz" 24,"SOFT" 30,"WONK" 0}
+.nav-mark-text strong em{font-style:italic;font-variation-settings:"opsz" 24,"SOFT" 30,"WONK" 1}
+
+.nav-list{display:flex;justify-content:center;gap:0}
+.nav-list a{
+  position:relative;
+  padding:8px 18px;
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  transition:color .25s;
+}
+.nav-list a:hover{color:var(--ink)}
+.nav-list a::after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:50%;right:50%;
+  height:1px;
+  background:var(--red);
+  box-shadow:0 0 0 1px var(--bone);
+  transition:left .25s,right .25s;
+}
+.nav-list a:hover::after{left:18px;right:18px}
+
+.nav-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:11px 20px;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--ink);
+  border:1px solid var(--ink);
+  border-radius:0;
+  transition:all .3s ease;
+}
+.nav-cta::after{content:"↗";font-weight:400;font-size:14px}
+.nav-cta:hover{background:var(--ink);color:var(--bone)}
+
+@media (max-width:960px){
+  .nav{padding:16px 22px;grid-template-columns:auto auto}
+  .nav-list{display:none}
+}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;
+  padding:160px 44px 80px;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+}
+.hero-grid{
+  max-width:1480px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:64px;
+  width:100%;
+  align-items:center;
+}
+.hero-text{position:relative}
+.hero-chapter{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  font-size:11px;
+  letter-spacing:.34em;
+  text-transform:uppercase;
+  font-weight:600;
+  color:var(--ink-soft);
+  margin-bottom:32px;
+}
+.hero-chapter::before{
+  content:"";
+  width:48px;
+  height:1px;
+  background:var(--red);
+  box-shadow:0 0 0 1px var(--bone);
+}
+.hero-chapter strong{font-weight:700;color:var(--ink)}
+.hero-h1{
+  font-family:'Fraunces',serif;
+  font-size:clamp(56px,9.5vw,168px);
+  font-weight:300;
+  line-height:.92;
+  letter-spacing:-.04em;
+  font-variation-settings:"opsz" 144,"SOFT" 50,"WONK" 0;
+  margin-bottom:36px;
+}
+.hero-h1 .w{display:inline-block}
+.hero-h1 em{
+  font-style:italic;
+  font-weight:200;
+  font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1;
+  color:var(--red);
+  -webkit-text-stroke:.5px var(--bone);
+  paint-order:stroke fill;
+}
+.hero-h1 strong{font-weight:700}
+.hero-h1 .swash{
+  font-style:italic;
+  font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1;
+  display:inline-block;
+  transform:translateY(2px);
+}
+.hero-deck{
+  font-size:18px;
+  line-height:1.55;
+  font-weight:300;
+  max-width:46ch;
+  color:var(--ink-soft);
+  margin-bottom:40px;
+}
+.hero-deck::first-letter{
+  font-family:'Fraunces',serif;
+  font-size:64px;
+  font-weight:700;
+  float:left;
+  line-height:.85;
+  margin:8px 12px 0 0;
+  font-variation-settings:"opsz" 144,"SOFT" 50,"WONK" 0;
+  color:var(--ink);
+}
+.hero-deck strong{font-weight:600;color:var(--ink)}
+
+.hero-meta{display:flex;gap:48px;flex-wrap:wrap}
+.hero-meta-item{display:flex;flex-direction:column;gap:6px}
+.hero-meta-label{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.hero-meta-value{font-family:'Fraunces',serif;font-size:36px;font-weight:300;line-height:1;letter-spacing:-.02em;font-variation-settings:"opsz" 60,"SOFT" 30,"WONK" 0;font-feature-settings:'tnum'}
+.hero-meta-value em{font-style:italic;font-variation-settings:"opsz" 60,"SOFT" 100,"WONK" 1;color:var(--red);-webkit-text-stroke:.4px var(--bone);paint-order:stroke fill}
+
+.hero-image-wrap{
+  position:relative;
+  aspect-ratio:5/6;
+  overflow:hidden;
+}
+.hero-image{
+  width:100%;height:100%;
+  object-fit:cover;
+  filter:grayscale(45%) sepia(8%) contrast(1.08) brightness(.92) saturate(.85);
+  transition:filter 1s ease,transform 8s ease;
+}
+.hero-image-wrap:hover .hero-image{filter:grayscale(0%) contrast(1.05) brightness(1) saturate(1);transform:scale(1.04)}
+.hero-image-caption{
+  position:absolute;
+  bottom:24px;
+  left:24px;
+  right:24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  color:#FFF;
+  z-index:1;
+  text-shadow:0 1px 8px rgba(0,0,0,.6);
+}
+.hero-image-caption-text{font-family:'Fraunces',serif;font-style:italic;font-size:14px;font-weight:400;max-width:24ch;line-height:1.3;font-variation-settings:"opsz" 14,"SOFT" 50,"WONK" 1}
+.hero-image-caption-number{font-size:10px;letter-spacing:.3em;text-transform:uppercase;font-weight:700}
+
+.hero-aside{
+  position:absolute;
+  right:0;
+  top:50%;
+  transform:translateY(-50%) rotate(90deg);
+  transform-origin:right center;
+  font-size:10px;
+  letter-spacing:.5em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:600;
+  white-space:nowrap;
+  pointer-events:none;
+}
+
+@media (max-width:960px){
+  .hero{padding:120px 22px 64px}
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .hero-image-wrap{aspect-ratio:4/5;order:-1}
+  .hero-aside{display:none}
+  .hero-meta{gap:32px}
+}
+
+/* ============ CHAPTER DIVIDER ============ */
+.chapter{
+  padding:96px 44px 48px;
+  border-top:1px solid var(--ink);
+  text-align:center;
+  position:relative;
+}
+.chapter-roman{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:clamp(72px,12vw,180px);
+  font-weight:300;
+  line-height:1;
+  letter-spacing:-.02em;
+  color:var(--red);
+  -webkit-text-stroke:1px var(--bone);
+  paint-order:stroke fill;
+  font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1;
+  margin-bottom:8px;
+}
+.chapter-title{
+  font-size:11px;
+  letter-spacing:.4em;
+  text-transform:uppercase;
+  font-weight:600;
+  color:var(--ink);
+}
+.chapter-title em{
+  display:block;
+  margin-top:8px;
+  font-style:italic;
+  color:var(--muted);
+  font-weight:400;
+  letter-spacing:.2em;
+  font-size:11px;
+}
+
+/* ============ AGENDA ============ */
+.section{padding:80px 44px 128px}
+.section-inner{max-width:1320px;margin:0 auto}
+@media (max-width:960px){.section{padding:64px 22px 96px}}
+
+.agenda-deck{
+  font-family:'Fraunces',serif;
+  font-size:clamp(28px,4vw,52px);
+  font-weight:300;
+  line-height:1.15;
+  letter-spacing:-.02em;
+  max-width:24ch;
+  margin:0 auto 64px;
+  text-align:center;
+  font-variation-settings:"opsz" 60,"SOFT" 50,"WONK" 0;
+}
+.agenda-deck em{font-style:italic;font-variation-settings:"opsz" 60,"SOFT" 100,"WONK" 1;color:var(--red);-webkit-text-stroke:.6px var(--bone);paint-order:stroke fill}
+
+.matches{display:flex;flex-direction:column}
+.match{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:48px;
+  padding:32px 0;
+  border-top:1px solid var(--rule);
+  transition:padding .35s ease;
+}
+.match:first-child{border-top:1px solid var(--ink)}
+.match:last-child{border-bottom:1px solid var(--ink)}
+.match:hover{padding-left:16px;padding-right:16px}
+.match:hover .match-vs{transform:translateX(8px)}
+.match-date{
+  font-family:'Fraunces',serif;
+  font-feature-settings:'tnum';
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  min-width:88px;
+}
+.match-day{font-size:56px;font-weight:300;line-height:.9;letter-spacing:-.04em;font-variation-settings:"opsz" 72,"SOFT" 30,"WONK" 0}
+.match-day em{font-style:italic;font-variation-settings:"opsz" 72,"SOFT" 100,"WONK" 1}
+.match-month{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:6px;font-family:'Bricolage Grotesque',sans-serif}
+
+.match-info{display:flex;flex-direction:column;gap:6px}
+.match-comp{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.match-teams{font-family:'Fraunces',serif;font-size:28px;font-weight:300;letter-spacing:-.015em;line-height:1.15;font-variation-settings:"opsz" 36,"SOFT" 50,"WONK" 0}
+.match-teams strong{font-weight:600;font-variation-settings:"opsz" 36,"SOFT" 30,"WONK" 0}
+.match-teams .match-vs{display:inline-block;font-style:italic;color:var(--red);margin:0 14px;font-variation-settings:"opsz" 36,"SOFT" 100,"WONK" 1;transition:transform .35s ease;-webkit-text-stroke:.5px var(--bone);paint-order:stroke fill}
+.match-place{font-size:13px;color:var(--muted);font-weight:400;letter-spacing:.02em;font-style:italic;font-family:'Fraunces',serif;font-variation-settings:"opsz" 14,"SOFT" 50,"WONK" 1}
+
+.match-cta{
+  font-size:10px;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  font-weight:600;
+  padding:14px 22px;
+  background:transparent;
+  color:var(--ink);
+  border:1px solid var(--ink);
+  transition:all .3s ease;
+  white-space:nowrap;
+}
+.match-cta:hover{background:var(--ink);color:var(--bone)}
+
+@media (max-width:880px){
+  .match{grid-template-columns:auto 1fr;gap:20px;padding:24px 0}
+  .match-cta{grid-column:1/-1;justify-self:start;margin-top:8px}
+}
+
+/* ============ ARRUDA PHOTO ESSAY ============ */
+.arruda{background:var(--ink);color:var(--bone);padding:0;position:relative;overflow:hidden}
+.arruda-inner{max-width:1480px;margin:0 auto;display:grid;grid-template-columns:5fr 7fr;gap:0;min-height:88vh;align-items:stretch}
+.arruda-text{padding:120px 64px;display:flex;flex-direction:column;justify-content:center}
+.arruda-text .chapter-roman{color:var(--red);-webkit-text-stroke:1px var(--ink);paint-order:stroke fill;text-align:left;font-size:clamp(56px,8vw,128px);margin-bottom:24px}
+.arruda-text .chapter-title{text-align:left;color:rgba(255,255,255,.7)}
+.arruda-h2{
+  font-family:'Fraunces',serif;
+  font-size:clamp(40px,5.5vw,84px);
+  font-weight:300;
+  line-height:1;
+  letter-spacing:-.025em;
+  margin:32px 0 32px;
+  font-variation-settings:"opsz" 144,"SOFT" 50,"WONK" 0;
+}
+.arruda-h2 em{font-style:italic;font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1;color:var(--bronze)}
+.arruda-h2 strong{font-weight:600}
+.arruda-deck{font-size:16px;line-height:1.6;color:rgba(255,255,255,.78);max-width:42ch;margin-bottom:36px}
+.arruda-quote{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:22px;
+  line-height:1.4;
+  color:#FFF;
+  padding-left:28px;
+  border-left:2px solid var(--red);
+  box-shadow:inset 2px 0 0 -1px #FFF;
+  max-width:36ch;
+  font-variation-settings:"opsz" 36,"SOFT" 100,"WONK" 1;
+}
+.arruda-quote-author{font-style:normal;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.55);font-weight:600;margin-top:14px;display:block;font-family:'Bricolage Grotesque',sans-serif}
+
+.arruda-image{position:relative;overflow:hidden;background:#000}
+.arruda-image img{
+  width:100%;height:100%;
+  object-fit:cover;
+  filter:grayscale(35%) sepia(5%) contrast(1.15) brightness(.78) saturate(.85);
+  transition:transform 14s linear,filter 1s ease;
+}
+.arruda:hover .arruda-image img{transform:scale(1.06)}
+.arruda-image::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse at center,transparent 30%,rgba(0,0,0,.55) 100%);
+  pointer-events:none;
+}
+.arruda-image-caption{
+  position:absolute;
+  bottom:32px;
+  left:32px;
+  right:32px;
+  color:#FFF;
+  z-index:1;
+  font-size:11px;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  font-weight:600;
+  display:flex;
+  justify-content:space-between;
+  text-shadow:0 1px 4px rgba(0,0,0,.5);
+}
+
+@media (max-width:960px){
+  .arruda-inner{grid-template-columns:1fr;min-height:auto}
+  .arruda-text{padding:72px 22px}
+  .arruda-image{height:60vh;min-height:400px}
+}
+
+/* ============ ELENCO — alternating spreads ============ */
+.elenco-section{padding:0 44px 96px;background:var(--bone)}
+.elenco-section .chapter{border-top:none;padding:96px 0 64px}
+.spread{
+  max-width:1480px;
+  margin:0 auto 80px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:64px;
+  align-items:center;
+  padding:0 0;
+}
+.spread:last-child{margin-bottom:0}
+.spread.reverse{direction:rtl}
+.spread.reverse > *{direction:ltr}
+
+.player-portrait{
+  position:relative;
+  aspect-ratio:3/4;
+  overflow:hidden;
+  background:#000;
+}
+.player-portrait img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center 20%;
+  filter:grayscale(60%) sepia(8%) contrast(1.1) brightness(.95) saturate(.75);
+  transition:transform 1s cubic-bezier(.16,1,.3,1),filter .8s ease;
+}
+.player-portrait:hover img{transform:scale(1.05);filter:grayscale(0%) contrast(1.05) brightness(1) saturate(.95)}
+.player-portrait-no{
+  position:absolute;
+  top:24px;
+  left:24px;
+  font-family:'Fraunces',serif;
+  font-size:120px;
+  font-weight:200;
+  line-height:.85;
+  color:#FFF;
+  font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1;
+  font-style:italic;
+  z-index:1;
+  text-shadow:0 2px 12px rgba(0,0,0,.5);
+  font-feature-settings:'tnum';
+}
+
+.player-text{padding:0 12px}
+.player-pos{font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:20px;display:inline-block;padding-bottom:8px;border-bottom:1px solid var(--red);box-shadow:0 2px 0 -1px var(--bone)}
+.player-name{
+  font-family:'Fraunces',serif;
+  font-size:clamp(48px,6vw,96px);
+  font-weight:300;
+  line-height:.95;
+  letter-spacing:-.03em;
+  margin-bottom:24px;
+  font-variation-settings:"opsz" 144,"SOFT" 50,"WONK" 0;
+}
+.player-name em{font-style:italic;font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1;color:var(--red);-webkit-text-stroke:.6px var(--bone);paint-order:stroke fill}
+.player-bio{font-size:15px;line-height:1.6;color:var(--ink-soft);max-width:38ch;margin-bottom:20px}
+.player-stats{display:flex;gap:36px;flex-wrap:wrap}
+.player-stat{display:flex;flex-direction:column;gap:4px}
+.player-stat-label{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.player-stat-value{font-family:'Fraunces',serif;font-size:26px;font-weight:400;letter-spacing:-.01em;font-variation-settings:"opsz" 36,"SOFT" 30,"WONK" 0;font-feature-settings:'tnum'}
+
+@media (max-width:960px){
+  .spread{grid-template-columns:1fr;gap:32px;margin-bottom:48px}
+  .spread.reverse{direction:ltr}
+  .player-portrait-no{font-size:80px}
+}
+
+/* ============ NOTÍCIAS — magazine layout ============ */
+.news{background:var(--bone-2);padding:0 44px 96px}
+.news .chapter{border-top:none;padding:96px 0 64px;background:transparent}
+.news-inner{max-width:1320px;margin:0 auto}
+.news-lead{
+  display:grid;
+  grid-template-columns:1.3fr 1fr;
+  gap:64px;
+  align-items:start;
+  margin-bottom:64px;
+}
+.news-lead-img{aspect-ratio:5/4;overflow:hidden;background:#000}
+.news-lead-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(20%) contrast(1.08);transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+.news-lead-img:hover img{transform:scale(1.04)}
+.news-lead-text .news-tag{font-size:10px;letter-spacing:.4em;text-transform:uppercase;font-weight:700;color:var(--red);margin-bottom:18px;display:inline-flex;align-items:center;gap:12px}
+.news-lead-text .news-tag::before{content:"";width:24px;height:1px;background:var(--red);box-shadow:0 0 0 1px var(--bone-2)}
+.news-lead-h{
+  font-family:'Fraunces',serif;
+  font-size:clamp(32px,4vw,56px);
+  font-weight:300;
+  line-height:1.05;
+  letter-spacing:-.02em;
+  margin-bottom:24px;
+  font-variation-settings:"opsz" 96,"SOFT" 50,"WONK" 0;
+}
+.news-lead-h strong{font-weight:600}
+.news-lead-h em{font-style:italic;font-variation-settings:"opsz" 96,"SOFT" 100,"WONK" 1}
+.news-lead-deck{font-size:17px;line-height:1.6;color:var(--ink-soft);margin-bottom:24px;max-width:44ch}
+.news-lead-meta{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);font-weight:600}
+
+.news-rest{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
+.news-rest article{padding-top:24px;border-top:1px solid var(--ink)}
+.news-rest .news-tag{font-size:10px;letter-spacing:.3em;text-transform:uppercase;font-weight:700;color:var(--red);margin-bottom:14px}
+.news-rest h3{
+  font-family:'Fraunces',serif;
+  font-size:24px;
+  font-weight:400;
+  line-height:1.2;
+  letter-spacing:-.01em;
+  margin-bottom:14px;
+  font-variation-settings:"opsz" 36,"SOFT" 50,"WONK" 0;
+}
+.news-rest h3 em{font-style:italic;font-variation-settings:"opsz" 36,"SOFT" 100,"WONK" 1}
+.news-rest p{font-size:14px;line-height:1.55;color:var(--ink-soft)}
+.news-rest .news-date{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:14px}
+
+@media (max-width:960px){
+  .news-lead{grid-template-columns:1fr;gap:32px}
+  .news-rest{grid-template-columns:1fr;gap:32px}
+}
+
+/* ============ HERANÇA TIMELINE ============ */
+.heranca{padding:0 44px 96px}
+.heranca .chapter{padding:96px 0 64px}
+.heranca-inner{max-width:1320px;margin:0 auto}
+.timeline-list{display:flex;flex-direction:column}
+.tl{
+  display:grid;
+  grid-template-columns:200px 1fr;
+  gap:64px;
+  padding:48px 0;
+  border-top:1px solid var(--rule);
+  align-items:baseline;
+  position:relative;
+  transition:padding .35s ease;
+}
+.tl:first-child{border-top:1px solid var(--ink)}
+.tl:last-child{border-bottom:1px solid var(--ink)}
+.tl:hover{padding-left:16px}
+.tl-year{
+  font-family:'Fraunces',serif;
+  font-size:clamp(64px,8vw,128px);
+  font-weight:200;
+  line-height:.85;
+  letter-spacing:-.04em;
+  color:var(--red);
+  -webkit-text-stroke:.8px var(--bone);
+  paint-order:stroke fill;
+  font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1;
+  font-feature-settings:'tnum';
+  font-style:italic;
+}
+.tl-content{display:flex;flex-direction:column;gap:10px;max-width:48ch}
+.tl-title{
+  font-family:'Fraunces',serif;
+  font-size:clamp(22px,2.8vw,36px);
+  font-weight:400;
+  line-height:1.15;
+  letter-spacing:-.01em;
+  font-variation-settings:"opsz" 36,"SOFT" 50,"WONK" 0;
+}
+.tl-title em{font-style:italic;font-variation-settings:"opsz" 36,"SOFT" 100,"WONK" 1}
+.tl-sub{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.tl-desc{font-size:14px;line-height:1.55;color:var(--ink-soft);max-width:54ch}
+
+@media (max-width:880px){
+  .tl{grid-template-columns:1fr;gap:16px;padding:32px 0}
+}
+
+/* ============ SÓCIO — full-bleed photo CTA ============ */
+.socio{
+  position:relative;
+  min-height:80vh;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  border-top:3px solid var(--bone);
+  border-bottom:3px solid var(--bone);
+}
+.socio-img{
+  position:absolute;
+  inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  filter:grayscale(30%) sepia(8%) contrast(1.1) brightness(.6) saturate(.85);
+}
+.socio::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(221,0,0,.85) 0%,rgba(120,0,0,.55) 60%,rgba(0,0,0,.6) 100%);
+}
+.socio-content{position:relative;z-index:1;color:#FFF;max-width:1320px;margin:0 auto;padding:96px 44px;width:100%}
+.socio-grid{display:grid;grid-template-columns:7fr 5fr;gap:64px;align-items:center}
+.socio-chapter{font-size:11px;letter-spacing:.4em;text-transform:uppercase;font-weight:700;margin-bottom:24px;display:inline-flex;align-items:center;gap:14px}
+.socio-chapter::before{content:"";width:36px;height:1px;background:#FFF}
+.socio-h{
+  font-family:'Fraunces',serif;
+  font-size:clamp(48px,7vw,108px);
+  font-weight:200;
+  line-height:.95;
+  letter-spacing:-.03em;
+  margin-bottom:36px;
+  font-variation-settings:"opsz" 144,"SOFT" 50,"WONK" 0;
+}
+.socio-h strong{font-weight:600}
+.socio-h em{font-style:italic;font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1}
+.socio-deck{font-size:18px;line-height:1.55;color:rgba(255,255,255,.88);max-width:42ch}
+
+.socio-side{display:flex;flex-direction:column;gap:18px}
+.socio-cta{
+  display:inline-flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  padding:24px 28px;
+  background:#FFF;
+  color:var(--ink);
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  transition:all .3s ease;
+  box-shadow:0 0 0 2px var(--red),0 0 0 4px #FFF;
+}
+.socio-cta::after{content:"→";color:var(--red);font-weight:900;font-size:18px;transition:transform .3s}
+.socio-cta:hover{background:var(--ink);color:#FFF}
+.socio-cta:hover::after{color:#FFF;transform:translateX(8px)}
+.socio-price{font-family:'Fraunces',serif;font-size:14px;font-style:italic;color:rgba(255,255,255,.8);text-align:right;font-variation-settings:"opsz" 18,"SOFT" 100,"WONK" 1}
+.socio-price strong{color:#FFF;font-weight:500;font-style:normal;letter-spacing:.05em}
+
+@media (max-width:880px){
+  .socio-content{padding:64px 22px}
+  .socio-grid{grid-template-columns:1fr;gap:32px}
+}
+
+/* ============ PATROCINADORES ============ */
+.partners{padding:96px 44px;background:var(--bone)}
+.partners-inner{max-width:1320px;margin:0 auto}
+.partners-h{
+  font-family:'Fraunces',serif;
+  font-size:14px;
+  font-style:italic;
+  font-weight:400;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--muted);
+  text-align:center;
+  margin-bottom:48px;
+  font-variation-settings:"opsz" 14,"SOFT" 100,"WONK" 1;
+}
+.partners-h::before,.partners-h::after{content:"·";color:var(--red);margin:0 14px}
+.master-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px;max-width:780px;margin-left:auto;margin-right:auto}
+.master-grid a{
+  aspect-ratio:5/2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:32px;
+  background:transparent;
+  border:1px solid var(--rule);
+  transition:all .3s ease;
+}
+.master-grid a:hover{border-color:var(--ink);background:var(--bone-2)}
+/* Logos monocromáticas brancas — em bg claro invertemos pra preto */
+.master-grid img{max-height:60%;max-width:80%;object-fit:contain;filter:brightness(0) opacity(.85);transition:filter .3s ease}
+.master-grid a:hover img{filter:brightness(0) opacity(1)}
+
+.others-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;max-width:1200px;margin:0 auto}
+.others-grid a{
+  aspect-ratio:5/2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  font-size:12px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:600;
+  transition:color .3s ease;
+}
+.others-grid a:hover{color:var(--ink)}
+.others-grid img{max-height:60%;max-width:80%;object-fit:contain;filter:brightness(0) opacity(.7);transition:filter .3s ease}
+.others-grid a:hover img{filter:brightness(0) opacity(1)}
+
+@media (max-width:680px){
+  .master-grid{grid-template-columns:1fr}
+  .others-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:1100px) and (min-width:741px){
+  .others-grid{grid-template-columns:repeat(3,1fr)}
+}
+
+/* ============ COLOFÃO ============ */
+.colofao{background:var(--ink);color:rgba(255,255,255,.7);padding:96px 44px 32px}
+.colofao-inner{max-width:1320px;margin:0 auto}
+.colofao-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:64px;padding-bottom:64px;border-bottom:1px solid rgba(255,255,255,.15)}
+.colofao-brand h2{font-family:'Fraunces',serif;font-size:48px;font-weight:300;line-height:.95;letter-spacing:-.025em;color:#FFF;font-variation-settings:"opsz" 60,"SOFT" 50,"WONK" 0}
+.colofao-brand h2 em{font-style:italic;font-variation-settings:"opsz" 60,"SOFT" 100,"WONK" 1;display:block;color:var(--bronze)}
+.colofao-brand p{margin-top:18px;font-size:13px;line-height:1.55;max-width:34ch;color:rgba(255,255,255,.6)}
+.colofao-brand .social{display:flex;gap:10px;margin-top:24px}
+.colofao-brand .social a{
+  width:36px;height:36px;
+  border:1px solid rgba(255,255,255,.2);
+  display:flex;align-items:center;justify-content:center;
+  color:#FFF;
+  transition:all .3s ease;
+}
+.colofao-brand .social a:hover{background:#FFF;color:var(--ink);border-color:#FFF}
+.colofao-brand .social svg{width:14px;height:14px}
+
+.colofao-col h4{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:14px;
+  font-weight:400;
+  letter-spacing:0;
+  text-transform:none;
+  margin-bottom:18px;
+  color:#FFF;
+  font-variation-settings:"opsz" 14,"SOFT" 100,"WONK" 1;
+}
+.colofao-col h4::after{content:"";display:block;width:18px;height:1px;background:var(--red);box-shadow:0 2px 0 -1px var(--ink);margin-top:8px}
+.colofao-col ul{display:flex;flex-direction:column;gap:10px}
+.colofao-col a{font-size:13px;transition:color .3s;letter-spacing:.01em}
+.colofao-col a:hover{color:#FFF}
+
+.colofao-bottom{padding-top:36px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.colofao-bottom em{font-style:italic;font-family:'Fraunces',serif;text-transform:none;letter-spacing:0;font-size:14px;color:rgba(255,255,255,.65);font-variation-settings:"opsz" 14,"SOFT" 100,"WONK" 1}
+.colofao-end{
+  text-align:center;
+  padding-top:32px;
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:14px;
+  color:rgba(255,255,255,.35);
+  font-variation-settings:"opsz" 14,"SOFT" 100,"WONK" 1;
+  letter-spacing:.1em;
+}
+
+@media (max-width:880px){
+  .colofao{padding:64px 22px 24px}
+  .colofao-top{grid-template-columns:1fr 1fr;gap:40px}
+  .colofao-brand{grid-column:1/-1}
+}
+@media (max-width:480px){
+  .colofao-top{grid-template-columns:1fr}
+}
+
+/* ============ REVEAL ============ */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 1.2s cubic-bezier(.16,1,.3,1),transform 1.2s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* On-load orchestrated reveal of hero */
+@keyframes hero-rise{from{opacity:0;transform:translateY(48px)}to{opacity:1;transform:none}}
+@keyframes hero-rise-img{from{opacity:0;transform:translateY(48px) scale(1.04)}to{opacity:1;transform:none}}
+.hero-chapter{opacity:0;animation:hero-rise 1.1s cubic-bezier(.16,1,.3,1) forwards .15s}
+.hero-h1 .w:nth-child(1){opacity:0;animation:hero-rise 1.1s cubic-bezier(.16,1,.3,1) forwards .3s}
+.hero-h1 .w:nth-child(2){opacity:0;animation:hero-rise 1.1s cubic-bezier(.16,1,.3,1) forwards .45s}
+.hero-h1 .w:nth-child(3){opacity:0;animation:hero-rise 1.1s cubic-bezier(.16,1,.3,1) forwards .6s}
+.hero-h1 .w:nth-child(4){opacity:0;animation:hero-rise 1.1s cubic-bezier(.16,1,.3,1) forwards .75s}
+.hero-deck{opacity:0;animation:hero-rise 1.1s cubic-bezier(.16,1,.3,1) forwards .9s}
+.hero-meta{opacity:0;animation:hero-rise 1.1s cubic-bezier(.16,1,.3,1) forwards 1.05s}
+.hero-image-wrap{opacity:0;animation:hero-rise-img 1.4s cubic-bezier(.16,1,.3,1) forwards .4s}
+@media (prefers-reduced-motion:reduce){
+  .hero-chapter,.hero-h1 .w,.hero-deck,.hero-meta,.hero-image-wrap{opacity:1;animation:none}
+}
+
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="nav" id="nav">
+  <a class="nav-mark" href="/">
+    <img src="images/logo.png" alt="Santa Cruz F.C.">
+    <span class="nav-mark-text">
+      <small>Edição · MMXXVI</small>
+      <strong>Santa <em>Cruz</em> F.C.</strong>
+    </span>
+  </a>
+  <div class="nav-list">
+    <a href="#agenda">Agenda</a>
+    <a href="#arruda">Arruda</a>
+    <a href="#elenco">Elenco</a>
+    <a href="#noticias">Imprensa</a>
+    <a href="#heranca">Herança</a>
+  </div>
+  <a href="https://socio-santacruz.futebolcard.com/" target="_blank" class="nav-cta">Sócio Coral</a>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <div class="hero-chapter">Capítulo <strong>I</strong> · Identidade</div>
+      <h1 class="hero-h1">
+        <span class="w">Cento</span> <span class="w">e dez</span><br>
+        <span class="w">anos </span><span class="w swash"><em>contados</em></span>
+      </h1>
+      <p class="hero-deck">
+        Em três de fevereiro de 1914, no bairro da Boa Vista, em Recife, onze rapazes desenharam o que viria a ser <strong>a maior paixão do Nordeste</strong>. De lá pra cá, a Cobra Coral nunca pediu permissão para ser quem é.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Fundação</span>
+          <span class="hero-meta-value"><em>1914</em></span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Estádio</span>
+          <span class="hero-meta-value">Arruda</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Cor</span>
+          <span class="hero-meta-value"><em>Coral</em></span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image-wrap">
+      <img class="hero-image" src="images/torcida_santa_cruz_mosaico.jpg" alt="Torcida do Santa Cruz">
+      <div class="hero-image-caption">
+        <span class="hero-image-caption-text">"A torcida que jamais abandona"</span>
+        <span class="hero-image-caption-number">Plate 01 · MMXXVI</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-aside">Santa Cruz Futebol Clube · A mais apaixonada</div>
+</section>
+
+<!-- ===== CHAPTER II ===== -->
+<div class="chapter">
+  <div class="chapter-roman">II</div>
+  <div class="chapter-title">A Agenda<em>quatro partidas pela frente</em></div>
+</div>
+
+<!-- ===== AGENDA ===== -->
+<section id="agenda" class="section">
+  <div class="section-inner">
+    <p class="agenda-deck reveal">No fim do mês, o <em>Clássico das Multidões</em> contra o Náutico — em casa, à luz da paixão.</p>
+
+    <div class="matches">
+
+      <div class="match reveal">
+        <div class="match-date">
+          <span class="match-day"><em>24</em></span>
+          <span class="match-month">Sáb · Mai</span>
+        </div>
+        <div class="match-info">
+          <span class="match-comp">Brasileirão Série C · 9ª rodada</span>
+          <span class="match-teams"><strong>Santa Cruz</strong><span class="match-vs">×</span>Sampaio Corrêa</span>
+          <span class="match-place">Arruda, Recife · 16h00</span>
+        </div>
+        <a href="#" class="match-cta">Ingresso</a>
+      </div>
+
+      <div class="match reveal">
+        <div class="match-date">
+          <span class="match-day"><em>28</em></span>
+          <span class="match-month">Qua · Mai</span>
+        </div>
+        <div class="match-info">
+          <span class="match-comp">Brasileirão Série C · 10ª rodada</span>
+          <span class="match-teams">CSA<span class="match-vs">×</span><strong>Santa Cruz</strong></span>
+          <span class="match-place">Rei Pelé, Maceió · 19h30</span>
+        </div>
+        <a href="#" class="match-cta">Visitante</a>
+      </div>
+
+      <div class="match reveal">
+        <div class="match-date">
+          <span class="match-day"><em>01</em></span>
+          <span class="match-month">Dom · Jun</span>
+        </div>
+        <div class="match-info">
+          <span class="match-comp">Clássico das Multidões · Série C</span>
+          <span class="match-teams"><strong>Santa Cruz</strong><span class="match-vs">×</span>Náutico</span>
+          <span class="match-place">Arruda, Recife · 17h00</span>
+        </div>
+        <a href="#" class="match-cta">Comprar</a>
+      </div>
+
+      <div class="match reveal">
+        <div class="match-date">
+          <span class="match-day"><em>07</em></span>
+          <span class="match-month">Sáb · Jun</span>
+        </div>
+        <div class="match-info">
+          <span class="match-comp">Copa do Nordeste · Oitavas</span>
+          <span class="match-teams">Fortaleza<span class="match-vs">×</span><strong>Santa Cruz</strong></span>
+          <span class="match-place">Castelão, Fortaleza · 16h30</span>
+        </div>
+        <a href="#" class="match-cta">Visitante</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== ARRUDA PHOTO ESSAY ===== -->
+<section id="arruda" class="arruda">
+  <div class="arruda-inner">
+    <div class="arruda-text">
+      <div class="chapter-roman">III</div>
+      <div class="chapter-title">O Campo</div>
+      <h2 class="arruda-h2">Maior estádio<br><em>particular</em><br>da <strong>América</strong></h2>
+      <p class="arruda-deck">Inaugurado em 1972, o Arruda é mais que concreto. É a casa onde a torcida sustentou o clube nos anos mais difíceis. Em dias de clássico, sessenta mil pessoas fazem o que poucos lugares no mundo conseguem fazer.</p>
+      <blockquote class="arruda-quote">
+        "Lá é diferente. Lá é onde a alma do clube mora."
+        <cite class="arruda-quote-author">— Ídolo coral, em entrevista, 2024</cite>
+      </blockquote>
+    </div>
+    <div class="arruda-image">
+      <img src="images/estadio_arruda_em_2020_700_5.jpg" alt="Estádio do Arruda">
+      <div class="arruda-image-caption">
+        <span>Plate 02 · O Arruda em dia de jogo</span>
+        <span>1972</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CHAPTER IV ===== -->
+<div class="chapter">
+  <div class="chapter-roman">IV</div>
+  <div class="chapter-title">Os Homens<em>aqueles que vestem o manto</em></div>
+</div>
+
+<!-- ===== ELENCO — alternating spreads ===== -->
+<section id="elenco" class="elenco-section">
+
+  <div class="spread reveal">
+    <div class="player-portrait">
+      <img src="images/rockenedy_goleiro.jpg" alt="Rockenedy">
+      <div class="player-portrait-no"><em>01</em></div>
+    </div>
+    <div class="player-text">
+      <span class="player-pos">Goleiro · Titular</span>
+      <h3 class="player-name">Rockenedy</h3>
+      <p class="player-bio">A última linha de defesa. Vinte e quatro jogos disputados nesta temporada, deixou o gol intacto em treze. Em entrevista, diz que cresceu vendo o pai torcer do alto da arquibancada — e que sente o peso dessa herança a cada partida.</p>
+      <div class="player-stats">
+        <div class="player-stat"><span class="player-stat-label">Jogos</span><span class="player-stat-value">24</span></div>
+        <div class="player-stat"><span class="player-stat-label">Sem sofrer gol</span><span class="player-stat-value">13</span></div>
+        <div class="player-stat"><span class="player-stat-label">Defesas</span><span class="player-stat-value">82</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spread reverse reveal">
+    <div class="player-portrait">
+      <img src="images/patrick_allan.jpg" alt="Patrick Allan">
+      <div class="player-portrait-no"><em>07</em></div>
+    </div>
+    <div class="player-text">
+      <span class="player-pos">Meia · Cérebro do meio</span>
+      <h3 class="player-name">Patrick <em>Allan</em></h3>
+      <p class="player-bio">Renovou contrato até 2027. Tornou-se referência no meio-campo da Cobra Coral e foi nomeado o jogador mais bem pago da Série C. Conduz o time como um maestro — quem assiste percebe o ritmo.</p>
+      <div class="player-stats">
+        <div class="player-stat"><span class="player-stat-label">Assistências</span><span class="player-stat-value">14</span></div>
+        <div class="player-stat"><span class="player-stat-label">Gols</span><span class="player-stat-value">06</span></div>
+        <div class="player-stat"><span class="player-stat-label">Capitão</span><span class="player-stat-value">Sim</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spread reveal">
+    <div class="player-portrait">
+      <img src="images/willian_Jr_10.jpg" alt="Willian Jr">
+      <div class="player-portrait-no"><em>10</em></div>
+    </div>
+    <div class="player-text">
+      <span class="player-pos">Meia-atacante · Camisa dez</span>
+      <h3 class="player-name">Willian Jr</h3>
+      <p class="player-bio">Eleito o craque do mês pela arquibancada. Carrega a herança de uma camisa que já vestiu nomes lendários do clube e leva a responsabilidade com a leveza de quem cresceu jogando bola nas ruas de Recife.</p>
+      <div class="player-stats">
+        <div class="player-stat"><span class="player-stat-label">Gols</span><span class="player-stat-value">11</span></div>
+        <div class="player-stat"><span class="player-stat-label">Assistências</span><span class="player-stat-value">08</span></div>
+        <div class="player-stat"><span class="player-stat-label">Idade</span><span class="player-stat-value">23</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spread reverse reveal">
+    <div class="player-portrait">
+      <img src="images/vitinho_19.jpg" alt="Vitinho">
+      <div class="player-portrait-no"><em>19</em></div>
+    </div>
+    <div class="player-text">
+      <span class="player-pos">Atacante · Ponta esquerda</span>
+      <h3 class="player-name">Vitinho</h3>
+      <p class="player-bio">Marcou dois nos últimos noventa minutos em casa e fechou um ciclo de oito gols na temporada. Velocidade, drible curto e o instinto típico do atacante coral — a Boa Vista o adotou imediatamente.</p>
+      <div class="player-stats">
+        <div class="player-stat"><span class="player-stat-label">Gols</span><span class="player-stat-value">08</span></div>
+        <div class="player-stat"><span class="player-stat-label">Dribles</span><span class="player-stat-value">41</span></div>
+        <div class="player-stat"><span class="player-stat-label">Idade</span><span class="player-stat-value">21</span></div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ===== CHAPTER V — Imprensa ===== -->
+<div class="chapter" style="background:var(--bone-2)">
+  <div class="chapter-roman">V</div>
+  <div class="chapter-title">A Imprensa<em>cobertura, bastidores e crônica do mês</em></div>
+</div>
+
+<!-- ===== NOTÍCIAS ===== -->
+<section id="noticias" class="news">
+  <div class="news-inner">
+
+    <article class="news-lead reveal">
+      <div class="news-lead-img"><img src="images/estadio_arruda_em_2020_700_5.jpg" alt=""></div>
+      <div class="news-lead-text">
+        <span class="news-tag">Capa · Maio · 2026</span>
+        <h2 class="news-lead-h">A Cobra <em>volta</em> ao Arruda — e a torcida <strong>responde</strong></h2>
+        <p class="news-lead-deck">Em semana decisiva pelo Brasileirão Série C, a Cobra Coral enfrenta o Náutico no Arruda. Reportagem mostra os bastidores da preparação e a expectativa de uma arquibancada que já garante lotação para o clássico.</p>
+        <span class="news-lead-meta">Por Redação Coral · 22 mai 2026 · Recife/PE</span>
+      </div>
+    </article>
+
+    <div class="news-rest">
+
+      <article class="reveal">
+        <span class="news-tag">Elenco</span>
+        <h3>Patrick Allan renova contrato até <em>2027</em></h3>
+        <p>Meia se torna o jogador mais bem pago da Série C e amplia laço com o clube.</p>
+        <span class="news-date">22 · Maio · 2026</span>
+      </article>
+
+      <article class="reveal">
+        <span class="news-tag">Torcida</span>
+        <h3>Sócio Coral ultrapassa <em>25 mil</em> ativos</h3>
+        <p>Primeira vez no século. Programa cresce 28% no semestre.</p>
+        <span class="news-date">21 · Maio · 2026</span>
+      </article>
+
+      <article class="reveal">
+        <span class="news-tag">Base</span>
+        <h3>Sub-20 nas <em>semifinais</em> do Pernambucano</h3>
+        <p>Garotos coralinos venceram o clássico no Arruda e classificaram com folga.</p>
+        <span class="news-date">20 · Maio · 2026</span>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CHAPTER VI ===== -->
+<div class="chapter">
+  <div class="chapter-roman">VI</div>
+  <div class="chapter-title">A Herança<em>cento e dez anos em seis marcos</em></div>
+</div>
+
+<!-- ===== TIMELINE HERANÇA ===== -->
+<section id="heranca" class="heranca">
+  <div class="heranca-inner">
+    <div class="timeline-list">
+
+      <div class="tl reveal">
+        <div class="tl-year"><em>1914</em></div>
+        <div class="tl-content">
+          <h3 class="tl-title">Fundação no <em>bairro da Boa Vista</em></h3>
+          <div class="tl-sub">Recife · 3 de fevereiro</div>
+          <p class="tl-desc">Onze rapazes liderados por Teófilo de Carvalho — "Lacraia" — criaram o clube e desenharam o primeiro escudo.</p>
+        </div>
+      </div>
+
+      <div class="tl reveal">
+        <div class="tl-year"><em>1979</em></div>
+        <div class="tl-content">
+          <h3 class="tl-title">A <em>Fita Azul</em></h3>
+          <div class="tl-sub">Excursão internacional invicta</div>
+          <p class="tl-desc">A Cobra Coral atravessou a América sem perder uma partida. A torcida canta até hoje: "A América toda viu."</p>
+        </div>
+      </div>
+
+      <div class="tl reveal">
+        <div class="tl-year"><em>1983</em></div>
+        <div class="tl-content">
+          <h3 class="tl-title">Tri-<em>Supercampeão</em> Pernambucano</h3>
+          <div class="tl-sub">Feito exclusivo · 1957 · 1976 · 1983</div>
+          <p class="tl-desc">Três conquistas do Supercampeonato — torneio que reunia os vencedores dos turnos do estadual. Marca que ninguém mais repetiu.</p>
+        </div>
+      </div>
+
+      <div class="tl reveal">
+        <div class="tl-year"><em>2013</em></div>
+        <div class="tl-content">
+          <h3 class="tl-title">Brasileirão <em>Série C</em></h3>
+          <div class="tl-sub">Campeão nacional · Tri estadual no ano</div>
+          <p class="tl-desc">Voltou ao cenário nacional como protagonista. Conquistou o estadual três vezes seguidas e levantou também a taça da terceira divisão.</p>
+        </div>
+      </div>
+
+      <div class="tl reveal">
+        <div class="tl-year"><em>2015</em></div>
+        <div class="tl-content">
+          <h3 class="tl-title">Centenário do <em>Pernambucano</em></h3>
+          <div class="tl-sub">Campeão na edição comemorativa</div>
+          <p class="tl-desc">Em ano simbólico para o futebol pernambucano, a Cobra Coral levou o troféu de cem anos da competição.</p>
+        </div>
+      </div>
+
+      <div class="tl reveal">
+        <div class="tl-year"><em>2016</em></div>
+        <div class="tl-content">
+          <h3 class="tl-title">Copa do <em>Nordeste</em></h3>
+          <div class="tl-sub">Campeão regional</div>
+          <p class="tl-desc">Levou pra Recife o título de maior clube do Nordeste — disputado entre os principais clubes da região.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== SÓCIO ===== -->
+<section id="socio" class="socio">
+  <img class="socio-img" src="images/torcida_santa_cruz_mosaico.jpg" alt="">
+  <div class="socio-content">
+    <div class="socio-grid">
+      <div>
+        <div class="socio-chapter">Capítulo <strong>VII</strong> · Sócio Coral</div>
+        <h2 class="socio-h">Veste o<br><strong>manto</strong><br><em>todo dia</em></h2>
+        <p class="socio-deck">Mais que um plano — é uma extensão da arquibancada. Ingresso garantido, descontos na loja oficial, bastidores e voto em assembleia. Faça parte da maior história do Nordeste.</p>
+      </div>
+      <div class="socio-side">
+        <a href="https://socio-santacruz.futebolcard.com/" target="_blank" class="socio-cta">
+          <span>Quero ser sócio</span>
+        </a>
+        <span class="socio-price">A partir de <strong>R$ 39 / mês</strong></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PATROCINADORES ===== -->
+<section class="partners">
+  <div class="partners-inner">
+    <h3 class="partners-h"><em>Edição patrocinada por</em></h3>
+    <div class="master-grid">
+      <a href="#" target="_blank" rel="noopener"><img src="patrocinadores/betdasorte_master.png" alt="Bet da Sorte — Patrocinador Master"></a>
+      <a href="https://www.reebok.com.br/" target="_blank" rel="noopener"><img src="patrocinadores/reebok_fornecedor.png" alt="Reebok — Fornecedor Oficial"></a>
+    </div>
+    <div class="others-grid">
+      <a href="#" target="_blank" rel="noopener"><img src="patrocinadores/armazemjenipapo.png" alt="Armazém Jenipapo"></a>
+      <a href="#" target="_blank" rel="noopener"><img src="patrocinadores/goldtech.png" alt="Goldtech"></a>
+      <a href="https://www.iquine.com.br/" target="_blank" rel="noopener"><img src="patrocinadores/iquine.png" alt="Iquine"></a>
+      <a href="#" target="_blank" rel="noopener"><img src="patrocinadores/lideri.png" alt="Líderi"></a>
+      <a href="#" target="_blank" rel="noopener"><img src="patrocinadores/lpsaude.png" alt="LP Saúde"></a>
+      <a href="#" target="_blank" rel="noopener"><img src="patrocinadores/medinterv.png" alt="Medinterv"></a>
+      <a href="https://nord-pharma.com.br/" target="_blank" rel="noopener"><img src="patrocinadores/nordpharma.png" alt="Nord-Pharma"></a>
+      <a href="#" target="_blank" rel="noopener"><img src="patrocinadores/pitu.png" alt="Pitú"></a>
+      <a href="https://www2.recife.pe.gov.br/" target="_blank" rel="noopener"><img src="patrocinadores/prefeituradorecife.png" alt="Prefeitura do Recife"></a>
+      <a href="#" target="_blank" rel="noopener"><img src="patrocinadores/rhp.png" alt="RHP"></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COLOFÃO ===== -->
+<footer class="colofao">
+  <div class="colofao-inner">
+    <div class="colofao-top">
+      <div class="colofao-brand">
+        <h2>Santa Cruz<br><em>Futebol Clube</em></h2>
+        <p>Fundado em 3 de fevereiro de 1914, no bairro da Boa Vista, em Recife — Pernambuco. A mais apaixonada do Nordeste.</p>
+        <div class="social">
+          <a href="https://www.instagram.com/SantaCruzFC" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="18" cy="6" r="1" fill="currentColor"/></svg></a>
+          <a href="https://twitter.com/SantaCruzFC" target="_blank" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zM17.083 19.77h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://www.youtube.com/user/TVcoralPE" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"/><polygon points="9.75,15.02 15.5,11.75 9.75,8.48" fill="#fff"/></svg></a>
+          <a href="https://www.facebook.com/SantaCruzFC" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073"/></svg></a>
+        </div>
+      </div>
+
+      <div class="colofao-col">
+        <h4>Clube</h4>
+        <ul>
+          <li><a href="#">Diretoria</a></li>
+          <li><a href="#heranca">História</a></li>
+          <li><a href="#arruda">Estádio Arruda</a></li>
+          <li><a href="#">Símbolos</a></li>
+        </ul>
+      </div>
+
+      <div class="colofao-col">
+        <h4>Torcedor</h4>
+        <ul>
+          <li><a href="#socio">Sócio Coral</a></li>
+          <li><a href="#agenda">Ingressos</a></li>
+          <li><a href="#">Loja oficial</a></li>
+          <li><a href="#">App Coral</a></li>
+        </ul>
+      </div>
+
+      <div class="colofao-col">
+        <h4>Imprensa</h4>
+        <ul>
+          <li><a href="#noticias">Notícias</a></li>
+          <li><a href="#">Galeria</a></li>
+          <li><a href="#">Fale conosco</a></li>
+          <li><a href="#">Trabalhe conosco</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="colofao-bottom">
+      <span>© <em>MMXXVI</em> · Santa Cruz F.C.</span>
+      <span>Rua São Benedito 254 · Boa Vista · Recife · PE</span>
+    </div>
+
+    <div class="colofao-end">— FIM DA EDIÇÃO —</div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll state
+(function(){
+  const nav = document.getElementById('nav');
+  if(!nav) return;
+  const onScroll = () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+
+// Reveal
+(function(){
+  if(!('IntersectionObserver' in window)){
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    return;
+  }
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        obs.unobserve(e.target);
+      }
+    });
+  }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+})();
+</script>
+
+</body>
+</html>

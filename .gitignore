@@ -2,7 +2,24 @@
 .playwright-mcp/
 *.png
 !images/*.png
-*.html
-!index.html
+!public/images/*.png
 Santa Cruz Futebol Clube*
+*scratchpad*
 C\*scratchpad*
+
+.vercel
+
+/node_modules
+/.next
+/coverage
+/reports
+/.stryker-tmp
+*.tsbuildinfo
+.env*.local
+
+*.pdf
+*.zip
+/tmpplaywright-temp
+/.playwright-mcp
+/.vercel
+nul

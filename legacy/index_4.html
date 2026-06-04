@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Santa Cruz Futebol Clube</title>
+<meta name="description" content="Site oficial do Santa Cruz Futebol Clube. A Cobra Coral do Nordeste, fundado em 1914.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ===========================================================
+   SANTA CRUZ FC — Versão 04 · Premium photo-forward
+   Sectioned panels, full-bleed photo bands, refined minimalism.
+   Brand-compliant: preto não toca vermelho sem branco separar.
+   =========================================================== */
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:#FAFAFA;
+  color:#0E0E10;
+  -webkit-font-smoothing:antialiased;
+  font-size:16px;
+  line-height:1.55;
+  overflow-x:hidden;
+  font-feature-settings:'ss01','tnum';
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+ul,ol{list-style:none}
+button{font-family:inherit;cursor:pointer}
+
+:root{
+  --bg:#FAFAFA;
+  --bg-2:#F1EFEC;       /* warm off-white pra sessões secundárias */
+  --ink:#0E0E10;        /* preto-tintinho, menos puro */
+  --ink-soft:#3A3A3D;
+  --muted:#84807A;
+  --rule:#E5E2DD;
+  --red:#DD0000;
+  --gold:#C9B896;
+  --shadow:0 24px 64px -32px rgba(14,14,16,.4);
+  --container:1320px;
+  --kicker:.22em;
+}
+
+/* ============ HEADER (transparente sobre hero, sólido no scroll) ============ */
+.nav{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:100;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:32px;
+  padding:20px 40px;
+  transition:background .4s ease,border-color .4s ease,padding .4s ease,backdrop-filter .4s ease;
+  border-bottom:1px solid transparent;
+}
+.nav.scrolled{
+  background:rgba(250,250,250,.92);
+  backdrop-filter:saturate(180%) blur(14px);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);
+  border-bottom-color:var(--rule);
+  padding:14px 40px;
+}
+.nav-brand{display:flex;align-items:center;gap:14px;color:#FFF;transition:color .4s ease}
+.nav.scrolled .nav-brand{color:var(--ink)}
+.nav-brand img{width:44px;height:44px;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(0,0,0,.25))}
+.nav.scrolled .nav-brand img{filter:none}
+.nav-brand-name{display:flex;flex-direction:column;line-height:1;letter-spacing:.02em}
+.nav-brand-name small{font-size:10px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;opacity:.7;margin-bottom:4px}
+.nav-brand-name strong{font-size:14px;font-weight:800;letter-spacing:.04em}
+
+.nav-links{display:flex;gap:4px;justify-content:center}
+.nav-links a{
+  position:relative;
+  padding:10px 14px;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:#FFF;
+  transition:color .25s ease;
+}
+.nav.scrolled .nav-links a{color:var(--ink-soft)}
+.nav.scrolled .nav-links a:hover{color:var(--ink)}
+.nav-links a::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  right:50%;
+  bottom:6px;
+  height:2px;
+  background:var(--red);
+  box-shadow:0 0 0 1px #FFF;
+  transition:left .25s ease,right .25s ease;
+}
+.nav-links a:hover::after,.nav-links a.active::after{left:14px;right:14px}
+
+.nav-cta{display:flex;align-items:center;gap:10px}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:11px 18px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  border-radius:999px;
+  transition:all .25s ease;
+  white-space:nowrap;
+}
+.btn-red{background:var(--red);color:#FFF;box-shadow:0 0 0 2px #FFF inset,0 0 0 3px var(--red)}
+.btn-red:hover{background:#FFF;color:var(--red);box-shadow:0 0 0 2px var(--red) inset,0 0 0 3px var(--red)}
+.btn-outline{border:1.5px solid currentColor;color:#FFF;background:transparent}
+.nav.scrolled .btn-outline{color:var(--ink)}
+.btn-outline:hover{background:currentColor}
+.btn-outline:hover{color:#FFF}
+.nav.scrolled .btn-outline:hover{color:var(--bg)}
+
+@media (max-width:900px){
+  .nav{padding:14px 20px;grid-template-columns:auto auto}
+  .nav-links{display:none}
+  .nav-cta .btn-outline{display:none}
+}
+
+/* ============ HERO — full viewport cinematic ============ */
+.hero{
+  position:relative;
+  height:100vh;
+  min-height:640px;
+  max-height:920px;
+  overflow:hidden;
+  background:#0E0E10;
+}
+.hero-img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:110%;
+  object-fit:cover;
+  object-position:center 30%;
+  opacity:.85;
+  filter:grayscale(15%) contrast(1.08) saturate(.9);
+  will-change:transform;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg, rgba(14,14,16,.45) 0%, transparent 35%, transparent 60%, rgba(14,14,16,.95) 100%),
+    radial-gradient(ellipse at 50% 80%, transparent 20%, rgba(14,14,16,.4) 100%);
+  z-index:1;
+}
+.hero-content{
+  position:absolute;
+  left:0;right:0;
+  bottom:0;
+  z-index:2;
+  padding:0 40px 80px;
+  color:#FFF;
+}
+.hero-content-inner{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end}
+.hero-kicker{
+  font-size:11px;
+  letter-spacing:.4em;
+  text-transform:uppercase;
+  font-weight:700;
+  color:#FFF;
+  margin-bottom:18px;
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+}
+.hero-kicker::before{
+  content:"";
+  width:32px;
+  height:2px;
+  background:var(--red);
+  box-shadow:0 0 0 1px #FFF;
+}
+.hero-title{
+  font-size:clamp(40px,6vw,84px);
+  font-weight:200;
+  line-height:.95;
+  letter-spacing:-.025em;
+  margin-bottom:24px;
+}
+.hero-title strong{font-weight:800}
+.hero-title em{font-style:italic;color:#FFF;opacity:.78;font-weight:300}
+.hero-sub{
+  max-width:520px;
+  font-size:16px;
+  font-weight:400;
+  line-height:1.55;
+  color:rgba(255,255,255,.78);
+}
+.hero-meta{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:24px 40px;
+  align-self:end;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  font-weight:600;
+  color:rgba(255,255,255,.7);
+}
+.hero-meta strong{display:block;color:#FFF;font-size:24px;font-weight:200;letter-spacing:-.02em;margin-top:4px;text-transform:none;font-feature-settings:'tnum'}
+.hero-meta strong em{font-style:normal;font-weight:700}
+.hero-scroll{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:24px;
+  font-size:10px;
+  letter-spacing:.4em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.6);
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  font-weight:600;
+}
+.hero-scroll::after{
+  content:"";
+  width:1px;
+  height:36px;
+  background:linear-gradient(180deg,rgba(255,255,255,.6),transparent);
+  animation:scroll-line 2s ease infinite;
+}
+@keyframes scroll-line{
+  0%{transform:scaleY(.3);transform-origin:top}
+  50%{transform:scaleY(1);transform-origin:top}
+  51%{transform:scaleY(1);transform-origin:bottom}
+  100%{transform:scaleY(.3);transform-origin:bottom}
+}
+
+@media (max-width:880px){
+  .hero-content{padding:0 20px 64px}
+  .hero-content-inner{grid-template-columns:1fr}
+  .hero-meta{grid-template-columns:repeat(4,auto)}
+  .hero-scroll{display:none}
+}
+
+/* ============ STATUS TICKER (faixa logo abaixo do hero) ============ */
+.ticker{
+  background:var(--ink);
+  color:#FFF;
+  padding:18px 40px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:32px;
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  font-weight:600;
+  position:relative;
+}
+.ticker-item{display:flex;align-items:center;gap:10px}
+.ticker-item::after{
+  content:"";
+  width:4px;
+  height:4px;
+  background:var(--red);
+  border-radius:50%;
+  box-shadow:0 0 0 1px #FFF;
+}
+.ticker-item:last-child::after{display:none}
+.ticker-item strong{color:var(--red);-webkit-text-stroke:.4px #FFF;paint-order:stroke fill;font-weight:800}
+.ticker-link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:#FFF;
+  padding:0;
+  transition:opacity .2s ease;
+}
+.ticker-link:hover{opacity:.7}
+@media (max-width:880px){
+  .ticker{padding:14px 20px;gap:18px;font-size:11px;overflow-x:auto;white-space:nowrap;justify-content:flex-start}
+}
+
+/* ============ SECTION ARCHITECTURE ============ */
+.section{padding:120px 40px}
+.section-inner{max-width:var(--container);margin:0 auto}
+.section-eyebrow{
+  font-size:11px;
+  letter-spacing:var(--kicker);
+  text-transform:uppercase;
+  font-weight:700;
+  color:var(--red);
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+}
+.section-eyebrow::before{
+  content:"";
+  width:32px;
+  height:2px;
+  background:var(--red);
+}
+.section-title{
+  font-size:clamp(36px,5vw,68px);
+  font-weight:200;
+  letter-spacing:-.025em;
+  line-height:1.05;
+  max-width:14ch;
+}
+.section-title strong{font-weight:800}
+.section-title em{font-style:italic;color:var(--muted);font-weight:300}
+.section-head{display:grid;grid-template-columns:1fr auto;align-items:end;gap:32px;margin-bottom:64px}
+.section-aside{font-size:13px;color:var(--muted);max-width:32ch;line-height:1.5}
+.section-aside a{color:var(--ink);font-weight:600;border-bottom:1.5px solid var(--red);padding-bottom:1px;transition:all .25s}
+.section-aside a:hover{color:var(--red)}
+
+@media (max-width:880px){
+  .section{padding:80px 20px}
+  .section-head{grid-template-columns:1fr;gap:20px}
+}
+
+/* ============ CINEMATIC PHOTO BAND (full-bleed feature) ============ */
+.band{
+  position:relative;
+  height:88vh;
+  min-height:560px;
+  max-height:780px;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+}
+.band-img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:115%;
+  object-fit:cover;
+  object-position:center;
+  filter:grayscale(12%) contrast(1.08) saturate(.95);
+}
+.band::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg, rgba(14,14,16,.85) 0%, rgba(14,14,16,.55) 40%, transparent 100%);
+}
+.band-content{position:relative;z-index:1;color:#FFF;padding:0 40px;max-width:var(--container);margin:0 auto;width:100%}
+.band-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  font-size:11px;
+  letter-spacing:.4em;
+  text-transform:uppercase;
+  font-weight:700;
+  color:#FFF;
+  margin-bottom:20px;
+}
+.band-eyebrow::before{
+  content:"";
+  width:32px;
+  height:2px;
+  background:var(--red);
+  box-shadow:0 0 0 1px #FFF;
+}
+.band-title{
+  font-size:clamp(40px,6vw,84px);
+  font-weight:200;
+  letter-spacing:-.025em;
+  line-height:1;
+  max-width:14ch;
+  margin-bottom:24px;
+}
+.band-title strong{font-weight:800}
+.band-deck{max-width:520px;font-size:17px;line-height:1.55;color:rgba(255,255,255,.82);margin-bottom:32px}
+.band-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  padding:14px 26px;
+  background:#FFF;
+  color:var(--ink);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  border-radius:999px;
+  transition:all .25s ease;
+}
+.band-cta::after{content:"→";color:var(--red);font-weight:900;transition:transform .25s}
+.band-cta:hover{background:var(--red);color:#FFF;box-shadow:0 0 0 2px #FFF}
+.band-cta:hover::after{color:#FFF;transform:translateX(6px)}
+
+@media (max-width:880px){
+  .band{height:auto;min-height:480px;padding:80px 0}
+  .band-content{padding:0 20px}
+}
+
+/* ============ AGENDA / PRÓXIMOS JOGOS ============ */
+.agenda{background:var(--bg-2)}
+.agenda-list{display:flex;flex-direction:column}
+.agenda-item{
+  display:grid;
+  grid-template-columns:auto 1fr auto auto;
+  gap:32px;
+  align-items:center;
+  padding:28px 0;
+  border-top:1px solid var(--rule);
+  transition:background .25s ease,padding .25s ease;
+}
+.agenda-item:first-child{border-top:1px solid var(--ink)}
+.agenda-item:last-child{border-bottom:1px solid var(--ink)}
+.agenda-item:hover{background:rgba(221,0,0,.04);padding-left:12px;padding-right:12px}
+.agenda-when{display:flex;flex-direction:column;align-items:flex-start;min-width:96px}
+.agenda-day{font-size:36px;font-weight:200;line-height:1;letter-spacing:-.03em;font-feature-settings:'tnum'}
+.agenda-day strong{font-weight:800}
+.agenda-month{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.agenda-vs{display:flex;flex-direction:column;gap:6px}
+.agenda-comp{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.agenda-teams{font-size:22px;font-weight:300;letter-spacing:-.01em;line-height:1.2}
+.agenda-teams strong{font-weight:800}
+.agenda-teams .vs{font-weight:200;color:var(--red);margin:0 12px;-webkit-text-stroke:.5px var(--bg);paint-order:stroke fill}
+.agenda-place{font-size:13px;color:var(--muted);font-weight:500;text-align:right;line-height:1.4;min-width:140px}
+.agenda-place strong{display:block;color:var(--ink);font-weight:600}
+.agenda-cta{
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  font-weight:700;
+  padding:12px 18px;
+  border:1.5px solid var(--ink);
+  border-radius:999px;
+  transition:all .25s ease;
+  white-space:nowrap;
+}
+.agenda-cta:hover{background:var(--ink);color:#FFF}
+
+@media (max-width:880px){
+  .agenda-item{grid-template-columns:auto 1fr;gap:16px;padding:20px 0}
+  .agenda-place{grid-column:2;text-align:left;font-size:12px;min-width:0}
+  .agenda-cta{grid-column:1/-1;justify-self:start;margin-top:6px}
+}
+
+/* ============ ELENCO — photo-driven ============ */
+.elenco{background:var(--bg)}
+.elenco-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.player{
+  position:relative;
+  aspect-ratio:3/4.4;
+  overflow:hidden;
+  background:#0E0E10;
+  cursor:pointer;
+}
+.player img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 18%;
+  transition:transform .8s cubic-bezier(.16,1,.3,1),filter .4s ease;
+  filter:grayscale(50%) contrast(1.08);
+}
+.player:hover img{transform:scale(1.04);filter:grayscale(0%) contrast(1.05)}
+.player::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, transparent 45%, rgba(14,14,16,.95) 100%);
+  pointer-events:none;
+}
+.player-overlay{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  color:#FFF;
+}
+.player-no{
+  font-size:64px;
+  font-weight:100;
+  line-height:.9;
+  letter-spacing:-.04em;
+  font-feature-settings:'tnum';
+  align-self:flex-start;
+}
+.player-bottom{display:flex;flex-direction:column;gap:4px}
+.player-pos{font-size:10px;letter-spacing:.25em;text-transform:uppercase;font-weight:700;color:var(--red);-webkit-text-stroke:.4px #FFF;paint-order:stroke fill}
+.player-name{font-size:22px;font-weight:700;line-height:1.05;letter-spacing:-.01em}
+
+@media (max-width:880px){
+  .elenco-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+  .player-no{font-size:48px}
+  .player-name{font-size:18px}
+}
+
+/* ============ NOTÍCIAS ============ */
+.news{background:var(--bg-2)}
+.news-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:start}
+.news-featured{
+  display:block;
+  position:relative;
+  overflow:hidden;
+  background:#0E0E10;
+}
+.news-featured-img{aspect-ratio:5/4;overflow:hidden;position:relative}
+.news-featured-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1);filter:grayscale(8%) contrast(1.05)}
+.news-featured:hover .news-featured-img img{transform:scale(1.03)}
+.news-featured-meta{
+  position:absolute;
+  top:24px;left:24px;
+  background:#FFF;
+  color:var(--ink);
+  font-size:10px;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  font-weight:800;
+  padding:8px 14px;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.news-featured-meta::before{
+  content:"";
+  width:8px;
+  height:8px;
+  background:var(--red);
+  border-radius:50%;
+  box-shadow:0 0 0 1px #FFF;
+}
+.news-featured-body{padding:28px 0 0}
+.news-featured-title{font-size:clamp(28px,3.5vw,40px);font-weight:300;line-height:1.1;letter-spacing:-.02em}
+.news-featured-title strong{font-weight:800}
+.news-featured-date{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:14px}
+
+.news-side{display:flex;flex-direction:column;gap:0}
+.news-item{
+  display:grid;
+  grid-template-columns:80px 1fr;
+  gap:20px;
+  padding:22px 0;
+  border-top:1px solid var(--rule);
+  align-items:flex-start;
+  transition:padding .25s ease;
+}
+.news-item:first-child{border-top:1px solid var(--ink)}
+.news-item:last-child{border-bottom:1px solid var(--ink)}
+.news-item:hover{padding-left:8px}
+.news-item:hover .news-item-title{color:var(--red);-webkit-text-stroke:.5px var(--bg-2);paint-order:stroke fill}
+.news-item img{width:80px;height:80px;object-fit:cover;filter:grayscale(10%)}
+.news-item-content{display:flex;flex-direction:column;gap:6px}
+.news-item-tag{font-size:9px;letter-spacing:.3em;text-transform:uppercase;font-weight:800;color:var(--red);-webkit-text-stroke:.4px var(--bg-2);paint-order:stroke fill}
+.news-item-title{font-size:15px;font-weight:600;line-height:1.3;letter-spacing:-.005em;transition:color .25s,-webkit-text-stroke-color .25s}
+.news-item-date{font-size:11px;color:var(--muted);font-weight:500;margin-top:2px}
+
+@media (max-width:880px){
+  .news-grid{grid-template-columns:1fr;gap:40px}
+}
+
+/* ============ HERANÇA / TIMELINE ============ */
+.heranca{background:var(--ink);color:var(--bg)}
+.heranca .section-eyebrow{color:#FFF}
+.heranca .section-eyebrow::before{background:#FFF;box-shadow:0 0 0 1px var(--red)}
+.heranca .section-title em{color:rgba(255,255,255,.5)}
+.heranca .section-aside{color:rgba(255,255,255,.7)}
+.heranca .section-aside a{color:#FFF;border-color:var(--red);box-shadow:0 3px 0 -1px #FFF;padding-bottom:3px}
+
+.timeline{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:0;
+  margin-top:24px;
+}
+.milestone{
+  padding:32px 24px;
+  border-left:1px solid rgba(255,255,255,.15);
+  transition:background .3s ease;
+  cursor:default;
+}
+.milestone:first-child{border-left:none}
+.milestone:hover{background:rgba(255,255,255,.04)}
+.milestone:hover .milestone-year{color:var(--red);-webkit-text-stroke:.8px #FFF;paint-order:stroke fill}
+.milestone-year{
+  font-size:36px;
+  font-weight:200;
+  line-height:1;
+  letter-spacing:-.03em;
+  font-feature-settings:'tnum';
+  transition:color .3s ease;
+  margin-bottom:16px;
+}
+.milestone-year strong{font-weight:800}
+.milestone-label{font-size:13px;font-weight:600;line-height:1.4;color:rgba(255,255,255,.9);letter-spacing:-.005em}
+.milestone-sub{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.45);font-weight:600;margin-top:8px}
+
+@media (max-width:880px){
+  .timeline{grid-template-columns:repeat(2,1fr)}
+  .milestone{border-left:none;border-top:1px solid rgba(255,255,255,.15);padding:24px 0}
+  .milestone:nth-child(odd){border-right:1px solid rgba(255,255,255,.15);padding-right:16px}
+  .milestone:nth-child(even){padding-left:16px}
+}
+
+/* ============ SÓCIO BAND (faixa vermelha minimal) ============ */
+.socio-band{
+  background:var(--red);
+  color:#FFF;
+  padding:96px 40px;
+  border-top:3px solid #FFF;
+  border-bottom:3px solid #FFF;
+}
+.socio-inner{
+  max-width:var(--container);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:48px;
+  align-items:end;
+}
+.socio-eyebrow{font-size:11px;letter-spacing:.4em;text-transform:uppercase;font-weight:700;margin-bottom:18px;color:rgba(255,255,255,.85)}
+.socio-eyebrow::before{
+  content:"";display:inline-block;
+  width:32px;height:2px;
+  background:#FFF;vertical-align:middle;margin-right:14px;
+}
+.socio-title{font-size:clamp(36px,5.5vw,72px);font-weight:200;letter-spacing:-.025em;line-height:1.05;max-width:18ch}
+.socio-title strong{font-weight:800}
+.socio-meta{font-size:13px;color:rgba(255,255,255,.85);margin-top:14px;font-weight:500}
+.socio-meta strong{color:#FFF;font-weight:800}
+.socio-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  padding:18px 32px;
+  background:#FFF;
+  color:var(--red);
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  border-radius:999px;
+  transition:all .25s ease;
+  box-shadow:0 0 0 2px #FFF;
+}
+.socio-cta::after{content:"→";color:var(--ink);font-weight:900;transition:transform .25s}
+.socio-cta:hover{background:var(--ink);color:#FFF;box-shadow:0 0 0 2px #FFF,0 0 0 4px var(--red)}
+.socio-cta:hover::after{color:#FFF;transform:translateX(6px)}
+
+@media (max-width:880px){
+  .socio-band{padding:64px 20px}
+  .socio-inner{grid-template-columns:1fr;gap:32px}
+}
+
+/* ============ PATROCINADORES ============ */
+.partners{background:var(--bg);padding:80px 40px}
+.partners-inner{max-width:var(--container);margin:0 auto}
+.partners-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:32px;gap:24px;flex-wrap:wrap}
+.partners-head h3{font-size:11px;letter-spacing:.3em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.partners-head h3 strong{color:var(--ink);font-weight:800}
+.partners-head small{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.master-row{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:16px}
+.master-row a{
+  aspect-ratio:5/2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:32px;
+  background:var(--bg-2);
+  transition:background .25s ease;
+}
+.master-row a:hover{background:var(--ink)}
+.master-row a:hover img{filter:none}
+/* Logos monocromáticas brancas — em bg claro invertemos pra preto, no hover (bg ink) o branco volta */
+.master-row a img{max-height:70%;max-width:90%;object-fit:contain;filter:brightness(0);transition:filter .25s ease}
+.others-row{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.others-row a{
+  aspect-ratio:5/2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px;
+  background:var(--bg-2);
+  transition:background .25s ease;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.others-row a:hover{background:var(--ink)}
+.others-row a:hover img{filter:none}
+.others-row a img{max-height:60%;max-width:80%;object-fit:contain;filter:brightness(0);transition:filter .25s ease}
+
+@media (max-width:900px){
+  .others-row{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:680px){
+  .master-row{grid-template-columns:1fr}
+  .others-row{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ============ FOOTER ============ */
+.footer{background:var(--ink);color:rgba(255,255,255,.7);padding:80px 40px 32px}
+.footer-inner{max-width:var(--container);margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.1)}
+.footer-brand h3{font-size:24px;font-weight:200;line-height:1.1;letter-spacing:-.02em;color:#FFF}
+.footer-brand h3 strong{font-weight:800;display:block}
+.footer-brand p{margin-top:16px;font-size:13px;line-height:1.55;max-width:32ch}
+.footer-social{display:flex;gap:10px;margin-top:24px}
+.footer-social a{
+  width:38px;height:38px;
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:#FFF;
+  transition:all .25s ease;
+}
+.footer-social a:hover{background:#FFF;color:var(--ink);border-color:#FFF}
+.footer-social svg{width:15px;height:15px}
+.footer-col h4{font-size:10px;letter-spacing:.3em;text-transform:uppercase;font-weight:800;margin-bottom:18px;color:#FFF;position:relative;padding-left:14px}
+.footer-col h4::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:50%;
+  transform:translateY(-50%);
+  width:8px;
+  height:2px;
+  background:var(--red);
+  box-shadow:0 0 0 1px var(--ink);
+}
+.footer-col ul{display:flex;flex-direction:column;gap:10px}
+.footer-col a{font-size:13px;transition:color .25s}
+.footer-col a:hover{color:#FFF}
+.footer-bottom{padding-top:28px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+
+@media (max-width:880px){
+  .footer{padding:60px 20px 24px}
+  .footer-top{grid-template-columns:1fr 1fr;gap:32px}
+  .footer-brand{grid-column:1/-1}
+}
+@media (max-width:480px){
+  .footer-top{grid-template-columns:1fr}
+}
+
+/* ============ REVEAL ============ */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="nav" id="nav">
+  <a href="/" class="nav-brand">
+    <img src="images/logo.png" alt="Santa Cruz FC">
+    <span class="nav-brand-name">
+      <small>Desde 1914</small>
+      <strong>Santa Cruz F.C.</strong>
+    </span>
+  </a>
+  <div class="nav-links">
+    <a href="#agenda">Jogos</a>
+    <a href="#elenco">Elenco</a>
+    <a href="#noticias">Notícias</a>
+    <a href="#tradicao">Tradição</a>
+    <a href="#socio">Sócio</a>
+  </div>
+  <div class="nav-cta">
+    <a href="#agenda" class="btn btn-outline">Ingressos</a>
+    <a href="https://socio-santacruz.futebolcard.com/" target="_blank" class="btn btn-red">Sócio Coral</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <img class="hero-img" id="hero-img" src="images/torcida_santa_cruz_mosaico.jpg" alt="Torcida do Santa Cruz">
+  <div class="hero-content">
+    <div class="hero-content-inner">
+      <div>
+        <div class="hero-kicker">Santa Cruz Futebol Clube · Recife · PE</div>
+        <h1 class="hero-title">A mais <strong>apaixonada</strong><br><em>do Nordeste</em></h1>
+        <p class="hero-sub">Mais de um século escrevendo paixão sobre vermelho, preto e branco. Da Boa Vista ao Arruda lotado, a Cobra Coral nunca pediu permissão pra ser quem é.</p>
+      </div>
+      <div class="hero-meta">
+        <div>Fundado<strong>03·02·<em>1914</em></strong></div>
+        <div>Estádio<strong>Arruda</strong></div>
+        <div>Sócios<strong>25 mil<em>+</em></strong></div>
+        <div>Cor<strong>Coral</strong></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">Continue · Role</div>
+</section>
+
+<!-- ===== TICKER ===== -->
+<div class="ticker">
+  <span class="ticker-item">Próximo jogo · <strong>Santa Cruz × Sampaio</strong> · Sáb 16h</span>
+  <span class="ticker-item">Sócio Coral · <strong>25.214</strong> ativos</span>
+  <a href="#agenda" class="ticker-link ticker-item">Ver agenda completa →</a>
+</div>
+
+<!-- ===== CINEMATIC PHOTO BAND — Estádio ===== -->
+<section class="band">
+  <img class="band-img" src="images/estadio_arruda_em_2020_700_5.jpg" alt="Estádio do Arruda">
+  <div class="band-content">
+    <div class="band-eyebrow">Maior estádio particular do Brasil</div>
+    <h2 class="band-title">O <strong>Arruda</strong><br>nunca dorme</h2>
+    <p class="band-deck">Inaugurado em 1972, é o coração da Cobra Coral. Em dias de clássico, 60 mil torcedores fazem o concreto tremer.</p>
+    <a href="#agenda" class="band-cta">Veja os próximos jogos</a>
+  </div>
+</section>
+
+<!-- ===== AGENDA ===== -->
+<section id="agenda" class="section agenda">
+  <div class="section-inner">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">Agenda</div>
+        <h2 class="section-title"><em>Quatro</em><br>partidas<br><strong>pela frente</strong></h2>
+      </div>
+      <p class="section-aside">Próximas datas da Cobra Coral pelo Brasileirão Série C e pela Copa do Nordeste. <a href="#">Calendário completo →</a></p>
+    </div>
+
+    <div class="agenda-list">
+
+      <div class="agenda-item reveal">
+        <div class="agenda-when">
+          <div class="agenda-day"><strong>24</strong></div>
+          <div class="agenda-month">Sáb · Mai</div>
+        </div>
+        <div class="agenda-vs">
+          <div class="agenda-comp">Brasileirão Série C · 9ª rodada</div>
+          <div class="agenda-teams"><strong>Santa Cruz</strong> <span class="vs">×</span> Sampaio Corrêa</div>
+        </div>
+        <div class="agenda-place"><strong>Arruda</strong>Recife · 16h00</div>
+        <a href="#" class="agenda-cta">Ingresso</a>
+      </div>
+
+      <div class="agenda-item reveal">
+        <div class="agenda-when">
+          <div class="agenda-day"><strong>28</strong></div>
+          <div class="agenda-month">Qua · Mai</div>
+        </div>
+        <div class="agenda-vs">
+          <div class="agenda-comp">Brasileirão Série C · 10ª rodada</div>
+          <div class="agenda-teams">CSA <span class="vs">×</span> <strong>Santa Cruz</strong></div>
+        </div>
+        <div class="agenda-place"><strong>Rei Pelé</strong>Maceió · 19h30</div>
+        <a href="#" class="agenda-cta">Visitante</a>
+      </div>
+
+      <div class="agenda-item reveal">
+        <div class="agenda-when">
+          <div class="agenda-day"><strong>01</strong></div>
+          <div class="agenda-month">Dom · Jun</div>
+        </div>
+        <div class="agenda-vs">
+          <div class="agenda-comp">Clássico das Multidões · Série C</div>
+          <div class="agenda-teams"><strong>Santa Cruz</strong> <span class="vs">×</span> Náutico</div>
+        </div>
+        <div class="agenda-place"><strong>Arruda</strong>Recife · 17h00</div>
+        <a href="#" class="agenda-cta">Comprar</a>
+      </div>
+
+      <div class="agenda-item reveal">
+        <div class="agenda-when">
+          <div class="agenda-day"><strong>07</strong></div>
+          <div class="agenda-month">Sáb · Jun</div>
+        </div>
+        <div class="agenda-vs">
+          <div class="agenda-comp">Copa do Nordeste · Oitavas</div>
+          <div class="agenda-teams">Fortaleza <span class="vs">×</span> <strong>Santa Cruz</strong></div>
+        </div>
+        <div class="agenda-place"><strong>Castelão</strong>Fortaleza · 16h30</div>
+        <a href="#" class="agenda-cta">Visitante</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== ELENCO ===== -->
+<section id="elenco" class="section elenco">
+  <div class="section-inner">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">Elenco · 2026</div>
+        <h2 class="section-title">O <em>time</em><br><strong>do manto</strong></h2>
+      </div>
+      <p class="section-aside">Os quatro nomes que carregam o vermelho, preto e branco em campo agora. <a href="#">Elenco completo →</a></p>
+    </div>
+
+    <div class="elenco-grid">
+
+      <a href="#" class="player reveal">
+        <img src="images/rockenedy_goleiro.jpg" alt="Rockenedy">
+        <div class="player-overlay">
+          <div class="player-no">01</div>
+          <div class="player-bottom">
+            <div class="player-pos">Goleiro</div>
+            <div class="player-name">Rockenedy</div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="player reveal">
+        <img src="images/patrick_allan.jpg" alt="Patrick Allan">
+        <div class="player-overlay">
+          <div class="player-no">07</div>
+          <div class="player-bottom">
+            <div class="player-pos">Meia</div>
+            <div class="player-name">Patrick Allan</div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="player reveal">
+        <img src="images/willian_Jr_10.jpg" alt="Willian Jr">
+        <div class="player-overlay">
+          <div class="player-no">10</div>
+          <div class="player-bottom">
+            <div class="player-pos">Meia-atacante</div>
+            <div class="player-name">Willian Jr</div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="player reveal">
+        <img src="images/vitinho_19.jpg" alt="Vitinho">
+        <div class="player-overlay">
+          <div class="player-no">19</div>
+          <div class="player-bottom">
+            <div class="player-pos">Atacante</div>
+            <div class="player-name">Vitinho</div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== NOTÍCIAS ===== -->
+<section id="noticias" class="section news">
+  <div class="section-inner">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">Notícias</div>
+        <h2 class="section-title"><em>Bastidores</em><br><strong>do Coral</strong></h2>
+      </div>
+      <p class="section-aside">Cobertura completa do clube. <a href="#">Ver todas as notícias →</a></p>
+    </div>
+
+    <div class="news-grid">
+
+      <a href="#" class="news-featured reveal">
+        <div class="news-featured-img">
+          <span class="news-featured-meta">· Destaque ·</span>
+          <img src="images/estadio_arruda_em_2020_700_5.jpg" alt="">
+        </div>
+        <div class="news-featured-body">
+          <h3 class="news-featured-title">Cobra Coral inicia <strong>preparação</strong> para o Clássico das Multidões no Arruda</h3>
+          <div class="news-featured-date">22 · Maio · 2026 · 14h30</div>
+        </div>
+      </a>
+
+      <div class="news-side">
+
+        <a href="#" class="news-item reveal">
+          <img src="images/patrick_allan.jpg" alt="">
+          <div class="news-item-content">
+            <span class="news-item-tag">Elenco</span>
+            <h4 class="news-item-title">Patrick Allan renova contrato até 2027</h4>
+            <div class="news-item-date">22 · Maio · 2026</div>
+          </div>
+        </a>
+
+        <a href="#" class="news-item reveal">
+          <img src="images/willian_Jr_10.jpg" alt="">
+          <div class="news-item-content">
+            <span class="news-item-tag">Torcida</span>
+            <h4 class="news-item-title">Willian Jr é eleito craque do mês pela arquibancada</h4>
+            <div class="news-item-date">21 · Maio · 2026</div>
+          </div>
+        </a>
+
+        <a href="#" class="news-item reveal">
+          <img src="images/vitinho_19.jpg" alt="">
+          <div class="news-item-content">
+            <span class="news-item-tag">Jogos</span>
+            <h4 class="news-item-title">Vitinho marca dois e Tricolor vence em casa</h4>
+            <div class="news-item-date">20 · Maio · 2026</div>
+          </div>
+        </a>
+
+        <a href="#" class="news-item reveal">
+          <img src="images/rockenedy_goleiro.jpg" alt="">
+          <div class="news-item-content">
+            <span class="news-item-tag">Elenco</span>
+            <h4 class="news-item-title">Rockenedy fecha o gol e mantém invencibilidade no Arruda</h4>
+            <div class="news-item-date">19 · Maio · 2026</div>
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== HERANÇA / TIMELINE ===== -->
+<section id="tradicao" class="section heranca">
+  <div class="section-inner">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">Herança</div>
+        <h2 class="section-title">É tradição,<br><em>não é</em> <strong>moda</strong></h2>
+      </div>
+      <p class="section-aside">Mais de um século resumido em seis marcos. Cada conquista nasceu da paixão da maior torcida do Nordeste. <a href="#">Linha do tempo completa →</a></p>
+    </div>
+
+    <div class="timeline">
+      <div class="milestone reveal">
+        <div class="milestone-year">19<strong>14</strong></div>
+        <div class="milestone-label">Fundação</div>
+        <div class="milestone-sub">Boa Vista · Recife</div>
+      </div>
+      <div class="milestone reveal">
+        <div class="milestone-year">19<strong>79</strong></div>
+        <div class="milestone-label">Fita Azul</div>
+        <div class="milestone-sub">Excursão invicta</div>
+      </div>
+      <div class="milestone reveal">
+        <div class="milestone-year">19<strong>83</strong></div>
+        <div class="milestone-label">Tri-Supercampeão Pernambucano</div>
+        <div class="milestone-sub">1957 · 1976 · 1983</div>
+      </div>
+      <div class="milestone reveal">
+        <div class="milestone-year">20<strong>13</strong></div>
+        <div class="milestone-label">Brasileirão Série C</div>
+        <div class="milestone-sub">Tri estadual no ano</div>
+      </div>
+      <div class="milestone reveal">
+        <div class="milestone-year">20<strong>15</strong></div>
+        <div class="milestone-label">Centenário do Pernambucano</div>
+        <div class="milestone-sub">Edição comemorativa</div>
+      </div>
+      <div class="milestone reveal">
+        <div class="milestone-year">20<strong>16</strong></div>
+        <div class="milestone-label">Copa do Nordeste</div>
+        <div class="milestone-sub">Campeão regional</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SÓCIO BAND ===== -->
+<section id="socio" class="socio-band">
+  <div class="socio-inner">
+    <div>
+      <div class="socio-eyebrow">Sócio Coral</div>
+      <h2 class="socio-title">Vista o <strong>manto</strong><br>todos os <em>dias</em></h2>
+      <div class="socio-meta">Plano a partir de <strong>R$ 39 / mês</strong> · 25 mil torcedores ativos</div>
+    </div>
+    <a href="https://socio-santacruz.futebolcard.com/" target="_blank" class="socio-cta">Quero ser sócio</a>
+  </div>
+</section>
+
+<!-- ===== PATROCINADORES ===== -->
+<section class="partners">
+  <div class="partners-inner">
+    <div class="partners-head">
+      <h3><strong>Patrocínios</strong> · Edição 2026</h3>
+      <small>Marca · Mídia · Pernambuco</small>
+    </div>
+    <div class="master-row">
+      <a href="#" target="_blank" rel="noopener"><img src="patrocinadores/betdasorte_master.png" alt="Bet da Sorte — Patrocinador Master"></a>
+      <a href="https://www.reebok.com.br/" target="_blank" rel="noopener"><img src="patrocinadores/reebok_fornecedor.png" alt="Reebok — Fornecedor Oficial"></a>
+    </div>
+    <div class="others-row">
+      <a href="#" target="_blank" rel="noopener"><img src="patrocinadores/armazemjenipapo.png" alt="Armazém Jenipapo"></a>
+      <a href="#" target="_blank" rel="noopener"><img src="patrocinadores/goldtech.png" alt="Goldtech"></a>
+      <a href="https://www.iquine.com.br/" target="_blank" rel="noopener"><img src="patrocinadores/iquine.png" alt="Iquine"></a>
+      <a href="#" target="_blank" rel="noopener"><img src="patrocinadores/lideri.png" alt="Líderi"></a>
+      <a href="#" target="_blank" rel="noopener"><img src="patrocinadores/lpsaude.png" alt="LP Saúde"></a>
+      <a href="#" target="_blank" rel="noopener"><img src="patrocinadores/medinterv.png" alt="Medinterv"></a>
+      <a href="https://nord-pharma.com.br/" target="_blank" rel="noopener"><img src="patrocinadores/nordpharma.png" alt="Nord-Pharma"></a>
+      <a href="#" target="_blank" rel="noopener"><img src="patrocinadores/pitu.png" alt="Pitú"></a>
+      <a href="https://www2.recife.pe.gov.br/" target="_blank" rel="noopener"><img src="patrocinadores/prefeituradorecife.png" alt="Prefeitura do Recife"></a>
+      <a href="#" target="_blank" rel="noopener"><img src="patrocinadores/rhp.png" alt="RHP"></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>Santa Cruz<strong>Futebol Clube</strong></h3>
+        <p>Fundado em 3 de fevereiro de 1914, no bairro da Boa Vista — Recife, Pernambuco. A mais apaixonada do Nordeste.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/SantaCruzFC" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="18" cy="6" r="1" fill="currentColor"/></svg></a>
+          <a href="https://twitter.com/SantaCruzFC" target="_blank" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zM17.083 19.77h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://www.youtube.com/user/TVcoralPE" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"/><polygon points="9.75,15.02 15.5,11.75 9.75,8.48" fill="#fff"/></svg></a>
+          <a href="https://www.facebook.com/SantaCruzFC" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073"/></svg></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Clube</h4>
+        <ul>
+          <li><a href="#">Diretoria</a></li>
+          <li><a href="#tradicao">História</a></li>
+          <li><a href="#">Estádio Arruda</a></li>
+          <li><a href="#">Símbolos</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Torcedor</h4>
+        <ul>
+          <li><a href="#socio">Sócio Coral</a></li>
+          <li><a href="#agenda">Ingressos</a></li>
+          <li><a href="#">Loja Oficial</a></li>
+          <li><a href="#">App Coral</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Imprensa</h4>
+        <ul>
+          <li><a href="#noticias">Notícias</a></li>
+          <li><a href="#">Galeria</a></li>
+          <li><a href="#">Fale conosco</a></li>
+          <li><a href="#">Trabalhe conosco</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Santa Cruz F.C. · Todos os direitos reservados</span>
+      <span>Rua São Benedito 254 · Boa Vista · Recife / PE</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll state
+(function(){
+  const nav = document.getElementById('nav');
+  if(!nav) return;
+  const onScroll = () => {
+    if(window.scrollY > 60) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+
+// Hero parallax: bg image slowly translates while scrolling
+(function(){
+  const img = document.getElementById('hero-img');
+  if(!img) return;
+  let ticking = false;
+  const update = () => {
+    const y = window.scrollY;
+    if(y < window.innerHeight){
+      img.style.transform = 'translateY(' + (y * 0.3) + 'px) scale(1.04)';
+    }
+    ticking = false;
+  };
+  window.addEventListener('scroll', () => {
+    if(!ticking){
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, {passive:true});
+})();
+
+// Reveal
+(function(){
+  if(!('IntersectionObserver' in window)){
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    return;
+  }
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        obs.unobserve(e.target);
+      }
+    });
+  }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+})();
+</script>
+
+</body>
+</html>
