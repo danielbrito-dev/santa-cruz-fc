@@ -2,6 +2,9 @@ import { setRequestLocale } from 'next-intl/server';
 import { getServerApi } from '@/lib/trpc/server';
 import type { Locale } from '@/lib/i18n/routing';
 import { Header } from '@/components/site/header';
+import { SvgFilters } from '@/components/site/svg-filters';
+import { Hero } from '@/components/site/hero';
+import { MatchCalendar } from '@/components/site/match-calendar';
 
 export default async function HomePage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
@@ -11,7 +14,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
   return (
     <>
       <Header />
-      <main data-testid="home" data-matches={content.matches.length} />
+      <SvgFilters />
+      <main>
+        <section className="hero" id="calendario">
+          <Hero content={content} locale={locale} />
+          <MatchCalendar content={content} locale={locale} />
+        </section>
+      </main>
     </>
   );
 }

@@ -206,3 +206,324 @@ ul{list-style:none}
 /* ===== utils ===== */
 /* body scroll lock while the drawer is open (toggled by HeaderClient) */
 .no-scroll{overflow:hidden}
+
+/* ===== hero + calendar ===== */
+/* ============== HERO PSG-fidelity (foto + gradient navy + calendar carrossel — Fita Azul unifica tudo) ============== */
+.hero{
+  position:relative;
+  /* Alvorada vertical: ouro denso herda do header → champagne → branco puro exatamente onde o
+     calendário pousa (≈82% da altura do hero). Cor-ouro alinhada com BRAND.md (#C9B896). */
+  background:linear-gradient(
+    180deg,
+    #C9B896 0%,
+    #C9B896 18%,
+    #E5D9BD 45%,
+    #F6F0E2 70%,
+    #FFFFFF 82%,
+    #FFFFFF 100%
+  );
+  display:flex;flex-direction:column;
+}
+.hero-stage{
+  position:relative;
+  flex:0 0 auto;
+  /* Stage ocupa a maior parte do viewport — calendar peek mostra título + stripe + primeira linha (comp · date) */
+  height:calc(100vh - 130px);
+  min-height:580px;
+  overflow:hidden;
+  background:transparent;
+}
+/* Camada 1: foto da apresentação — full bleed, sem filtros agressivos */
+.hero-backdrop{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;object-position:center top;
+  filter:brightness(.95) saturate(1.05) contrast(1.04);
+  z-index:0;
+}
+/* Overlay editorial: amarrar a foto ao gradient vertical do .hero — dourado no topo (zona do
+   header), transparente no meio (foto livre, hero card legível) e branco-difuso na base
+   (handoff suave para o calendário branco). Sem vignette dramático. */
+.hero-grad{
+  position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:
+    linear-gradient(180deg,
+      rgba(201,184,150,.62) 0%,
+      rgba(201,184,150,.32) 14%,
+      rgba(229,217,189,.12) 32%,
+      rgba(255,255,255,0)    52%,
+      rgba(255,255,255,0)    70%,
+      rgba(255,255,255,.7)   92%,
+      rgba(255,255,255,1)    100%
+    );
+}
+/* .hero-bg removido — agora só o backdrop full-bleed faz o trabalho visual */
+/* Camada 4: grain noise pra textura cinematográfica */
+.hero-grain{
+  position:absolute;inset:0;pointer-events:none;z-index:3;
+  filter:url(#grain);opacity:.5;mix-blend-mode:overlay;
+}
+/* Camada 5: fade pro preto na base — costura com o carrossel */
+/* (.hero-stage::after removido — sem fade no rodapé do hero) */
+@media (max-width:900px){
+  .hero-bg{left:65%;height:90%;opacity:.45}
+}
+/* Hero card centralizado verticalmente, ancorado à esquerda do palco */
+/* Hero card justificado à esquerda, mas posicionado mais pro centro (não cola na borda esquerda) — PSG style */
+.hero-card{
+  position:absolute;
+  left:14%;bottom:80px;
+  max-width:560px;
+  text-align:left;
+  color:var(--ink);
+  z-index:5;
+  opacity:0;transform:translateY(24px);
+  animation:heroIn 1s .4s cubic-bezier(.2,.7,.2,1) forwards;
+}
+@keyframes heroIn{ to{ opacity:1; transform:translateY(0) } }
+@media (max-width:1100px){.hero-card{left:6%;bottom:60px;max-width:460px}}
+/* (heroIn definido inline acima — translateX -50% mantido) */
+
+/* Indicador editorial: chapter mark + tag categoria */
+.hero-eyebrow{
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:18px;
+  font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.28em;
+}
+.hero-eyebrow .num{
+  color:var(--gold);font-variant-numeric:tabular-nums;
+}
+.hero-eyebrow .div{
+  flex:0 0 32px;height:1px;background:rgba(0,0,0,.25);
+}
+.hero-eyebrow .cat{color:rgba(0,0,0,.75)}
+
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 11px;background:var(--red);color:var(--white);
+  font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.2em;
+  margin-bottom:18px;
+}
+.hero-tag::before{
+  content:"";width:6px;height:6px;border-radius:50%;
+  background:var(--white);box-shadow:0 0 0 2px rgba(255,255,255,.35);
+  animation:livePulse 1.6s infinite ease-out;
+}
+@keyframes livePulse{
+  0%{ box-shadow:0 0 0 0 rgba(255,255,255,.6) }
+  70%{ box-shadow:0 0 0 8px rgba(255,255,255,0) }
+  100%{ box-shadow:0 0 0 0 rgba(255,255,255,0) }
+}
+.hero-title{
+  font-size:clamp(40px,5.4vw,68px);font-weight:900;line-height:1.02;letter-spacing:-.025em;
+  margin-bottom:22px;text-transform:uppercase;
+  text-shadow:0 2px 16px rgba(255,255,255,.85), 0 0 32px rgba(255,255,255,.6);
+}
+.hero-title .ht-l1,
+.hero-title .ht-l2{display:block}
+/* Segunda linha começa alinhada com o "A" de CORAL (~3 caracteres de offset no peso 900 uppercase) */
+.hero-title .ht-l2{padding-left:2.05em}
+.hero-title q{text-shadow:0 1px 10px rgba(255,255,255,.85)}
+/* "DO TRICOLOR" volta a vermelho — sem stroke (BRAND.md: separação branco/preto não se aplica em bg light) */
+.hero-title em{
+  color:var(--red);font-style:normal;
+}
+.hero-title q{
+  font-weight:600;color:rgba(10,10,10,.85);quotes:'"' '"';
+  display:block;font-size:.74em;letter-spacing:-.02em;margin-top:6px;
+}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:0;background:transparent;color:var(--ink);
+  font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:.18em;
+  transition:gap .25s, color .25s;
+  border-bottom:1px solid rgba(0,0,0,.4);padding-bottom:6px;
+}
+.hero-cta:hover{gap:16px;color:var(--red);border-color:var(--red)}
+.hero-cta svg{width:14px;height:14px}
+
+@media (max-width:768px){
+  .hero-card{left:20px;right:20px;bottom:32px}
+}
+
+/* Calendar bg sólido — transição smokey feita pelo ::before com backdrop-filter blur */
+.hero-calendar{
+  position:relative;
+  z-index:2;
+  padding:14px 0 26px;
+  color:var(--ink);
+  /* Calendário pousa em branco puro — o handoff cromático já aconteceu no .hero gradient */
+  background:var(--white);
+  /* Drop-shadow branco difuso pra cima: dissolve a borda superior do calendar contra o
+     gradient champagne, costurando a transição sem deixar costura visível */
+  box-shadow:
+    0 -32px 56px -8px rgba(255,255,255,.95),
+    0 -12px 24px -6px rgba(255,255,255,.85);
+}
+/* Pseudo de transição mantido como blur sutil — a costura cromática vem do .hero gradient */
+.hero-calendar::before{
+  content:"";
+  position:absolute;
+  left:0;right:0;
+  top:-40px;height:40px;
+  backdrop-filter:blur(10px) saturate(1.02);
+  -webkit-backdrop-filter:blur(10px) saturate(1.02);
+  background:linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 60%, rgba(255,255,255,.7) 100%);
+  mask-image:linear-gradient(180deg, transparent 0%, #000 50%, #000 100%);
+  -webkit-mask-image:linear-gradient(180deg, transparent 0%, #000 50%, #000 100%);
+  pointer-events:none;
+  z-index:1;
+}
+/* Inner sem max-width — só o título alinha com o hero card (14%); cards tomam a tela toda */
+.hero-calendar-inner{
+  max-width:none;
+  padding:0;
+}
+.hero-calendar-head{padding-left:14%;padding-right:24px}
+.carousel-wrap{padding-left:24px}
+@media (max-width:1100px){
+  .hero-calendar-head{padding-left:6%}
+}
+.hero-calendar-head{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:14px;
+}
+.hero-calendar-title{
+  display:flex;align-items:center;gap:16px;
+  font-size:28px;font-weight:800;letter-spacing:-.01em;text-transform:uppercase;line-height:1;
+}
+.hero-calendar-title .dot{
+  width:7px;height:7px;border-radius:50%;background:var(--gold);
+}
+.hero-calendar-title a{
+  color:var(--muted);font-size:13px;font-weight:700;letter-spacing:.16em;
+  margin-left:10px;transition:color .2s;
+}
+.hero-calendar-title a:hover{color:var(--ink)}
+.cal-controls{display:flex;gap:8px}
+.cal-btn{
+  width:34px;height:34px;border-radius:50%;
+  background:rgba(0,0,0,.04);
+  border:1px solid rgba(0,0,0,.12);
+  color:var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s, border-color .2s, opacity .2s, transform .2s;
+}
+.cal-btn:hover{background:rgba(0,0,0,.08);border-color:rgba(0,0,0,.25)}
+.cal-btn:active{transform:scale(.94)}
+.cal-btn:disabled{opacity:.25;cursor:default}
+.cal-btn svg{width:14px;height:14px}
+
+.carousel-wrap{
+  position:relative;
+}
+.carousel-wrap::before,
+.carousel-wrap::after{
+  content:"";position:absolute;top:0;bottom:0;width:28px;pointer-events:none;z-index:2;
+}
+.carousel-wrap::before{left:0;background:linear-gradient(90deg, rgba(255,255,255,.85), transparent)}
+.carousel-wrap::after {right:0;background:linear-gradient(270deg, rgba(255,255,255,.85), transparent)}
+
+.carousel{
+  display:flex;gap:10px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  scrollbar-width:none;
+  padding:6px 4px 12px;
+}
+.carousel::-webkit-scrollbar{display:none}
+
+/* Match card PSG-fidelity: width 293px + clip-corner 24px no canto inferior-direito + stripe top */
+.match{
+  flex:0 0 293px;
+  scroll-snap-align:start;
+  background:var(--bg-2);color:var(--ink);
+  display:flex;flex-direction:column;
+  overflow:hidden;
+  transition:transform .2s, box-shadow .2s;
+  cursor:pointer;
+  position:relative;
+  padding:0;
+  /* PSG signature: corner clip bottom-right 24px diagonal */
+  clip-path:polygon(0 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%);
+}
+.match:hover{transform:translateY(-2px);box-shadow:0 10px 24px -14px rgba(0,0,0,.25)}
+/* Stripe top — 2px de margem branca acima separa o vermelho do preto da calendar bg (BRAND.md compliance) */
+.match::before{
+  content:"";position:absolute;left:0;right:0;top:2px;
+  height:4px;background:var(--red);z-index:1;
+}
+.match[data-comp="nordeste"]::before{background:var(--gold);top:2px}
+.match[data-comp="copa-br"]::before {background:var(--gold);top:0}
+
+/* Comp + status inline numa única linha: COMP · WEEKDAY DATE · TIME/FINAL */
+.match-comp{
+  display:flex;align-items:center;gap:6px;flex-wrap:nowrap;
+  padding:22px 22px 14px;
+  font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.match-comp .badge{
+  padding:0;background:none;box-shadow:none;
+  font-size:10px;letter-spacing:.12em;font-weight:800;color:var(--ink);
+  text-shadow:none;overflow:visible;
+}
+.match-comp .badge::before{display:none}
+.match-comp .badge.red,.match-comp .badge.gold{background:none}
+.match-comp .badge::after{
+  content:"·";display:inline-block;margin:0 6px;color:var(--muted);font-weight:700;
+}
+.match-comp .status{color:var(--muted);font-size:10px;letter-spacing:.12em;font-weight:700}
+.match-comp .status.live{color:var(--red);font-weight:900}
+
+/* 2 rows verticais de team — cada uma com shield+nome esquerda e score/data direita (estilo PSG match preview) */
+.match-rows{
+  display:flex;flex-direction:column;gap:16px;
+  padding:14px 22px 22px;
+}
+.match-row{
+  display:flex;align-items:center;gap:14px;
+}
+.match-row-shield{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--white);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:10px;letter-spacing:.04em;color:var(--ink);
+  border:1px solid var(--line);
+  flex-shrink:0;overflow:hidden;
+}
+.match-row-shield.home{background:transparent;border:none;width:40px;height:40px}
+.match-row-shield img{width:100%;height:100%;object-fit:contain}
+.match-row-name{
+  font-size:15px;font-weight:800;color:var(--ink);
+  text-transform:uppercase;letter-spacing:.02em;
+  flex:1;min-width:0;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.match-row-score{
+  font-size:22px;font-weight:900;color:var(--ink);
+  letter-spacing:-.02em;min-width:22px;text-align:right;
+}
+.match-comp .status{color:var(--muted);font-size:9px;letter-spacing:.14em}
+.match-comp .status.live{color:var(--red);font-weight:900}
+
+/* Match center link — single link no rodapé do card */
+.match-center{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 22px 22px;
+  font-size:13px;font-weight:800;color:var(--ink);text-transform:uppercase;letter-spacing:.14em;
+  border-top:1px solid var(--line);margin-top:auto;
+  text-decoration:none;
+  transition:color .2s, gap .2s;
+}
+.match-center::after{content:"→";font-size:15px;margin-left:8px}
+.match-center:hover{color:var(--red)}
+
+@media (max-width:768px){
+  .hero-stage{min-height:480px}
+  .hero-card{left:20px;right:20px;bottom:32px}
+  .hero-calendar{padding:16px 0 28px}
+  .carousel-wrap::before,.carousel-wrap::after{width:32px}
+  .match{flex:0 0 220px}
+}
