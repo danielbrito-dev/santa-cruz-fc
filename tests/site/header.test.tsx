@@ -21,9 +21,9 @@ describe('Header', () => {
         <HeaderClient />
       </NextIntlClientProvider>,
     );
-    const newsLinks = screen.getAllByText('Notícias');
-    expect(newsLinks.length).toBeGreaterThanOrEqual(1);
-    const crests = screen.getAllByAltText(/Santa Cruz/i);
-    expect(crests.length).toBeGreaterThanOrEqual(1);
+    // "Notícias" appears twice: header nav link + drawer press submenu item.
+    expect(screen.getAllByText('Notícias')).toHaveLength(2);
+    // Two crests: header logo + drawer-head logo (both alt contain "Santa Cruz").
+    expect(screen.getAllByAltText(/Santa Cruz/i)).toHaveLength(2);
   });
 });
