@@ -1,7 +1,7 @@
 {
   "nav": { "news": "News", "calendar": "Schedule", "tvCoral": "Coral TV", "login": "Sign in", "tickets": "Tickets", "shop": "Shop", "menu": "Menu" },
   "common": { "allNews": "All news", "matchCenter": "Match Center", "becomeMember": "Become a Member", "skipToContent": "Skip to content" },
-  "calendar": { "title": "Schedule" },
+  "calendar": { "title": "Schedule", "prev": "Previous", "next": "Next" },
   "drawer": {
     "home": "Home",
     "contact": "Contact",

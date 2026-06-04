@@ -70,8 +70,8 @@ export async function MatchCalendar({ content, locale }: SectionProps) {
       <div className="hero-calendar-inner">
         <MatchCalendarClient
           calendarTitle={calendarTitle}
-          labelPrev="Anterior"
-          labelNext="Próximo"
+          labelPrev={tCalendar('prev')}
+          labelNext={tCalendar('next')}
         >
           {content.matches.map((m) => (
             <MatchCard
