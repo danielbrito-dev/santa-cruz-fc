@@ -3,6 +3,7 @@
 *.png
 !images/*.png
 !public/images/*.png
+!public/patrocinadores/*.png
 Santa Cruz Futebol Clube*
 *scratchpad*
 C\*scratchpad*
