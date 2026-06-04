@@ -5,6 +5,7 @@ import { Header } from '@/components/site/header';
 import { SvgFilters } from '@/components/site/svg-filters';
 import { Hero } from '@/components/site/hero';
 import { MatchCalendar } from '@/components/site/match-calendar';
+import { NewsSection } from '@/components/site/news-section';
 
 export default async function HomePage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
@@ -20,6 +21,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
           <Hero content={content} locale={locale} />
           <MatchCalendar content={content} locale={locale} />
         </section>
+        <NewsSection content={content} locale={locale} />
       </main>
     </>
   );
