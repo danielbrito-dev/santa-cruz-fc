@@ -387,7 +387,7 @@
       }
     ],
     "chantLine1": { "pt": "É", "en": "It's" },
-    "chantEmphasis": { "pt": "tradição", "en": "tradition" },
-    "chantLine2": { "pt": ", não é moda.", "en": ", not a trend." }
+    "chantEmphasis": { "pt": "tradição,", "en": "tradition," },
+    "chantLine2": { "pt": "não é moda.", "en": "not a trend." }
   }
 }

@@ -10,6 +10,11 @@
     "ariaLabel": "Cookie notice"
   },
   "identity": { "heading1": "Identity", "heading2": "Coral" },
+  "footer": {
+    "since": "Since",
+    "appsHeading": "Download the app",
+    "appsBlurb": "The official tricolor supporter app, available for iOS and Android."
+  },
   "drawer": {
     "home": "Home",
     "contact": "Contact",

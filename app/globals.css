@@ -895,3 +895,164 @@ ul{list-style:none}
 }
 .social-strip a:hover{color:var(--red);transform:translateY(-2px)}
 .social-strip svg{width:18px;height:18px;fill:currentColor}
+
+/* ===== footer + parallax ===== */
+/* ============== PARALLAX REVEAL — footer fixo no fundo do viewport, conteúdo sobe e revela ============== */
+body{ background:var(--red) }
+/* todas as seções principais sentam por cima do footer */
+.hero,
+.news-section,
+.banner-strip,
+.inst-section,
+.sponsors-section{
+  position:relative;
+  z-index:2;
+}
+
+/* ============== FOOTER (fixed, revealed by parallax) — Fita Azul ============== */
+.site-footer{
+  position:fixed;left:0;right:0;bottom:0;
+  z-index:0;
+  background:var(--red);color:var(--white);
+  padding:72px 0 24px;
+  overflow:hidden;
+}
+/* Mobile/tablet: parallax desligado (footer rola normalmente) — evita corte vertical em viewports menores */
+@media (max-width:900px){
+  .site-footer{position:static}
+  body{padding-bottom:0 !important}
+}
+
+/* ---- chant final — slogan da torcida no FIM absoluto, centralizado, staggered ---- */
+.footer-chant{
+  position:relative;
+  padding:88px 0 72px;
+  border-top:1px solid rgba(0,0,0,.22);
+  overflow:hidden;
+}
+.footer-chant .container{
+  max-width:1200px;
+}
+.chant{
+  position:relative;
+  display:block;
+  font-size:clamp(44px,9.5vw,140px);
+  font-weight:900;line-height:1.1;letter-spacing:-.04em;
+  text-transform:uppercase;color:var(--white);
+}
+.chant .line{display:block;white-space:nowrap}
+.chant .line-2{margin-left:28%}
+/* TRADIÇÃO preto com contorno branco sobre bandeira vermelha — regra BRAND.md cumprida ao pé da letra */
+.chant em{
+  color:var(--black); font-style:normal;
+  -webkit-text-stroke:2.5px var(--white);
+  paint-order:stroke fill;
+  /* Sombra suave pra dar peso de cartaz */
+  text-shadow:0 4px 0 rgba(0,0,0,.18);
+}
+
+.chant-meta{
+  position:absolute;top:48px;right:32px;
+  display:flex;flex-direction:column;gap:18px;text-align:right;
+}
+.chant-stat small{
+  display:block;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.32em;
+  color:rgba(255,255,255,.72);
+}
+.chant-stat strong{
+  display:block;margin-top:6px;
+  font-size:13px;font-weight:800;letter-spacing:.04em;color:var(--white);
+}
+/* Tri-Supercampeonato — feito exclusivo do clube (1957, 1976, 1983).
+   3 estrelas tricolor; em bandeira vermelha, a estrela vermelha ganha contorno branco pra
+   sobreviver (regra BRAND.md: branco separa preto/vermelho). */
+.chant-stat--tri .stars{
+  display:flex;justify-content:flex-end;gap:3px;
+  margin-top:6px;font-size:14px;line-height:1;
+}
+.chant-stat--tri .stars i{font-style:normal}
+.chant-stat--tri .s-black{color:#000;-webkit-text-stroke:.7px rgba(255,255,255,.55)}
+.chant-stat--tri .s-white{color:#fff}
+.chant-stat--tri .s-red  {
+  color:var(--red);
+  -webkit-text-stroke:1px var(--white);
+  paint-order:stroke fill;
+}
+.chant-stat--tri strong{margin-top:5px;font-size:11px;color:rgba(255,255,255,.92)}
+@media (max-width:900px){
+  .footer-chant{padding:56px 0 44px}
+  .chant .line-2{margin-left:18%}
+  .chant-meta{position:static;text-align:left;margin-bottom:18px}
+}
+.footer-top{
+  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1.4fr;gap:48px;
+  padding-bottom:48px;border-bottom:1px solid rgba(0,0,0,.22);
+}
+.footer-col--apps{display:flex;flex-direction:column}
+.footer-apps-blurb{font-size:13px;color:rgba(255,255,255,.82);line-height:1.55;margin-top:-4px;margin-bottom:16px;max-width:300px}
+.footer-col--apps .footer-apps{display:flex;flex-direction:column;gap:10px}
+.footer-brand img{height:64px;margin-bottom:20px;display:block}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,.85);line-height:1.5;max-width:320px}
+.footer-col h5{
+  font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.16em;
+  margin-bottom:18px;color:var(--white);
+}
+.footer-col ul{display:flex;flex-direction:column;gap:10px}
+.footer-col a{font-size:13px;color:rgba(255,255,255,.88);transition:color .2s, transform .2s, padding-left .2s}
+.footer-col a:hover{color:var(--gold);padding-left:4px}
+
+.footer-mid{
+  display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:center;
+  padding:32px 0;border-bottom:1px solid rgba(0,0,0,.22);
+}
+.footer-social{display:flex;gap:14px}
+.footer-social a{
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(0,0,0,.22);
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s, transform .2s;
+}
+.footer-social a:hover{background:rgba(0,0,0,.45);box-shadow:0 0 0 1.5px var(--white);transform:translateY(-2px)}
+.footer-social svg{width:16px;height:16px;fill:var(--white)}
+
+.footer-apps{display:flex;gap:12px}
+.footer-app{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 16px;border-radius:8px;
+  background:rgba(0,0,0,.22);
+  font-size:12px;color:rgba(255,255,255,.92);
+  transition:background .2s, transform .2s;
+}
+.footer-app:hover{background:rgba(0,0,0,.45);box-shadow:0 0 0 1.5px var(--white);transform:translateY(-1px)}
+.footer-app strong{display:block;font-size:13px;color:var(--white);font-weight:700;letter-spacing:-.01em}
+.footer-app span{font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.78)}
+
+.footer-langs{
+  display:flex;gap:6px;align-items:center;
+  font-size:11px;color:rgba(255,255,255,.78);text-transform:uppercase;letter-spacing:.1em;
+}
+.footer-langs a{padding:4px 8px;transition:color .2s}
+.footer-langs a:hover{color:var(--white)}
+.footer-langs a.active{color:var(--gold);font-weight:800}
+
+.footer-bottom{
+  padding-top:24px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:11px;color:rgba(255,255,255,.72);letter-spacing:.05em;
+  flex-wrap:wrap;gap:16px;
+}
+.footer-bottom-links{display:flex;gap:18px}
+.footer-bottom-links a{transition:color .2s}
+.footer-bottom-links a:hover{color:var(--gold)}
+
+@media (max-width:1100px){
+  .footer-top{grid-template-columns:1fr 1fr 1fr;gap:36px}
+  .footer-brand,.footer-col--apps{grid-column:span 1}
+}
+@media (max-width:720px){
+  .footer-top{grid-template-columns:1fr 1fr;gap:28px}
+  .footer-brand,.footer-col--apps{grid-column:span 2}
+}
+
+/* ============== UTILS ============== */
+.no-scroll{overflow:hidden}

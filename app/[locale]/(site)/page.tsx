@@ -10,6 +10,8 @@ import { BannerStrip } from '@/components/site/banner-strip';
 import { InstitutionalGrid } from '@/components/site/institutional-grid';
 import { Sponsors } from '@/components/site/sponsors';
 import { SocialStrip } from '@/components/site/social-strip';
+import { Footer } from '@/components/site/footer';
+import { FooterParallax } from '@/components/site/footer.client';
 
 export default async function HomePage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
@@ -31,6 +33,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
         <Sponsors content={content} locale={locale} />
         <SocialStrip content={content} locale={locale} />
       </main>
+      <Footer content={content} locale={locale} />
+      <FooterParallax />
     </>
   );
 }

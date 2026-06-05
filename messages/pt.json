@@ -10,6 +10,11 @@
     "ariaLabel": "Aviso de cookies"
   },
   "identity": { "heading1": "Identidade", "heading2": "Coral" },
+  "footer": {
+    "since": "Desde",
+    "appsHeading": "Baixe o app",
+    "appsBlurb": "O app oficial do torcedor tricolor, disponível para iOS e Android."
+  },
   "drawer": {
     "home": "Início",
     "contact": "Contato",
