@@ -31,7 +31,7 @@ describe('MatchCalendar', () => {
     );
     expect(screen.getByText('Náutico')).toBeInTheDocument();
     expect(screen.getByText('Bahia')).toBeInTheDocument();
-    // Santa is home in both → first row score is scoreHome=2 for m1
-    expect(screen.getAllByText('Santa').length).toBe(2);
+    // Santa Cruz is home in both → first row score is scoreHome=2 for m1
+    expect(screen.getAllByText('Santa Cruz').length).toBe(2);
   });
 });
