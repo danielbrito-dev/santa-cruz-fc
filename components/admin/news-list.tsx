@@ -12,12 +12,12 @@ function resolveLocalized(text: Record<string, string>, locale: string): string 
   return text[locale] ?? text['pt'] ?? Object.values(text)[0] ?? '';
 }
 
-function formatDate(dateStr: string): string {
+function formatDate(dateStr: string, locale: string): string {
   if (!dateStr) return '—';
   try {
     const d = new Date(dateStr);
     if (isNaN(d.getTime())) return dateStr;
-    return d.toLocaleDateString('pt-BR', {
+    return d.toLocaleDateString(locale === 'en' ? 'en-GB' : 'pt-BR', {
       day: '2-digit',
       month: 'short',
       year: 'numeric',
@@ -56,11 +56,11 @@ export async function NewsList({ items, locale }: NewsListProps) {
   return (
     <div className="admin-news-list">
       <div className="admin-news-list-head">
-        <span>Artigo</span>
-        <span>Tag</span>
-        <span>Status</span>
-        <span>Data</span>
-        <span aria-label="Ações"></span>
+        <span>{t('colArticle')}</span>
+        <span>{t('colTag')}</span>
+        <span>{t('colStatus')}</span>
+        <span>{t('colDate')}</span>
+        <span aria-label={t('colActions')}></span>
       </div>
       {items.map((item) => {
         const title = resolveLocalized(item.title, locale);
@@ -117,7 +117,7 @@ export async function NewsList({ items, locale }: NewsListProps) {
 
             {/* Date */}
             <div className="admin-news-row-date">
-              <span>{formatDate(item.publishedAt)}</span>
+              <span>{formatDate(item.publishedAt, locale)}</span>
             </div>
 
             {/* Actions */}

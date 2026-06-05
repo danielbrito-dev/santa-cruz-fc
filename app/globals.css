@@ -2153,7 +2153,7 @@ body{ background:var(--page-bg) }
    .admin-badge              — status/info pill
    .admin-badge--stat        — neutral stat pill
    .admin-badge--soon        — gold "em breve" pill
-   .admin-badge--published   — green published pill
+   .admin-badge--published   — solid ink/white published pill
    .admin-badge--draft       — muted draft pill
    .admin-card               — surface card with red top accent
    .admin-card--active       — interactive (link) card
@@ -2266,15 +2266,17 @@ body{ background:var(--page-bg) }
   border-color: rgba(201,184,150,.25);
 }
 /* Published — green */
+/* Published — solid on-brand badge (BRAND.md palette: ink/white only, no off-palette green) */
 .admin-badge--published {
-  background: rgba(0,128,64,.09);
-  color: #005C2E;
-  border-color: rgba(0,128,64,.25);
+  background: var(--ink);
+  color: #FFFFFF;
+  border-color: var(--ink);
 }
 [data-theme="dark"] .admin-badge--published {
-  background: rgba(0,200,80,.07);
-  color: #3DD880;
-  border-color: rgba(0,200,80,.2);
+  /* invert on dark panels so the badge stands out */
+  background: #FFFFFF;
+  color: var(--ink);
+  border-color: #FFFFFF;
 }
 /* Draft — muted */
 .admin-badge--draft {

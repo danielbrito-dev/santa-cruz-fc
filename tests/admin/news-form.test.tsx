@@ -271,4 +271,24 @@ describe('NewsForm', () => {
     expect(screen.getByDisplayValue('Victory over Sport')).toBeInTheDocument();
     expect(screen.queryByDisplayValue('Vitória sobre o Sport')).toBeNull();
   });
+
+  it('preserves both locales on submit (PT entered, then EN entered after toggling)', async () => {
+    renderForm();
+    // PT active by default
+    fireEvent.change(screen.getByLabelText(/título/i), { target: { value: 'Título PT' } });
+    // toggle to EN and fill the EN title
+    fireEvent.click(screen.getByRole('button', { name: /^EN$/i }));
+    fireEvent.change(screen.getByLabelText(/título/i), { target: { value: 'Title EN' } });
+
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: /salvar/i }));
+    });
+
+    await waitFor(() => {
+      expect(mockCreateNews).toHaveBeenCalledTimes(1);
+    });
+    // the hidden PT locale must NOT be dropped when EN was the active tab at submit
+    expect(lastCreateArg!.title.pt).toBe('Título PT');
+    expect(lastCreateArg!.title.en).toBe('Title EN');
+  });
 });

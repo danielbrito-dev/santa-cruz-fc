@@ -184,10 +184,10 @@ export function NewsForm({ locale: _locale, initial }: NewsFormProps) {
 
   function validate(): boolean {
     const errs: Partial<Record<string, string>> = {};
-    const activeLangTitle = input.title[activeLang === 'pt' ? 'pt' : 'en'];
-    const ptTitle = input.title.pt;
-    if (!activeLangTitle && !ptTitle) {
+    // PT is the canonical locale (the public site falls back to PT) — require it.
+    if (!input.title.pt.trim()) {
       errs.title = t('errRequired');
+      setActiveLang('pt'); // surface the PT field so the error is visible
     }
     if (!input.slug) {
       errs.slug = t('errRequired');
