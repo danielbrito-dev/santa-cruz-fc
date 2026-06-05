@@ -8,7 +8,7 @@ vi.mock('next-intl/server', () => ({
   getTranslations: async (namespace: string) => {
     const messages = pt as unknown as Record<string, Record<string, string>>;
     const ns = messages[namespace] ?? {};
-    return (key: string) => ns[key] ?? key;
+    return (key: string) => (ns as Record<string, string>)[key] ?? key;
   },
 }));
 
