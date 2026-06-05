@@ -7,11 +7,9 @@ import { MatchCalendarClient } from './match-calendar.client';
 function MatchCard({
   m,
   locale,
-  matchCenterLabel,
 }: {
   m: MatchItem;
   locale: string;
-  matchCenterLabel: string;
 }) {
   // Row order: if isHome, Santa first then opponent; else opponent first then Santa.
   // First row always shows scoreHome; second row always shows scoreAway.
@@ -52,18 +50,13 @@ function MatchCard({
           </>
         )}
       </div>
-      <a href={m.matchCenterUrl} className="match-center">
-        {matchCenterLabel}
-      </a>
     </article>
   );
 }
 
 export async function MatchCalendar({ content, locale }: SectionProps) {
   const tCalendar = await getTranslations('calendar');
-  const tCommon = await getTranslations('common');
   const calendarTitle = tCalendar('title');
-  const matchCenterLabel = tCommon('matchCenter');
 
   return (
     <div className="hero-calendar">
@@ -78,7 +71,6 @@ export async function MatchCalendar({ content, locale }: SectionProps) {
               key={m.id}
               m={m}
               locale={locale}
-              matchCenterLabel={matchCenterLabel}
             />
           ))}
         </MatchCalendarClient>

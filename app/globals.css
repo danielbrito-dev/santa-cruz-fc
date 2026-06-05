@@ -277,6 +277,47 @@ ul{list-style:none}
 .drawer-foot a.outline{background:var(--bg-2);color:var(--ink)}
 .drawer-foot a.outline:hover{background:var(--line)}
 
+/* Drawer controls: theme + language — shown on mobile, hidden on desktop */
+.drawer-controls{
+  display:none; /* hidden by default; shown on mobile via @media below */
+  flex-direction:column;gap:0;
+  border-top:1px solid var(--line);
+}
+.drawer-controls-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 28px;
+  border-bottom:1px solid var(--line);
+}
+.drawer-controls-label{
+  font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.16em;
+  color:var(--muted);
+}
+.drawer-lang-btns{
+  display:flex;gap:4px;
+}
+.drawer-lang-btn{
+  padding:5px 12px;border-radius:4px;
+  font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;
+  color:var(--panel-text);
+  background:var(--bg-2);
+  border:1px solid var(--line);
+  cursor:pointer;
+  transition:background .15s, color .15s, border-color .15s;
+}
+.drawer-lang-btn:hover{background:var(--line)}
+.drawer-lang-btn.active{
+  background:var(--red);color:var(--white);
+  border-color:var(--red);
+  box-shadow:0 0 0 1.5px var(--white); /* BRAND.md: white ring separates red from dark panel */
+}
+
+@media (max-width:768px){
+  /* Show drawer controls on mobile */
+  .drawer-controls{display:flex}
+  /* Hide theme toggle in header bar on mobile — it lives in the drawer */
+  .theme-toggle{display:none}
+}
+
 /* ===== utils ===== */
 /* body scroll lock while the drawer is open (toggled by HeaderClient) */
 .no-scroll{overflow:hidden}
@@ -515,6 +556,7 @@ ul{list-style:none}
   scroll-snap-align:start;
   background:var(--bg-2);color:var(--ink);
   display:flex;flex-direction:column;
+  justify-content:center;
   overflow:hidden;
   transition:transform .2s, box-shadow .2s;
   cursor:pointer;
@@ -538,7 +580,7 @@ ul{list-style:none}
    Compact top: pt-6 accounts for the 4px stripe + 2px gap above it */
 .match-comp{
   display:flex;align-items:center;gap:6px;flex-wrap:nowrap;
-  padding:6px 0 0;
+  padding:0;
   font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
@@ -555,10 +597,10 @@ ul{list-style:none}
 .match-comp .status{color:var(--muted);font-size:10px;letter-spacing:.12em;font-weight:700}
 .match-comp .status.live{color:var(--red);font-weight:900}
 
-/* 2 rows — no horizontal/edge padding; gap tightened to 8px to fit in 188px */
+/* 2 rows — no horizontal/edge padding; 12px gap now that match-center is removed */
 .match-rows{
-  display:flex;flex-direction:column;gap:8px;
-  padding:10px 0 0;
+  display:flex;flex-direction:column;gap:12px;
+  padding:14px 0 0;
 }
 .match-row{
   display:flex;align-items:center;gap:10px;
@@ -584,17 +626,7 @@ ul{list-style:none}
   letter-spacing:-.02em;min-width:20px;text-align:right;
 }
 
-/* Match center link — pinned to bottom via margin-top:auto; tighter vertical padding */
-.match-center{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:8px 0 0;
-  font-size:11px;font-weight:800;color:var(--ink);text-transform:uppercase;letter-spacing:.14em;
-  border-top:1px solid var(--line);margin-top:auto;
-  text-decoration:none;
-  transition:color .2s, gap .2s;
-}
-.match-center::after{content:"→";font-size:13px;margin-left:6px}
-.match-center:hover{color:var(--red)}
+/* match-center removed — card now shows only comp/status + two team rows */
 
 @media (max-width:768px){
   .hero-stage{min-height:480px}
@@ -753,13 +785,82 @@ ul{list-style:none}
 }
 .news-item .photo-count svg{width:10px;height:10px}
 
+/* ---- News: tablet (900px) collapses to single-column grid ---- */
 @media (max-width:900px){
-  .news-grid{grid-template-columns:1fr}
-  .news-feature{position:static;aspect-ratio:16/10;clip-path:none}
-  .news-feature .meta{padding:0 24px 24px}
+  .news-grid{
+    grid-template-columns:1fr;
+    /* align-items:start kept so sticky still works on mobile */
+  }
 }
-@media (max-width:540px){
-  .news-list{grid-template-columns:1fr}
+
+/* ---- News: mobile (768px) — sticky featured ~40vh + 2-col scrolling list ---- */
+@media (max-width:768px){
+  /* Featured: sticky at header height, occupies 40vh of viewport */
+  .news-feature{
+    position:sticky;
+    top:60px; /* header is 60px on mobile */
+    height:40vh;
+    min-height:200px;
+    aspect-ratio:auto; /* override the desktop 4/5 ratio */
+    clip-path:none;
+    z-index:1;
+  }
+  /* Keep img fill and gradient legible at 40vh */
+  .news-feature .img-wrap{
+    position:absolute;inset:0;
+    height:100%;
+  }
+  .news-feature::after{
+    /* Stronger bottom gradient so text is always readable at small heights */
+    background:linear-gradient(180deg,
+      rgba(0,0,0,0)   20%,
+      rgba(0,0,0,.40) 52%,
+      rgba(0,0,0,.82) 80%,
+      rgba(0,0,0,.95) 100%
+    );
+  }
+  .news-feature .meta{
+    padding:0 20px 20px;
+  }
+  .news-feature h3{
+    font-size:clamp(18px,5vw,26px);
+    margin-bottom:8px;
+  }
+  /* Tag + date compact at 40vh */
+  .news-feature .tag{
+    margin-bottom:10px;
+  }
+
+  /* List: 2 columns always — the list scrolls while the featured sticks */
+  .news-list{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    /* Ensure it layers above the sticky featured when scrolling */
+    position:relative;
+    z-index:2;
+  }
+
+  /* List item h4 slightly smaller on mobile */
+  .news-item h4{
+    font-size:12px;
+  }
+  .news-item .body{
+    padding:0 10px 12px;
+  }
+}
+
+/* ---- News: very narrow (400px) — keep 2-col but tighten further ---- */
+@media (max-width:400px){
+  .news-list{
+    gap:8px;
+  }
+  .news-item h4{
+    font-size:11px;
+    line-height:1.2;
+  }
+  .news-feature h3{
+    font-size:16px;
+  }
 }
 
 /* ===== cookie banner ===== */
@@ -1118,8 +1219,6 @@ body{ background:var(--page-bg) }
 [data-theme="dark"] .hero-eyebrow .cat{ color:rgba(255,255,255,.72) }
 [data-theme="dark"] .hero-eyebrow .div{ background:rgba(255,255,255,.22) }
 [data-theme="dark"] .match-comp .status{ color:var(--muted) }
-[data-theme="dark"] .match-center{ color:var(--white) }
-[data-theme="dark"] .match-center:hover{ color:var(--gold) }
 [data-theme="dark"] .cal-btn{ background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.14); color:var(--white) }
 [data-theme="dark"] .cal-btn:hover{ background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.28) }
 [data-theme="dark"] .carousel-wrap::before{ background:linear-gradient(90deg, rgba(27,27,27,.9), transparent) }
@@ -1157,6 +1256,16 @@ body{ background:var(--page-bg) }
 [data-theme="dark"] .lang-menu button:hover{ color:var(--gold) }
 [data-theme="dark"] .lang-menu button[aria-current="true"]{ color:var(--gold) }
 
+/* dark-theme drawer controls */
+[data-theme="dark"] .drawer-lang-btn{
+  background:var(--bg-2);color:var(--white);border-color:var(--line);
+}
+[data-theme="dark"] .drawer-lang-btn:hover{background:rgba(255,255,255,.1)}
+[data-theme="dark"] .drawer-lang-btn.active{
+  background:var(--red);color:var(--white);border-color:var(--red);
+  box-shadow:0 0 0 1.5px var(--white);
+}
+
 /* ===== theme toggle ===== */
 .theme-toggle{
   display:inline-flex;align-items:center;justify-content:center;
@@ -1166,3 +1275,130 @@ body{ background:var(--page-bg) }
 }
 .theme-toggle:hover{background:rgba(127,127,127,.16)}
 .theme-toggle:active{transform:scale(.94)}
+
+/* ===== MOBILE POLISH — Task D (≤768px / ≤540px) ===== */
+/* Applies to both light and dark themes; dark overrides above take precedence where needed */
+
+@media (max-width:768px){
+
+  /* ---- Hero ---- */
+  .hero-stage{min-height:420px}
+  .hero-card{
+    left:16px;right:16px;bottom:24px;
+    max-width:100%;
+  }
+  .hero-title{
+    font-size:clamp(28px,8.5vw,44px);
+    margin-bottom:14px;
+  }
+  .hero-title .ht-l2{
+    /* On very small screens the offset looks broken — reduce it */
+    padding-left:1.2em;
+  }
+  .hero-eyebrow{margin-bottom:12px}
+  .hero-tag{margin-bottom:12px}
+  .hero-cta{font-size:13px;letter-spacing:.14em}
+
+  /* ---- Calendar ---- */
+  .hero-calendar{padding:12px 0 20px}
+  .hero-calendar-head{padding-left:16px;padding-right:16px}
+  .hero-calendar-title{font-size:20px;gap:10px}
+  .carousel-wrap{padding-left:16px}
+  .carousel{gap:8px;padding:4px 4px 10px}
+  /* Cards slightly narrower on mobile for better thumb-reach */
+  .match{flex:0 0 240px;width:240px}
+
+  /* ---- Banner strip ---- */
+  .banner-strip{padding:16px 0 32px}
+  .banner-grid{gap:12px}
+  .banner-card{aspect-ratio:16/9}
+  .banner-card .body{padding:20px 22px;gap:6px}
+  .banner-card .eyebrow{font-size:9px;letter-spacing:.18em}
+  .banner-card h3{font-size:clamp(16px,4.5vw,22px)}
+  .banner-card .cta{font-size:10px;margin-top:6px}
+
+  /* ---- Institutional grid ---- */
+  .inst-section{padding:40px 0 52px}
+  .inst-grid{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:auto;
+    min-height:auto;
+    gap:10px;
+  }
+  .inst-card.span-rows{grid-row:auto;grid-column:1/-1}
+  .inst-card{aspect-ratio:4/3}
+  .inst-card .body{padding:16px 16px}
+  .inst-card h3{font-size:16px}
+  .inst-card.span-rows h3{font-size:20px}
+
+  /* ---- Sponsors ---- */
+  .sponsors-section{padding:44px 0 44px}
+  .sponsors-master{gap:36px;margin-bottom:36px}
+  .sponsors-master .item img{height:44px}
+  .sponsors-grid{gap:28px 32px}
+  .sponsors-grid .item img{height:26px}
+
+  /* ---- Social strip ---- */
+  .social-strip{padding:24px 0 28px}
+  .social-strip .row{gap:20px}
+  .social-strip a{width:34px;height:34px}
+  .social-strip svg{width:16px;height:16px}
+
+  /* ---- Footer ---- */
+  .footer-top{grid-template-columns:1fr 1fr;gap:24px;padding-bottom:32px}
+  .footer-brand,.footer-col--apps{grid-column:span 2}
+  .footer-brand img{height:52px;margin-bottom:14px}
+  .footer-col h5{margin-bottom:12px}
+  .footer-apps-blurb{font-size:12px;margin-bottom:12px}
+  .footer-app{padding:8px 14px;gap:8px}
+  .footer-app strong{font-size:12px}
+
+  /* ---- Chant ---- */
+  .footer-chant{padding:44px 0 32px}
+  .chant{font-size:clamp(32px,9vw,60px)}
+  .chant .line-2{margin-left:12%}
+  .chant-meta{position:static;text-align:left;margin-bottom:14px}
+
+  /* ---- Global overflow guard ---- */
+  /* Prevent any element from causing horizontal scroll */
+  body{overflow-x:hidden}
+  .hero,.news-section,.banner-strip,.inst-section,.sponsors-section,.social-strip,.site-footer{
+    max-width:100vw;overflow-x:hidden;
+  }
+}
+
+@media (max-width:540px){
+
+  /* ---- Institutional ---- */
+  .inst-grid{grid-template-columns:1fr}
+  .inst-card.span-rows{grid-column:auto}
+  .inst-card{aspect-ratio:3/2}
+
+  /* ---- Footer columns stack ---- */
+  .footer-top{grid-template-columns:1fr;gap:20px}
+  .footer-brand,.footer-col--apps{grid-column:auto}
+  .footer-apps{flex-direction:column}
+  .footer-app{max-width:220px}
+
+  /* ---- Chant on narrow phones ---- */
+  .chant{font-size:clamp(28px,10vw,44px);letter-spacing:-.035em}
+  .chant .line-2{margin-left:8%}
+
+  /* ---- Hero on very narrow ---- */
+  .hero-card{bottom:16px}
+  .hero-title{font-size:clamp(24px,8vw,36px)}
+  .hero-title .ht-l2{padding-left:.8em}
+
+  /* ---- Calendar card smallest ---- */
+  .match{flex:0 0 210px;width:210px}
+
+  /* ---- Banner: single column (already covered by 768 rule, reinforce) ---- */
+  .banner-card .body{padding:16px 18px}
+  .banner-card h3{font-size:clamp(14px,4vw,20px)}
+
+  /* ---- Sponsors compact ---- */
+  .sponsors-master{gap:24px}
+  .sponsors-master .item img{height:36px}
+  .sponsors-grid{gap:20px 24px}
+  .sponsors-grid .item img{height:22px}
+}

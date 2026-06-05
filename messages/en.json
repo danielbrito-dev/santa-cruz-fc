@@ -32,6 +32,8 @@
   "drawer": {
     "home": "Home",
     "contact": "Contact",
+    "themeLabel": "Theme",
+    "langLabel": "Language",
     "sections": {
       "club": "Club",
       "football": "Football",

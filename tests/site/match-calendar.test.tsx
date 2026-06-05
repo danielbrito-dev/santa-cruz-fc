@@ -8,7 +8,6 @@ vi.mock('next-intl/server', () => ({
   getTranslations: async (ns: string) => {
     const messages: Record<string, Record<string, string>> = {
       calendar: { title: 'Calendário' },
-      common: { matchCenter: 'Match Center' },
     };
     const section = messages[ns] ?? {};
     return (key: string) => section[key] ?? key;

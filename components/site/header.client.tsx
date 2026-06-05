@@ -1,7 +1,9 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/lib/i18n/navigation';
+import { useLocale } from 'next-intl';
+import { usePathname, useRouter, Link } from '@/lib/i18n/navigation';
+import { routing } from '@/lib/i18n/routing';
 import { LocaleSwitcher } from './locale-switcher';
 import { ThemeToggle } from './theme-toggle';
 
@@ -13,6 +15,11 @@ export function HeaderClient() {
   const drawer = useTranslations('drawer');
   const common = useTranslations('common');
   const a11y = useTranslations('a11y');
+
+  // For drawer locale switcher on mobile
+  const locale = useLocale();
+  const pathname = usePathname();
+  const router = useRouter();
 
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
@@ -298,6 +305,32 @@ export function HeaderClient() {
             </a>
           </div>
         </nav>
+
+        {/* Drawer controls: theme toggle + language selector — shown on mobile only via CSS */}
+        <div className="drawer-controls">
+          <div className="drawer-controls-row">
+            <span className="drawer-controls-label">{drawer('themeLabel')}</span>
+            <ThemeToggle />
+          </div>
+          <div className="drawer-controls-row">
+            <span className="drawer-controls-label">{drawer('langLabel')}</span>
+            <div className="drawer-lang-btns">
+              {routing.locales.map((l) => (
+                <button
+                  key={l}
+                  className={`drawer-lang-btn${l === locale ? ' active' : ''}`}
+                  aria-current={l === locale ? 'true' : undefined}
+                  onClick={() => {
+                    router.replace(pathname, { locale: l });
+                    setTimeout(closeDrawer, 100);
+                  }}
+                >
+                  {l.toUpperCase()}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
 
         <div className="drawer-foot">
           <a
