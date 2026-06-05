@@ -44,6 +44,18 @@
     "signingIn": "Signing in…",
     "soon": "Sign-in will be connected soon."
   },
+  "admin": {
+    "title": "Admin",
+    "dashboard": "Dashboard",
+    "marketing": "Marketing",
+    "users": "Users",
+    "welcome": "Welcome to the admin area",
+    "welcomeSub": "Manage the site content.",
+    "logout": "Sign out",
+    "soon": "Coming soon: news, highlights and site content management.",
+    "soonUsers": "Coming soon: user and permission management.",
+    "loggedAs": "Signed in as"
+  },
   "drawer": {
     "home": "Home",
     "contact": "Contact",

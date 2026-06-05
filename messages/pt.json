@@ -44,6 +44,18 @@
     "signingIn": "Entrando…",
     "soon": "Login será conectado em breve."
   },
+  "admin": {
+    "title": "Administração",
+    "dashboard": "Painel",
+    "marketing": "Marketing",
+    "users": "Usuários",
+    "welcome": "Bem-vindo à administração",
+    "welcomeSub": "Gerencie o conteúdo do site.",
+    "logout": "Sair",
+    "soon": "Em breve: gestão de notícias, destaques e conteúdo do site.",
+    "soonUsers": "Em breve: gestão de usuários e permissões.",
+    "loggedAs": "Conectado como"
+  },
   "drawer": {
     "home": "Início",
     "contact": "Contato",

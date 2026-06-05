@@ -1775,3 +1775,597 @@ body{ background:var(--page-bg) }
   }
   .login-title{font-size:20px}
 }
+
+/* ===== admin ===== */
+
+/* ── Admin surface tokens ──────────────────────────────────────────
+   Sidebar is always darker than content to create depth.
+   Light: sidebar = near-black (#111) so escudo pill reads cleanly.
+   Dark:  sidebar = near-black (#0A0A0A) matching the page bg.
+   Content uses --page-bg / --panel tokens.
+   BRAND.md: --red never directly adjacent to #111 without white.
+   The active nav uses a white 2px sliver + 3px red left border.
+──────────────────────────────────────────────────────────────────── */
+:root {
+  --admin-sidebar-bg: #111111;
+  --admin-sidebar-text: rgba(255,255,255,.82);
+  --admin-sidebar-muted: rgba(255,255,255,.44);
+  --admin-sidebar-line: rgba(255,255,255,.10);
+  --admin-sidebar-hover-bg: rgba(255,255,255,.06);
+  --admin-sidebar-active-bg: rgba(255,255,255,.10);
+  --admin-topbar-bg: var(--panel);
+  --admin-topbar-border: var(--line);
+  --admin-content-bg: var(--bg-3);
+  --admin-sidebar-width: 240px;
+  --admin-topbar-height: 60px;
+}
+[data-theme="dark"] {
+  --admin-sidebar-bg: #0A0A0A;
+  --admin-sidebar-text: rgba(255,255,255,.80);
+  --admin-sidebar-muted: rgba(255,255,255,.38);
+  --admin-sidebar-line: rgba(255,255,255,.08);
+  --admin-sidebar-hover-bg: rgba(255,255,255,.05);
+  --admin-sidebar-active-bg: rgba(255,255,255,.08);
+  --admin-topbar-bg: #141414;
+  --admin-topbar-border: rgba(255,255,255,.10);
+  --admin-content-bg: #0E0E0E;
+}
+
+/* ── Shell layout ────────────────────────────────────────────────── */
+.admin-shell {
+  display: grid;
+  grid-template-columns: var(--admin-sidebar-width) 1fr;
+  grid-template-rows: 1fr;
+  min-height: 100vh;
+  background: var(--admin-content-bg);
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+  position: relative;
+}
+
+/* ── Sidebar ─────────────────────────────────────────────────────── */
+.admin-sidebar {
+  grid-column: 1;
+  grid-row: 1;
+  background: var(--admin-sidebar-bg);
+  color: var(--admin-sidebar-text);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+  /* Scrollbar invisible but functional */
+  scrollbar-width: none;
+  z-index: 50;
+}
+.admin-sidebar::-webkit-scrollbar { display: none }
+
+/* ── Brand row ───────────────────────────────────────────────────── */
+.admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 20px 18px;
+  border-bottom: 1px solid var(--admin-sidebar-line);
+  flex-shrink: 0;
+}
+
+/* White pill: ensures escudo (colorful version) never sits on dark sidebar directly.
+   BRAND.md §3: logo may appear on white or red — we use white.
+   Protective padding = X/4 = 50/4 ≈ 12px → 8px padding (inside the pill) is enough. */
+.admin-brand-crest {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  background: #FFFFFF;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  /* No shadow/glow — BRAND.md §3: escudo no effects */
+}
+.admin-brand-crest img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  display: block;
+  /* NO filter, NO shadow, NO transform */
+}
+
+.admin-brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+.admin-brand-club {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: #FFFFFF;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.admin-brand-section {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: var(--admin-sidebar-muted);
+  line-height: 1;
+}
+
+/* ── Nav ─────────────────────────────────────────────────────────── */
+.admin-nav {
+  flex: 1;
+  padding: 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.admin-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--admin-sidebar-text);
+  text-decoration: none;
+  border-radius: 0;
+  transition: background .15s ease, color .15s ease;
+  position: relative;
+  /* Left accent: 2px white separator gap + 3px red bar */
+  border-left: 5px solid transparent;
+}
+.admin-nav-link:hover {
+  background: var(--admin-sidebar-hover-bg);
+  color: #FFFFFF;
+}
+/* Active state: red left accent with white sliver (BRAND.md: red never touches dark bg) */
+.admin-nav-link.active {
+  background: var(--admin-sidebar-active-bg);
+  color: #FFFFFF;
+  font-weight: 700;
+  /* The 5px left border = 2px white + 3px red, encoded as a gradient on the border */
+  border-left-color: transparent;
+  /* Use box-shadow inset trick: white 2px + red 3px stacked left */
+  box-shadow:
+    inset 3px 0 0 0 var(--red),
+    inset 5px 0 0 0 #FFFFFF;
+}
+.admin-nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  opacity: .7;
+  transition: opacity .15s;
+}
+.admin-nav-link:hover .admin-nav-icon,
+.admin-nav-link.active .admin-nav-icon {
+  opacity: 1;
+}
+.admin-nav-label {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Sidebar footer ──────────────────────────────────────────────── */
+.admin-sidebar-foot {
+  padding: 14px 20px;
+  border-top: 1px solid var(--admin-sidebar-line);
+  flex-shrink: 0;
+}
+.admin-sidebar-ver {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--admin-sidebar-muted);
+}
+
+/* ── Main column ─────────────────────────────────────────────────── */
+.admin-main {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--admin-content-bg);
+}
+
+/* ── Topbar ──────────────────────────────────────────────────────── */
+.admin-topbar {
+  height: var(--admin-topbar-height);
+  background: var(--admin-topbar-bg);
+  border-bottom: 1px solid var(--admin-topbar-border);
+  display: flex;
+  align-items: center;
+  padding: 0 28px;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  flex-shrink: 0;
+}
+.admin-topbar-spacer { flex: 1 }
+.admin-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Hamburger — hidden desktop, visible mobile */
+.admin-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: background .15s;
+  flex-shrink: 0;
+}
+.admin-hamburger:hover { background: var(--bg-2) }
+.admin-hamburger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--ink);
+  border-radius: 1px;
+  transition: transform .2s, opacity .2s;
+}
+[data-theme="dark"] .admin-hamburger span { background: #FFFFFF }
+
+/* ── User info ───────────────────────────────────────────────────── */
+.admin-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.admin-user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--red);
+  color: #FFFFFF;
+  /* White ring: BRAND.md — red element on panel/dark surface needs white separation */
+  box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 3px var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+  flex-shrink: 0;
+  letter-spacing: 0;
+}
+.admin-user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.admin-user-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+}
+[data-theme="dark"] .admin-user-name { color: #FFFFFF }
+.admin-user-email {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.2;
+}
+
+/* ── Logout button ───────────────────────────────────────────────── */
+.admin-logout-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 6px;
+  border: 1.5px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  cursor: pointer;
+  transition: background .15s, border-color .15s, color .15s;
+  white-space: nowrap;
+}
+.admin-logout-btn:hover {
+  background: var(--bg-2);
+  border-color: var(--muted);
+}
+.admin-logout-btn:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 3px;
+}
+[data-theme="dark"] .admin-logout-btn {
+  color: rgba(255,255,255,.82);
+  border-color: rgba(255,255,255,.14);
+}
+[data-theme="dark"] .admin-logout-btn:hover {
+  background: rgba(255,255,255,.07);
+  border-color: rgba(255,255,255,.28);
+}
+
+/* ── Content area ────────────────────────────────────────────────── */
+.admin-content {
+  flex: 1;
+  padding: 32px 32px 48px;
+  background: var(--admin-content-bg);
+  color: var(--ink);
+}
+[data-theme="dark"] .admin-content { color: #FFFFFF }
+
+/* ── Page layout helpers ─────────────────────────────────────────── */
+.admin-page {
+  max-width: 900px;
+}
+.admin-page-head {
+  margin-bottom: 32px;
+}
+.admin-page-title {
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 900;
+  letter-spacing: -.02em;
+  text-transform: uppercase;
+  color: var(--ink);
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+[data-theme="dark"] .admin-page-title { color: #FFFFFF }
+.admin-page-sub {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.5;
+  max-width: 60ch;
+}
+
+/* ── Module cards grid ───────────────────────────────────────────── */
+.admin-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+.admin-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color .18s, box-shadow .18s, transform .18s;
+  /* Signature corner clip matching the match cards */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%);
+  /* Red top accent — separated by card's white/panel bg (BRAND.md) */
+  border-top: 3px solid var(--red);
+}
+.admin-card:hover {
+  border-color: var(--muted);
+  box-shadow: 0 6px 24px -8px rgba(0,0,0,.14);
+  transform: translateY(-2px);
+}
+[data-theme="dark"] .admin-card {
+  background: #1A1A1A;
+  border-color: rgba(255,255,255,.10);
+  color: #FFFFFF;
+}
+[data-theme="dark"] .admin-card:hover {
+  border-color: rgba(255,255,255,.22);
+  box-shadow: 0 6px 24px -8px rgba(0,0,0,.6);
+}
+
+.admin-card-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  background: var(--bg-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+[data-theme="dark"] .admin-card-icon {
+  background: rgba(255,255,255,.08);
+  color: rgba(255,255,255,.82);
+}
+
+.admin-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.admin-card-title {
+  font-size: 16px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  line-height: 1.1;
+}
+.admin-card-desc {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* "Em breve" badge — gold accent (BRAND.md: gold for special contexts) */
+.admin-card-badge {
+  align-self: flex-start;
+  display: inline-flex;
+  padding: 3px 9px;
+  background: rgba(201,184,150,.18);
+  color: #8C7A52;
+  border: 1px solid rgba(201,184,150,.45);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  border-radius: 3px;
+}
+[data-theme="dark"] .admin-card-badge {
+  background: rgba(201,184,150,.12);
+  color: var(--gold);
+  border-color: rgba(201,184,150,.25);
+}
+
+.admin-card-arrow {
+  position: absolute;
+  bottom: 22px;
+  right: 30px; /* account for clip-path diagonal */
+  color: var(--muted);
+  transition: transform .18s, color .18s;
+}
+.admin-card:hover .admin-card-arrow {
+  transform: translateX(4px);
+  color: var(--ink);
+}
+[data-theme="dark"] .admin-card:hover .admin-card-arrow { color: #FFFFFF }
+
+/* ── Placeholder pages ───────────────────────────────────────────── */
+.admin-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 64px 24px;
+  text-align: center;
+  color: var(--muted);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  max-width: 540px;
+}
+[data-theme="dark"] .admin-placeholder {
+  background: #1A1A1A;
+  border-color: rgba(255,255,255,.08);
+}
+.admin-placeholder-icon {
+  opacity: .35;
+}
+.admin-placeholder p {
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 40ch;
+}
+
+/* ── Mobile: sidebar collapses to drawer via checkbox toggle ─────── */
+/* Hidden checkbox powers the togglable sidebar with CSS only */
+.admin-sidebar-toggle-input {
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}
+
+/* Overlay (mobile only) */
+.admin-sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  z-index: 49;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  /* Shell: single column, sidebar hidden off-screen */
+  .admin-shell {
+    grid-template-columns: 1fr;
+  }
+  .admin-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: var(--admin-sidebar-width);
+    max-width: 85vw;
+    z-index: 60;
+    transform: translateX(-100%);
+    transition: transform .3s cubic-bezier(.4,0,.2,1);
+    height: 100dvh;
+  }
+  /* Show sidebar when checkbox is checked */
+  .admin-sidebar-toggle-input:checked ~ .admin-shell .admin-sidebar,
+  .admin-sidebar-toggle-input:checked + .admin-shell .admin-sidebar {
+    transform: translateX(0);
+  }
+  /* Overlay shown when open */
+  .admin-sidebar-overlay {
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s;
+  }
+  .admin-sidebar-toggle-input:checked ~ .admin-sidebar-overlay {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  /* Main takes full width */
+  .admin-main {
+    grid-column: 1;
+    width: 100%;
+  }
+  /* Show hamburger */
+  .admin-hamburger {
+    display: flex;
+  }
+  /* Topbar padding tighter on mobile */
+  .admin-topbar {
+    padding: 0 16px;
+  }
+  /* Content padding mobile */
+  .admin-content {
+    padding: 24px 16px 40px;
+  }
+  /* Hide user info details, keep just avatar */
+  .admin-user-info {
+    display: none;
+  }
+  /* Topbar right: tighter gap */
+  .admin-topbar-right {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Cards: single column */
+  .admin-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .admin-page-title {
+    font-size: 20px;
+  }
+  /* Logout: icon only on very small screens */
+  .admin-logout-btn span {
+    display: none;
+  }
+  .admin-logout-btn {
+    padding: 7px 10px;
+  }
+}
