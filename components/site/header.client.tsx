@@ -304,6 +304,18 @@ export function HeaderClient() {
               {drawer('contact')}
             </a>
           </div>
+
+          {/* Entrar (login) — gives mobile users a path to /entrar */}
+          <div className="drawer-item">
+            <Link
+              href="/entrar"
+              className="drawer-item-trigger"
+              style={{ display: 'flex' }}
+              onClick={handleDrawerLinkClick}
+            >
+              {nav('login')}
+            </Link>
+          </div>
         </nav>
 
         {/* Drawer controls: theme toggle + language selector — shown on mobile only via CSS */}

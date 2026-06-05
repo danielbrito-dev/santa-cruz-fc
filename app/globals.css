@@ -1725,6 +1725,12 @@ body{ background:var(--page-bg) }
 .login-submit-btn:active{
   transform:translateY(0);
 }
+/* keyboard focus indicators (a11y) — visible in both themes */
+.login-google-btn:focus-visible,
+.login-submit-btn:focus-visible{
+  outline:2px solid var(--red);
+  outline-offset:3px;
+}
 
 /* Stub "soon" notice */
 .login-soon-notice{
