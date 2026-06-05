@@ -395,15 +395,8 @@ ul{list-style:none}
 }
 /* Light-mode local scrim behind hero-card so ink text stays legible over the now-more-visible photo.
    Radial soft white glow expanding from card area — tasteful, not a heavy box. */
-.hero-card::before{
-  content:"";
-  position:absolute;
-  inset:-40px -60px;
-  background:radial-gradient(ellipse at 40% 60%, rgba(255,255,255,.62) 0%, rgba(255,255,255,.28) 55%, rgba(255,255,255,0) 100%);
-  pointer-events:none;
-  z-index:-1;
-}
-[data-theme="dark"] .hero-card::before{ display:none }
+/* (removed the radial scrim behind the hero-card — it read as a disconnected white box;
+   legibility comes from the hero-title text-shadow instead) */
 @keyframes heroIn{ to{ opacity:1; transform:translateY(0) } }
 @media (max-width:1100px){.hero-card{left:6%;bottom:60px;max-width:460px}}
 /* (heroIn definido inline acima — translateX -50% mantido) */
