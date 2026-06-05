@@ -154,7 +154,7 @@ export function ContentEditor({ initial }: ContentEditorProps) {
               ? t('contentInvalid')
               : res.error === 'unauthorized'
                 ? t('contentUnauthorized')
-                : res.error;
+                : t('contentError');
         setStatus({ kind: 'error', msg: errorKey });
       }
     });

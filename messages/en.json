@@ -81,7 +81,8 @@
     "contentSaved": "Content saved.",
     "contentReadonly": "In production, edits don't persist (read-only). Edit locally and deploy.",
     "contentInvalid": "Invalid content.",
-    "contentUnauthorized": "Session expired. Sign in again."
+    "contentUnauthorized": "Session expired. Sign in again.",
+    "contentError": "Error saving. Please try again."
   },
   "drawer": {
     "home": "Home",

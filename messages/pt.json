@@ -81,7 +81,8 @@
     "contentSaved": "Conteúdo salvo.",
     "contentReadonly": "Em produção a edição não persiste (ambiente read-only). Edite localmente e faça deploy.",
     "contentInvalid": "Conteúdo inválido.",
-    "contentUnauthorized": "Sessão expirada. Faça login novamente."
+    "contentUnauthorized": "Sessão expirada. Faça login novamente.",
+    "contentError": "Erro ao salvar. Tente novamente."
   },
   "drawer": {
     "home": "Início",
