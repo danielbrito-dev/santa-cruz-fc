@@ -1,5 +1,5 @@
 'use client';
-import { useTransition, useState } from 'react';
+import { useTransition, useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { saveContent } from '@/server/content/actions';
 import type { SiteContent, LocalizedText, CardItem } from '@/server/content/types';
@@ -56,6 +56,8 @@ interface PreviewImageProps {
 
 function PreviewImage({ src, alt, className }: PreviewImageProps) {
   const [errored, setErrored] = useState(false);
+  // reset the error when the path changes, so fixing a typo recovers the image
+  useEffect(() => setErrored(false), [src]);
 
   if (!src || errored) {
     return (
@@ -92,6 +94,7 @@ function HeroPreview({ hero, lang }: HeroPreviewProps) {
   const titleLine1 = hero.titleLine1[lang] || '';
   const titleLine2 = hero.titleLine2[lang] || '';
   const ctaLabel = hero.ctaLabel[lang] || '';
+  const tagline = hero.tagline[lang] || '';
 
   return (
     <div className="ce-preview ce-preview--hero" aria-label="Pré-visualização do hero">
@@ -112,6 +115,7 @@ function HeroPreview({ hero, lang }: HeroPreviewProps) {
           ) : (
             <p className="ce-preview-placeholder-text">Título do hero</p>
           )}
+          {tagline && <p className="ce-preview-hero-tagline">{tagline}</p>}
           {ctaLabel && (
             <span className="ce-preview-hero-cta">
               {ctaLabel}

@@ -2983,6 +2983,14 @@ textarea.admin-input {
 .ce-preview-ht-l2 {
   padding-left: 1.8em;
 }
+.ce-preview-hero-tagline {
+  margin: 6px 0 0;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-2);
+  max-width: 90%;
+}
+[data-theme="dark"] .ce-preview-hero-tagline { color: rgba(255,255,255,.8); }
 
 .ce-preview-hero-cta {
   display: inline-flex;
@@ -3198,6 +3206,8 @@ textarea.admin-input {
   /* White ring buffer: the card border is the panel bg (white/near-white) — so red never touches
      a dark edge directly. The border-radius clip ensures the red strip stays inside the border. */
 }
+/* match the live dark footer (deep tricolor red) so the preview is accurate in dark mode */
+[data-theme="dark"] .ce-preview-footer-chant { background: #5C0000; }
 
 .ce-preview-footer-chant-text {
   font-size: 14px;
@@ -3217,7 +3227,6 @@ textarea.admin-input {
   /* 1px white stroke around the black text acts as the mandatory white separation */
   -webkit-text-stroke: 3px #FFFFFF;
   paint-order: stroke fill;
-  text-stroke: 3px #FFFFFF;
 }
 
 /* Brand blurb below the chant strip, on a neutral surface */
