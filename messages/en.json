@@ -19,7 +19,8 @@
     "closeMenu": "Close menu",
     "heroBackdrop": "Santa Cruz crowd at Arruda",
     "appStore": "Download on the App Store",
-    "googlePlay": "Get it on Google Play"
+    "googlePlay": "Get it on Google Play",
+    "toggleTheme": "Toggle theme"
   },
   "footer": {
     "since": "Since",

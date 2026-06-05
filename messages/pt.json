@@ -19,7 +19,8 @@
     "closeMenu": "Fechar menu",
     "heroBackdrop": "Torcida do Santa Cruz no Arruda",
     "appStore": "Baixar na App Store",
-    "googlePlay": "Baixar no Google Play"
+    "googlePlay": "Baixar no Google Play",
+    "toggleTheme": "Alternar tema"
   },
   "footer": {
     "since": "Desde",
