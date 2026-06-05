@@ -13,6 +13,7 @@ export function ThemeToggle() {
   }, []);
 
   function toggle() {
+    if (theme === null) return; // ignore clicks before the mount effect resolves the theme
     const next: Theme = theme === 'dark' ? 'light' : 'dark';
     document.documentElement.dataset.theme = next;
     try { localStorage.setItem(THEME_STORAGE_KEY, next); } catch {}
@@ -26,7 +27,7 @@ export function ThemeToggle() {
       className="theme-toggle"
       onClick={toggle}
       aria-label={t('toggleTheme')}
-      aria-pressed={isDark}
+      aria-pressed={theme === null ? undefined : isDark}
       title={t('toggleTheme')}
     >
       {theme === null ? (
