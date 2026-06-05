@@ -1490,3 +1490,282 @@ body{ background:var(--page-bg) }
   .sponsors-grid{gap:20px 24px}
   .sponsors-grid .item img{height:22px}
 }
+
+/* ===== login / entrar ===== */
+
+/* Page wrapper: full-height centered, brand backdrop */
+.login-page{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:32px 16px;
+  /* Light: very subtle warm-neutral — not the site's red page-bg, keeps the card focal */
+  background:#F4F4F4;
+  position:relative;
+}
+[data-theme="dark"] .login-page{
+  background:#0A0A0A;
+}
+
+/* Decorative accent: a thin red bar at very top of viewport */
+.login-accent-strip{
+  position:fixed;
+  top:0;left:0;right:0;
+  height:3px;
+  background:var(--red);
+  z-index:1;
+}
+
+/* Card */
+.login-card{
+  background:var(--panel);
+  color:var(--panel-text);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:40px 40px 36px;
+  width:100%;
+  max-width:420px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0;
+  /* Subtle shadow for depth */
+  box-shadow:0 4px 40px -8px rgba(0,0,0,.12), 0 1px 4px rgba(0,0,0,.06);
+  /* Red top accent border — signature brand touch, white card never touches red directly:
+     the card bg (white/dark panel) naturally acts as separator */
+  border-top:3px solid var(--red);
+  position:relative;
+  z-index:2;
+}
+[data-theme="dark"] .login-card{
+  box-shadow:0 4px 40px -8px rgba(0,0,0,.7), 0 1px 4px rgba(0,0,0,.4);
+}
+
+/* Escudo — BRAND.md §3: ≥50px, no effects (no shadow/blur/gradient) */
+.login-crest-wrap{
+  margin-bottom:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  /* Protective margin = X/4 on all sides where X = 72px → 18px */
+  padding:4px;
+}
+.login-crest{
+  width:72px;
+  height:72px;
+  object-fit:contain;
+  display:block;
+  /* Explicitly: no filter, no box-shadow, no transform */
+}
+
+/* Heading group */
+.login-hgroup{
+  text-align:center;
+  margin-bottom:28px;
+}
+.login-title{
+  font-size:22px;
+  font-weight:800;
+  letter-spacing:-.02em;
+  color:var(--panel-text);
+  margin-bottom:4px;
+  line-height:1.1;
+}
+.login-subtitle{
+  font-size:13px;
+  font-weight:400;
+  color:var(--muted);
+  letter-spacing:.01em;
+}
+
+/* Form root */
+.login-form-root{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+}
+
+/* Google button — neutral outline (NOT red), readable in both themes */
+.login-google-btn{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:11px 16px;
+  border-radius:8px;
+  border:1.5px solid var(--line);
+  background:var(--panel);
+  color:var(--panel-text);
+  font-family:inherit;
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:.01em;
+  cursor:pointer;
+  transition:background .18s ease, border-color .18s ease;
+  margin-bottom:20px;
+}
+.login-google-btn:hover{
+  background:var(--bg-2);
+  border-color:var(--muted);
+}
+[data-theme="dark"] .login-google-btn:hover{
+  background:#1E1E1E;
+}
+.login-google-icon{
+  flex-shrink:0;
+}
+
+/* Divider */
+.login-divider{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:20px;
+}
+.login-divider-line{
+  flex:1;
+  height:1px;
+  background:var(--line);
+}
+.login-divider-text{
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  color:var(--muted);
+  white-space:nowrap;
+}
+
+/* Fields form */
+.login-fields-form{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  margin-bottom:0;
+}
+
+/* Field group */
+.login-field{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+.login-label{
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  color:var(--panel-text);
+  opacity:.75;
+}
+.login-input{
+  font-family:inherit;
+  font-size:15px;
+  font-weight:400;
+  color:var(--panel-text);
+  background:var(--bg-3);
+  border:1.5px solid var(--line);
+  border-radius:7px;
+  padding:10px 13px;
+  width:100%;
+  transition:border-color .18s ease, box-shadow .18s ease;
+  outline:none;
+}
+[data-theme="dark"] .login-input{
+  background:#1A1A1A;
+}
+.login-input:focus{
+  border-color:var(--red);
+  box-shadow:0 0 0 3px rgba(221,0,0,.12);
+}
+.login-input--error{
+  border-color:var(--red);
+}
+.login-input--error:focus{
+  box-shadow:0 0 0 3px rgba(221,0,0,.16);
+}
+
+/* Field error text — red text on panel bg is legible (BRAND.md: red on white/dark panel as text is OK) */
+.login-field-error{
+  font-size:12px;
+  font-weight:600;
+  color:var(--red);
+  letter-spacing:.01em;
+}
+
+/* Submit button — RED with white ring (BRAND.md: btn-pill pattern) */
+.login-submit-btn{
+  margin-top:8px;
+  width:100%;
+  padding:12px 16px;
+  border-radius:8px;
+  font-family:inherit;
+  font-size:14px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  background:var(--red);
+  color:var(--white);
+  /* White ring separates red from any surrounding element — BRAND.md rule */
+  box-shadow:0 0 0 1.5px var(--white);
+  border:none;
+  cursor:pointer;
+  transition:background .18s ease, transform .18s ease, box-shadow .18s ease;
+}
+.login-submit-btn:hover{
+  background:#B80000;
+  transform:translateY(-1px);
+  box-shadow:0 0 0 1.5px var(--white), 0 6px 20px -6px rgba(221,0,0,.55);
+}
+.login-submit-btn:active{
+  transform:translateY(0);
+}
+
+/* Stub "soon" notice */
+.login-soon-notice{
+  margin-top:16px;
+  padding:12px 14px;
+  border-radius:7px;
+  border:1.5px solid var(--gold);
+  background:rgba(201,184,150,.10);
+  color:var(--panel-text);
+  font-size:13px;
+  font-weight:600;
+  text-align:center;
+  letter-spacing:.01em;
+}
+[data-theme="dark"] .login-soon-notice{
+  background:rgba(201,184,150,.08);
+}
+
+/* Back to site link */
+.login-back-link{
+  display:inline-block;
+  margin-top:24px;
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  color:var(--muted);
+  text-decoration:none;
+  transition:color .18s ease;
+}
+.login-back-link:hover{
+  color:var(--panel-text);
+}
+
+/* Responsive: mobile — card nearly full-width with comfortable padding */
+@media (max-width:480px){
+  .login-card{
+    padding:32px 24px 28px;
+    border-radius:10px;
+    /* Extend card to almost full width on small screens */
+    max-width:100%;
+  }
+  .login-title{font-size:20px}
+}

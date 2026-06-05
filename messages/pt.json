@@ -29,6 +29,19 @@
     "appStorePrefix": "Baixe na",
     "googlePlayPrefix": "Disponível"
   },
+  "auth": {
+    "title": "Entrar",
+    "subtitle": "Acesse a área administrativa",
+    "google": "Continuar com Google",
+    "or": "ou",
+    "email": "E-mail",
+    "password": "Senha",
+    "submit": "Entrar",
+    "backToSite": "Voltar ao site",
+    "errRequired": "Campo obrigatório",
+    "errEmail": "E-mail inválido",
+    "soon": "Login será conectado em breve."
+  },
   "drawer": {
     "home": "Início",
     "contact": "Contato",
