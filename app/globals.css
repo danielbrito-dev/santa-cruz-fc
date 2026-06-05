@@ -1065,8 +1065,10 @@ body{ background:var(--page-bg) }
 [data-theme="dark"] .carousel-wrap::before{ background:linear-gradient(90deg, rgba(27,27,27,.9), transparent) }
 [data-theme="dark"] .carousel-wrap::after{ background:linear-gradient(270deg, rgba(27,27,27,.9), transparent) }
 [data-theme="dark"] .drawer-close{ color:var(--white) }
-[data-theme="dark"] .drawer-item-trigger:hover{ background:var(--bg-2) }
-[data-theme="dark"] .drawer-sub a:hover{ background:var(--bg-2) }
+/* red accent text/links would touch near-black panels in dark — use gold (BRAND.md: no red on black; navy is too dark to read on near-black) */
+[data-theme="dark"] .drawer-item-trigger:hover{ background:var(--bg-2); color:var(--gold) }
+[data-theme="dark"] .drawer-sub a:hover{ background:var(--bg-2); color:var(--gold) }
+[data-theme="dark"] .cookie-banner a{ color:var(--gold) }
 [data-theme="dark"] .social-strip a{ color:var(--white) }
 
 /* ===== BRAND.md: red must not touch near-black without white between (dark theme) ===== */
