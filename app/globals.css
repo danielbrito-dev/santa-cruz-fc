@@ -2609,9 +2609,10 @@ textarea.admin-input {
 /* Language toggle: PT | EN pill buttons */
 .ce-lang-toggle {
   display: inline-flex;
+  gap: 2px;
+  padding: 2px;
   border: 1.5px solid var(--line);
-  border-radius: 4px;
-  overflow: hidden;
+  border-radius: 6px;
   flex-shrink: 0;
 }
 [data-theme="dark"] .ce-lang-toggle {
@@ -2628,18 +2629,18 @@ textarea.admin-input {
   color: var(--muted);
   background: transparent;
   border: none;
+  border-radius: 4px;
   cursor: pointer;
   transition: background .13s, color .13s;
   line-height: 1;
 }
 .ce-lang-btn:hover { background: var(--bg-2); color: var(--ink) }
 [data-theme="dark"] .ce-lang-btn:hover { background: rgba(255,255,255,.06); color: #FFFFFF }
-/* Active lang: red fill + white ring (BRAND.md: red never touches adjacent surfaces without white) */
+/* Active lang: red pill with a full white ring so red never touches the dark track/sibling (BRAND.md) */
 .ce-lang-btn.active {
   background: var(--red);
   color: #FFFFFF;
-  /* Tiny inner white ring separates the red from the toggle's border */
-  box-shadow: inset 0 0 0 1px #FFFFFF;
+  box-shadow: 0 0 0 1.5px #FFFFFF;
 }
 .ce-lang-btn:focus-visible {
   outline: 2px solid var(--red);
