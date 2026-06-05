@@ -32,8 +32,9 @@ vi.mock('next-intl/server', () => ({
 import { NewsSection } from '@/components/site/news-section';
 
 const content: any = { news: [
-  { id:'f', slug:'f', featured:true, position:0, tag:{pt:'Destaque',en:'Featured'}, title:{pt:'Arruda lotado',en:'Packed Arruda'}, excerpt:{pt:'',en:''}, coverImage:'/images/estadio.jpg', photoCount:0, publishedAt:'2026-05-27T14:20:00' },
-  { id:'a', slug:'a', featured:false, position:1, tag:{pt:'Futebol',en:'Football'}, title:{pt:'Patrick renova',en:'Patrick renews'}, excerpt:{pt:'',en:''}, coverImage:'/images/patrick.jpg', photoCount:24, publishedAt:'2026-05-27T00:00:00' },
+  { id:'f', slug:'f', featured:true, position:0, status:'published', tag:{pt:'Destaque',en:'Featured'}, title:{pt:'Arruda lotado',en:'Packed Arruda'}, excerpt:{pt:'',en:''}, body:{pt:'',en:''}, coverImage:'/images/estadio.jpg', photoCount:0, publishedAt:'2026-05-27T14:20:00' },
+  { id:'a', slug:'a', featured:false, position:1, status:'published', tag:{pt:'Futebol',en:'Football'}, title:{pt:'Patrick renova',en:'Patrick renews'}, excerpt:{pt:'',en:''}, body:{pt:'',en:''}, coverImage:'/images/patrick.jpg', photoCount:24, publishedAt:'2026-05-27T00:00:00' },
+  { id:'d', slug:'d', featured:false, position:2, status:'draft', tag:{pt:'Rascunho',en:'Draft'}, title:{pt:'Rascunho oculto',en:'Hidden draft'}, excerpt:{pt:'',en:''}, body:{pt:'',en:''}, coverImage:'/images/draft.jpg', photoCount:0, publishedAt:'2026-05-27T00:00:00' },
 ]};
 
 describe('NewsSection', () => {
@@ -43,5 +44,11 @@ describe('NewsSection', () => {
     expect(screen.getByText('Arruda lotado')).toBeInTheDocument();
     expect(screen.getByText('Patrick renova')).toBeInTheDocument();
     expect(screen.getByText(/24 fotos/)).toBeInTheDocument();
+  });
+
+  it('does not render draft items', async () => {
+    const ui = await NewsSection({ content, locale: 'pt' } as any);
+    render(<NextIntlClientProvider locale="pt" messages={pt}>{ui}</NextIntlClientProvider>);
+    expect(screen.queryByText('Rascunho oculto')).not.toBeInTheDocument();
   });
 });

@@ -11,8 +11,9 @@ export interface MatchItem {
 }
 export interface NewsItem {
   id: string; slug: string; tag: LocalizedText; title: LocalizedText;
-  excerpt: LocalizedText; coverImage: string; photoCount: number;
+  excerpt: LocalizedText; body: LocalizedText; coverImage: string; photoCount: number;
   publishedAt: string; featured: boolean; position: number;
+  status: 'draft' | 'published';
 }
 export interface CardItem {
   id: string; eyebrow: LocalizedText; title: LocalizedText; image: string;

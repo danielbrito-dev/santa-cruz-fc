@@ -63,11 +63,13 @@ const minimalContent: SiteContent = {
       tag: { pt: 'Destaque', en: 'Featured' },
       title: { pt: 'Notícia teste', en: 'Test news' },
       excerpt: { pt: '', en: '' },
+      body: { pt: '', en: '' },
       coverImage: '/images/test.jpg',
       photoCount: 0,
       publishedAt: '2026-05-01T00:00:00',
       featured: true,
       position: 0,
+      status: 'published' as const,
     },
   ],
   banners: [

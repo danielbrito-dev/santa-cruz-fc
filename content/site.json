@@ -112,11 +112,13 @@
       "tag": { "pt": "Destaque", "en": "Featured" },
       "title": { "pt": "Arruda lotado: 32 mil ingressos vendidos para o clássico do Pernambucano", "en": "Packed Arruda: 32,000 tickets sold for the Pernambucano derby" },
       "excerpt": { "pt": "", "en": "" },
+      "body": { "pt": "", "en": "" },
       "coverImage": "/images/estadio_arruda_em_2020_700_5.jpg",
       "photoCount": 0,
       "publishedAt": "2026-05-27T14:20:00",
       "featured": true,
-      "position": 0
+      "position": 0,
+      "status": "published"
     },
     {
       "id": "patrick-allan-renova-contrato",
@@ -124,11 +126,13 @@
       "tag": { "pt": "Futebol Masculino", "en": "Men's Football" },
       "title": { "pt": "Patrick Allan renova contrato com o Tricolor até 2027", "en": "Patrick Allan extends contract with Tricolor until 2027" },
       "excerpt": { "pt": "", "en": "" },
+      "body": { "pt": "", "en": "" },
       "coverImage": "/images/patrick_allan.jpg",
       "photoCount": 24,
       "publishedAt": "2026-05-27T00:00:00",
       "featured": false,
-      "position": 1
+      "position": 1,
+      "status": "published"
     },
     {
       "id": "willian-jr-eleito-craque-do-mes",
@@ -136,11 +140,13 @@
       "tag": { "pt": "Eleição", "en": "Fan Vote" },
       "title": { "pt": "Willian Jr é eleito craque do mês pela torcida tricolor", "en": "Willian Jr voted player of the month by tricolor fans" },
       "excerpt": { "pt": "", "en": "" },
+      "body": { "pt": "", "en": "" },
       "coverImage": "/images/willian_Jr_10.jpg",
       "photoCount": 12,
       "publishedAt": "2026-05-27T00:00:00",
       "featured": false,
-      "position": 2
+      "position": 2,
+      "status": "published"
     },
     {
       "id": "vitinho-marca-dois-santa-vence-nautico",
@@ -148,11 +154,13 @@
       "tag": { "pt": "Pernambucano", "en": "Pernambucano" },
       "title": { "pt": "Vitinho marca dois e Santa vence o Náutico no Arruda", "en": "Vitinho scores twice as Santa beats Náutico at Arruda" },
       "excerpt": { "pt": "", "en": "" },
+      "body": { "pt": "", "en": "" },
       "coverImage": "/images/vitinho_19.jpg",
       "photoCount": 36,
       "publishedAt": "2026-05-27T00:00:00",
       "featured": false,
-      "position": 3
+      "position": 3,
+      "status": "published"
     },
     {
       "id": "rockenedy-invencibilidade-arruda",
@@ -160,11 +168,13 @@
       "tag": { "pt": "Goleiro", "en": "Goalkeeper" },
       "title": { "pt": "Rockenedy mantém invencibilidade no Arruda há 9 jogos", "en": "Rockenedy keeps Arruda unbeaten run to 9 games" },
       "excerpt": { "pt": "", "en": "" },
+      "body": { "pt": "", "en": "" },
       "coverImage": "/images/rockenedy_goleiro.jpg",
       "photoCount": 16,
       "publishedAt": "2026-05-27T00:00:00",
       "featured": false,
-      "position": 4
+      "position": 4,
+      "status": "published"
     },
     {
       "id": "sub-20-semifinais-pernambucano",
@@ -172,11 +182,13 @@
       "tag": { "pt": "Base", "en": "Youth" },
       "title": { "pt": "Sub-20 garante vaga nas semifinais do Pernambucano", "en": "U-20 secures semifinal spot in the Pernambucano" },
       "excerpt": { "pt": "", "en": "" },
+      "body": { "pt": "", "en": "" },
       "coverImage": "/images/torcida_santa_cruz_mosaico.jpg",
       "photoCount": 14,
       "publishedAt": "2026-05-27T00:00:00",
       "featured": false,
-      "position": 5
+      "position": 5,
+      "status": "published"
     }
   ],
   "banners": [

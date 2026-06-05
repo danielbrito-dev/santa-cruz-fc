@@ -7,8 +7,9 @@ export async function NewsSection({ content, locale }: SectionProps) {
   const tCommon = await getTranslations('common');
   const format = await getFormatter();
 
-  const featured = content.news.find((n) => n.featured);
-  const grid = content.news
+  const published = content.news.filter((n) => n.status === 'published');
+  const featured = published.find((n) => n.featured);
+  const grid = published
     .filter((n) => !n.featured)
     .sort((a, b) => a.position - b.position);
 
