@@ -2118,7 +2118,7 @@ body{ background:var(--page-bg) }
 
 /* ── Page layout helpers ─────────────────────────────────────────── */
 .admin-page {
-  max-width: 900px;
+  max-width: 1400px;
 }
 .admin-page-head {
   margin-bottom: 32px;
@@ -2288,6 +2288,17 @@ body{ background:var(--page-bg) }
   background: rgba(255,255,255,.05);
   color: rgba(255,255,255,.38);
   border-color: rgba(255,255,255,.08);
+}
+/* Archived — neutral gray, visually distinct from draft (slightly darker border, italic-like tone) */
+.admin-badge--archived {
+  background: rgba(110,110,110,.10);
+  color: #5A5A5A;
+  border-color: rgba(110,110,110,.28);
+}
+[data-theme="dark"] .admin-badge--archived {
+  background: rgba(255,255,255,.07);
+  color: rgba(255,255,255,.45);
+  border-color: rgba(255,255,255,.16);
 }
 
 /* ── Module cards grid ───────────────────────────────────────────── */
@@ -3271,7 +3282,7 @@ textarea.admin-input {
 
 /* ── Page-level overrides for wider news pages ─────────────────────────── */
 .admin-page--wide {
-  max-width: 1100px;
+  max-width: 1400px;
 }
 
 /* ── Page header row: title + action ────────────────────────────────────── */
@@ -3322,7 +3333,7 @@ textarea.admin-input {
 /* Column header row */
 .admin-news-list-head {
   display: grid;
-  grid-template-columns: 1fr 120px 110px 110px 148px;
+  grid-template-columns: 1fr 120px 110px 90px 224px;
   gap: 12px;
   align-items: center;
   padding: 10px 20px;
@@ -3340,7 +3351,7 @@ textarea.admin-input {
 /* Each news row */
 .admin-news-row {
   display: grid;
-  grid-template-columns: 1fr 120px 110px 110px 148px;
+  grid-template-columns: 1fr 120px 110px 90px 224px;
   gap: 12px;
   align-items: center;
   padding: 14px 20px;
@@ -3484,6 +3495,26 @@ textarea.admin-input {
   border-color: rgba(255,68,68,.40);
 }
 
+/* Archive ghost variant — muted gray, neutral tone */
+.admin-btn--archive {
+  color: var(--muted);
+  border-color: rgba(110,110,110,.22);
+}
+.admin-btn--archive:hover:not(:disabled) {
+  background: rgba(110,110,110,.06);
+  border-color: rgba(110,110,110,.42);
+  color: var(--ink);
+}
+[data-theme="dark"] .admin-btn--archive {
+  color: rgba(255,255,255,.50);
+  border-color: rgba(255,255,255,.14);
+}
+[data-theme="dark"] .admin-btn--archive:hover:not(:disabled) {
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.28);
+  color: rgba(255,255,255,.82);
+}
+
 /* ── NewsForm ─────────────────────────────────────────────────────────────── */
 
 .admin-news-form-header {
@@ -3600,6 +3631,16 @@ textarea.admin-input {
   color: #FFFFFF;
   box-shadow: 0 0 0 1.5px #FFFFFF;
 }
+/* Archived active: muted gray tone — clearly distinct from published and draft */
+.admin-news-status-opt.active.active--archived {
+  background: rgba(110,110,110,.14);
+  color: #4A4A4A;
+  box-shadow: 0 1px 4px -1px rgba(0,0,0,.08);
+}
+[data-theme="dark"] .admin-news-status-opt.active.active--archived {
+  background: rgba(255,255,255,.10);
+  color: rgba(255,255,255,.65);
+}
 .admin-news-status-opt:focus-visible {
   outline: 2px solid var(--red);
   outline-offset: 2px;
@@ -3662,7 +3703,7 @@ textarea.admin-input {
 /* News list: collapse columns on tablet */
 @media (max-width: 900px) {
   .admin-news-list-head {
-    grid-template-columns: 1fr 90px 100px;
+    grid-template-columns: 1fr 110px 224px;
     /* hide tag + date on tablet */
   }
   .admin-news-list-head span:nth-child(2),
@@ -3670,7 +3711,7 @@ textarea.admin-input {
     display: none;
   }
   .admin-news-row {
-    grid-template-columns: 1fr 90px 100px;
+    grid-template-columns: 1fr 110px 224px;
   }
   .admin-news-row-tag,
   .admin-news-row-date {

@@ -172,7 +172,7 @@ export function NewsForm({ locale: _locale, initial }: NewsFormProps) {
     setInput((prev) => ({ ...prev, photoCount: isNaN(n) ? 0 : Math.max(0, n) }));
   }
 
-  function setStatus_field(value: 'draft' | 'published') {
+  function setStatus_field(value: 'draft' | 'published' | 'archived') {
     setInput((prev) => ({ ...prev, status: value }));
   }
 
@@ -397,6 +397,14 @@ export function NewsForm({ locale: _locale, initial }: NewsFormProps) {
                   aria-pressed={input.status === 'published'}
                 >
                   {t('statusPublished')}
+                </button>
+                <button
+                  type="button"
+                  className={`admin-news-status-opt${input.status === 'archived' ? ' active active--archived' : ''}`}
+                  onClick={() => setStatus_field('archived')}
+                  aria-pressed={input.status === 'archived'}
+                >
+                  {t('statusArchived')}
                 </button>
               </div>
             </div>

@@ -13,7 +13,7 @@ export interface NewsItem {
   id: string; slug: string; tag: LocalizedText; title: LocalizedText;
   excerpt: LocalizedText; body: LocalizedText; coverImage: string; photoCount: number;
   publishedAt: string; featured: boolean; position: number;
-  status: 'draft' | 'published';
+  status: 'draft' | 'published' | 'archived';
 }
 export interface CardItem {
   id: string; eyebrow: LocalizedText; title: LocalizedText; image: string;

@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { Link } from '@/lib/i18n/navigation';
 import type { NewsItem } from '@/server/content/types';
 import { DeleteNewsButton } from './delete-news-button';
+import { ArchiveNewsButton } from './archive-news-button';
 
 interface NewsListProps {
   items: NewsItem[];
@@ -12,16 +13,15 @@ function resolveLocalized(text: Record<string, string>, locale: string): string 
   return text[locale] ?? text['pt'] ?? Object.values(text)[0] ?? '';
 }
 
-function formatDate(dateStr: string, locale: string): string {
+function formatDate(dateStr: string): string {
   if (!dateStr) return '—';
   try {
     const d = new Date(dateStr);
     if (isNaN(d.getTime())) return dateStr;
-    return d.toLocaleDateString(locale === 'en' ? 'en-GB' : 'pt-BR', {
-      day: '2-digit',
-      month: 'short',
-      year: 'numeric',
-    });
+    const dd = String(d.getUTCDate()).padStart(2, '0');
+    const mm = String(d.getUTCMonth() + 1).padStart(2, '0');
+    const yyyy = d.getUTCFullYear();
+    return `${dd}/${mm}/${yyyy}`;
   } catch {
     return dateStr;
   }
@@ -66,6 +66,18 @@ export async function NewsList({ items, locale }: NewsListProps) {
         const title = resolveLocalized(item.title, locale);
         const tag = resolveLocalized(item.tag, locale);
         const isPublished = item.status === 'published';
+        const isArchived = item.status === 'archived';
+
+        const badgeClass = isPublished
+          ? 'admin-badge--published'
+          : isArchived
+            ? 'admin-badge--archived'
+            : 'admin-badge--draft';
+        const badgeLabel = isPublished
+          ? t('statusPublished')
+          : isArchived
+            ? t('statusArchived')
+            : t('statusDraft');
 
         return (
           <div key={item.id} className="admin-news-row">
@@ -108,16 +120,12 @@ export async function NewsList({ items, locale }: NewsListProps) {
 
             {/* Status badge */}
             <div className="admin-news-row-status">
-              <span
-                className={`admin-badge ${isPublished ? 'admin-badge--published' : 'admin-badge--draft'}`}
-              >
-                {isPublished ? t('statusPublished') : t('statusDraft')}
-              </span>
+              <span className={`admin-badge ${badgeClass}`}>{badgeLabel}</span>
             </div>
 
             {/* Date */}
             <div className="admin-news-row-date">
-              <span>{formatDate(item.publishedAt, locale)}</span>
+              <span>{formatDate(item.publishedAt)}</span>
             </div>
 
             {/* Actions */}
@@ -128,6 +136,12 @@ export async function NewsList({ items, locale }: NewsListProps) {
               >
                 {t('newsEdit')}
               </Link>
+              <ArchiveNewsButton
+                id={item.id}
+                isArchived={isArchived}
+                labelArchive={t('archive')}
+                labelRestore={t('restore')}
+              />
               <DeleteNewsButton id={item.id} label={t('delete')} confirmMsg={t('deleteConfirm')} />
             </div>
           </div>

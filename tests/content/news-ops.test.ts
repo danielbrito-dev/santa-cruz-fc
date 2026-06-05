@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { applyCreate, applyUpdate, applyDelete } from '@/server/content/news-ops';
+import { applyCreate, applyUpdate, applyDelete, applyStatus } from '@/server/content/news-ops';
 import type { NewsInput } from '@/server/content/news-ops';
 import { SiteContentSchema } from '@/server/content/schema';
 import type { SiteContent } from '@/server/content/types';
@@ -196,5 +196,45 @@ describe('applyDelete', () => {
   it('no-op for unknown id (returns content with all items)', () => {
     const result = applyDelete(baseContent, 'does-not-exist');
     expect(result.news).toHaveLength(2);
+  });
+});
+
+describe('applyStatus', () => {
+  it('sets status to archived for the matching item', () => {
+    const result = applyStatus(baseContent, 'existing-1', 'archived');
+    const item = result.news.find((n) => n.id === 'existing-1');
+    expect(item!.status).toBe('archived');
+  });
+
+  it('sets status to draft (restore) for the matching item', () => {
+    const withArchived = applyStatus(baseContent, 'existing-1', 'archived');
+    const restored = applyStatus(withArchived, 'existing-1', 'draft');
+    const item = restored.news.find((n) => n.id === 'existing-1');
+    expect(item!.status).toBe('draft');
+  });
+
+  it('does not change other items', () => {
+    const result = applyStatus(baseContent, 'existing-1', 'archived');
+    const other = result.news.find((n) => n.id === 'existing-2');
+    expect(other!.status).toBe(baseContent.news[1].status);
+  });
+
+  it('preserves all other fields on the item', () => {
+    const result = applyStatus(baseContent, 'existing-1', 'archived');
+    const item = result.news.find((n) => n.id === 'existing-1');
+    expect(item!.slug).toBe(baseContent.news[0].slug);
+    expect(item!.title).toStrictEqual(baseContent.news[0].title);
+    expect(item!.position).toBe(baseContent.news[0].position);
+  });
+
+  it('does not touch other content blocks', () => {
+    const result = applyStatus(baseContent, 'existing-1', 'archived');
+    expect(result.sponsors).toStrictEqual(baseContent.sponsors);
+    expect(result.matches).toStrictEqual(baseContent.matches);
+  });
+
+  it('result passes SiteContentSchema validation', () => {
+    const result = applyStatus(baseContent, 'existing-1', 'archived');
+    expect(() => SiteContentSchema.parse(result)).not.toThrow();
   });
 });

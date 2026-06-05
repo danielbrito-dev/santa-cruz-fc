@@ -13,7 +13,7 @@ const news = z.object({
   id: z.string(), slug: z.string(), tag: localized, title: localized, excerpt: localized,
   body: localized, coverImage: z.string(), photoCount: z.number(), publishedAt: z.string(),
   featured: z.boolean(), position: z.number(),
-  status: z.enum(['draft', 'published']),
+  status: z.enum(['draft', 'published', 'archived']),
 });
 const card = z.object({
   id: z.string(), eyebrow: localized, title: localized, image: z.string(),

@@ -186,6 +186,35 @@ describe('NewsForm', () => {
     expect(lastCreateArg!.status).toBe('published');
   });
 
+  it('renders all three status segments: Rascunho, Publicado, Arquivado', () => {
+    renderForm();
+    expect(screen.getByRole('button', { name: /rascunho/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /publicado/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /arquivado/i })).toBeInTheDocument();
+  });
+
+  it('sets status to archived when arquivado button is clicked before submit', async () => {
+    renderForm();
+
+    const titleInput = screen.getByLabelText(/título/i);
+    fireEvent.change(titleInput, { target: { value: 'Artigo arquivado' } });
+
+    const archivedBtn = screen.getByRole('button', { name: /arquivado/i });
+    fireEvent.click(archivedBtn);
+
+    const saveBtn = screen.getByRole('button', { name: /salvar/i });
+    await act(async () => {
+      fireEvent.click(saveBtn);
+    });
+
+    await waitFor(() => {
+      expect(mockCreateNews).toHaveBeenCalledTimes(1);
+    });
+
+    expect(lastCreateArg).toBeDefined();
+    expect(lastCreateArg!.status).toBe('archived');
+  });
+
   // ── Edit mode ───────────────────────────────────────────────────────────────
 
   it('renders existing title in edit mode', () => {

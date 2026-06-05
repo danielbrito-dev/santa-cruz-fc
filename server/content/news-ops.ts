@@ -14,7 +14,7 @@ export interface NewsInput {
   coverImage: string;
   photoCount: number;
   featured: boolean;
-  status: 'draft' | 'published';
+  status: 'draft' | 'published' | 'archived';
   publishedAt: string;
 }
 
@@ -64,4 +64,15 @@ export function applyUpdate(
 
 export function applyDelete(content: SiteContent, id: string): SiteContent {
   return { ...content, news: content.news.filter((n) => n.id !== id) };
+}
+
+export function applyStatus(
+  content: SiteContent,
+  id: string,
+  status: 'draft' | 'published' | 'archived',
+): SiteContent {
+  const news = content.news.map((item) =>
+    item.id !== id ? item : { ...item, status },
+  );
+  return { ...content, news };
 }
