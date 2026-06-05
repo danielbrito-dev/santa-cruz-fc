@@ -276,4 +276,78 @@ describe('ContentEditor', () => {
       expect(screen.getByText(/sessão expirada/i)).toBeInTheDocument();
     });
   });
+
+  // ── Live preview tests ──────────────────────────────────────────────────────
+
+  it('renders a hero preview region in the Hero section', () => {
+    renderEditor();
+    // Hero section is the default — a preview with aria-label should be present
+    expect(screen.getByLabelText(/pré-visualização do hero/i)).toBeInTheDocument();
+  });
+
+  it('hero preview reflects the initial titleLine1 value', () => {
+    renderEditor();
+    // The preview heading should contain the initial PT value
+    const preview = screen.getByLabelText(/pré-visualização do hero/i);
+    expect(preview.textContent).toContain('Coral não');
+  });
+
+  it('hero preview updates live when the user edits titleLine1', () => {
+    renderEditor();
+    const ptInput = screen.getByDisplayValue('Coral não') as HTMLInputElement;
+    fireEvent.change(ptInput, { target: { value: 'Cobra Coral' } });
+    const preview = screen.getByLabelText(/pré-visualização do hero/i);
+    expect(preview.textContent).toContain('Cobra Coral');
+  });
+
+  it('hero preview shows "sem imagem" placeholder when backdrop is empty', () => {
+    const contentWithEmptyBackdrop = {
+      ...minimalContent,
+      hero: { ...minimalContent.hero, backdrop: '' },
+    };
+    renderEditor(contentWithEmptyBackdrop);
+    // The placeholder div renders the text "sem imagem"
+    expect(screen.getByText(/sem imagem/i)).toBeInTheDocument();
+  });
+
+  it('banner preview is present for each banner when Banners section is active', () => {
+    renderEditor();
+    // Section tab label for banners in pt.json is "Banners"
+    const bannersTab = screen.getByRole('button', { name: 'Banners' });
+    fireEvent.click(bannersTab);
+    // Two banners → two previews
+    const previews = screen.getAllByLabelText(/pré-visualização do banner/i);
+    expect(previews).toHaveLength(2);
+  });
+
+  it('institutional preview is present for each card when Institutional section is active', () => {
+    renderEditor();
+    // Section tab label for institutional in pt.json is "Institucional"
+    const instTab = screen.getByRole('button', { name: 'Institucional' });
+    fireEvent.click(instTab);
+    const previews = screen.getAllByLabelText(/pré-visualização do card/i);
+    expect(previews).toHaveLength(2);
+  });
+
+  it('footer preview is present when Footer section is active', () => {
+    renderEditor();
+    // Section tab label for footer in pt.json is "Rodapé"
+    const footerTab = screen.getByRole('button', { name: 'Rodapé' });
+    fireEvent.click(footerTab);
+    expect(screen.getByLabelText(/pré-visualização do footer/i)).toBeInTheDocument();
+  });
+
+  it('footer preview reflects the chantEmphasis field live', () => {
+    renderEditor();
+    // Section tab label for footer in pt.json is "Rodapé"
+    const footerTab = screen.getByRole('button', { name: 'Rodapé' });
+    fireEvent.click(footerTab);
+    const preview = screen.getByLabelText(/pré-visualização do footer/i);
+    // Initial value
+    expect(preview.textContent).toContain('TRADIÇÃO');
+    // Edit the field
+    const emphasisInput = screen.getByDisplayValue('TRADIÇÃO') as HTMLInputElement;
+    fireEvent.change(emphasisInput, { target: { value: 'PAIXÃO' } });
+    expect(preview.textContent).toContain('PAIXÃO');
+  });
 });

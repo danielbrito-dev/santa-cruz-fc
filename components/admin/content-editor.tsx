@@ -46,6 +46,215 @@ function Field({ id, label, value, onChange, hint }: FieldProps) {
   );
 }
 
+// ─── PreviewImage: handles broken/empty src with a placeholder ────────────────
+
+interface PreviewImageProps {
+  src: string;
+  alt: string;
+  className?: string;
+}
+
+function PreviewImage({ src, alt, className }: PreviewImageProps) {
+  const [errored, setErrored] = useState(false);
+
+  if (!src || errored) {
+    return (
+      <div className={`ce-preview-img-placeholder ${className ?? ''}`} aria-label={alt}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="2" />
+          <circle cx="8.5" cy="8.5" r="1.5" />
+          <path d="M21 15l-5-5L5 21" />
+        </svg>
+        <span>sem imagem</span>
+      </div>
+    );
+  }
+
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={src}
+      alt={alt}
+      className={className}
+      onError={() => setErrored(true)}
+    />
+  );
+}
+
+// ─── Preview: Hero ────────────────────────────────────────────────────────────
+
+interface HeroPreviewProps {
+  hero: HeroState;
+  lang: ActiveLang;
+}
+
+function HeroPreview({ hero, lang }: HeroPreviewProps) {
+  const titleLine1 = hero.titleLine1[lang] || '';
+  const titleLine2 = hero.titleLine2[lang] || '';
+  const ctaLabel = hero.ctaLabel[lang] || '';
+
+  return (
+    <div className="ce-preview ce-preview--hero" aria-label="Pré-visualização do hero">
+      <div className="ce-preview-label">Preview</div>
+      <div className="ce-preview-hero-stage">
+        <PreviewImage
+          src={hero.backdrop}
+          alt="Backdrop"
+          className="ce-preview-hero-backdrop"
+        />
+        <div className="ce-preview-hero-grad" />
+        <div className="ce-preview-hero-card">
+          {(titleLine1 || titleLine2) ? (
+            <h3 className="ce-preview-hero-title">
+              {titleLine1 && <span className="ce-preview-ht-l1">{titleLine1}</span>}
+              {titleLine2 && <span className="ce-preview-ht-l2">{titleLine2}</span>}
+            </h3>
+          ) : (
+            <p className="ce-preview-placeholder-text">Título do hero</p>
+          )}
+          {ctaLabel && (
+            <span className="ce-preview-hero-cta">
+              {ctaLabel}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                <path d="M5 12h14M13 5l7 7-7 7" />
+              </svg>
+            </span>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Preview: Banner card ─────────────────────────────────────────────────────
+
+interface BannerCardPreviewProps {
+  card: CardItem;
+  lang: ActiveLang;
+}
+
+function BannerCardPreview({ card, lang }: BannerCardPreviewProps) {
+  const eyebrow = card.eyebrow[lang] || '';
+  const title = card.title[lang] || '';
+  const ctaLabel = card.ctaLabel[lang] || '';
+
+  return (
+    <div className="ce-preview ce-preview--banner" aria-label={`Pré-visualização do banner: ${title}`}>
+      <div className="ce-preview-label">Preview</div>
+      <div className="ce-preview-banner-card">
+        <PreviewImage
+          src={card.image}
+          alt={title}
+          className="ce-preview-banner-img"
+        />
+        <div className="ce-preview-banner-grad" />
+        <div className="ce-preview-banner-body">
+          {eyebrow && <span className="ce-preview-banner-eyebrow">{eyebrow}</span>}
+          {title ? (
+            <h4 className="ce-preview-banner-title">{title}</h4>
+          ) : (
+            <p className="ce-preview-placeholder-text">Título do banner</p>
+          )}
+          {ctaLabel && (
+            <span className="ce-preview-banner-cta">
+              {ctaLabel}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                <path d="M5 12h14M13 5l7 7-7 7" />
+              </svg>
+            </span>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Preview: Institutional card ──────────────────────────────────────────────
+
+interface InstCardPreviewProps {
+  card: CardItem;
+  lang: ActiveLang;
+}
+
+function InstCardPreview({ card, lang }: InstCardPreviewProps) {
+  const eyebrow = card.eyebrow[lang] || '';
+  const title = card.title[lang] || '';
+  const ctaLabel = card.ctaLabel[lang] || '';
+  const isSpan = card.size === 'span';
+
+  return (
+    <div
+      className={`ce-preview ce-preview--inst${isSpan ? ' ce-preview--inst-span' : ''}`}
+      aria-label={`Pré-visualização do card: ${title}`}
+    >
+      <div className="ce-preview-label">Preview</div>
+      <div className="ce-preview-inst-card">
+        <PreviewImage
+          src={card.image}
+          alt={title}
+          className="ce-preview-inst-img"
+        />
+        <div className="ce-preview-inst-grad" />
+        <div className="ce-preview-inst-body">
+          {eyebrow && <span className="ce-preview-inst-eyebrow">{eyebrow}</span>}
+          {title ? (
+            <h4 className={`ce-preview-inst-title${isSpan ? ' ce-preview-inst-title--span' : ''}`}>{title}</h4>
+          ) : (
+            <p className="ce-preview-placeholder-text">Título do card</p>
+          )}
+          {ctaLabel && (
+            <span className="ce-preview-inst-cta">
+              {ctaLabel}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                <path d="M5 12h14M13 5l7 7-7 7" />
+              </svg>
+            </span>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Preview: Footer ─────────────────────────────────────────────────────────
+
+type FooterState = {
+  brandBlurb: LocalizedText;
+  chantLine1: LocalizedText;
+  chantEmphasis: LocalizedText;
+  chantLine2: LocalizedText;
+};
+
+interface FooterPreviewProps {
+  footer: FooterState;
+  lang: ActiveLang;
+}
+
+function FooterPreview({ footer, lang }: FooterPreviewProps) {
+  const chantLine1 = footer.chantLine1[lang] || '';
+  const chantEmphasis = footer.chantEmphasis[lang] || '';
+  const chantLine2 = footer.chantLine2[lang] || '';
+  const brandBlurb = footer.brandBlurb[lang] || '';
+
+  return (
+    <div className="ce-preview ce-preview--footer" aria-label="Pré-visualização do footer">
+      <div className="ce-preview-label">Preview</div>
+      <div className="ce-preview-footer-inner">
+        <div className="ce-preview-footer-chant">
+          <p className="ce-preview-footer-chant-text">
+            {chantLine1 || 'Linha 1'}{' '}
+            <em className="ce-preview-footer-chant-em">{chantEmphasis || 'ÊNFASE'}</em>{' '}
+            {chantLine2 || 'Linha 2'}
+          </p>
+        </div>
+        {brandBlurb && (
+          <p className="ce-preview-footer-blurb">{brandBlurb}</p>
+        )}
+      </div>
+    </div>
+  );
+}
+
 // ─── Section: Hero ────────────────────────────────────────────────────────────
 
 interface HeroSectionProps {
@@ -57,43 +266,48 @@ interface HeroSectionProps {
 function HeroSection({ hero, lang, setHero }: HeroSectionProps) {
   const t = useTranslations('admin');
   return (
-    <div className="ce-section-fields">
-      <Field
-        id={`hero-titleLine1-${lang}`}
-        label={t('fldTitleLine1')}
-        value={hero.titleLine1[lang]}
-        onChange={(v) => setHero((h) => ({ ...h, titleLine1: { ...h.titleLine1, [lang]: v } }))}
-      />
-      <Field
-        id={`hero-titleLine2-${lang}`}
-        label={t('fldTitleLine2')}
-        value={hero.titleLine2[lang]}
-        onChange={(v) => setHero((h) => ({ ...h, titleLine2: { ...h.titleLine2, [lang]: v } }))}
-      />
-      <Field
-        id={`hero-tagline-${lang}`}
-        label={t('fldTagline')}
-        value={hero.tagline[lang]}
-        onChange={(v) => setHero((h) => ({ ...h, tagline: { ...h.tagline, [lang]: v } }))}
-      />
-      <Field
-        id={`hero-ctaLabel-${lang}`}
-        label={t('fldCtaLabel')}
-        value={hero.ctaLabel[lang]}
-        onChange={(v) => setHero((h) => ({ ...h, ctaLabel: { ...h.ctaLabel, [lang]: v } }))}
-      />
-      <Field
-        id="hero-ctaUrl"
-        label={t('fldCtaUrl')}
-        value={hero.ctaUrl}
-        onChange={(v) => setHero((h) => ({ ...h, ctaUrl: v }))}
-      />
-      <Field
-        id="hero-backdrop"
-        label={t('fldBackdrop')}
-        value={hero.backdrop}
-        onChange={(v) => setHero((h) => ({ ...h, backdrop: v }))}
-      />
+    <div className="ce-section-with-preview">
+      <div className="ce-section-fields">
+        <Field
+          id={`hero-titleLine1-${lang}`}
+          label={t('fldTitleLine1')}
+          value={hero.titleLine1[lang]}
+          onChange={(v) => setHero((h) => ({ ...h, titleLine1: { ...h.titleLine1, [lang]: v } }))}
+        />
+        <Field
+          id={`hero-titleLine2-${lang}`}
+          label={t('fldTitleLine2')}
+          value={hero.titleLine2[lang]}
+          onChange={(v) => setHero((h) => ({ ...h, titleLine2: { ...h.titleLine2, [lang]: v } }))}
+        />
+        <Field
+          id={`hero-tagline-${lang}`}
+          label={t('fldTagline')}
+          value={hero.tagline[lang]}
+          onChange={(v) => setHero((h) => ({ ...h, tagline: { ...h.tagline, [lang]: v } }))}
+        />
+        <Field
+          id={`hero-ctaLabel-${lang}`}
+          label={t('fldCtaLabel')}
+          value={hero.ctaLabel[lang]}
+          onChange={(v) => setHero((h) => ({ ...h, ctaLabel: { ...h.ctaLabel, [lang]: v } }))}
+        />
+        <Field
+          id="hero-ctaUrl"
+          label={t('fldCtaUrl')}
+          value={hero.ctaUrl}
+          onChange={(v) => setHero((h) => ({ ...h, ctaUrl: v }))}
+        />
+        <Field
+          id="hero-backdrop"
+          label={t('fldBackdrop')}
+          value={hero.backdrop}
+          onChange={(v) => setHero((h) => ({ ...h, backdrop: v }))}
+        />
+      </div>
+      <div className="ce-preview-col">
+        <HeroPreview hero={hero} lang={lang} />
+      </div>
     </div>
   );
 }
@@ -116,38 +330,43 @@ function BannersSection({ banners, lang, setBanners }: BannersSectionProps) {
   return (
     <div className="ce-section-fields">
       {banners.map((card, idx) => (
-        <div key={card.id} className="ce-card-group">
-          <p className="ce-card-index">#{idx + 1}</p>
-          <Field
-            id={`banner-${idx}-eyebrow-${lang}`}
-            label={t('fldEyebrow')}
-            value={card.eyebrow[lang]}
-            onChange={(v) => update(idx, { eyebrow: { ...card.eyebrow, [lang]: v } })}
-          />
-          <Field
-            id={`banner-${idx}-title-${lang}`}
-            label={t('fldTitle')}
-            value={card.title[lang]}
-            onChange={(v) => update(idx, { title: { ...card.title, [lang]: v } })}
-          />
-          <Field
-            id={`banner-${idx}-ctaLabel-${lang}`}
-            label={t('fldCtaLabel')}
-            value={card.ctaLabel[lang]}
-            onChange={(v) => update(idx, { ctaLabel: { ...card.ctaLabel, [lang]: v } })}
-          />
-          <Field
-            id={`banner-${idx}-ctaUrl`}
-            label={t('fldCtaUrl')}
-            value={card.ctaUrl}
-            onChange={(v) => update(idx, { ctaUrl: v })}
-          />
-          <Field
-            id={`banner-${idx}-image`}
-            label={t('fldImage')}
-            value={card.image}
-            onChange={(v) => update(idx, { image: v })}
-          />
+        <div key={card.id} className="ce-card-group ce-card-group--with-preview">
+          <div className="ce-card-group-fields">
+            <p className="ce-card-index">#{idx + 1}</p>
+            <Field
+              id={`banner-${idx}-eyebrow-${lang}`}
+              label={t('fldEyebrow')}
+              value={card.eyebrow[lang]}
+              onChange={(v) => update(idx, { eyebrow: { ...card.eyebrow, [lang]: v } })}
+            />
+            <Field
+              id={`banner-${idx}-title-${lang}`}
+              label={t('fldTitle')}
+              value={card.title[lang]}
+              onChange={(v) => update(idx, { title: { ...card.title, [lang]: v } })}
+            />
+            <Field
+              id={`banner-${idx}-ctaLabel-${lang}`}
+              label={t('fldCtaLabel')}
+              value={card.ctaLabel[lang]}
+              onChange={(v) => update(idx, { ctaLabel: { ...card.ctaLabel, [lang]: v } })}
+            />
+            <Field
+              id={`banner-${idx}-ctaUrl`}
+              label={t('fldCtaUrl')}
+              value={card.ctaUrl}
+              onChange={(v) => update(idx, { ctaUrl: v })}
+            />
+            <Field
+              id={`banner-${idx}-image`}
+              label={t('fldImage')}
+              value={card.image}
+              onChange={(v) => update(idx, { image: v })}
+            />
+          </div>
+          <div className="ce-preview-col">
+            <BannerCardPreview card={card} lang={lang} />
+          </div>
         </div>
       ))}
     </div>
@@ -172,38 +391,43 @@ function InstitutionalSection({ institutional, lang, setInstitutional }: Institu
   return (
     <div className="ce-section-fields">
       {institutional.map((card, idx) => (
-        <div key={card.id} className="ce-card-group">
-          <p className="ce-card-index">#{idx + 1}</p>
-          <Field
-            id={`inst-${idx}-eyebrow-${lang}`}
-            label={t('fldEyebrow')}
-            value={card.eyebrow[lang]}
-            onChange={(v) => update(idx, { eyebrow: { ...card.eyebrow, [lang]: v } })}
-          />
-          <Field
-            id={`inst-${idx}-title-${lang}`}
-            label={t('fldTitle')}
-            value={card.title[lang]}
-            onChange={(v) => update(idx, { title: { ...card.title, [lang]: v } })}
-          />
-          <Field
-            id={`inst-${idx}-ctaLabel-${lang}`}
-            label={t('fldCtaLabel')}
-            value={card.ctaLabel[lang]}
-            onChange={(v) => update(idx, { ctaLabel: { ...card.ctaLabel, [lang]: v } })}
-          />
-          <Field
-            id={`inst-${idx}-ctaUrl`}
-            label={t('fldCtaUrl')}
-            value={card.ctaUrl}
-            onChange={(v) => update(idx, { ctaUrl: v })}
-          />
-          <Field
-            id={`inst-${idx}-image`}
-            label={t('fldImage')}
-            value={card.image}
-            onChange={(v) => update(idx, { image: v })}
-          />
+        <div key={card.id} className="ce-card-group ce-card-group--with-preview">
+          <div className="ce-card-group-fields">
+            <p className="ce-card-index">#{idx + 1}</p>
+            <Field
+              id={`inst-${idx}-eyebrow-${lang}`}
+              label={t('fldEyebrow')}
+              value={card.eyebrow[lang]}
+              onChange={(v) => update(idx, { eyebrow: { ...card.eyebrow, [lang]: v } })}
+            />
+            <Field
+              id={`inst-${idx}-title-${lang}`}
+              label={t('fldTitle')}
+              value={card.title[lang]}
+              onChange={(v) => update(idx, { title: { ...card.title, [lang]: v } })}
+            />
+            <Field
+              id={`inst-${idx}-ctaLabel-${lang}`}
+              label={t('fldCtaLabel')}
+              value={card.ctaLabel[lang]}
+              onChange={(v) => update(idx, { ctaLabel: { ...card.ctaLabel, [lang]: v } })}
+            />
+            <Field
+              id={`inst-${idx}-ctaUrl`}
+              label={t('fldCtaUrl')}
+              value={card.ctaUrl}
+              onChange={(v) => update(idx, { ctaUrl: v })}
+            />
+            <Field
+              id={`inst-${idx}-image`}
+              label={t('fldImage')}
+              value={card.image}
+              onChange={(v) => update(idx, { image: v })}
+            />
+          </div>
+          <div className="ce-preview-col">
+            <InstCardPreview card={card} lang={lang} />
+          </div>
         </div>
       ))}
     </div>
@@ -211,13 +435,6 @@ function InstitutionalSection({ institutional, lang, setInstitutional }: Institu
 }
 
 // ─── Section: Footer ──────────────────────────────────────────────────────────
-
-type FooterState = {
-  brandBlurb: LocalizedText;
-  chantLine1: LocalizedText;
-  chantEmphasis: LocalizedText;
-  chantLine2: LocalizedText;
-};
 
 interface FooterSectionProps {
   footer: FooterState;
@@ -228,31 +445,36 @@ interface FooterSectionProps {
 function FooterSection({ footer, lang, setFooter }: FooterSectionProps) {
   const t = useTranslations('admin');
   return (
-    <div className="ce-section-fields">
-      <Field
-        id={`footer-brandBlurb-${lang}`}
-        label={t('fldBrandBlurb')}
-        value={footer.brandBlurb[lang]}
-        onChange={(v) => setFooter((f) => ({ ...f, brandBlurb: { ...f.brandBlurb, [lang]: v } }))}
-      />
-      <Field
-        id={`footer-chantLine1-${lang}`}
-        label={t('fldChant1')}
-        value={footer.chantLine1[lang]}
-        onChange={(v) => setFooter((f) => ({ ...f, chantLine1: { ...f.chantLine1, [lang]: v } }))}
-      />
-      <Field
-        id={`footer-chantEmphasis-${lang}`}
-        label={t('fldChantEm')}
-        value={footer.chantEmphasis[lang]}
-        onChange={(v) => setFooter((f) => ({ ...f, chantEmphasis: { ...f.chantEmphasis, [lang]: v } }))}
-      />
-      <Field
-        id={`footer-chantLine2-${lang}`}
-        label={t('fldChant2')}
-        value={footer.chantLine2[lang]}
-        onChange={(v) => setFooter((f) => ({ ...f, chantLine2: { ...f.chantLine2, [lang]: v } }))}
-      />
+    <div className="ce-section-with-preview">
+      <div className="ce-section-fields">
+        <Field
+          id={`footer-brandBlurb-${lang}`}
+          label={t('fldBrandBlurb')}
+          value={footer.brandBlurb[lang]}
+          onChange={(v) => setFooter((f) => ({ ...f, brandBlurb: { ...f.brandBlurb, [lang]: v } }))}
+        />
+        <Field
+          id={`footer-chantLine1-${lang}`}
+          label={t('fldChant1')}
+          value={footer.chantLine1[lang]}
+          onChange={(v) => setFooter((f) => ({ ...f, chantLine1: { ...f.chantLine1, [lang]: v } }))}
+        />
+        <Field
+          id={`footer-chantEmphasis-${lang}`}
+          label={t('fldChantEm')}
+          value={footer.chantEmphasis[lang]}
+          onChange={(v) => setFooter((f) => ({ ...f, chantEmphasis: { ...f.chantEmphasis, [lang]: v } }))}
+        />
+        <Field
+          id={`footer-chantLine2-${lang}`}
+          label={t('fldChant2')}
+          value={footer.chantLine2[lang]}
+          onChange={(v) => setFooter((f) => ({ ...f, chantLine2: { ...f.chantLine2, [lang]: v } }))}
+        />
+      </div>
+      <div className="ce-preview-col">
+        <FooterPreview footer={footer} lang={lang} />
+      </div>
     </div>
   );
 }

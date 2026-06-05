@@ -2811,6 +2811,453 @@ textarea.admin-input {
   }
 }
 
+/* ===== content editor previews ===== */
+/* Isolated .ce-preview-* namespace — never touches public .hero/.banner-card/.inst-card */
+
+/* ── Layout: two-column (fields | preview) ────────────────────────── */
+.content-editor {
+  max-width: 1100px; /* widen to accommodate two-column preview layout */
+}
+
+/* Hero & Footer sections: two-column side-by-side */
+.ce-section-with-preview {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 28px;
+  align-items: start;
+}
+
+/* Banner / institutional card groups: fields left, preview right */
+.ce-card-group--with-preview {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 20px;
+  align-items: start;
+}
+
+/* Fields column inside a card-group-with-preview */
+.ce-card-group-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Preview column: sticky so it follows the fields on scroll */
+.ce-preview-col {
+  position: sticky;
+  top: 80px; /* clear the sticky topbar */
+}
+
+/* ── Preview wrapper ──────────────────────────────────────────────── */
+.ce-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+}
+
+/* Small "Preview" eyebrow label above each preview box */
+.ce-preview-label {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: var(--muted);
+  line-height: 1;
+  user-select: none;
+}
+
+/* ── Shared placeholder when image is empty / broken ─────────────── */
+.ce-preview-img-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--bg-2);
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+}
+[data-theme="dark"] .ce-preview-img-placeholder {
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.35);
+}
+.ce-preview-img-placeholder svg {
+  width: 28px;
+  height: 28px;
+  opacity: .5;
+}
+
+/* Placeholder text when content fields are empty */
+.ce-preview-placeholder-text {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ── Hero preview ─────────────────────────────────────────────────── */
+.ce-preview--hero .ce-preview-hero-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+}
+[data-theme="dark"] .ce-preview--hero .ce-preview-hero-stage {
+  border-color: rgba(255,255,255,.10);
+}
+
+.ce-preview-hero-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: brightness(.95) saturate(1.05);
+}
+
+/* Light-mode gradient: mimics .hero-grad but lighter (preview needs legibility at small size) */
+.ce-preview-hero-grad {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,.80) 0%,
+    rgba(255,255,255,.55) 15%,
+    rgba(255,255,255,.20) 35%,
+    rgba(255,255,255,.10) 55%,
+    rgba(255,255,255,.35) 78%,
+    rgba(255,255,255,.80) 100%
+  );
+}
+[data-theme="dark"] .ce-preview-hero-grad {
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,.50) 0%,
+    rgba(0,0,0,0) 35%,
+    rgba(0,0,0,0) 60%,
+    rgba(0,0,0,.85) 100%
+  );
+}
+
+.ce-preview-hero-card {
+  position: absolute;
+  left: 12%;
+  bottom: 14%;
+  max-width: 72%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--ink);
+}
+[data-theme="dark"] .ce-preview-hero-card {
+  color: var(--white);
+}
+
+.ce-preview-hero-title {
+  font-size: clamp(12px, 3.5vw, 18px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 8px rgba(255,255,255,.9), 0 0 20px rgba(255,255,255,.6);
+  margin: 0;
+}
+[data-theme="dark"] .ce-preview-hero-title {
+  text-shadow: none;
+}
+.ce-preview-ht-l1,
+.ce-preview-ht-l2 {
+  display: block;
+}
+.ce-preview-ht-l2 {
+  padding-left: 1.8em;
+}
+
+.ce-preview-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: var(--ink);
+  border-bottom: 1px solid rgba(0,0,0,.4);
+  padding-bottom: 3px;
+}
+[data-theme="dark"] .ce-preview-hero-cta {
+  color: var(--white);
+  border-bottom-color: rgba(255,255,255,.4);
+}
+.ce-preview-hero-cta svg {
+  width: 8px;
+  height: 8px;
+}
+
+/* ── Banner preview ───────────────────────────────────────────────── */
+.ce-preview--banner .ce-preview-banner-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 21/9;
+  overflow: hidden;
+  background: var(--ink);
+  border-radius: 3px;
+}
+
+.ce-preview-banner-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(.55);
+}
+
+/* Left-to-right dark gradient — mimics .banner-card .grad */
+.ce-preview-banner-grad {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,.88) 0%,
+    rgba(0,0,0,.35) 55%,
+    rgba(0,0,0,.08) 100%
+  );
+}
+
+.ce-preview-banner-body {
+  position: relative;
+  z-index: 2;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  height: 100%;
+  max-width: 65%;
+}
+
+.ce-preview-banner-eyebrow {
+  font-size: 8px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .20em;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.ce-preview-banner-title {
+  font-size: clamp(10px, 2.5vw, 14px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -.01em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.ce-preview-banner-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+  font-size: 8px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: rgba(255,255,255,.9);
+  /* White line beneath CTA: keeps white over the dark gradient — BRAND.md separation not needed here
+     because CTA is white-on-dark, no red involved */
+  border-bottom: 1px solid rgba(255,255,255,.45);
+  padding-bottom: 2px;
+  align-self: flex-start;
+}
+.ce-preview-banner-cta svg {
+  width: 7px;
+  height: 7px;
+}
+
+/* ── Institutional card preview ───────────────────────────────────── */
+.ce-preview--inst .ce-preview-inst-card,
+.ce-preview--inst-span .ce-preview-inst-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: var(--ink);
+  border-radius: 3px;
+}
+
+/* Span variant: slightly taller aspect ratio to hint at larger size */
+.ce-preview--inst-span .ce-preview-inst-card {
+  aspect-ratio: 3/2;
+}
+
+.ce-preview-inst-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(.70);
+}
+
+/* Bottom-to-top dark gradient — mimics .inst-card .grad */
+.ce-preview-inst-grad {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0) 40%,
+    rgba(0,0,0,.88) 100%
+  );
+}
+
+.ce-preview-inst-body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ce-preview-inst-eyebrow {
+  font-size: 8px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: rgba(255,255,255,.7);
+  line-height: 1;
+}
+
+.ce-preview-inst-title {
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -.01em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.ce-preview-inst-title--span {
+  font-size: 16px;
+}
+
+.ce-preview-inst-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+  font-size: 8px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: rgba(255,255,255,.95);
+  /* Gold underline on dark bg — no red, no white-separation needed here */
+  border-bottom: 1.5px solid var(--gold);
+  padding-bottom: 2px;
+  align-self: flex-start;
+}
+.ce-preview-inst-cta svg {
+  width: 7px;
+  height: 7px;
+}
+
+/* ── Footer preview ───────────────────────────────────────────────── */
+.ce-preview--footer .ce-preview-footer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  overflow: hidden;
+}
+[data-theme="dark"] .ce-preview--footer .ce-preview-footer-inner {
+  border-color: rgba(255,255,255,.10);
+}
+
+/* Chant: red strip — BRAND.md: white text on red (no black touching red) */
+.ce-preview-footer-chant {
+  background: var(--red);
+  padding: 16px 20px;
+  /* White ring buffer: the card border is the panel bg (white/near-white) — so red never touches
+     a dark edge directly. The border-radius clip ensures the red strip stays inside the border. */
+}
+
+.ce-preview-footer-chant-text {
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  line-height: 1.3;
+  color: #FFFFFF; /* white text on red — BRAND.md compliant */
+  margin: 0;
+}
+
+/* Chant emphasis: black text with white stroke — same treatment as the live footer.
+   BRAND.md: black cannot touch red directly → white stroke acts as the separator. */
+.ce-preview-footer-chant-em {
+  font-style: normal;
+  color: #000000;
+  /* 1px white stroke around the black text acts as the mandatory white separation */
+  -webkit-text-stroke: 3px #FFFFFF;
+  paint-order: stroke fill;
+  text-stroke: 3px #FFFFFF;
+}
+
+/* Brand blurb below the chant strip, on a neutral surface */
+.ce-preview-footer-blurb {
+  padding: 12px 20px 14px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--muted);
+  background: var(--panel);
+  margin: 0;
+}
+[data-theme="dark"] .ce-preview-footer-blurb {
+  background: #1A1A1A;
+  color: rgba(255,255,255,.55);
+}
+
+/* ── Responsive: stack previews below fields on narrow screens ────── */
+@media (max-width: 960px) {
+  .ce-section-with-preview {
+    grid-template-columns: 1fr;
+  }
+  .ce-card-group--with-preview {
+    grid-template-columns: 1fr;
+  }
+  /* On mobile: preview appears above the fields (more prominent) */
+  .ce-section-with-preview .ce-preview-col {
+    order: -1;
+    position: static;
+  }
+  .ce-card-group--with-preview .ce-preview-col {
+    order: -1;
+    position: static;
+  }
+  /* Restore max-width when single column */
+  .content-editor {
+    max-width: 760px;
+  }
+}
+
 /* ===== admin news ===== */
 
 /* ── Page-level overrides for wider news pages ─────────────────────────── */
