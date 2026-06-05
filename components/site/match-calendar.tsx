@@ -18,7 +18,10 @@ function MatchCard({
       <div className="match-row-shield home">
         <img src="/images/logo.png" alt="Santa Cruz" />
       </div>
-      <span className="match-row-name">Santa Cruz</span>
+      <span className="match-row-name">
+        <span className="club-full">Santa Cruz</span>
+        <span className="club-short">Santa</span>
+      </span>
       {score !== null && <span className="match-row-score">{score}</span>}
     </div>
   );

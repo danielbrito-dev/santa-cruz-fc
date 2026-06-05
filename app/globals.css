@@ -625,6 +625,8 @@ ul{list-style:none}
   flex:1;min-width:0;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
+/* club name: full on desktop, short on mobile (avoids "Santa Cr..." truncation) */
+.club-short{display:none}
 .match-row-score{
   font-size:20px;font-weight:900;color:var(--ink);
   letter-spacing:-.02em;min-width:20px;text-align:right;
@@ -1369,11 +1371,15 @@ body{ background:var(--page-bg) }
   .social-strip svg{width:16px;height:16px}
 
   /* ---- Footer ---- */
-  /* footer-top: brand full-width top row, 3 link cols in 2-col grid, apps full-width bottom */
+  /* club name: short form on mobile */
+  .match .club-full{display:none}
+  .match .club-short{display:inline}
+
+  /* footer-top: brand full-width, 3 link cols SIDE BY SIDE, apps full-width bottom */
   .site-footer{padding:56px 0 20px}
   .footer-top{
-    grid-template-columns:1fr 1fr;
-    gap:28px 20px;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px 14px;
     padding-bottom:36px;
   }
   /* brand block: full-width at top */
@@ -1435,12 +1441,15 @@ body{ background:var(--page-bg) }
   .inst-card.span-rows{grid-column:auto}
   .inst-card{aspect-ratio:3/2}
 
-  /* ---- Footer columns stack on narrow phones ---- */
+  /* ---- Footer: 3 link columns side-by-side (compact, uses full width) ---- */
   .site-footer{padding:48px 0 18px}
-  .footer-top{grid-template-columns:1fr;gap:22px 0;padding-bottom:28px}
-  .footer-brand{grid-column:auto}
-  .footer-col--apps{grid-column:auto}
+  .footer-top{grid-template-columns:repeat(3,1fr);gap:24px 12px;padding-bottom:28px}
+  .footer-brand{grid-column:1 / -1}
+  .footer-col--apps{grid-column:1 / -1}
   .footer-brand img{height:50px;margin-bottom:12px}
+  .footer-col h5{font-size:10px;margin-bottom:10px;letter-spacing:.1em}
+  .footer-col ul{gap:8px}
+  .footer-col a{font-size:12px;line-height:1.3}
   /* apps: stack the two store buttons vertically, full width */
   .footer-col--apps .footer-apps{flex-direction:column;gap:10px}
   .footer-app{flex:none;width:100%;max-width:100%;padding:10px 16px}
