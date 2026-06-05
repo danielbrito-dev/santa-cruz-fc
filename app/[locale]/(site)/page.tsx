@@ -6,6 +6,8 @@ import { SvgFilters } from '@/components/site/svg-filters';
 import { Hero } from '@/components/site/hero';
 import { MatchCalendar } from '@/components/site/match-calendar';
 import { NewsSection } from '@/components/site/news-section';
+import { BannerStrip } from '@/components/site/banner-strip';
+import { InstitutionalGrid } from '@/components/site/institutional-grid';
 
 export default async function HomePage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
@@ -22,6 +24,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
           <MatchCalendar content={content} locale={locale} />
         </section>
         <NewsSection content={content} locale={locale} />
+        <BannerStrip content={content} locale={locale} />
+        <InstitutionalGrid content={content} locale={locale} />
       </main>
     </>
   );

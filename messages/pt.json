@@ -9,6 +9,7 @@
     "privacy": "Política de privacidade",
     "ariaLabel": "Aviso de cookies"
   },
+  "identity": { "heading1": "Identidade", "heading2": "Coral" },
   "drawer": {
     "home": "Início",
     "contact": "Contato",
