@@ -3,6 +3,12 @@
   "common": { "allNews": "Todas as notícias", "matchCenter": "Match Center", "becomeMember": "Seja Sócio Coral", "skipToContent": "Pular para o conteúdo" },
   "news": { "heading1": "Notícias", "heading2": "do Clube", "photos": "{count, plural, one {# foto} other {# fotos}}" },
   "calendar": { "title": "Calendário", "prev": "Anterior", "next": "Próximo" },
+  "cookies": {
+    "message": "Usamos cookies para melhorar sua experiência no site. Ao continuar navegando, você concorda com a nossa Política de Privacidade.",
+    "accept": "Aceitar",
+    "privacy": "Política de privacidade",
+    "ariaLabel": "Aviso de cookies"
+  },
   "drawer": {
     "home": "Início",
     "contact": "Contato",

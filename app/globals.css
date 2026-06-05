@@ -685,3 +685,32 @@ ul{list-style:none}
 @media (max-width:540px){
   .news-list{grid-template-columns:1fr}
 }
+
+/* ===== cookie banner ===== */
+.cookie-banner{
+  position:fixed;left:0;right:0;bottom:0;z-index:300;
+  background:var(--white);color:var(--ink);
+  border-top:1px solid var(--line);
+  box-shadow:0 -8px 24px -16px rgba(0,0,0,.25);
+  padding:16px 24px;
+}
+.cookie-banner-inner{
+  max-width:1320px;margin:0 auto;
+  display:flex;align-items:center;gap:24px;flex-wrap:wrap;justify-content:space-between;
+}
+.cookie-banner p{font-size:13px;line-height:1.5;color:var(--ink-2);max-width:80ch}
+.cookie-banner a{color:var(--red);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+.cookie-accept{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:10px 22px;border-radius:999px;
+  font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;
+  background:var(--red);color:var(--white);
+  box-shadow:0 0 0 1.5px var(--white); /* BRAND.md: white ring keeps red off any dark edge */
+  transition:transform .2s, background .2s;
+  white-space:nowrap;
+}
+.cookie-accept:hover{transform:translateY(-1px);background:#B80000}
+@media (max-width:600px){
+  .cookie-banner-inner{flex-direction:column;align-items:stretch;gap:14px}
+  .cookie-accept{align-self:flex-end}
+}

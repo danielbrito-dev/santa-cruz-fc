@@ -3,6 +3,12 @@
   "common": { "allNews": "All news", "matchCenter": "Match Center", "becomeMember": "Become a Member", "skipToContent": "Skip to content" },
   "news": { "heading1": "News", "heading2": "from the Club", "photos": "{count, plural, one {# photo} other {# photos}}" },
   "calendar": { "title": "Schedule", "prev": "Previous", "next": "Next" },
+  "cookies": {
+    "message": "We use cookies to improve your experience. By continuing to browse, you agree to our Privacy Policy.",
+    "accept": "Accept",
+    "privacy": "Privacy policy",
+    "ariaLabel": "Cookie notice"
+  },
   "drawer": {
     "home": "Home",
     "contact": "Contact",
