@@ -14,10 +14,19 @@
     "ariaLabel": "Aviso de cookies"
   },
   "identity": { "heading1": "Identidade", "heading2": "Coral" },
+  "a11y": {
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu",
+    "heroBackdrop": "Torcida do Santa Cruz no Arruda",
+    "appStore": "Baixar na App Store",
+    "googlePlay": "Baixar no Google Play"
+  },
   "footer": {
     "since": "Desde",
     "appsHeading": "Baixe o app",
-    "appsBlurb": "O app oficial do torcedor tricolor, disponível para iOS e Android."
+    "appsBlurb": "O app oficial do torcedor tricolor, disponível para iOS e Android.",
+    "appStorePrefix": "Baixe na",
+    "googlePlayPrefix": "Disponível"
   },
   "drawer": {
     "home": "Início",

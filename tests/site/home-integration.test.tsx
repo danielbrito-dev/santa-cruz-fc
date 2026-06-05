@@ -30,11 +30,12 @@ import { Footer } from '@/components/site/footer';
 describe('home integration (real site.json)', () => {
   it('renders hero, news and footer from real content without throwing', async () => {
     const content = await new JsonContentSource().getSiteContent();
+    const hero = await Hero({ content, locale: 'pt' } as any);
     const news = await NewsSection({ content, locale: 'pt' } as any);
     const footer = await Footer({ content, locale: 'pt' } as any);
     const { container } = render(
       <NextIntlClientProvider locale="pt" messages={pt}>
-        <Hero content={content} locale="pt" />
+        {hero}
         {news}
         {footer}
       </NextIntlClientProvider>,

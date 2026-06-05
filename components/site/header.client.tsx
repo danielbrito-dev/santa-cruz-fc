@@ -11,6 +11,7 @@ export function HeaderClient() {
   const nav = useTranslations('nav');
   const drawer = useTranslations('drawer');
   const common = useTranslations('common');
+  const a11y = useTranslations('a11y');
 
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
@@ -99,7 +100,8 @@ export function HeaderClient() {
           <div className="header-left">
             <button
               className="menu-trigger"
-              aria-label="Abrir menu"
+              aria-label={a11y('openMenu')}
+              aria-expanded={drawerOpen}
               onClick={openDrawer}
             >
               <span className="bars" aria-hidden="true">
@@ -160,7 +162,7 @@ export function HeaderClient() {
           </Link>
           <button
             className="drawer-close"
-            aria-label="Fechar menu"
+            aria-label={a11y('closeMenu')}
             onClick={closeDrawer}
           >
             ✕
@@ -179,6 +181,7 @@ export function HeaderClient() {
           <div className={`drawer-item${openSections.club ? ' open' : ''}`}>
             <button
               className="drawer-item-trigger"
+              aria-expanded={!!openSections.club}
               onClick={() => toggleSection('club')}
             >
               {drawer('sections.club')}
@@ -207,6 +210,7 @@ export function HeaderClient() {
           <div className={`drawer-item${openSections.football ? ' open' : ''}`}>
             <button
               className="drawer-item-trigger"
+              aria-expanded={!!openSections.football}
               onClick={() => toggleSection('football')}
             >
               {drawer('sections.football')}
@@ -232,6 +236,7 @@ export function HeaderClient() {
           <div className={`drawer-item${openSections.marketing ? ' open' : ''}`}>
             <button
               className="drawer-item-trigger"
+              aria-expanded={!!openSections.marketing}
               onClick={() => toggleSection('marketing')}
             >
               {drawer('sections.marketing')}
@@ -241,7 +246,7 @@ export function HeaderClient() {
               <a
                 href="https://socio-santacruz.futebolcard.com/"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 onClick={handleDrawerLinkClick}
               >
                 {drawer('items.member')}
@@ -262,6 +267,7 @@ export function HeaderClient() {
           <div className={`drawer-item${openSections.press ? ' open' : ''}`}>
             <button
               className="drawer-item-trigger"
+              aria-expanded={!!openSections.press}
               onClick={() => toggleSection('press')}
             >
               {drawer('sections.press')}
@@ -295,7 +301,7 @@ export function HeaderClient() {
           <a
             href="https://socio-santacruz.futebolcard.com/"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="primary"
             onClick={handleDrawerLinkClick}
           >

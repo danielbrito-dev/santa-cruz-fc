@@ -14,10 +14,19 @@
     "ariaLabel": "Cookie notice"
   },
   "identity": { "heading1": "Identity", "heading2": "Coral" },
+  "a11y": {
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "heroBackdrop": "Santa Cruz crowd at Arruda",
+    "appStore": "Download on the App Store",
+    "googlePlay": "Get it on Google Play"
+  },
   "footer": {
     "since": "Since",
     "appsHeading": "Download the app",
-    "appsBlurb": "The official tricolor supporter app, available for iOS and Android."
+    "appsBlurb": "The official tricolor supporter app, available for iOS and Android.",
+    "appStorePrefix": "Download on the",
+    "googlePlayPrefix": "Available on"
   },
   "drawer": {
     "home": "Home",

@@ -1,7 +1,9 @@
+import { getTranslations } from 'next-intl/server';
 import type { SectionProps } from './types';
 import { resolveLocalized } from '@/server/content/localized';
 
-export function Hero({ content, locale }: SectionProps) {
+export async function Hero({ content, locale }: SectionProps) {
+  const a11y = await getTranslations('a11y');
   const { hero } = content;
   // NOTE: layout 10 emphasizes specific words in red via <em>; that needs a content-model emphasis field (deferred). Lines render plain for now.
   return (
@@ -9,7 +11,7 @@ export function Hero({ content, locale }: SectionProps) {
       <img
         className="hero-backdrop"
         src={hero.backdrop}
-        alt="Torcida do Santa Cruz"
+        alt={a11y('heroBackdrop')}
       />
       <div className="hero-grad" />
       <div className="hero-grain" />
