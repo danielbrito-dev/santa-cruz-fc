@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "title": "Santa Cruz Futebol Clube — Site Oficial",
+    "description": "Site oficial do Santa Cruz Futebol Clube — Recife/PE. Notícias, calendário, ingressos e Sócio Coral."
+  },
   "nav": { "news": "Notícias", "calendar": "Calendário", "tvCoral": "TV Coral", "login": "Entrar", "tickets": "Ingressos", "shop": "Loja", "menu": "Menu" },
   "common": { "allNews": "Todas as notícias", "matchCenter": "Match Center", "becomeMember": "Seja Sócio Coral", "skipToContent": "Pular para o conteúdo" },
   "news": { "heading1": "Notícias", "heading2": "do Clube", "photos": "{count, plural, one {# foto} other {# fotos}}" },
