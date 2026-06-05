@@ -1369,19 +1369,56 @@ body{ background:var(--page-bg) }
   .social-strip svg{width:16px;height:16px}
 
   /* ---- Footer ---- */
-  .footer-top{grid-template-columns:1fr 1fr;gap:24px;padding-bottom:32px}
-  .footer-brand,.footer-col--apps{grid-column:span 2}
+  /* footer-top: brand full-width top row, 3 link cols in 2-col grid, apps full-width bottom */
+  .site-footer{padding:56px 0 20px}
+  .footer-top{
+    grid-template-columns:1fr 1fr;
+    gap:28px 20px;
+    padding-bottom:36px;
+  }
+  /* brand block: full-width at top */
+  .footer-brand{grid-column:1 / -1}
+  /* link columns: columns 1 & 2 naturally (3rd wraps to next row at col 1) */
+  /* apps block: full-width at bottom */
+  .footer-col--apps{grid-column:1 / -1}
   .footer-brand img{height:52px;margin-bottom:14px}
-  .footer-col h5{margin-bottom:12px}
-  .footer-apps-blurb{font-size:12px;margin-bottom:12px}
-  .footer-app{padding:8px 14px;gap:8px}
+  .footer-brand p{font-size:13px;max-width:100%;line-height:1.55}
+  .footer-col h5{font-size:11px;margin-bottom:12px;letter-spacing:.14em}
+  .footer-col ul{gap:9px}
+  .footer-col a{font-size:13px}
+  /* apps column: blurb + buttons side-by-side (fits at 768px) */
+  .footer-apps-blurb{font-size:13px;margin-bottom:14px;max-width:100%;line-height:1.5}
+  .footer-col--apps .footer-apps{flex-direction:row;gap:10px;flex-wrap:wrap}
+  .footer-app{padding:9px 16px;gap:10px;flex:1 1 auto;min-width:140px}
   .footer-app strong{font-size:12px}
 
-  /* ---- Chant ---- */
-  .footer-chant{padding:44px 0 32px}
-  .chant{font-size:clamp(32px,9vw,60px)}
-  .chant .line-2{margin-left:12%}
-  .chant-meta{position:static;text-align:left;margin-bottom:14px}
+  /* ---- Chant area ---- */
+  .footer-chant{padding:40px 0 36px}
+  /* chant-meta: horizontal strip of 3 heritage stats (Desde 1914 | Tri Super ★ | Fita Azul 1979) */
+  .chant-meta{
+    position:static;
+    display:flex;flex-direction:row;
+    align-items:flex-start;
+    justify-content:flex-start;
+    gap:0;
+    text-align:left;
+    margin-bottom:28px;
+    border-top:1px solid rgba(255,255,255,.18);
+    padding-top:20px;
+  }
+  .chant-stat{
+    flex:1;
+    padding:0 12px;
+    border-left:1px solid rgba(255,255,255,.18);
+  }
+  .chant-stat:first-child{padding-left:0;border-left:none}
+  .chant-stat small{font-size:9px;letter-spacing:.28em}
+  .chant-stat strong{font-size:13px;margin-top:5px}
+  /* tri stars: left-aligned on mobile */
+  .chant-stat--tri .stars{justify-content:flex-start}
+  /* chant headline: scale to fit 390px viewport — impactful but no overflow */
+  .chant{font-size:clamp(28px,8.5vw,56px);letter-spacing:-.038em}
+  .chant .line-2{margin-left:10%}
 
   /* ---- Global overflow guard ---- */
   /* Prevent any element from causing horizontal scroll */
@@ -1398,15 +1435,33 @@ body{ background:var(--page-bg) }
   .inst-card.span-rows{grid-column:auto}
   .inst-card{aspect-ratio:3/2}
 
-  /* ---- Footer columns stack ---- */
-  .footer-top{grid-template-columns:1fr;gap:20px}
-  .footer-brand,.footer-col--apps{grid-column:auto}
-  .footer-apps{flex-direction:column}
-  .footer-app{max-width:220px}
+  /* ---- Footer columns stack on narrow phones ---- */
+  .site-footer{padding:48px 0 18px}
+  .footer-top{grid-template-columns:1fr;gap:22px 0;padding-bottom:28px}
+  .footer-brand{grid-column:auto}
+  .footer-col--apps{grid-column:auto}
+  .footer-brand img{height:50px;margin-bottom:12px}
+  /* apps: stack the two store buttons vertically, full width */
+  .footer-col--apps .footer-apps{flex-direction:column;gap:10px}
+  .footer-app{flex:none;width:100%;max-width:100%;padding:10px 16px}
 
-  /* ---- Chant on narrow phones ---- */
-  .chant{font-size:clamp(28px,10vw,44px);letter-spacing:-.035em}
-  .chant .line-2{margin-left:8%}
+  /* ---- chant-meta: 3 stats in a row, tight on narrow ---- */
+  .chant-meta{
+    gap:0;
+    margin-bottom:24px;
+    padding-top:18px;
+  }
+  .chant-stat{padding:0 10px}
+  .chant-stat small{font-size:8.5px;letter-spacing:.22em}
+  .chant-stat strong{font-size:12px;margin-top:4px}
+  .chant-stat--tri strong{font-size:10px}
+  .chant-stat--tri .stars{font-size:12px;gap:2px}
+
+  /* ---- Chant headline: fits ~390px without overflowing ---- */
+  /* At 390px: clamp(26px, 9.5vw, 40px) → ~37px; "É tradição," ≈ 12 chars × 0.62 × 37 ≈ 275px — fits in 342px inner */
+  /* line-2 "não é moda." + 6% offset: ~260px + 21px = 281px — fits */
+  .chant{font-size:clamp(26px,9.5vw,40px);letter-spacing:-.032em}
+  .chant .line-2{margin-left:6%}
 
   /* ---- Hero on very narrow ---- */
   .hero-card{bottom:16px}
