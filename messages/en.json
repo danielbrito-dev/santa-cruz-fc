@@ -41,6 +41,7 @@
     "errRequired": "Required field",
     "errEmail": "Invalid email",
     "errInvalid": "Incorrect email or password",
+    "signingIn": "Signing in…",
     "soon": "Sign-in will be connected soon."
   },
   "drawer": {

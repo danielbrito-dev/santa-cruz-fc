@@ -30,6 +30,10 @@ describe('session token', () => {
     const badPayload = Buffer.from('attacker@evil.com|0').toString('base64url');
     expect(verifySessionToken(`${badPayload}.${sig}`)).toBeNull();
   });
+  it('rejects an expired token (issued more than 7 days ago)', () => {
+    const old = createSessionToken('admin@santacruz.fc', Date.now() - 8 * 24 * 60 * 60 * 1000);
+    expect(verifySessionToken(old)).toBeNull();
+  });
   it('exposes the cookie name', () => {
     expect(SESSION_COOKIE).toBe('scfc_session');
   });

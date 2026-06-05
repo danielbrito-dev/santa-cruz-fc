@@ -166,7 +166,7 @@ export function LoginForm() {
 
         {/* Submit — red + white ring (BRAND.md) */}
         <button type="submit" className="login-submit-btn" disabled={pending}>
-          {pending ? t('submit') : t('submit')}
+          {pending ? t('signingIn') : t('submit')}
         </button>
       </form>
 
