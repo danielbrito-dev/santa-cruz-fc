@@ -8,6 +8,29 @@
   --gold:#C9B896; --gray:#D6D7D8; --ink:#0A0A0A;
   --fita-azul:#0A1A3D; --ink-2:#3A3A3A; --muted:#6E6E6E;
   --line:#E5E5E5; --bg-2:#F5F5F5; --bg-3:#FAFAFA;
+
+  /* ===== theme surfaces (light = current) ===== */
+  --page-bg: var(--red);
+  --hero-bg: linear-gradient(180deg,#C9B896 0%,#C9B896 18%,#E5D9BD 45%,#F6F0E2 70%,#FFFFFF 82%,#FFFFFF 100%);
+  --hero-text: var(--ink);
+  --panel: var(--white);
+  --panel-text: var(--ink);
+  --section-bg: var(--black);
+  --footer-bg: var(--red);
+}
+
+[data-theme="dark"]{
+  --page-bg: #5C0000;     /* deep tricolor red */
+  --hero-bg: #000000;     /* black hero (index9) */
+  --hero-text: var(--white);
+  --panel: #141414;
+  --panel-text: var(--white);
+  --section-bg: #0E0E0E;
+  --footer-bg: #5C0000;
+  --line: rgba(255,255,255,.14);
+  --bg-2: #1B1B1B;
+  --bg-3: #161616;
+  --muted: #9A9A9A;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -30,8 +53,8 @@ ul{list-style:none}
   border-bottom:1px solid transparent;
 }
 .site-header.scrolled{
-  background:var(--white);
-  color:var(--ink);
+  background:var(--panel);
+  color:var(--panel-text);
   border-bottom-color:var(--line);
   box-shadow:0 1px 0 rgba(0,0,0,.04), 0 10px 30px -20px rgba(0,0,0,.15);
 }
@@ -134,7 +157,7 @@ ul{list-style:none}
 .drawer{
   position:fixed;top:0;left:0;bottom:0;
   width:380px;max-width:90vw;
-  background:var(--white);
+  background:var(--panel);
   transform:translateX(-100%);
   transition:transform .35s cubic-bezier(.4,.0,.2,1);
   z-index:210;
@@ -212,16 +235,9 @@ ul{list-style:none}
 .hero{
   position:relative;
   /* Alvorada vertical: ouro denso herda do header → champagne → branco puro exatamente onde o
-     calendário pousa (≈82% da altura do hero). Cor-ouro alinhada com BRAND.md (#C9B896). */
-  background:linear-gradient(
-    180deg,
-    #C9B896 0%,
-    #C9B896 18%,
-    #E5D9BD 45%,
-    #F6F0E2 70%,
-    #FFFFFF 82%,
-    #FFFFFF 100%
-  );
+     calendário pousa (≈82% da altura do hero). Cor-ouro alinhada com BRAND.md (#C9B896).
+     Dark mode: var(--hero-bg) resolves to #000000 (pure black hero). */
+  background:var(--hero-bg);
   display:flex;flex-direction:column;
 }
 .hero-stage{
@@ -275,7 +291,7 @@ ul{list-style:none}
   left:14%;bottom:80px;
   max-width:560px;
   text-align:left;
-  color:var(--ink);
+  color:var(--hero-text);
   z-index:5;
   opacity:0;transform:translateY(24px);
   animation:heroIn 1s .4s cubic-bezier(.2,.7,.2,1) forwards;
@@ -352,8 +368,8 @@ ul{list-style:none}
   z-index:2;
   padding:14px 0 26px;
   color:var(--ink);
-  /* Calendário pousa em branco puro — o handoff cromático já aconteceu no .hero gradient */
-  background:var(--white);
+  /* Calendário pousa em branco puro (light) / panel escuro (dark) */
+  background:var(--panel);
   /* Drop-shadow branco difuso pra cima: dissolve a borda superior do calendar contra o
      gradient champagne, costurando a transição sem deixar costura visível */
   box-shadow:
@@ -487,7 +503,7 @@ ul{list-style:none}
 }
 .match-row-shield{
   width:36px;height:36px;border-radius:50%;
-  background:var(--white);
+  background:var(--panel);
   display:flex;align-items:center;justify-content:center;
   font-weight:900;font-size:10px;letter-spacing:.04em;color:var(--ink);
   border:1px solid var(--line);
@@ -549,7 +565,7 @@ ul{list-style:none}
 .section-link svg{width:12px;height:12px}
 
 /* ============== NEWS (PSG-style: featured sticky cinemático + strip vertical) ============== */
-.news-section{padding:64px 0 72px;background:var(--black);color:var(--white)}
+.news-section{padding:64px 0 72px;background:var(--section-bg);color:var(--white)}
 .news-grid{
   display:grid;
   grid-template-columns:1.05fr 1fr;
@@ -689,7 +705,7 @@ ul{list-style:none}
 /* ===== cookie banner ===== */
 .cookie-banner{
   position:fixed;left:0;right:0;bottom:0;z-index:300;
-  background:var(--white);color:var(--ink);
+  background:var(--panel);color:var(--panel-text);
   border-top:1px solid var(--line);
   box-shadow:0 -8px 24px -16px rgba(0,0,0,.25);
   padding:16px 24px;
@@ -716,7 +732,7 @@ ul{list-style:none}
 }
 
 /* ===== institutional ===== */
-.inst-section{padding:64px 0 80px;background:var(--black);color:var(--white)}
+.inst-section{padding:64px 0 80px;background:var(--section-bg);color:var(--white)}
 .inst-section .section-head{margin-bottom:24px}
 .inst-section .section-title{font-size:11px;font-weight:800;letter-spacing:.2em;color:rgba(255,255,255,.85)}
 .inst-section .section-title em{color:var(--gold)}
@@ -838,7 +854,7 @@ ul{list-style:none}
 
 /* ===== sponsors ===== */
 /* ============== SPONSORS (master + fornecedor grandes em cima · resto pequeno abaixo, sem labels) ============== */
-.sponsors-section{padding:72px 0 72px;background:var(--black);border-top:1px solid rgba(255,255,255,.18);color:var(--white)}
+.sponsors-section{padding:72px 0 72px;background:var(--section-bg);border-top:1px solid rgba(255,255,255,.18);color:var(--white)}
 
 /* Master + Fornecedor — linha centralizada, logos grandes, sem moldura */
 .sponsors-master{
@@ -881,7 +897,7 @@ ul{list-style:none}
 /* ===== social strip ===== */
 /* ---- social strip (fundo branco, entre patrocinadores e footer escuro) ---- */
 .social-strip{
-  background:var(--white);color:var(--ink);
+  background:var(--panel);color:var(--panel-text);
   padding:36px 0 40px;
   position:relative;z-index:2;
 }
@@ -898,7 +914,7 @@ ul{list-style:none}
 
 /* ===== footer + parallax ===== */
 /* ============== PARALLAX REVEAL — footer fixo no fundo do viewport, conteúdo sobe e revela ============== */
-body{ background:var(--red) }
+body{ background:var(--page-bg) }
 /* todas as seções principais sentam por cima do footer */
 .hero,
 .news-section,
@@ -913,7 +929,7 @@ body{ background:var(--red) }
 .site-footer{
   position:fixed;left:0;right:0;bottom:0;
   z-index:0;
-  background:var(--red);color:var(--white);
+  background:var(--footer-bg);color:var(--white);
   padding:72px 0 24px;
   overflow:hidden;
 }
@@ -1024,3 +1040,35 @@ body{ background:var(--red) }
 
 /* ============== UTILS ============== */
 /* .no-scroll is defined above in the header/drawer section */
+
+/* ===== dark theme contrast overrides ===== */
+[data-theme="dark"] .hero-title{ text-shadow:none }
+[data-theme="dark"] .hero-title q{ color:rgba(255,255,255,.85); text-shadow:none }
+[data-theme="dark"] .hero-cta{ color:var(--white); border-color:rgba(255,255,255,.4) }
+[data-theme="dark"] .hero-calendar{ color:var(--panel-text) }
+[data-theme="dark"] .hero-calendar-title,
+[data-theme="dark"] .match-comp .badge,
+[data-theme="dark"] .match-row-name,
+[data-theme="dark"] .match-row-score{ color:var(--white) }
+[data-theme="dark"] .drawer-item-trigger{ color:var(--white) }
+[data-theme="dark"] .drawer-sub a{ color:rgba(255,255,255,.8) }
+[data-theme="dark"] .drawer-head{ border-color:var(--line) }
+[data-theme="dark"] .cookie-banner p{ color:rgba(255,255,255,.78) }
+/* Secondary dark text — eyebrows, status badges, hero-eyebrow */
+[data-theme="dark"] .hero-eyebrow .cat{ color:rgba(255,255,255,.72) }
+[data-theme="dark"] .hero-eyebrow .div{ background:rgba(255,255,255,.22) }
+[data-theme="dark"] .match-comp .status{ color:var(--muted) }
+[data-theme="dark"] .match-center{ color:var(--white) }
+[data-theme="dark"] .match-center:hover{ color:var(--gold) }
+[data-theme="dark"] .cal-btn{ background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.14); color:var(--white) }
+[data-theme="dark"] .cal-btn:hover{ background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.28) }
+[data-theme="dark"] .carousel-wrap::before{ background:linear-gradient(90deg, rgba(27,27,27,.9), transparent) }
+[data-theme="dark"] .carousel-wrap::after{ background:linear-gradient(270deg, rgba(27,27,27,.9), transparent) }
+[data-theme="dark"] .drawer-close{ color:var(--white) }
+[data-theme="dark"] .drawer-item-trigger:hover{ background:var(--bg-2) }
+[data-theme="dark"] .drawer-sub a:hover{ background:var(--bg-2) }
+[data-theme="dark"] .social-strip a{ color:var(--white) }
+
+/* ===== BRAND.md: red must not touch near-black without white between (dark theme) ===== */
+[data-theme="dark"] .hero-tag{ box-shadow:0 0 0 1.5px var(--white) }
+[data-theme="dark"] .match::before{ box-shadow:0 -2px 0 0 var(--white) }
