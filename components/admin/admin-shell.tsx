@@ -16,6 +16,9 @@ export async function AdminShell({ children, userName, userEmail }: AdminShellPr
 
   return (
     <div className="admin-shell">
+      {/* Hidden checkbox FIRST so its `~` sibling selectors reach the sidebar + overlay (no JS) */}
+      <input type="checkbox" id="admin-sidebar-toggle" className="admin-sidebar-toggle-input" aria-hidden="true" />
+
       {/* ── Sidebar ──────────────────────────────────────────────── */}
       <aside className="admin-sidebar" aria-label={t('title')}>
         {/* Brand row: escudo on white pill + label */}
@@ -81,9 +84,7 @@ export async function AdminShell({ children, userName, userEmail }: AdminShellPr
         </main>
       </div>
 
-      {/* Hidden checkbox for mobile sidebar toggle — no JS required */}
-      <input type="checkbox" id="admin-sidebar-toggle" className="admin-sidebar-toggle-input" aria-hidden="true" />
-      {/* Overlay to close sidebar on mobile */}
+      {/* Overlay to close sidebar on mobile (follows the checkbox → reachable via `~`) */}
       <label htmlFor="admin-sidebar-toggle" className="admin-sidebar-overlay" aria-hidden="true" />
     </div>
   );

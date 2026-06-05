@@ -2310,9 +2310,8 @@ body{ background:var(--page-bg) }
     transition: transform .3s cubic-bezier(.4,0,.2,1);
     height: 100dvh;
   }
-  /* Show sidebar when checkbox is checked */
-  .admin-sidebar-toggle-input:checked ~ .admin-shell .admin-sidebar,
-  .admin-sidebar-toggle-input:checked + .admin-shell .admin-sidebar {
+  /* Show sidebar when checkbox is checked (checkbox is the shell's first child → ~ reaches the sidebar) */
+  .admin-sidebar-toggle-input:checked ~ .admin-sidebar {
     transform: translateX(0);
   }
   /* Overlay shown when open */

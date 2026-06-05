@@ -53,7 +53,7 @@ export default async function AdminDashboardPage({
               <h2 className="admin-card-title">{label}</h2>
               <p className="admin-card-desc">{desc}</p>
             </div>
-            <span className="admin-card-badge">Em breve</span>
+            <span className="admin-card-badge">{t('comingSoon')}</span>
             <svg
               className="admin-card-arrow"
               viewBox="0 0 24 24"
