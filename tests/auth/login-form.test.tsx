@@ -23,7 +23,15 @@ vi.mock('@/lib/i18n/navigation', () => ({
   useRouter: () => ({ replace: vi.fn() }),
 }));
 
+// Mock the server action module so the form can be imported in jsdom without
+// pulling in next/headers or other Node-only server internals.
+vi.mock('@/server/auth/actions', () => ({
+  login: vi.fn(async () => ({})),
+  logout: vi.fn(),
+}));
+
 import { LoginForm } from '@/components/auth/login-form';
+import { login } from '@/server/auth/actions';
 
 function renderForm() {
   return render(
@@ -73,7 +81,8 @@ describe('LoginForm', () => {
     });
   });
 
-  it('shows the "soon" notice when valid form is submitted (no fake login)', async () => {
+  it('calls the login action when a valid form is submitted', async () => {
+    vi.mocked(login).mockResolvedValueOnce({});
     renderForm();
     const emailInput = screen.getByLabelText(/e-mail/i);
     const passwordInput = screen.getByLabelText(/senha/i);
@@ -82,9 +91,24 @@ describe('LoginForm', () => {
     const submitBtn = screen.getByRole('button', { name: /entrar/i });
     fireEvent.click(submitBtn);
     await waitFor(() => {
-      expect(
-        screen.getByText(/login será conectado em breve/i),
-      ).toBeInTheDocument();
+      expect(login).toHaveBeenCalledWith('torcedor@santacruz.com.br', 'senhasegura123', 'pt');
+    });
+    // The "soon" notice should NOT appear — Google stub only
+    expect(screen.queryByText(/login será conectado em breve/i)).not.toBeInTheDocument();
+  });
+
+  it('shows the errInvalid message when login returns {error:"invalid"}', async () => {
+    vi.mocked(login).mockResolvedValueOnce({ error: 'invalid' });
+    renderForm();
+    const emailInput = screen.getByLabelText(/e-mail/i);
+    const passwordInput = screen.getByLabelText(/senha/i);
+    fireEvent.change(emailInput, { target: { value: 'wrong@example.com' } });
+    fireEvent.change(passwordInput, { target: { value: 'wrongpassword' } });
+    const submitBtn = screen.getByRole('button', { name: /entrar/i });
+    fireEvent.click(submitBtn);
+    await waitFor(() => {
+      expect(screen.getByRole('alert', { name: undefined })).toBeInTheDocument();
+      expect(screen.getByText(/e-mail ou senha incorretos/i)).toBeInTheDocument();
     });
   });
 
@@ -101,11 +125,29 @@ describe('LoginForm', () => {
 
   it('does not show "soon" notice when form has validation errors', async () => {
     renderForm();
-    // Submit with empty fields — validation should block the "soon" notice
+    // Submit with empty fields — validation should block any action call
     const submitBtn = screen.getByRole('button', { name: /entrar/i });
     fireEvent.click(submitBtn);
     await waitFor(() => {
       expect(screen.queryByText(/login será conectado em breve/i)).not.toBeInTheDocument();
+    });
+  });
+
+  it('clears the server error when the user edits the email field', async () => {
+    vi.mocked(login).mockResolvedValueOnce({ error: 'invalid' });
+    renderForm();
+    const emailInput = screen.getByLabelText(/e-mail/i);
+    const passwordInput = screen.getByLabelText(/senha/i);
+    fireEvent.change(emailInput, { target: { value: 'wrong@example.com' } });
+    fireEvent.change(passwordInput, { target: { value: 'wrongpassword' } });
+    fireEvent.click(screen.getByRole('button', { name: /entrar/i }));
+    await waitFor(() => {
+      expect(screen.getByText(/e-mail ou senha incorretos/i)).toBeInTheDocument();
+    });
+    // Editing the email clears the error
+    fireEvent.change(emailInput, { target: { value: 'corrected@example.com' } });
+    await waitFor(() => {
+      expect(screen.queryByText(/e-mail ou senha incorretos/i)).not.toBeInTheDocument();
     });
   });
 });

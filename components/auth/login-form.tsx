@@ -1,7 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useTransition } from 'react';
 import { useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
+import { login } from '@/server/auth/actions';
 
 // TODO(Phase 2): wire Supabase Auth (Google OAuth + email/password)
 
@@ -12,11 +14,14 @@ interface FormErrors {
 
 export function LoginForm() {
   const t = useTranslations('auth');
+  const locale = useLocale();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<FormErrors>({});
   const [showSoon, setShowSoon] = useState(false);
+  const [serverError, setServerError] = useState(false);
+  const [pending, startTransition] = useTransition();
 
   function validate(): FormErrors {
     const errs: FormErrors = {};
@@ -34,11 +39,15 @@ export function LoginForm() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setShowSoon(false);
+    setServerError(false);
     const errs = validate();
     setErrors(errs);
     if (Object.keys(errs).length === 0) {
-      // TODO(Phase 2): wire Supabase Auth (Google OAuth + email/password)
-      setShowSoon(true);
+      startTransition(async () => {
+        const res = await login(email, password, locale);
+        if (res?.error === 'invalid') setServerError(true);
+        // on success the action redirects (navigation happens automatically)
+      });
     }
   }
 
@@ -49,6 +58,13 @@ export function LoginForm() {
 
   return (
     <div className="login-form-root">
+      {/* Server-side invalid credentials error */}
+      {serverError && (
+        <p className="login-server-error" role="alert">
+          {t('errInvalid')}
+        </p>
+      )}
+
       {/* Google OAuth button */}
       <button
         type="button"
@@ -109,6 +125,7 @@ export function LoginForm() {
             onChange={(e) => {
               setEmail(e.target.value);
               if (errors.email) setErrors((prev) => ({ ...prev, email: undefined }));
+              if (serverError) setServerError(false);
             }}
             aria-invalid={!!errors.email}
             aria-describedby={errors.email ? 'login-email-error' : undefined}
@@ -135,6 +152,7 @@ export function LoginForm() {
             onChange={(e) => {
               setPassword(e.target.value);
               if (errors.password) setErrors((prev) => ({ ...prev, password: undefined }));
+              if (serverError) setServerError(false);
             }}
             aria-invalid={!!errors.password}
             aria-describedby={errors.password ? 'login-password-error' : undefined}
@@ -147,12 +165,12 @@ export function LoginForm() {
         </div>
 
         {/* Submit — red + white ring (BRAND.md) */}
-        <button type="submit" className="login-submit-btn">
-          {t('submit')}
+        <button type="submit" className="login-submit-btn" disabled={pending}>
+          {pending ? t('submit') : t('submit')}
         </button>
       </form>
 
-      {/* Stub "soon" notice — shown after valid submit or Google click */}
+      {/* Stub "soon" notice — shown after Google click */}
       {showSoon && (
         <p className="login-soon-notice" role="status" aria-live="polite">
           {t('soon')}

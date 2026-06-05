@@ -40,6 +40,7 @@
     "backToSite": "Back to site",
     "errRequired": "Required field",
     "errEmail": "Invalid email",
+    "errInvalid": "Incorrect email or password",
     "soon": "Sign-in will be connected soon."
   },
   "drawer": {
