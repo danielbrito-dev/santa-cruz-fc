@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { AdminNav } from './admin-nav';
+import { AdminTopbarTitle } from './admin-topbar-title';
 import { LogoutButton } from './logout-button';
 import { ThemeToggle } from '@/components/site/theme-toggle';
 
@@ -19,8 +20,9 @@ export async function AdminShell({ children, userName, userEmail }: AdminShellPr
       {/* Hidden checkbox FIRST so its `~` sibling selectors reach the sidebar + overlay (no JS) */}
       <input type="checkbox" id="admin-sidebar-toggle" className="admin-sidebar-toggle-input" aria-hidden="true" />
 
-      {/* ── Sidebar ──────────────────────────────────────────────── */}
+      {/* ── Sidebar ──────────────────────────────────────────────────────── */}
       <aside className="admin-sidebar" aria-label={t('title')}>
+
         {/* Brand row: escudo on white pill + label */}
         <div className="admin-brand">
           {/* White pill ensures escudo never sits directly on dark sidebar (BRAND.md §3) */}
@@ -49,8 +51,9 @@ export async function AdminShell({ children, userName, userEmail }: AdminShellPr
         </div>
       </aside>
 
-      {/* ── Main column ─────────────────────────────────────────── */}
+      {/* ── Main column ──────────────────────────────────────────────────── */}
       <div className="admin-main">
+
         {/* Topbar */}
         <header className="admin-topbar">
           {/* Mobile hamburger — triggers sidebar open via CSS checkbox hack */}
@@ -59,6 +62,9 @@ export async function AdminShell({ children, userName, userEmail }: AdminShellPr
             <span />
             <span />
           </label>
+
+          {/* Derived page title breadcrumb (client component reads pathname) */}
+          <AdminTopbarTitle />
 
           <div className="admin-topbar-spacer" />
 

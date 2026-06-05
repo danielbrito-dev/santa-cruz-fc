@@ -151,15 +151,28 @@ describe('ContentEditor', () => {
     mockSaveContent.mockResolvedValue({ ok: true });
   });
 
-  it('renders a hero PT field with the initial value', () => {
+  // ── New structure: PT is the default language, Hero is the default section.
+  // The language toggle means each field shows ONE locale at a time.
+  // The section switcher means only the active section's fields are visible.
+
+  it('renders a hero PT field with the initial value (PT is default language, Hero is default section)', () => {
     renderEditor();
-    // The Hero section is open by default (open attribute on details)
+    // With PT active and Hero section active, the PT value of titleLine1 should be visible
     const ptInput = screen.getByDisplayValue('Coral não');
     expect(ptInput).toBeInTheDocument();
   });
 
-  it('renders a hero EN field with the initial value', () => {
+  it('does NOT render the EN hero value when PT language is active', () => {
     renderEditor();
+    // EN field is hidden when PT is active (one language at a time)
+    const enInput = screen.queryByDisplayValue('Coral never');
+    expect(enInput).toBeNull();
+  });
+
+  it('renders the EN hero value after switching to EN', () => {
+    renderEditor();
+    const enBtn = screen.getByRole('button', { name: /^EN$/i });
+    fireEvent.click(enBtn);
     const enInput = screen.getByDisplayValue('Coral never');
     expect(enInput).toBeInTheDocument();
   });
@@ -169,7 +182,7 @@ describe('ContentEditor', () => {
     expect(screen.getByRole('button', { name: /salvar/i })).toBeInTheDocument();
   });
 
-  it('editing a hero field changes its value', async () => {
+  it('editing a hero PT field changes its value', async () => {
     renderEditor();
     const ptInput = screen.getByDisplayValue('Coral não') as HTMLInputElement;
     fireEvent.change(ptInput, { target: { value: 'Novo título' } });
@@ -179,7 +192,7 @@ describe('ContentEditor', () => {
   it('calls saveContent with the edited hero block after Salvar is clicked', async () => {
     renderEditor();
 
-    // Edit hero titleLine1 PT
+    // Edit hero titleLine1 PT (PT is default, Hero is default section)
     const ptInput = screen.getByDisplayValue('Coral não');
     fireEvent.change(ptInput, { target: { value: 'Coral vence' } });
 
@@ -195,7 +208,7 @@ describe('ContentEditor', () => {
     expect(lastSaveArg).toBeDefined();
     // Edited block changed
     expect(lastSaveArg!.hero.titleLine1.pt).toBe('Coral vence');
-    // EN value preserved
+    // EN value preserved (was never touched)
     expect(lastSaveArg!.hero.titleLine1.en).toBe('Coral never');
   });
 

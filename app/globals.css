@@ -2141,41 +2141,198 @@ body{ background:var(--page-bg) }
   max-width: 60ch;
 }
 
+/* ──────────────────────────────────────────────────────────────────
+   REUSABLE ADMIN UI PRIMITIVES — used by AR2 (dashboard + editor)
+   and AR3 (news admin). Keep these canonical; do NOT redefine in
+   page-specific CSS. Primitives documented below:
+
+   .admin-btn                — base button reset + shared geometry
+   .admin-btn--primary       — red fill, white ring (BRAND.md rule)
+   .admin-btn--ghost         — transparent, bordered
+   .admin-btn--sm            — compact size variant
+   .admin-badge              — status/info pill
+   .admin-badge--stat        — neutral stat pill
+   .admin-badge--soon        — gold "em breve" pill
+   .admin-badge--published   — green published pill
+   .admin-badge--draft       — muted draft pill
+   .admin-card               — surface card with red top accent
+   .admin-card--active       — interactive (link) card
+   .admin-card--muted        — non-interactive / coming-soon card
+   .admin-card-footer        — row at bottom of card for actions/badges
+   .admin-field              — field wrapper (label + input)
+   .admin-label              — field label
+   .admin-label-hint         — muted inline hint next to label
+   .admin-input              — text input
+   .admin-topbar-title       — topbar breadcrumb + separator
+──────────────────────────────────────────────────────────────────── */
+
+/* ── Buttons ─────────────────────────────────────────────────────── */
+.admin-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .10em;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background .15s ease, box-shadow .15s ease, transform .15s ease, color .15s ease;
+}
+.admin-btn:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 3px;
+}
+/* Primary: red fill + white ring (BRAND.md: red element on any surface needs white separation) */
+.admin-btn--primary {
+  background: var(--red);
+  color: #FFFFFF;
+  box-shadow: 0 0 0 1.5px #FFFFFF;
+}
+.admin-btn--primary:hover:not(:disabled) {
+  background: #B80000;
+  box-shadow: 0 0 0 1.5px #FFFFFF, 0 4px 16px -4px rgba(221,0,0,.55);
+  transform: translateY(-1px);
+}
+.admin-btn--primary:active:not(:disabled) { transform: translateY(0) }
+.admin-btn--primary:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+/* Ghost: transparent, bordered */
+.admin-btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--line);
+  box-shadow: none;
+}
+.admin-btn--ghost:hover:not(:disabled) {
+  background: var(--bg-2);
+  border-color: var(--muted);
+}
+[data-theme="dark"] .admin-btn--ghost {
+  color: rgba(255,255,255,.82);
+  border-color: rgba(255,255,255,.14);
+}
+[data-theme="dark"] .admin-btn--ghost:hover:not(:disabled) {
+  background: rgba(255,255,255,.07);
+  border-color: rgba(255,255,255,.28);
+}
+/* Small size variant */
+.admin-btn--sm {
+  padding: 7px 14px;
+  font-size: 11px;
+}
+
+/* ── Badges ──────────────────────────────────────────────────────── */
+.admin-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+/* Neutral stat — shows counts */
+.admin-badge--stat {
+  background: var(--bg-2);
+  color: var(--muted);
+  border-color: var(--line);
+}
+[data-theme="dark"] .admin-badge--stat {
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.5);
+  border-color: rgba(255,255,255,.10);
+}
+/* Gold "em breve" */
+.admin-badge--soon {
+  background: rgba(201,184,150,.18);
+  color: #8C7A52;
+  border-color: rgba(201,184,150,.45);
+}
+[data-theme="dark"] .admin-badge--soon {
+  background: rgba(201,184,150,.12);
+  color: var(--gold);
+  border-color: rgba(201,184,150,.25);
+}
+/* Published — green */
+.admin-badge--published {
+  background: rgba(0,128,64,.09);
+  color: #005C2E;
+  border-color: rgba(0,128,64,.25);
+}
+[data-theme="dark"] .admin-badge--published {
+  background: rgba(0,200,80,.07);
+  color: #3DD880;
+  border-color: rgba(0,200,80,.2);
+}
+/* Draft — muted */
+.admin-badge--draft {
+  background: var(--bg-2);
+  color: var(--muted);
+  border-color: var(--line);
+}
+[data-theme="dark"] .admin-badge--draft {
+  background: rgba(255,255,255,.05);
+  color: rgba(255,255,255,.38);
+  border-color: rgba(255,255,255,.08);
+}
+
 /* ── Module cards grid ───────────────────────────────────────────── */
 .admin-cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 16px;
 }
+
+/* Base card surface */
 .admin-card {
-  position: relative;
   display: flex;
   flex-direction: column;
   gap: 12px;
   padding: 24px;
   background: var(--panel);
   border: 1px solid var(--line);
+  /* Red top accent — panel bg separates it from any dark surface (BRAND.md) */
+  border-top: 3px solid var(--red);
   color: var(--ink);
   text-decoration: none;
-  transition: border-color .18s, box-shadow .18s, transform .18s;
-  /* Signature corner clip matching the match cards */
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%);
-  /* Red top accent — separated by card's white/panel bg (BRAND.md) */
-  border-top: 3px solid var(--red);
-}
-.admin-card:hover {
-  border-color: var(--muted);
-  box-shadow: 0 6px 24px -8px rgba(0,0,0,.14);
-  transform: translateY(-2px);
 }
 [data-theme="dark"] .admin-card {
   background: #1A1A1A;
   border-color: rgba(255,255,255,.10);
   color: #FFFFFF;
 }
-[data-theme="dark"] .admin-card:hover {
+
+/* Interactive link card */
+.admin-card--active {
+  transition: border-color .18s, box-shadow .18s, transform .18s;
+  cursor: pointer;
+}
+.admin-card--active:hover {
+  border-color: var(--muted);
+  box-shadow: 0 6px 24px -8px rgba(0,0,0,.14);
+  transform: translateY(-2px);
+}
+[data-theme="dark"] .admin-card--active:hover {
   border-color: rgba(255,255,255,.22);
   box-shadow: 0 6px 24px -8px rgba(0,0,0,.6);
+}
+
+/* Non-interactive / coming-soon card */
+.admin-card--muted {
+  opacity: .72;
+  cursor: default;
 }
 
 .admin-card-icon {
@@ -2214,38 +2371,94 @@ body{ background:var(--page-bg) }
   line-height: 1.5;
 }
 
-/* "Em breve" badge — gold accent (BRAND.md: gold for special contexts) */
-.admin-card-badge {
-  align-self: flex-start;
-  display: inline-flex;
-  padding: 3px 9px;
-  background: rgba(201,184,150,.18);
-  color: #8C7A52;
-  border: 1px solid rgba(201,184,150,.45);
-  font-size: 10px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: .14em;
-  border-radius: 3px;
-}
-[data-theme="dark"] .admin-card-badge {
-  background: rgba(201,184,150,.12);
-  color: var(--gold);
-  border-color: rgba(201,184,150,.25);
+/* Card footer: row for badges/actions at card bottom */
+.admin-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 4px;
 }
 
-.admin-card-arrow {
-  position: absolute;
-  bottom: 22px;
-  right: 30px; /* account for clip-path diagonal */
-  color: var(--muted);
-  transition: transform .18s, color .18s;
+/* ── Field primitives ─────────────────────────────────────────────
+   Used in content-editor AND news form (AR3). */
+.admin-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
-.admin-card:hover .admin-card-arrow {
-  transform: translateX(4px);
+.admin-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--muted);
+  line-height: 1;
+}
+.admin-label-hint {
+  font-size: 10px;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--muted);
+  opacity: .7;
+}
+.admin-input {
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ink);
+  background: var(--bg-3);
+  border: 1.5px solid var(--line);
+  border-radius: 4px;
+  padding: 9px 12px;
+  width: 100%;
+  outline: none;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+[data-theme="dark"] .admin-input {
+  background: #1E1E1E;
+  color: #FFFFFF;
+  border-color: rgba(255,255,255,.14);
+}
+.admin-input:focus {
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(221,0,0,.10);
+}
+[data-theme="dark"] .admin-input:focus {
+  box-shadow: 0 0 0 3px rgba(221,0,0,.18);
+}
+.admin-input::placeholder { color: var(--muted); opacity: .6 }
+/* Textarea variant */
+textarea.admin-input {
+  resize: vertical;
+  min-height: 80px;
+  line-height: 1.6;
+}
+
+/* ── Topbar breadcrumb title ─────────────────────────────────────── */
+.admin-topbar-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.admin-topbar-separator {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--muted);
+  opacity: .5;
+  user-select: none;
+}
+.admin-topbar-title-text {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .02em;
   color: var(--ink);
 }
-[data-theme="dark"] .admin-card:hover .admin-card-arrow { color: #FFFFFF }
+[data-theme="dark"] .admin-topbar-title-text { color: rgba(255,255,255,.82) }
 
 /* ── Placeholder pages ───────────────────────────────────────────── */
 .admin-placeholder {
@@ -2371,139 +2584,123 @@ body{ background:var(--page-bg) }
 
 /* ===== admin content editor ===== */
 
+/* ── Outer wrapper ────────────────────────────────────────────────── */
 .content-editor {
   display: flex;
   flex-direction: column;
   gap: 16px;
   padding-bottom: 80px; /* room for the sticky save bar */
+  max-width: 760px;
 }
 
-/* ── Section card ─────────────────────────────────────────────────── */
-.ce-section {
+/* ── Controls bar: language toggle + section tabs ─────────────────── */
+.ce-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--line);
+}
+[data-theme="dark"] .ce-controls {
+  border-bottom-color: rgba(255,255,255,.10);
+}
+
+/* Language toggle: PT | EN pill buttons */
+.ce-lang-toggle {
+  display: inline-flex;
+  border: 1.5px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+[data-theme="dark"] .ce-lang-toggle {
+  border-color: rgba(255,255,255,.14);
+}
+
+.ce-lang-btn {
+  padding: 6px 14px;
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background .13s, color .13s;
+  line-height: 1;
+}
+.ce-lang-btn:hover { background: var(--bg-2); color: var(--ink) }
+[data-theme="dark"] .ce-lang-btn:hover { background: rgba(255,255,255,.06); color: #FFFFFF }
+/* Active lang: red fill + white ring (BRAND.md: red never touches adjacent surfaces without white) */
+.ce-lang-btn.active {
+  background: var(--red);
+  color: #FFFFFF;
+  /* Tiny inner white ring separates the red from the toggle's border */
+  box-shadow: inset 0 0 0 1px #FFFFFF;
+}
+.ce-lang-btn:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+
+/* Section tab switcher */
+.ce-section-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.ce-section-tab {
+  padding: 8px 16px;
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .03em;
+  color: var(--muted);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: color .15s, border-color .15s;
+  white-space: nowrap;
+  margin-bottom: -1px; /* align with .ce-controls border-bottom */
+}
+.ce-section-tab:hover { color: var(--ink) }
+[data-theme="dark"] .ce-section-tab:hover { color: #FFFFFF }
+.ce-section-tab.active {
+  color: var(--ink);
+  font-weight: 700;
+  /* Red underline tab indicator (sits on the panel bg, not on dark) */
+  border-bottom-color: var(--red);
+}
+[data-theme="dark"] .ce-section-tab.active { color: #FFFFFF }
+.ce-section-tab:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ── Section fields panel ─────────────────────────────────────────── */
+.ce-panel {
   background: var(--panel);
   border: 1px solid var(--line);
   border-top: 3px solid var(--red);
+  padding: 24px;
 }
-[data-theme="dark"] .ce-section {
+[data-theme="dark"] .ce-panel {
   background: #1A1A1A;
   border-color: rgba(255,255,255,.10);
 }
 
-.ce-section-summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 20px;
-  cursor: pointer;
-  user-select: none;
-  list-style: none;
-  gap: 12px;
-}
-.ce-section-summary::-webkit-details-marker { display: none }
-
-.ce-section-label {
-  font-size: 12px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: .14em;
-  color: var(--ink);
-}
-[data-theme="dark"] .ce-section-label { color: #FFFFFF }
-
-/* Chevron arrow — rotates when open */
-.ce-section-chevron {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-right: 2px solid var(--muted);
-  border-bottom: 2px solid var(--muted);
-  transform: rotate(45deg);
-  flex-shrink: 0;
-  transition: transform .2s ease;
-}
-.ce-section[open] .ce-section-chevron {
-  transform: rotate(-135deg);
-}
-
-.ce-section-body {
-  padding: 0 20px 20px;
+.ce-section-fields {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  border-top: 1px solid var(--line);
-  padding-top: 20px;
-}
-[data-theme="dark"] .ce-section-body {
-  border-top-color: rgba(255,255,255,.08);
-}
-
-/* ── Field group ──────────────────────────────────────────────────── */
-.ce-field-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.ce-field-label {
-  display: block;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .12em;
-  color: var(--muted);
-}
-
-/* ── Localized row: PT + EN side by side ──────────────────────────── */
-.ce-localized-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-.ce-lang-label {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.ce-lang-badge {
-  display: inline-block;
-  font-size: 10px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: .14em;
-  color: var(--muted);
-  line-height: 1;
-}
-
-/* ── Inputs ───────────────────────────────────────────────────────── */
-.ce-input {
-  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--ink);
-  background: var(--bg-3);
-  border: 1.5px solid var(--line);
-  border-radius: 6px;
-  padding: 9px 12px;
-  width: 100%;
-  outline: none;
-  transition: border-color .15s ease, box-shadow .15s ease;
-}
-[data-theme="dark"] .ce-input {
-  background: #1E1E1E;
-  color: #FFFFFF;
-  border-color: rgba(255,255,255,.14);
-}
-.ce-input:focus {
-  border-color: var(--red);
-  box-shadow: 0 0 0 3px rgba(221,0,0,.10);
-}
-[data-theme="dark"] .ce-input:focus {
-  box-shadow: 0 0 0 3px rgba(221,0,0,.18);
-}
-.ce-input--full {
-  /* For single-locale inputs that span full width */
 }
 
 /* ── Card group (banner / institutional items) ────────────────────── */
@@ -2575,57 +2772,35 @@ body{ background:var(--page-bg) }
   border-top-color: rgba(255,255,255,.10);
 }
 
-/* Red save button with white ring — BRAND.md btn-pill pattern */
+/* Save btn: reuses .admin-btn--primary — override size only */
 .ce-save-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 11px 28px;
-  background: var(--red);
-  color: #FFFFFF;
-  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+  padding: 11px 32px;
   font-size: 13px;
-  font-weight: 800;
-  text-transform: uppercase;
   letter-spacing: .12em;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  /* White ring separates red from any adjacent dark surface — BRAND.md rule */
-  box-shadow: 0 0 0 2px #FFFFFF;
-  transition: background .15s ease, transform .15s ease, box-shadow .15s ease;
-}
-.ce-save-btn:hover:not(:disabled) {
-  background: #B80000;
-  transform: translateY(-1px);
-  box-shadow: 0 0 0 2px #FFFFFF, 0 6px 18px -6px rgba(221,0,0,.55);
-}
-.ce-save-btn:active:not(:disabled) {
-  transform: translateY(0);
-}
-.ce-save-btn:disabled {
-  opacity: .55;
-  cursor: not-allowed;
-}
-/* Keyboard focus: white ring + visible red outline (BRAND.md: white ring present for accessibility) */
-.ce-save-btn:focus-visible {
-  outline: 3px solid var(--red);
-  outline-offset: 4px;
 }
 
-/* ── Responsive: stack PT/EN on mobile ───────────────────────────── */
+/* ── Responsive ───────────────────────────────────────────────────── */
 @media (max-width: 600px) {
-  .ce-localized-row {
-    grid-template-columns: 1fr;
-  }
   .content-editor {
     gap: 12px;
     padding-bottom: 72px;
   }
-  .ce-section-body {
-    padding: 0 14px 16px;
-    padding-top: 16px;
-    gap: 16px;
+  .ce-controls {
+    gap: 10px;
+  }
+  .ce-section-tabs {
+    gap: 0;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+  }
+  .ce-section-tabs::-webkit-scrollbar { display: none }
+  .ce-section-tab {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+  .ce-panel {
+    padding: 16px;
   }
   .ce-card-group {
     padding: 12px;

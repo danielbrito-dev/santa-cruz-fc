@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { NextIntlClientProvider } from 'next-intl';
 import pt from '@/messages/pt.json';
 
-// Mock navigation — usePathname returns /admin/marketing to test active state
+// Mock navigation — usePathname returns /admin/noticias to test active state
 vi.mock('@/lib/i18n/navigation', () => ({
   Link: ({
     href,
@@ -18,7 +18,7 @@ vi.mock('@/lib/i18n/navigation', () => ({
       {children}
     </a>
   ),
-  usePathname: () => '/admin/marketing',
+  usePathname: () => '/admin/noticias',
   useRouter: () => ({ replace: vi.fn() }),
 }));
 
@@ -38,9 +38,14 @@ describe('AdminNav', () => {
     expect(screen.getByText(/painel/i)).toBeInTheDocument();
   });
 
-  it('renders Marketing link', () => {
+  it('renders Conteúdo link', () => {
     renderNav();
-    expect(screen.getByText(/marketing/i)).toBeInTheDocument();
+    expect(screen.getByText(/conteúdo/i)).toBeInTheDocument();
+  });
+
+  it('renders Notícias link', () => {
+    renderNav();
+    expect(screen.getByText(/notícias/i)).toBeInTheDocument();
   });
 
   it('renders Usuários link', () => {
@@ -48,17 +53,17 @@ describe('AdminNav', () => {
     expect(screen.getByText(/usuários/i)).toBeInTheDocument();
   });
 
-  it('marks Marketing as active when pathname is /admin/marketing', () => {
+  it('marks Notícias as active when pathname is /admin/noticias', () => {
     renderNav();
     const links = screen.getAllByRole('link');
-    const marketingLink = links.find(
-      (l) => l.getAttribute('href')?.includes('/admin/marketing'),
+    const noticiasLink = links.find(
+      (l) => l.getAttribute('href')?.includes('/admin/noticias'),
     );
-    expect(marketingLink).toBeDefined();
-    expect(marketingLink).toHaveClass('active');
+    expect(noticiasLink).toBeDefined();
+    expect(noticiasLink).toHaveClass('active');
   });
 
-  it('does not mark Dashboard as active when pathname is /admin/marketing', () => {
+  it('does not mark Dashboard as active when pathname is /admin/noticias', () => {
     renderNav();
     const links = screen.getAllByRole('link');
     const dashLink = links.find((l) => {
@@ -75,6 +80,6 @@ describe('AdminNav', () => {
       .getAllByRole('link')
       .filter((l) => l.getAttribute('aria-current') === 'page');
     expect(activeLinks).toHaveLength(1);
-    expect(activeLinks[0].getAttribute('href')).toContain('/admin/marketing');
+    expect(activeLinks[0].getAttribute('href')).toContain('/admin/noticias');
   });
 });
