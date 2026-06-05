@@ -31,13 +31,13 @@ Introduzir tokens de superfície que invertem por tema. Em `:root` recebem os va
 
 | Token | Light (atual) | Dark |
 | --- | --- | --- |
-| `--page-bg` (reveal do body) | `var(--red)` | `#0B0B0B` |
+| `--page-bg` (reveal do body, atrás do footer) | `var(--red)` | vermelho escuro (~`#5C0000`) — casa com o footer p/ o reveal do parallax ficar sem costura |
 | `--hero-bg` | gradiente dourado→branco | preto sólido (`#000`) |
 | `--hero-text` | `var(--ink)` | `var(--white)` |
 | `--panel` (social-strip, drawer, cookie, header rolado, `--bg-2` dos match cards) | `var(--white)` | `#141414` |
 | `--panel-text` | `var(--ink)` | `var(--white)` |
 | `--section-bg` (news/inst/sponsors — já escuras) | `var(--black)` | `#0E0E0E` |
-| `--footer-bg` | `var(--red)` | `#0B0B0B` |
+| `--footer-bg` | `var(--red)` | vermelho escuro (~`#5C0000`) — preserva a assinatura tricolor no dark (ajustável no frontend-design) |
 | `--line` (bordas) | `#E5E5E5` | `rgba(255,255,255,.14)` |
 | `--red` | `#DD0000` | `#DD0000` (imutável) |
 | `--gold` | `#C9B896` | `#C9B896` (acento) |
