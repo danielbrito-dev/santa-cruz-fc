@@ -1072,6 +1072,8 @@ body{ background:var(--page-bg) }
 /* ===== BRAND.md: red must not touch near-black without white between (dark theme) ===== */
 [data-theme="dark"] .hero-tag{ box-shadow:0 0 0 1.5px var(--white) }
 [data-theme="dark"] .match::before{ box-shadow:0 -2px 0 0 var(--white) }
+/* red drawer-foot button sits on a near-black panel in dark — white ring separates it */
+[data-theme="dark"] .drawer-foot a.primary{ box-shadow:0 0 0 1.5px var(--white) }
 
 /* ===== dark theme: suppress light-backdrop artifacts + fallback text ===== */
 /* default inherited text color flips to white on dark surfaces */
