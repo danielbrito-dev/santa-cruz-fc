@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/lib/i18n/navigation';
 import { LocaleSwitcher } from './locale-switcher';
+import { ThemeToggle } from './theme-toggle';
 
 const THRESHOLD = 80;
 const DELTA = 6;
@@ -139,6 +140,7 @@ export function HeaderClient() {
             <a href="#" className="header-link hide-mobile">
               {nav('shop')}
             </a>
+            <ThemeToggle />
             <LocaleSwitcher />
           </div>
         </div>
