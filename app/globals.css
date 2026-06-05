@@ -1072,3 +1072,15 @@ body{ background:var(--page-bg) }
 /* ===== BRAND.md: red must not touch near-black without white between (dark theme) ===== */
 [data-theme="dark"] .hero-tag{ box-shadow:0 0 0 1.5px var(--white) }
 [data-theme="dark"] .match::before{ box-shadow:0 -2px 0 0 var(--white) }
+
+/* ===== dark theme: suppress light-backdrop artifacts + fallback text ===== */
+/* default inherited text color flips to white on dark surfaces */
+[data-theme="dark"] body{ color:var(--white) }
+/* hero photo overlay: the light gold/white editorial fade would smear on the black hero — replace with a dark scrim that also keeps the hero-card text legible */
+[data-theme="dark"] .hero-grad{ background:linear-gradient(180deg, rgba(0,0,0,.40) 0%, rgba(0,0,0,0) 38%, rgba(0,0,0,0) 66%, rgba(0,0,0,.90) 100%) }
+/* calendar: kill the white upward glow + recolor the blur transition to dark */
+[data-theme="dark"] .hero-calendar{ box-shadow:none }
+[data-theme="dark"] .hero-calendar::before{ background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.35) 60%, rgba(0,0,0,.70) 100%) }
+/* drawer outline button + calendar "ver todos" hover were near-black text on a dark panel */
+[data-theme="dark"] .drawer-foot a.outline{ color:var(--white) }
+[data-theme="dark"] .hero-calendar-title a:hover{ color:var(--white) }
