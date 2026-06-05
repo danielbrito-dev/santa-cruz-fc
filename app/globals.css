@@ -2368,3 +2368,267 @@ body{ background:var(--page-bg) }
     padding: 7px 10px;
   }
 }
+
+/* ===== admin content editor ===== */
+
+.content-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 80px; /* room for the sticky save bar */
+}
+
+/* ── Section card ─────────────────────────────────────────────────── */
+.ce-section {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--red);
+}
+[data-theme="dark"] .ce-section {
+  background: #1A1A1A;
+  border-color: rgba(255,255,255,.10);
+}
+
+.ce-section-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  gap: 12px;
+}
+.ce-section-summary::-webkit-details-marker { display: none }
+
+.ce-section-label {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--ink);
+}
+[data-theme="dark"] .ce-section-label { color: #FFFFFF }
+
+/* Chevron arrow — rotates when open */
+.ce-section-chevron {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--muted);
+  border-bottom: 2px solid var(--muted);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+  transition: transform .2s ease;
+}
+.ce-section[open] .ce-section-chevron {
+  transform: rotate(-135deg);
+}
+
+.ce-section-body {
+  padding: 0 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+}
+[data-theme="dark"] .ce-section-body {
+  border-top-color: rgba(255,255,255,.08);
+}
+
+/* ── Field group ──────────────────────────────────────────────────── */
+.ce-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ce-field-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--muted);
+}
+
+/* ── Localized row: PT + EN side by side ──────────────────────────── */
+.ce-localized-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.ce-lang-label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ce-lang-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--muted);
+  line-height: 1;
+}
+
+/* ── Inputs ───────────────────────────────────────────────────────── */
+.ce-input {
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ink);
+  background: var(--bg-3);
+  border: 1.5px solid var(--line);
+  border-radius: 6px;
+  padding: 9px 12px;
+  width: 100%;
+  outline: none;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+[data-theme="dark"] .ce-input {
+  background: #1E1E1E;
+  color: #FFFFFF;
+  border-color: rgba(255,255,255,.14);
+}
+.ce-input:focus {
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(221,0,0,.10);
+}
+[data-theme="dark"] .ce-input:focus {
+  box-shadow: 0 0 0 3px rgba(221,0,0,.18);
+}
+.ce-input--full {
+  /* For single-locale inputs that span full width */
+}
+
+/* ── Card group (banner / institutional items) ────────────────────── */
+.ce-card-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+[data-theme="dark"] .ce-card-group {
+  background: rgba(255,255,255,.03);
+  border-color: rgba(255,255,255,.08);
+}
+
+.ce-card-index {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: var(--muted);
+  line-height: 1;
+}
+
+/* ── Status messages ──────────────────────────────────────────────── */
+.ce-status {
+  padding: 12px 16px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.ce-status--success {
+  background: rgba(0,128,64,.08);
+  border: 1px solid rgba(0,128,64,.25);
+  color: #006030;
+}
+[data-theme="dark"] .ce-status--success {
+  background: rgba(0,200,80,.07);
+  border-color: rgba(0,200,80,.2);
+  color: #3DD880;
+}
+.ce-status--error {
+  background: rgba(221,0,0,.06);
+  border: 1px solid rgba(221,0,0,.22);
+  color: var(--red);
+}
+[data-theme="dark"] .ce-status--error {
+  background: rgba(221,0,0,.10);
+  border-color: rgba(221,0,0,.30);
+}
+
+/* ── Save bar ─────────────────────────────────────────────────────── */
+/* Sticks to the bottom of .admin-content */
+.ce-save-bar {
+  position: sticky;
+  bottom: 0;
+  padding: 14px 0 4px;
+  background: var(--admin-content-bg);
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+[data-theme="dark"] .ce-save-bar {
+  border-top-color: rgba(255,255,255,.10);
+}
+
+/* Red save button with white ring — BRAND.md btn-pill pattern */
+.ce-save-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 28px;
+  background: var(--red);
+  color: #FFFFFF;
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  /* White ring separates red from any adjacent dark surface — BRAND.md rule */
+  box-shadow: 0 0 0 2px #FFFFFF;
+  transition: background .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+.ce-save-btn:hover:not(:disabled) {
+  background: #B80000;
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 2px #FFFFFF, 0 6px 18px -6px rgba(221,0,0,.55);
+}
+.ce-save-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+.ce-save-btn:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+/* Keyboard focus: white ring + visible red outline (BRAND.md: white ring present for accessibility) */
+.ce-save-btn:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 4px;
+}
+
+/* ── Responsive: stack PT/EN on mobile ───────────────────────────── */
+@media (max-width: 600px) {
+  .ce-localized-row {
+    grid-template-columns: 1fr;
+  }
+  .content-editor {
+    gap: 12px;
+    padding-bottom: 72px;
+  }
+  .ce-section-body {
+    padding: 0 14px 16px;
+    padding-top: 16px;
+    gap: 16px;
+  }
+  .ce-card-group {
+    padding: 12px;
+    gap: 12px;
+  }
+}

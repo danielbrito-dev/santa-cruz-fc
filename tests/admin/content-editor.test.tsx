@@ -1,0 +1,264 @@
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
+import { NextIntlClientProvider } from 'next-intl';
+import pt from '@/messages/pt.json';
+import type { SiteContent } from '@/server/content/types';
+
+// ── Mock navigation ──────────────────────────────────────────────────────────
+vi.mock('@/lib/i18n/navigation', () => ({
+  Link: ({
+    href,
+    children,
+    ...rest
+  }: { href: string; children: React.ReactNode; [key: string]: unknown }) => (
+    <a href={href} {...rest}>
+      {children}
+    </a>
+  ),
+  usePathname: () => '/admin/conteudo',
+  useRouter: () => ({ replace: vi.fn() }),
+}));
+
+// ── Mock the server action so jsdom doesn't pull in next/headers ─────────────
+// We capture the last call argument manually to avoid tuple-type issues.
+let lastSaveArg: SiteContent | undefined;
+const mockSaveContent = vi.fn(async (): Promise<{ ok: true } | { ok: false; error: string }> => ({ ok: true }));
+vi.mock('@/server/content/actions', () => ({
+  saveContent: async (content: SiteContent): Promise<{ ok: true } | { ok: false; error: string }> => {
+    lastSaveArg = content;
+    return mockSaveContent();
+  },
+}));
+
+import { ContentEditor } from '@/components/admin/content-editor';
+
+// ── Minimal valid SiteContent fixture ────────────────────────────────────────
+const minimalContent: SiteContent = {
+  hero: {
+    titleLine1: { pt: 'Coral não', en: 'Coral never' },
+    titleLine2: { pt: 'recua.', en: 'backs down.' },
+    tagline: { pt: 'Coral não recua.', en: 'Coral never backs down.' },
+    ctaLabel: { pt: 'Garantir ingresso', en: 'Get tickets' },
+    ctaUrl: '#',
+    backdrop: '/images/torcida1.jpg',
+  },
+  matches: [
+    {
+      id: 'test-match',
+      competition: 'Pernambucano',
+      comp: 'pernambucano',
+      opponent: 'Sport',
+      opponentShort: 'SPT',
+      isHome: true,
+      status: { pt: 'SAB · 19h', en: 'SAT · 7PM' },
+      scoreHome: null,
+      scoreAway: null,
+      matchCenterUrl: '#',
+    },
+  ],
+  news: [
+    {
+      id: 'test-news',
+      slug: 'test-news',
+      tag: { pt: 'Destaque', en: 'Featured' },
+      title: { pt: 'Notícia teste', en: 'Test news' },
+      excerpt: { pt: '', en: '' },
+      coverImage: '/images/test.jpg',
+      photoCount: 0,
+      publishedAt: '2026-05-01T00:00:00',
+      featured: true,
+      position: 0,
+    },
+  ],
+  banners: [
+    {
+      id: 'banner-1',
+      eyebrow: { pt: 'Sócio', en: 'Member' },
+      title: { pt: 'Seja Sócio Coral', en: 'Become a Coral Member' },
+      ctaLabel: { pt: 'Associe-se', en: 'Join now' },
+      ctaUrl: '/socio',
+      image: '/images/socio.jpg',
+      size: 'span',
+      position: 0,
+    },
+    {
+      id: 'banner-2',
+      eyebrow: { pt: 'Loja', en: 'Shop' },
+      title: { pt: 'Loja Oficial', en: 'Official Shop' },
+      ctaLabel: { pt: 'Comprar', en: 'Shop now' },
+      ctaUrl: '/loja',
+      image: '/images/loja.jpg',
+      size: 'normal',
+      position: 1,
+    },
+  ],
+  institutional: [
+    {
+      id: 'inst-1',
+      eyebrow: { pt: 'História', en: 'History' },
+      title: { pt: 'Nossa História', en: 'Our History' },
+      ctaLabel: { pt: 'Saiba mais', en: 'Learn more' },
+      ctaUrl: '/historia',
+      image: '/images/historia.jpg',
+      size: 'span',
+      position: 0,
+    },
+    {
+      id: 'inst-2',
+      eyebrow: { pt: 'Estádio', en: 'Stadium' },
+      title: { pt: 'Arruda', en: 'Arruda' },
+      ctaLabel: { pt: 'Conheça', en: 'Discover' },
+      ctaUrl: '/arruda',
+      image: '/images/arruda.jpg',
+      size: 'normal',
+      position: 1,
+    },
+  ],
+  sponsors: [
+    { id: 'sp1', name: 'Sponsor 1', logo: '/logos/sp1.png', url: '#', tier: 'master', position: 0 },
+  ],
+  social: [
+    { id: 'tw', network: 'twitter', url: 'https://twitter.com/santacruz' },
+  ],
+  footer: {
+    brandBlurb: { pt: 'Fundado em 1914.', en: 'Founded in 1914.' },
+    columns: [
+      {
+        heading: { pt: 'Clube', en: 'Club' },
+        links: [{ label: { pt: 'História', en: 'History' }, url: '/historia' }],
+      },
+    ],
+    chantLine1: { pt: 'É tradição,', en: 'It is tradition,' },
+    chantEmphasis: { pt: 'TRADIÇÃO', en: 'TRADITION' },
+    chantLine2: { pt: 'não é moda.', en: "it's not a trend." },
+  },
+};
+
+function renderEditor(initial = minimalContent) {
+  return render(
+    <NextIntlClientProvider locale="pt" messages={pt}>
+      <ContentEditor initial={initial} />
+    </NextIntlClientProvider>,
+  );
+}
+
+describe('ContentEditor', () => {
+  beforeEach(() => {
+    lastSaveArg = undefined;
+    mockSaveContent.mockReset();
+    mockSaveContent.mockResolvedValue({ ok: true });
+  });
+
+  it('renders a hero PT field with the initial value', () => {
+    renderEditor();
+    // The Hero section is open by default (open attribute on details)
+    const ptInput = screen.getByDisplayValue('Coral não');
+    expect(ptInput).toBeInTheDocument();
+  });
+
+  it('renders a hero EN field with the initial value', () => {
+    renderEditor();
+    const enInput = screen.getByDisplayValue('Coral never');
+    expect(enInput).toBeInTheDocument();
+  });
+
+  it('renders the Salvar button', () => {
+    renderEditor();
+    expect(screen.getByRole('button', { name: /salvar/i })).toBeInTheDocument();
+  });
+
+  it('editing a hero field changes its value', async () => {
+    renderEditor();
+    const ptInput = screen.getByDisplayValue('Coral não') as HTMLInputElement;
+    fireEvent.change(ptInput, { target: { value: 'Novo título' } });
+    expect(ptInput.value).toBe('Novo título');
+  });
+
+  it('calls saveContent with the edited hero block after Salvar is clicked', async () => {
+    renderEditor();
+
+    // Edit hero titleLine1 PT
+    const ptInput = screen.getByDisplayValue('Coral não');
+    fireEvent.change(ptInput, { target: { value: 'Coral vence' } });
+
+    const saveBtn = screen.getByRole('button', { name: /salvar/i });
+    await act(async () => {
+      fireEvent.click(saveBtn);
+    });
+
+    await waitFor(() => {
+      expect(mockSaveContent).toHaveBeenCalledTimes(1);
+    });
+
+    expect(lastSaveArg).toBeDefined();
+    // Edited block changed
+    expect(lastSaveArg!.hero.titleLine1.pt).toBe('Coral vence');
+    // EN value preserved
+    expect(lastSaveArg!.hero.titleLine1.en).toBe('Coral never');
+  });
+
+  it('preserves non-edited blocks (matches) on save', async () => {
+    renderEditor();
+
+    const saveBtn = screen.getByRole('button', { name: /salvar/i });
+    await act(async () => {
+      fireEvent.click(saveBtn);
+    });
+
+    await waitFor(() => expect(mockSaveContent).toHaveBeenCalledTimes(1));
+
+    expect(lastSaveArg).toBeDefined();
+    // matches block must be preserved unchanged from initial
+    expect(lastSaveArg!.matches).toEqual(minimalContent.matches);
+    // news block must be preserved
+    expect(lastSaveArg!.news).toEqual(minimalContent.news);
+    // sponsors preserved
+    expect(lastSaveArg!.sponsors).toEqual(minimalContent.sponsors);
+    // footer.columns preserved
+    expect(lastSaveArg!.footer.columns).toEqual(minimalContent.footer.columns);
+  });
+
+  it('shows success message after a successful save', async () => {
+    renderEditor();
+
+    const saveBtn = screen.getByRole('button', { name: /salvar/i });
+    await act(async () => {
+      fireEvent.click(saveBtn);
+    });
+
+    await waitFor(() => {
+      expect(screen.getByRole('status')).toBeInTheDocument();
+      expect(screen.getByText(/conteúdo salvo/i)).toBeInTheDocument();
+    });
+  });
+
+  it('shows error message when saveContent returns readonly error', async () => {
+    mockSaveContent.mockResolvedValueOnce({ ok: false as const, error: 'readonly' });
+    renderEditor();
+
+    const saveBtn = screen.getByRole('button', { name: /salvar/i });
+    await act(async () => {
+      fireEvent.click(saveBtn);
+    });
+
+    await waitFor(() => {
+      expect(screen.getByRole('alert')).toBeInTheDocument();
+      expect(screen.getByText(/produção.*read-only/i)).toBeInTheDocument();
+    });
+  });
+
+  it('shows unauthorized message when saveContent returns unauthorized', async () => {
+    mockSaveContent.mockResolvedValueOnce({ ok: false as const, error: 'unauthorized' });
+    renderEditor();
+
+    const saveBtn = screen.getByRole('button', { name: /salvar/i });
+    await act(async () => {
+      fireEvent.click(saveBtn);
+    });
+
+    await waitFor(() => {
+      expect(screen.getByRole('alert')).toBeInTheDocument();
+      expect(screen.getByText(/sessão expirada/i)).toBeInTheDocument();
+    });
+  });
+});
