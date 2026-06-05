@@ -17,6 +17,8 @@
   --panel-text: var(--ink);
   --section-bg: var(--black);
   --footer-bg: var(--red);
+  /* header text over the hero (transparent state) — ink on light white hero */
+  --header-hero-text: var(--ink);
 }
 
 [data-theme="dark"]{
@@ -31,6 +33,8 @@
   --bg-2: #1B1B1B;
   --bg-3: #161616;
   --muted: #9A9A9A;
+  /* header text over the black hero (transparent state) — white on dark */
+  --header-hero-text: var(--white);
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -48,7 +52,7 @@ ul{list-style:none}
 .site-header{
   position:fixed;top:0;left:0;right:0;z-index:100;
   background:transparent;
-  color:var(--white);
+  color:var(--header-hero-text);
   transition:transform .35s cubic-bezier(.4,0,.2,1), background .25s ease, color .25s ease, border-color .25s ease;
   border-bottom:1px solid transparent;
 }
@@ -309,17 +313,19 @@ ul{list-style:none}
    (handoff suave para o calendário branco). Sem vignette dramático. */
 .hero-grad{
   position:absolute;inset:0;pointer-events:none;z-index:1;
-  /* Light: top 0–18% stays near-transparent so the dark backdrop photo bleeds through
-     → white header text stays legible; from ~45% the overlay ramps to pure white for the
-     calendar handoff. No gold — clean neutral wash. */
+  /* Light: top 0–20% is near-opaque white so ink header text is fully legible against a
+     clean white header zone (no dark photo bleeding through). Mid section transitions
+     tastefully to reveal the photo, then ramps back to pure white for the calendar handoff.
+     No gold — clean neutral wash. */
   background:
     linear-gradient(180deg,
-      rgba(255,255,255,.04) 0%,
-      rgba(255,255,255,.06) 12%,
-      rgba(255,255,255,.14) 28%,
-      rgba(255,255,255,.28) 44%,
-      rgba(255,255,255,.55) 62%,
-      rgba(255,255,255,.82) 82%,
+      rgba(255,255,255,.96) 0%,
+      rgba(255,255,255,.92) 10%,
+      rgba(255,255,255,.80) 20%,
+      rgba(255,255,255,.55) 36%,
+      rgba(255,255,255,.35) 52%,
+      rgba(255,255,255,.62) 72%,
+      rgba(255,255,255,.88) 86%,
       rgba(255,255,255,1)   100%
     );
 }
@@ -1123,7 +1129,10 @@ body{ background:var(--page-bg) }
 [data-theme="dark"] .drawer-item-trigger:hover{ background:var(--bg-2); color:var(--gold) }
 [data-theme="dark"] .drawer-sub a:hover{ background:var(--bg-2); color:var(--gold) }
 [data-theme="dark"] .cookie-banner a{ color:var(--gold) }
-[data-theme="dark"] .social-strip a{ color:var(--white) }
+/* Social strip in dark: white band separates near-black sections from deep-red footer (BRAND.md: black/red never touch) */
+[data-theme="dark"] .social-strip{ background:var(--white); color:var(--ink) }
+/* Icons dark on the now-white strip (remove white override; base .social-strip a{color:var(--ink)} applies) */
+[data-theme="dark"] .social-strip a{ color:var(--ink) }
 
 /* ===== BRAND.md: red must not touch near-black without white between (dark theme) ===== */
 [data-theme="dark"] .hero-tag{ box-shadow:0 0 0 1.5px var(--white) }
