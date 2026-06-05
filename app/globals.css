@@ -835,3 +835,63 @@ ul{list-style:none}
   .banner-grid{grid-template-columns:1fr;gap:14px}
   .banner-card{aspect-ratio:16/9}
 }
+
+/* ===== sponsors ===== */
+/* ============== SPONSORS (master + fornecedor grandes em cima · resto pequeno abaixo, sem labels) ============== */
+.sponsors-section{padding:72px 0 72px;background:var(--black);border-top:1px solid rgba(255,255,255,.18);color:var(--white)}
+
+/* Master + Fornecedor — linha centralizada, logos grandes, sem moldura */
+.sponsors-master{
+  display:flex;justify-content:center;align-items:center;
+  gap:120px;
+  margin:0 auto 56px;
+  flex-wrap:wrap;
+}
+.sponsors-master .item{
+  display:inline-flex;align-items:center;justify-content:center;
+  text-decoration:none;
+  transition:opacity .25s, transform .25s;
+}
+.sponsors-master .item:hover{opacity:.7;transform:translateY(-1px)}
+.sponsors-master .item img{height:64px;width:auto;display:block;object-fit:contain}
+
+/* Outros patrocinadores — menores, centralizados, grid auto-wrap */
+.sponsors-grid{
+  display:flex;justify-content:center;align-items:center;
+  gap:56px 64px;flex-wrap:wrap;
+  max-width:1200px;margin:0 auto;
+}
+.sponsors-grid .item{
+  display:inline-flex;align-items:center;justify-content:center;
+  transition:opacity .2s, transform .2s;
+}
+.sponsors-grid .item:hover{opacity:.65;transform:translateY(-1px)}
+.sponsors-grid .item img{height:34px;width:auto;display:block;object-fit:contain}
+
+/* Logos monocromáticas brancas — no bg escuro do index_10 ficam visíveis nativamente */
+.sponsors-section img{filter:none}
+
+@media (max-width:768px){
+  .sponsors-master{gap:48px}
+  .sponsors-grid{gap:36px 40px}
+  .sponsors-master .item img{height:48px}
+  .sponsors-grid .item img{height:28px}
+}
+
+/* ===== social strip ===== */
+/* ---- social strip (fundo branco, entre patrocinadores e footer escuro) ---- */
+.social-strip{
+  background:var(--white);color:var(--ink);
+  padding:36px 0 40px;
+  position:relative;z-index:2;
+}
+.social-strip .row{
+  display:flex;justify-content:center;align-items:center;gap:28px;flex-wrap:wrap;
+}
+.social-strip a{
+  width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--ink);transition:color .2s, transform .2s;
+}
+.social-strip a:hover{color:var(--red);transform:translateY(-2px)}
+.social-strip svg{width:18px;height:18px;fill:currentColor}

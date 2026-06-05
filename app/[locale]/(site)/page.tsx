@@ -8,6 +8,8 @@ import { MatchCalendar } from '@/components/site/match-calendar';
 import { NewsSection } from '@/components/site/news-section';
 import { BannerStrip } from '@/components/site/banner-strip';
 import { InstitutionalGrid } from '@/components/site/institutional-grid';
+import { Sponsors } from '@/components/site/sponsors';
+import { SocialStrip } from '@/components/site/social-strip';
 
 export default async function HomePage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
@@ -26,6 +28,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
         <NewsSection content={content} locale={locale} />
         <BannerStrip content={content} locale={locale} />
         <InstitutionalGrid content={content} locale={locale} />
+        <Sponsors content={content} locale={locale} />
+        <SocialStrip content={content} locale={locale} />
       </main>
     </>
   );
