@@ -3761,3 +3761,162 @@ textarea.admin-input {
     flex-wrap: wrap;
   }
 }
+
+/* ================== ELENCO / SQUAD ==================
+   Connects to the home: light hero band (so the fixed transparent header reads
+   identically), then the squad on the dark "stadium" canvas (--section-bg) with
+   cinematic photo cards in the same language as the news/institutional sections.
+   Brand-safe in both themes: red appears only as a filled chip with a white ring;
+   accents on dark are gold/white (BRAND.md: red never touches black without white). */
+
+/* ---- Hero band (light surface; mirrors home hero) ---- */
+.squad-hero{
+  background:var(--hero-bg);
+  color:var(--hero-text);
+  padding:132px 0 48px; /* clears the fixed header */
+  border-bottom:1px solid var(--line);
+}
+.squad-hero-inner{
+  display:flex;align-items:flex-end;gap:28px;flex-wrap:wrap;
+}
+.squad-hero-shield{flex:0 0 auto;width:84px;height:84px}
+.squad-hero-shield img{width:100%;height:100%;object-fit:contain}
+.squad-hero-text{flex:1 1 320px;min-width:240px}
+.squad-eyebrow{
+  display:inline-flex;align-items:center;
+  padding:6px 12px;margin-bottom:18px;
+  background:var(--red);color:var(--white);
+  font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
+  box-shadow:0 0 0 1.5px var(--white); /* BRAND.md: white ring keeps red off the black hero in dark */
+}
+.squad-title{
+  font-size:clamp(40px,7.5vw,96px);font-weight:900;line-height:.9;
+  letter-spacing:-.03em;text-transform:uppercase;
+}
+.squad-subtitle{
+  margin-top:12px;max-width:46ch;
+  font-size:15px;font-weight:500;color:var(--muted);line-height:1.5;
+}
+.squad-hero-stats{display:flex;gap:32px;flex:0 0 auto}
+.squad-stat{display:flex;flex-direction:column;gap:3px}
+.squad-stat strong{font-size:34px;font-weight:900;line-height:1;letter-spacing:-.02em}
+.squad-stat small{
+  font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+}
+
+/* ---- Sticky position nav ---- */
+.squad-nav{
+  position:sticky;top:72px;z-index:40;
+  background:var(--panel);border-bottom:1px solid var(--line);
+}
+.squad-nav-inner{
+  display:flex;gap:8px;padding:12px 24px;overflow-x:auto;scrollbar-width:none;
+}
+.squad-nav-inner::-webkit-scrollbar{display:none}
+.squad-nav a{
+  flex:0 0 auto;padding:8px 16px;border-radius:999px;
+  border:1px solid var(--line);color:var(--panel-text);
+  font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;
+  transition:background .2s,color .2s,border-color .2s,box-shadow .2s;
+}
+.squad-nav a:hover{
+  background:var(--red);color:var(--white);border-color:var(--red);
+  box-shadow:0 0 0 1.5px var(--white); /* red pill never touches the dark panel directly */
+}
+
+/* ---- Dark canvas body ---- */
+.squad-body{background:var(--section-bg);color:var(--white);padding:56px 0 84px}
+.squad-group{scroll-margin-top:132px}
+.squad-group + .squad-group{margin-top:56px}
+.squad-group-head{display:flex;align-items:baseline;gap:14px;margin-bottom:24px}
+.squad-group-index{font-size:13px;font-weight:900;color:var(--gold);font-variant-numeric:tabular-nums}
+.squad-group-title{
+  font-size:clamp(20px,2.4vw,30px);font-weight:900;text-transform:uppercase;letter-spacing:-.01em;
+}
+.squad-group-count{
+  margin-left:auto;font-size:12px;font-weight:800;letter-spacing:.1em;color:var(--muted);
+  font-variant-numeric:tabular-nums;
+}
+
+/* ---- Grid + player cards (news-card language + oversized shirt number) ---- */
+.squad-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+@media (max-width:1100px){.squad-grid{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:860px){.squad-grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:560px){.squad-grid{grid-template-columns:repeat(2,1fr);gap:10px}}
+
+.player-card{
+  position:relative;aspect-ratio:3/4;overflow:hidden;
+  background:var(--ink);isolation:isolate;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);
+  transition:transform .3s;
+}
+.player-card:hover{transform:translateY(-4px)}
+.player-photo{position:absolute;inset:0;z-index:0;overflow:hidden}
+.player-photo img{
+  width:100%;height:100%;object-fit:cover;object-position:top center;
+  transition:transform .6s cubic-bezier(.2,.7,.2,1);
+}
+.player-card:hover .player-photo img{transform:scale(1.05)}
+/* Coral-stripe backdrop for players without a photo (the Cobra Coral listras) */
+.player-card[data-empty="true"] .player-photo{
+  background:
+    repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 16px, transparent 16px 32px),
+    radial-gradient(120% 78% at 50% 0%, #2b2b2b 0%, var(--ink) 72%);
+}
+.player-silhouette{
+  position:absolute;left:50%;bottom:0;transform:translateX(-50%);
+  width:80%;height:82%;color:rgba(255,255,255,.12);line-height:0;
+}
+.player-silhouette svg{width:100%;height:100%}
+.player-card::after{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,
+    rgba(0,0,0,0)   40%,
+    rgba(0,0,0,.50) 70%,
+    rgba(0,0,0,.92) 100%
+  );
+}
+.player-number{
+  position:absolute;top:6px;right:12px;z-index:2;
+  font-size:clamp(34px,4.2vw,54px);font-weight:900;line-height:1;letter-spacing:-.04em;
+  color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.55);
+  font-variant-numeric:tabular-nums;
+}
+.player-meta{
+  position:absolute;left:0;right:0;bottom:0;z-index:2;
+  padding:0 14px 14px;display:flex;flex-direction:column;gap:3px;
+}
+.player-pos{
+  font-size:9px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);
+}
+.player-name{
+  font-size:15px;font-weight:800;line-height:1.12;color:var(--white);
+  text-shadow:0 2px 8px rgba(0,0,0,.5);
+}
+
+/* ---- Comissão técnica ---- */
+.squad-staff{margin-top:72px;border-top:1px solid rgba(255,255,255,.12);padding-top:40px}
+.squad-staff-title{
+  font-size:clamp(18px,2vw,26px);font-weight:900;text-transform:uppercase;
+  letter-spacing:-.01em;margin-bottom:22px;
+}
+.staff-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media (max-width:860px){.staff-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.staff-grid{grid-template-columns:1fr}}
+.staff-card{
+  background:var(--ink);border:1px solid rgba(255,255,255,.08);
+  padding:18px 18px 20px;display:flex;flex-direction:column;gap:6px;
+}
+.staff-role{font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.staff-name{font-size:16px;font-weight:800;color:var(--white)}
+
+/* ---- Responsive ---- */
+@media (max-width:768px){
+  .squad-hero{padding:96px 0 36px}
+  .squad-hero-stats{gap:24px}
+  .squad-stat strong{font-size:26px}
+  .squad-nav{top:56px}
+  .squad-nav-inner{padding:10px 16px}
+  .squad-group{scroll-margin-top:108px}
+  .squad-body{padding:40px 0 64px}
+}

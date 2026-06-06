@@ -1,0 +1,37 @@
+{
+  "_seed": "Dados de exemplo (placeholder). Editar com o elenco real — futuramente via admin.",
+  "season": "2026",
+  "players": [
+    { "number": 1, "name": "Gabriel Felix", "group": "goleiros", "photo": "/images/goleiro.png", "country": "BRA" },
+    { "number": 12, "name": "Léo Vieira", "group": "goleiros", "photo": "", "country": "BRA" },
+    { "number": 22, "name": "Diego Lopes", "group": "goleiros", "photo": "", "country": "BRA" },
+
+    { "number": 2, "name": "Wallian", "group": "laterais", "photo": "", "country": "BRA" },
+    { "number": 6, "name": "Vinícius Barba", "group": "laterais", "photo": "", "country": "BRA" },
+    { "number": 13, "name": "Caju", "group": "laterais", "photo": "", "country": "BRA" },
+    { "number": 26, "name": "Hélio Borges", "group": "laterais", "photo": "", "country": "BRA" },
+
+    { "number": 3, "name": "Wagner Balotelli", "group": "zagueiros", "photo": "/images/jogador_02.png", "country": "BRA" },
+    { "number": 4, "name": "Adaílton", "group": "zagueiros", "photo": "", "country": "BRA" },
+    { "number": 14, "name": "Joécio", "group": "zagueiros", "photo": "", "country": "BRA" },
+    { "number": 33, "name": "Rayan Costa", "group": "zagueiros", "photo": "", "country": "BRA" },
+
+    { "number": 5, "name": "Lucas Siqueira", "group": "meio-campistas", "photo": "", "country": "BRA" },
+    { "number": 8, "name": "Pedro Castro", "group": "meio-campistas", "photo": "", "country": "BRA" },
+    { "number": 10, "name": "Renatinho", "group": "meio-campistas", "photo": "/images/jogador_03.png", "country": "BRA" },
+    { "number": 18, "name": "Matheus Melo", "group": "meio-campistas", "photo": "", "country": "BRA" },
+    { "number": 20, "name": "João Pedro", "group": "meio-campistas", "photo": "", "country": "BRA" },
+
+    { "number": 7, "name": "Chiquinho", "group": "atacantes", "photo": "", "country": "BRA" },
+    { "number": 9, "name": "Everaldo", "group": "atacantes", "photo": "/images/everaldo_sembg.png", "country": "BRA" },
+    { "number": 11, "name": "Pingo", "group": "atacantes", "photo": "", "country": "BRA" },
+    { "number": 19, "name": "Kayke", "group": "atacantes", "photo": "", "country": "BRA" },
+    { "number": 77, "name": "Bruno Mota", "group": "atacantes", "photo": "", "country": "BRA" }
+  ],
+  "staff": [
+    { "role": { "pt": "Técnico", "en": "Head Coach" }, "name": "A definir" },
+    { "role": { "pt": "Auxiliar Técnico", "en": "Assistant Coach" }, "name": "A definir" },
+    { "role": { "pt": "Preparador Físico", "en": "Fitness Coach" }, "name": "A definir" },
+    { "role": { "pt": "Treinador de Goleiros", "en": "Goalkeeping Coach" }, "name": "A definir" }
+  ]
+}

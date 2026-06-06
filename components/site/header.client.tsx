@@ -128,6 +128,9 @@ export function HeaderClient() {
             <a href="#calendario" className="header-link hide-mobile">
               {nav('calendar')}
             </a>
+            <Link href="/elenco" className="header-link hide-mobile">
+              {nav('squad')}
+            </Link>
             <a href="#" className="header-link hide-mobile">
               {nav('tvCoral')}
             </a>
@@ -226,9 +229,9 @@ export function HeaderClient() {
               <span className="chevron" />
             </button>
             <div className="drawer-sub">
-              <a href="#elenco" onClick={handleDrawerLinkClick}>
+              <Link href="/elenco" onClick={handleDrawerLinkClick}>
                 {drawer('items.squad')}
-              </a>
+              </Link>
               <a href="#" onClick={handleDrawerLinkClick}>
                 {drawer('items.coachingStaff')}
               </a>

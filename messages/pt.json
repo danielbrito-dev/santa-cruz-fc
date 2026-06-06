@@ -3,10 +3,24 @@
     "title": "Santa Cruz Futebol Clube — Site Oficial",
     "description": "Site oficial do Santa Cruz Futebol Clube — Recife/PE. Notícias, calendário, ingressos e Sócio Coral."
   },
-  "nav": { "news": "Notícias", "calendar": "Calendário", "tvCoral": "TV Coral", "login": "Entrar", "tickets": "Ingressos", "shop": "Loja", "menu": "Menu" },
+  "nav": { "news": "Notícias", "calendar": "Calendário", "squad": "Elenco", "tvCoral": "TV Coral", "login": "Entrar", "tickets": "Ingressos", "shop": "Loja", "menu": "Menu" },
   "common": { "allNews": "Todas as notícias", "matchCenter": "Match Center", "becomeMember": "Seja Sócio Coral", "skipToContent": "Pular para o conteúdo" },
   "news": { "heading1": "Notícias", "heading2": "do Clube", "photos": "{count, plural, one {# foto} other {# fotos}}" },
   "calendar": { "title": "Calendário", "prev": "Anterior", "next": "Próximo" },
+  "squad": {
+    "season": "Temporada {year}",
+    "title": "Elenco",
+    "subtitle": "Time profissional masculino — a Cobra Coral em campo.",
+    "athletes": "Atletas",
+    "positions": "Posições",
+    "navLabel": "Posições do elenco",
+    "goleiros": "Goleiros",
+    "laterais": "Laterais",
+    "zagueiros": "Zagueiros",
+    "meio-campistas": "Meio-campistas",
+    "atacantes": "Atacantes",
+    "staffHeading": "Comissão Técnica"
+  },
   "cookies": {
     "message": "Usamos cookies para melhorar sua experiência no site. Ao continuar navegando, você concorda com a nossa Política de Privacidade.",
     "accept": "Aceitar",
