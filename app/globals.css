@@ -3829,7 +3829,34 @@ textarea.admin-input {
 }
 
 /* ---- Dark canvas body ---- */
-.squad-body{position:relative;z-index:2;background:var(--section-bg);color:var(--white);padding:56px 0 84px}
+.squad-body{
+  position:relative;z-index:2;overflow:hidden;
+  background:var(--section-bg);color:var(--white);
+  padding:56px 0 84px;
+}
+/* Watermark do canvas — listras coral (Cobra Coral) + brilho de profundidade.
+   Branco em baixíssima opacidade: vale para light e dark (o canvas é escuro nos dois).
+   z-index:-1 fica entre o fundo do .squad-body e o conteúdo. Sem escudo (BRAND.md). */
+.squad-body::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    repeating-linear-gradient(122deg,
+      rgba(255,255,255,.022) 0 2px,
+      transparent 2px 30px),
+    radial-gradient(140% 62% at 50% -12%, rgba(255,255,255,.05) 0%, transparent 60%);
+}
+/* Marca d'água de herança — "1914" gigante, contorno branco quase imperceptível,
+   sangrando pela borda direita atrás do conteúdo. */
+.squad-body::after{
+  content:"1914";
+  position:absolute;top:18px;right:-1.5%;z-index:-1;pointer-events:none;
+  font-weight:900;font-size:clamp(130px,23vw,340px);line-height:.78;letter-spacing:-.05em;
+  color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.055);
+  font-variant-numeric:tabular-nums;white-space:nowrap;
+}
+@media (max-width:768px){
+  .squad-body::after{font-size:clamp(90px,30vw,160px);top:10px}
+}
 .squad-group{scroll-margin-top:64px}
 .squad-group + .squad-group{margin-top:56px}
 .squad-group-head{display:flex;align-items:baseline;gap:14px;margin-bottom:24px}
