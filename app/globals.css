@@ -3333,7 +3333,7 @@ textarea.admin-input {
 /* Column header row */
 .admin-news-list-head {
   display: grid;
-  grid-template-columns: 1fr 120px 110px 90px 224px;
+  grid-template-columns: 1fr 120px 110px 90px max-content;
   gap: 12px;
   align-items: center;
   padding: 10px 20px;
@@ -3351,7 +3351,7 @@ textarea.admin-input {
 /* Each news row */
 .admin-news-row {
   display: grid;
-  grid-template-columns: 1fr 120px 110px 90px 224px;
+  grid-template-columns: 1fr 120px 110px 90px max-content;
   gap: 12px;
   align-items: center;
   padding: 14px 20px;
@@ -3703,7 +3703,7 @@ textarea.admin-input {
 /* News list: collapse columns on tablet */
 @media (max-width: 900px) {
   .admin-news-list-head {
-    grid-template-columns: 1fr 110px 224px;
+    grid-template-columns: 1fr 110px max-content;
     /* hide tag + date on tablet */
   }
   .admin-news-list-head span:nth-child(2),
@@ -3711,7 +3711,7 @@ textarea.admin-input {
     display: none;
   }
   .admin-news-row {
-    grid-template-columns: 1fr 110px 224px;
+    grid-template-columns: 1fr 110px max-content;
   }
   .admin-news-row-tag,
   .admin-news-row-date {
