@@ -3807,7 +3807,10 @@ textarea.admin-input {
 
 /* ---- Sticky position nav ---- */
 .squad-nav{
-  position:sticky;top:72px;z-index:40;
+  /* top:0 — when the smart header hides on scroll-down the nav sits flush at the
+     top (clean toolbar) instead of floating below an empty header gap; when the
+     header scrolls back in (z-index:100) it sits above this nav (z-index:40). */
+  position:sticky;top:0;z-index:40;
   background:var(--panel);border-bottom:1px solid var(--line);
 }
 .squad-nav-inner{
@@ -3827,7 +3830,7 @@ textarea.admin-input {
 
 /* ---- Dark canvas body ---- */
 .squad-body{position:relative;z-index:2;background:var(--section-bg);color:var(--white);padding:56px 0 84px}
-.squad-group{scroll-margin-top:132px}
+.squad-group{scroll-margin-top:64px}
 .squad-group + .squad-group{margin-top:56px}
 .squad-group-head{display:flex;align-items:baseline;gap:14px;margin-bottom:24px}
 .squad-group-index{font-size:13px;font-weight:900;color:var(--gold);font-variant-numeric:tabular-nums}
@@ -3916,8 +3919,7 @@ textarea.admin-input {
   .squad-hero{padding:96px 0 36px}
   .squad-hero-stats{gap:24px}
   .squad-stat strong{font-size:26px}
-  .squad-nav{top:56px}
   .squad-nav-inner{padding:10px 16px}
-  .squad-group{scroll-margin-top:108px}
+  .squad-group{scroll-margin-top:60px}
   .squad-body{padding:40px 0 64px}
 }
