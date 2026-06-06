@@ -3771,6 +3771,7 @@ textarea.admin-input {
 
 /* ---- Hero band (light surface; mirrors home hero) ---- */
 .squad-hero{
+  position:relative;z-index:2; /* sit above the fixed (z-index:0) parallax footer */
   background:var(--hero-bg);
   color:var(--hero-text);
   padding:132px 0 48px; /* clears the fixed header */
@@ -3825,7 +3826,7 @@ textarea.admin-input {
 }
 
 /* ---- Dark canvas body ---- */
-.squad-body{background:var(--section-bg);color:var(--white);padding:56px 0 84px}
+.squad-body{position:relative;z-index:2;background:var(--section-bg);color:var(--white);padding:56px 0 84px}
 .squad-group{scroll-margin-top:132px}
 .squad-group + .squad-group{margin-top:56px}
 .squad-group-head{display:flex;align-items:baseline;gap:14px;margin-bottom:24px}
