@@ -3834,28 +3834,27 @@ textarea.admin-input {
   background:var(--section-bg);color:var(--white);
   padding:56px 0 84px;
 }
-/* Watermark do canvas — listras coral (Cobra Coral) + brilho de profundidade.
-   Branco em baixíssima opacidade: vale para light e dark (o canvas é escuro nos dois).
-   z-index:-1 fica entre o fundo do .squad-body e o conteúdo. Sem escudo (BRAND.md). */
+/* Atmosfera "pintada" — pools tonais suaves + calor avermelhado profundo + pinstripes
+   bem fracas (a textura Cobra Coral). Cobre toda a altura do canvas. z-index:-2. */
 .squad-body::before{
-  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  content:"";position:absolute;inset:0;z-index:-2;pointer-events:none;
   background:
-    repeating-linear-gradient(122deg,
-      rgba(255,255,255,.022) 0 2px,
-      transparent 2px 30px),
-    radial-gradient(140% 62% at 50% -12%, rgba(255,255,255,.05) 0%, transparent 60%);
+    radial-gradient(72% 46% at 80% 10%, rgba(120,10,10,.20) 0%, transparent 62%),
+    radial-gradient(60% 52% at 10% 32%, rgba(255,255,255,.05) 0%, transparent 58%),
+    radial-gradient(82% 60% at 50% 112%, rgba(255,255,255,.04) 0%, transparent 60%),
+    repeating-linear-gradient(122deg, rgba(255,255,255,.015) 0 2px, transparent 2px 34px);
 }
-/* Marca d'água de herança — "1914" gigante, contorno branco quase imperceptível,
-   sangrando pela borda direita atrás do conteúdo. */
+/* Marca d'água — escudo do Santa, grande e esmaecido, sangrando pela borda direita
+   (estilo Bahia: escudo dentro da textura). z-index:-1 (acima da atmosfera, atrás do
+   conteúdo). Mantém proporção; sem rotação/recolor. */
 .squad-body::after{
-  content:"1914";
-  position:absolute;top:18px;right:-1.5%;z-index:-1;pointer-events:none;
-  font-weight:900;font-size:clamp(130px,23vw,340px);line-height:.78;letter-spacing:-.05em;
-  color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.055);
-  font-variant-numeric:tabular-nums;white-space:nowrap;
+  content:"";position:absolute;z-index:-1;pointer-events:none;
+  top:-40px;right:-90px;width:min(640px,82vw);aspect-ratio:1/1;
+  background:url('/images/logo.png') no-repeat center / contain;
+  opacity:.16;
 }
 @media (max-width:768px){
-  .squad-body::after{font-size:clamp(90px,30vw,160px);top:10px}
+  .squad-body::after{width:min(360px,92vw);top:-12px;right:-56px;opacity:.13}
 }
 .squad-group{scroll-margin-top:64px}
 .squad-group + .squad-group{margin-top:56px}
