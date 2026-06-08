@@ -3834,38 +3834,7 @@ textarea.admin-input {
   background:var(--section-bg);color:var(--white);
   padding:56px 0 84px;
 }
-.squad-body > .container{position:relative;z-index:1}
-
-/* ---- Subtle patterned backdrop (Bahia-style: dark solid + tiled crest pattern) ---- */
-.squad-bg{
-  position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;
-  background:
-    radial-gradient(60% 40% at 82% 0%, rgba(150,16,16,.16) 0%, transparent 60%),
-    radial-gradient(130% 72% at 50% 122%, rgba(0,0,0,.55) 0%, transparent 60%);
-}
-.squad-bg > span{position:absolute;display:block;inset:0}
-/* tiled crest micro-pattern (mask → faint crest silhouettes across the whole height) */
-/* Pattern autoral conectado ao escudo: escudos estilizados + estrelas (dos títulos)
-   sobre uma trama diagonal (argyle) que liga os motivos. Desenhado em SVG, não o
-   logo repetido. Branco em baixa opacidade → vale light e dark. */
-.squad-bg-tile{
-  background-color:transparent;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.3' stroke-opacity='0.08'%3E%3Cpath d='M45 40 H75 V57 C75 68 60 76 60 76 C60 76 45 68 45 57 Z M60 40 V72'/%3E%3C/g%3E%3Cpath d='M60 9 L62.2 13.8 L67 16 L62.2 18.2 L60 23 L57.8 18.2 L53 16 L57.8 13.8 Z' fill='%23ffffff' fill-opacity='0.07'/%3E%3C/svg%3E"),
-    repeating-linear-gradient(45deg, rgba(255,255,255,.022) 0 1px, transparent 1px 26px),
-    repeating-linear-gradient(-45deg, rgba(255,255,255,.022) 0 1px, transparent 1px 26px);
-  background-size:120px 120px, auto, auto;
-  background-repeat:repeat;
-}
-/* film grain — subtle premium texture */
-.squad-bg-grain{
-  opacity:.05;mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size:140px 140px;
-}
-@media (max-width:768px){
-  .squad-bg-tile{ background-size:96px 96px, auto, auto }
-}
+/* marca d'água removida — canvas escuro limpo (os cards carregam o visual) */
 .squad-group{scroll-margin-top:64px}
 .squad-group + .squad-group{margin-top:56px}
 .squad-group-head{display:flex;align-items:baseline;gap:14px;margin-bottom:24px}

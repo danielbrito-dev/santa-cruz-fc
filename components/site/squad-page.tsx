@@ -86,12 +86,6 @@ export async function SquadPage({
 
       {/* BODY — dark "stadium" canvas (same surface as the home news/institutional sections) */}
       <div className="squad-body">
-        {/* Layered "painted crest" backdrop — big crest bleeding + opposite crest +
-            tiled crest pattern + warm spotlight + grain + vignette (all in CSS). */}
-        <div className="squad-bg" aria-hidden="true">
-          <span className="squad-bg-tile" />
-          <span className="squad-bg-grain" />
-        </div>
         <div className="container">
           {groups.map((g, i) => (
             <section key={g.key} id={`g-${g.key}`} className="squad-group">
