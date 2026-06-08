@@ -19,7 +19,16 @@
     "zagueiros": "Zagueiros",
     "meio-campistas": "Meio-campistas",
     "atacantes": "Atacantes",
-    "staffHeading": "Comissão Técnica"
+    "staffHeading": "Comissão Técnica",
+    "pos": { "goleiros": "Goleiro", "laterais": "Lateral", "zagueiros": "Zagueiro", "meio-campistas": "Meia", "atacantes": "Atacante" },
+    "backToSquad": "Voltar ao elenco",
+    "lblNumber": "Número",
+    "lblNationality": "Nacionalidade",
+    "lblBirth": "Data de nascimento",
+    "lblBirthPlace": "Local de nascimento",
+    "lblHeight": "Altura",
+    "lblJoined": "Chegou ao clube",
+    "biography": "Biografia"
   },
   "cookies": {
     "message": "Usamos cookies para melhorar sua experiência no site. Ao continuar navegando, você concorda com a nossa Política de Privacidade.",

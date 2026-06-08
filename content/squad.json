@@ -2,7 +2,7 @@
   "_seed": "Dados de exemplo (placeholder). Editar com o elenco real — futuramente via admin.",
   "season": "2026",
   "players": [
-    { "number": 1, "name": "Gabriel Felix", "group": "goleiros", "photo": "/images/goleiro.png", "country": "BRA" },
+    { "number": 1, "name": "Gabriel Felix", "group": "goleiros", "photo": "/images/goleiro.png", "country": "BRA", "birthDate": "12/03/1996", "birthPlace": "Recife-PE", "height": "1,90 m", "joinedAt": "01/2026", "bio": { "pt": "Goleiro pernambucano, revelado nas categorias de base, assumiu a meta tricolor com segurança e liderança.\nReferência debaixo das traves, soma boas atuações e pênaltis defendidos pela Cobra Coral.", "en": "A Pernambuco-born goalkeeper raised in the youth ranks, he took over the tricolor goal with poise and leadership.\nA reliable last line, he has racked up strong displays and saved penalties for the Coral Snake." } },
     { "number": 12, "name": "Léo Vieira", "group": "goleiros", "photo": "", "country": "BRA" },
     { "number": 22, "name": "Diego Lopes", "group": "goleiros", "photo": "", "country": "BRA" },
 
@@ -18,12 +18,12 @@
 
     { "number": 5, "name": "Lucas Siqueira", "group": "meio-campistas", "photo": "", "country": "BRA" },
     { "number": 8, "name": "Pedro Castro", "group": "meio-campistas", "photo": "", "country": "BRA" },
-    { "number": 10, "name": "Renatinho", "group": "meio-campistas", "photo": "/images/jogador_03.png", "country": "BRA" },
+    { "number": 10, "name": "Renatinho", "group": "meio-campistas", "photo": "/images/jogador_03.png", "country": "BRA", "birthDate": "20/05/1995", "birthPlace": "Olinda-PE", "height": "1,74 m", "joinedAt": "01/2026", "bio": { "pt": "Meia criativo, dono da camisa 10, dita o ritmo do time e arma as jogadas de perigo.\nCanhota refinada, é o cérebro do meio-campo coral nas bolas paradas e no último passe.", "en": "A creative playmaker wearing the number 10, he sets the team's tempo and creates the dangerous moves.\nWith a refined left foot, he is the brain of the coral midfield on set pieces and the final ball." } },
     { "number": 18, "name": "Matheus Melo", "group": "meio-campistas", "photo": "", "country": "BRA" },
     { "number": 20, "name": "João Pedro", "group": "meio-campistas", "photo": "", "country": "BRA" },
 
     { "number": 7, "name": "Chiquinho", "group": "atacantes", "photo": "", "country": "BRA" },
-    { "number": 9, "name": "Everaldo", "group": "atacantes", "photo": "/images/everaldo_sembg.png", "country": "BRA" },
+    { "number": 9, "name": "Everaldo", "group": "atacantes", "photo": "/images/everaldo_sembg.png", "country": "BRA", "birthDate": "01/07/1992", "birthPlace": "Salgueiro-PE", "height": "1,80 m", "joinedAt": "01/2026", "bio": { "pt": "Centroavante de área, faro de gol e jogo de corpo, Everaldo chega para liderar o ataque coral.\nIdolatrado pela torcida, carrega no nome a tradição artilheira do clube do Arruda.", "en": "A box striker with a nose for goal and strong hold-up play, Everaldo arrives to lead the coral attack.\nAdored by the fans, his name carries the goalscoring tradition of the Arruda club." } },
     { "number": 11, "name": "Pingo", "group": "atacantes", "photo": "", "country": "BRA" },
     { "number": 19, "name": "Kayke", "group": "atacantes", "photo": "", "country": "BRA" },
     { "number": 77, "name": "Bruno Mota", "group": "atacantes", "photo": "", "country": "BRA" }

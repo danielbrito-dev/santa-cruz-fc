@@ -19,7 +19,16 @@
     "zagueiros": "Centre-backs",
     "meio-campistas": "Midfielders",
     "atacantes": "Forwards",
-    "staffHeading": "Coaching Staff"
+    "staffHeading": "Coaching Staff",
+    "pos": { "goleiros": "Goalkeeper", "laterais": "Full-back", "zagueiros": "Centre-back", "meio-campistas": "Midfielder", "atacantes": "Forward" },
+    "backToSquad": "Back to squad",
+    "lblNumber": "Number",
+    "lblNationality": "Nationality",
+    "lblBirth": "Date of birth",
+    "lblBirthPlace": "Place of birth",
+    "lblHeight": "Height",
+    "lblJoined": "Joined the club",
+    "biography": "Biography"
   },
   "cookies": {
     "message": "We use cookies to improve your experience. By continuing to browse, you agree to our Privacy Policy.",

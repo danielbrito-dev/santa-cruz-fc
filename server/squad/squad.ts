@@ -23,6 +23,12 @@ export interface Player {
   group: PositionGroupKey;
   photo: string;
   country: string;
+  // Optional fields used by the athlete detail page (placeholder data for now).
+  birthDate?: string;
+  birthPlace?: string;
+  height?: string;
+  joinedAt?: string;
+  bio?: LocalizedText;
 }
 
 export interface StaffMember {
@@ -56,4 +62,19 @@ export function groupPlayers(players: Player[]): PlayerGroup[] {
       .filter((p) => p.group === key)
       .sort((a, b) => a.number - b.number),
   })).filter((g) => g.players.length > 0);
+}
+
+/** Slug a partir do nome (sem acentos, minúsculo, hifenizado) — usado na rota /elenco/[slug]. */
+export function slugifyName(name: string): string {
+  return name
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '') // strip combining diacritics
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+}
+
+export function getPlayerBySlug(slug: string): Player | undefined {
+  return getSquad().players.find((p) => slugifyName(p.name) === slug);
 }

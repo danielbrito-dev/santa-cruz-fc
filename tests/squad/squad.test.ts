@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { groupPlayers, GROUP_ORDER } from '@/server/squad/squad';
+import { groupPlayers, GROUP_ORDER, slugifyName, getPlayerBySlug } from '@/server/squad/squad';
 import type { Player } from '@/server/squad/squad';
 
 const players: Player[] = [
@@ -22,5 +22,23 @@ describe('groupPlayers', () => {
 
   it('GROUP_ORDER cobre as cinco posições do gol ao ataque', () => {
     expect(GROUP_ORDER).toEqual(['goleiros', 'laterais', 'zagueiros', 'meio-campistas', 'atacantes']);
+  });
+});
+
+describe('slugifyName', () => {
+  it('remove acentos, espaços e caixa', () => {
+    expect(slugifyName('Léo Vieira')).toBe('leo-vieira');
+    expect(slugifyName('Renatinho')).toBe('renatinho');
+    expect(slugifyName('João Pedro')).toBe('joao-pedro');
+  });
+});
+
+describe('getPlayerBySlug', () => {
+  it('encontra o jogador pelo slug do nome', () => {
+    const p = getPlayerBySlug('everaldo');
+    expect(p?.name).toBe('Everaldo');
+  });
+  it('retorna undefined para slug inexistente', () => {
+    expect(getPlayerBySlug('nao-existe')).toBeUndefined();
   });
 });

@@ -1,6 +1,8 @@
 import { getTranslations } from 'next-intl/server';
+import { Link } from '@/lib/i18n/navigation';
 import type { Locale } from '@/lib/i18n/routing';
 import { resolveLocalized } from '@/server/content/localized';
+import { slugifyName } from '@/server/squad/squad';
 import type { Squad, PlayerGroup, Player } from '@/server/squad/squad';
 
 function PlayerSilhouette() {
@@ -16,20 +18,22 @@ function PlayerSilhouette() {
 
 function PlayerCard({ player }: { player: Player }) {
   return (
-    <article className="player-card" data-empty={player.photo ? undefined : 'true'}>
-      <div className="player-photo">
-        {player.photo ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={player.photo} alt={player.name} />
-        ) : (
-          <PlayerSilhouette />
-        )}
-      </div>
-      <div className="player-bar">
-        <span className="player-num">{player.number}</span>
-        <h3 className="player-name">{player.name}</h3>
-      </div>
-    </article>
+    <Link href={`/elenco/${slugifyName(player.name)}`} className="player-card-link">
+      <article className="player-card" data-empty={player.photo ? undefined : 'true'}>
+        <div className="player-photo">
+          {player.photo ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={player.photo} alt={player.name} />
+          ) : (
+            <PlayerSilhouette />
+          )}
+        </div>
+        <div className="player-bar">
+          <span className="player-num">{player.number}</span>
+          <h3 className="player-name">{player.name}</h3>
+        </div>
+      </article>
+    </Link>
   );
 }
 
