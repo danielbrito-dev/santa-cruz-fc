@@ -30,7 +30,12 @@
     "fichaJogo": "Match Sheet",
     "contato": "Contact",
     "faleConosco": "Contact Us",
-    "trabalheConosco": "Work With Us"
+    "trabalheConosco": "Work With Us",
+    "ajuda": "Help",
+    "contatoImprensa": "Press Contact",
+    "privacidade": "Privacy Policy",
+    "cookies": "Cookies",
+    "termos": "Terms of Use"
   },
   "common": { "allNews": "All news", "matchCenter": "Match Center", "becomeMember": "Become a Member", "skipToContent": "Skip to content" },
   "news": { "heading1": "News", "heading2": "from the Club", "photos": "{count, plural, one {# photo} other {# photos}}" },

@@ -390,11 +390,11 @@
       {
         "heading": { "pt": "Ajuda", "en": "Help" },
         "links": [
-          { "label": { "pt": "Contato", "en": "Contact" }, "url": "#" },
-          { "label": { "pt": "Contato Imprensa", "en": "Press Contact" }, "url": "#" },
-          { "label": { "pt": "Política de Privacidade", "en": "Privacy Policy" }, "url": "#" },
-          { "label": { "pt": "Cookies", "en": "Cookies" }, "url": "#" },
-          { "label": { "pt": "Termos de uso", "en": "Terms of Use" }, "url": "#" }
+          { "label": { "pt": "Contato", "en": "Contact" }, "url": "/ajuda/contato" },
+          { "label": { "pt": "Contato Imprensa", "en": "Press Contact" }, "url": "/ajuda/contato-imprensa" },
+          { "label": { "pt": "Política de Privacidade", "en": "Privacy Policy" }, "url": "/privacidade" },
+          { "label": { "pt": "Cookies", "en": "Cookies" }, "url": "/cookies" },
+          { "label": { "pt": "Termos de uso", "en": "Terms of Use" }, "url": "/termos-de-uso" }
         ]
       }
     ],

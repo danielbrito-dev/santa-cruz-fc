@@ -3,6 +3,15 @@ import { render, screen } from '@testing-library/react';
 import { NextIntlClientProvider } from 'next-intl';
 import pt from '@/messages/pt.json';
 
+// Footer renders internal links via the localized Link — mock navigation in jsdom
+vi.mock('@/lib/i18n/navigation', () => ({
+  Link: ({ href, children, ...rest }: { href: string; children: React.ReactNode; [k: string]: unknown }) => (
+    <a href={String(href)} {...rest}>
+      {children}
+    </a>
+  ),
+}));
+
 // Mock next-intl/server so getTranslations works in jsdom without a Next.js request context
 vi.mock('next-intl/server', () => ({
   getTranslations: async (namespace: string) => {

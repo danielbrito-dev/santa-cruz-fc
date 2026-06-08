@@ -64,19 +64,37 @@ export const SITE_NAV: NavSection[] = [
 /** hrefs that have a dedicated route (NOT handled by the generic [...path] InfoPage). */
 const DEDICATED_ROUTES = new Set(['/elenco']);
 
-/** Path segments for every generic InfoPage leaf (used by generateStaticParams). */
-export const INFO_PAGE_PATHS: string[][] = SITE_NAV.flatMap((s) => s.items)
-  .filter((i) => !DEDICATED_ROUTES.has(i.href))
-  .map((i) => i.href.split('/').filter(Boolean));
+/**
+ * Standalone pages not in the main nav (footer / legal / help). `sectionKey` is the
+ * breadcrumb label (i18n `menu`). All rendered by the generic InfoPage template.
+ */
+export const EXTRA_PAGES: { key: string; href: string; sectionKey: string }[] = [
+  { key: 'ajuda', href: '/ajuda', sectionKey: 'ajuda' },
+  { key: 'contato', href: '/ajuda/contato', sectionKey: 'ajuda' },
+  { key: 'contatoImprensa', href: '/ajuda/contato-imprensa', sectionKey: 'ajuda' },
+  { key: 'privacidade', href: '/privacidade', sectionKey: 'ajuda' },
+  { key: 'cookies', href: '/cookies', sectionKey: 'ajuda' },
+  { key: 'termos', href: '/termos-de-uso', sectionKey: 'ajuda' },
+];
 
-/** Resolve a catch-all path (e.g. ['clube','diretoria']) to its nav section + item. */
-export function findNavLeaf(
+/** Path segments for every generic InfoPage leaf (nav + extra), for generateStaticParams. */
+export const INFO_PAGE_PATHS: string[][] = [
+  ...SITE_NAV.flatMap((s) => s.items)
+    .filter((i) => !DEDICATED_ROUTES.has(i.href))
+    .map((i) => i.href),
+  ...EXTRA_PAGES.map((p) => p.href),
+].map((href) => href.split('/').filter(Boolean));
+
+/** Resolve a catch-all path to the i18n keys for its breadcrumb section + title. */
+export function resolvePage(
   path: string[],
-): { section: NavSection; item: NavItem } | null {
+): { sectionKey: string; titleKey: string } | null {
   const href = '/' + path.join('/');
   for (const section of SITE_NAV) {
     const item = section.items.find((i) => i.href === href);
-    if (item) return { section, item };
+    if (item) return { sectionKey: section.key, titleKey: item.key };
   }
+  const extra = EXTRA_PAGES.find((p) => p.href === href);
+  if (extra) return { sectionKey: extra.sectionKey, titleKey: extra.key };
   return null;
 }

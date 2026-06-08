@@ -1,4 +1,5 @@
 import { getTranslations } from 'next-intl/server';
+import { Link } from '@/lib/i18n/navigation';
 import type { SectionProps } from './types';
 import { resolveLocalized } from '@/server/content/localized';
 
@@ -22,11 +23,18 @@ export async function Footer({ content, locale }: SectionProps) {
             <div key={i} className="footer-col">
               <h5>{resolveLocalized(col.heading, locale)}</h5>
               <ul>
-                {col.links.map((link, j) => (
-                  <li key={j}>
-                    <a href={link.url}>{resolveLocalized(link.label, locale)}</a>
-                  </li>
-                ))}
+                {col.links.map((link, j) => {
+                  const label = resolveLocalized(link.label, locale);
+                  return (
+                    <li key={j}>
+                      {link.url.startsWith('/') ? (
+                        <Link href={link.url}>{label}</Link>
+                      ) : (
+                        <a href={link.url}>{label}</a>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}

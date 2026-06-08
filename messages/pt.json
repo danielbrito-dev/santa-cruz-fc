@@ -30,7 +30,12 @@
     "fichaJogo": "Ficha de Jogo",
     "contato": "Contato",
     "faleConosco": "Fale Conosco",
-    "trabalheConosco": "Trabalhe Conosco"
+    "trabalheConosco": "Trabalhe Conosco",
+    "ajuda": "Ajuda",
+    "contatoImprensa": "Contato Imprensa",
+    "privacidade": "Política de Privacidade",
+    "cookies": "Cookies",
+    "termos": "Termos de Uso"
   },
   "common": { "allNews": "Todas as notícias", "matchCenter": "Match Center", "becomeMember": "Seja Sócio Coral", "skipToContent": "Pular para o conteúdo" },
   "news": { "heading1": "Notícias", "heading2": "do Clube", "photos": "{count, plural, one {# foto} other {# fotos}}" },
