@@ -131,16 +131,29 @@ export function HeaderClient() {
                     {menu(section.key)}
                   </button>
                   <div className="header-dropdown" role="menu">
-                    {section.items.map((it) => (
-                      <Link
-                        key={it.key}
-                        href={it.href}
-                        className="header-dropdown-link"
-                        role="menuitem"
-                      >
-                        {menu(it.key)}
-                      </Link>
-                    ))}
+                    {section.items.map((it) =>
+                      it.href.startsWith('http') ? (
+                        <a
+                          key={it.key}
+                          href={it.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="header-dropdown-link"
+                          role="menuitem"
+                        >
+                          {menu(it.key)}
+                        </a>
+                      ) : (
+                        <Link
+                          key={it.key}
+                          href={it.href}
+                          className="header-dropdown-link"
+                          role="menuitem"
+                        >
+                          {menu(it.key)}
+                        </Link>
+                      ),
+                    )}
                   </div>
                 </div>
               ))}
@@ -194,11 +207,23 @@ export function HeaderClient() {
                 <span className="chevron" />
               </button>
               <div className="drawer-sub">
-                {section.items.map((it) => (
-                  <Link key={it.key} href={it.href} onClick={handleDrawerLinkClick}>
-                    {menu(it.key)}
-                  </Link>
-                ))}
+                {section.items.map((it) =>
+                  it.href.startsWith('http') ? (
+                    <a
+                      key={it.key}
+                      href={it.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={handleDrawerLinkClick}
+                    >
+                      {menu(it.key)}
+                    </a>
+                  ) : (
+                    <Link key={it.key} href={it.href} onClick={handleDrawerLinkClick}>
+                      {menu(it.key)}
+                    </Link>
+                  ),
+                )}
               </div>
             </div>
           ))}

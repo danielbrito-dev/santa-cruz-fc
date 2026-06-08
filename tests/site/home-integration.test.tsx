@@ -3,6 +3,17 @@ import { render } from '@testing-library/react';
 import { NextIntlClientProvider } from 'next-intl';
 import pt from '@/messages/pt.json';
 
+// Footer/Header render internal links via the localized Link — mock navigation in jsdom
+vi.mock('@/lib/i18n/navigation', () => ({
+  Link: ({ href, children, ...rest }: { href: string; children: React.ReactNode; [k: string]: unknown }) => (
+    <a href={String(href)} {...rest}>
+      {children}
+    </a>
+  ),
+  usePathname: () => '/',
+  useRouter: () => ({ replace: () => {}, push: () => {} }),
+}));
+
 // Mock next-intl/server — getTranslations reads from pt messages, getFormatter returns a minimal stub
 vi.mock('next-intl/server', () => ({
   getTranslations: async (ns: string | { namespace: string }) => {

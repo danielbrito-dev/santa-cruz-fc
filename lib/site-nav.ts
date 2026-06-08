@@ -1,5 +1,6 @@
 // Single source of truth for the site navigation (header + drawer + internal routes).
 // `key` fields resolve against the `menu` i18n namespace (messages/{pt,en}.json).
+// Aligned with the marketing-campaign IA (2026-06).
 
 export interface NavItem {
   key: string;
@@ -12,44 +13,55 @@ export interface NavSection {
 
 export const SITE_NAV: NavSection[] = [
   {
-    key: 'clube',
+    key: 'oSanta',
     items: [
-      { key: 'diretoria', href: '/clube/diretoria' },
-      { key: 'consulados', href: '/clube/consulados' },
-      { key: 'simbolos', href: '/clube/simbolos' },
-      { key: 'endereco', href: '/clube/endereco' },
-      { key: 'transparencia', href: '/clube/transparencia' },
-    ],
-  },
-  {
-    key: 'historia',
-    items: [
-      { key: 'oComeco', href: '/historia/o-comeco' },
-      { key: 'titulos', href: '/historia/titulos' },
-      { key: 'artilheiros', href: '/historia/artilheiros' },
-      { key: 'precursorInclusao', href: '/historia/precursor-da-inclusao' },
+      { key: 'historia', href: '/o-santa/historia' },
+      { key: 'titulos', href: '/o-santa/titulos' },
+      { key: 'artilheiros', href: '/o-santa/artilheiros' },
+      { key: 'simbolos', href: '/o-santa/simbolos' },
+      { key: 'precursorInclusao', href: '/o-santa/precursor-da-inclusao' },
+      { key: 'consulados', href: '/o-santa/consulados' },
+      { key: 'enderecos', href: '/o-santa/enderecos' },
     ],
   },
   {
     key: 'futebol',
-    items: [{ key: 'elencoComissao', href: '/elenco' }],
-  },
-  {
-    key: 'marketing',
     items: [
-      { key: 'censo', href: '/marketing/censo' },
-      { key: 'lojas', href: '/marketing/lojas' },
-      { key: 'tvCoral', href: '/marketing/tv-coral' },
-      { key: 'experiencias', href: '/marketing/experiencias' },
+      { key: 'elencoProfissional', href: '/elenco' },
+      { key: 'comissaoTecnica', href: '/elenco#comissao' },
+      { key: 'categoriasBase', href: '/futebol/categorias-de-base' },
+      { key: 'calendario', href: '/futebol/calendario' },
+      { key: 'resultados', href: '/futebol/resultados' },
     ],
   },
   {
-    key: 'imprensa',
+    key: 'vivaSanta',
     items: [
-      { key: 'noticias', href: '/imprensa/noticias' },
-      { key: 'fotos', href: '/imprensa/fotos' },
-      { key: 'presskit', href: '/imprensa/presskit' },
-      { key: 'fichaJogo', href: '/imprensa/ficha-de-jogo' },
+      { key: 'sejaSocio', href: 'https://socio-santacruz.futebolcard.com/' },
+      { key: 'experiencias', href: '/viva-o-santa/experiencias' },
+      { key: 'censo', href: '/viva-o-santa/censo' },
+      { key: 'tvCoral', href: '/viva-o-santa/tv-coral' },
+      { key: 'lojas', href: '/viva-o-santa/lojas' },
+    ],
+  },
+  {
+    key: 'midia',
+    items: [
+      { key: 'noticias', href: '/midia/noticias' },
+      { key: 'flickr', href: '/midia/fotos' },
+      { key: 'guiaPartida', href: '/midia/guia-da-partida' },
+      { key: 'pressKit', href: '/midia/press-kit' },
+      { key: 'conteudoImprensa', href: '/midia/conteudo-imprensa' },
+    ],
+  },
+  {
+    key: 'clube',
+    items: [
+      { key: 'diretoria', href: '/clube/diretoria' },
+      { key: 'transparencia', href: '/clube/transparencia' },
+      { key: 'estatuto', href: '/clube/estatuto' },
+      { key: 'documentos', href: '/clube/documentos' },
+      { key: 'relatorios', href: '/clube/relatorios' },
     ],
   },
   {
@@ -57,17 +69,25 @@ export const SITE_NAV: NavSection[] = [
     items: [
       { key: 'faleConosco', href: '/contato/fale-conosco' },
       { key: 'trabalheConosco', href: '/contato/trabalhe-conosco' },
+      { key: 'ouvidoria', href: '/contato/ouvidoria' },
+    ],
+  },
+  {
+    key: 'historias',
+    items: [
+      { key: 'explorarHistorias', href: '/historias/explorar' },
+      { key: 'enviarHistoria', href: '/historias/enviar' },
+      { key: 'historiasDestaque', href: '/historias/destaque' },
+      { key: 'historiasCidade', href: '/historias/por-cidade' },
+      { key: 'historiasGeracao', href: '/historias/por-geracao' },
     ],
   },
 ];
 
-/** hrefs that have a dedicated route (NOT handled by the generic [...path] InfoPage). */
+/** hrefs with a dedicated route (NOT handled by the generic [...path] InfoPage). */
 const DEDICATED_ROUTES = new Set(['/elenco']);
 
-/**
- * Standalone pages not in the main nav (footer / legal / help). `sectionKey` is the
- * breadcrumb label (i18n `menu`). All rendered by the generic InfoPage template.
- */
+/** Standalone footer/legal pages (not in the main nav). Rendered by InfoPage too. */
 export const EXTRA_PAGES: { key: string; href: string; sectionKey: string }[] = [
   { key: 'ajuda', href: '/ajuda', sectionKey: 'ajuda' },
   { key: 'contato', href: '/ajuda/contato', sectionKey: 'ajuda' },
@@ -77,11 +97,16 @@ export const EXTRA_PAGES: { key: string; href: string; sectionKey: string }[] = 
   { key: 'termos', href: '/termos-de-uso', sectionKey: 'ajuda' },
 ];
 
+/** True for hrefs we generate as a generic InfoPage (internal, no hash, not dedicated). */
+function isGeneratedPage(href: string): boolean {
+  return href.startsWith('/') && !href.includes('#') && !DEDICATED_ROUTES.has(href);
+}
+
 /** Path segments for every generic InfoPage leaf (nav + extra), for generateStaticParams. */
 export const INFO_PAGE_PATHS: string[][] = [
   ...SITE_NAV.flatMap((s) => s.items)
-    .filter((i) => !DEDICATED_ROUTES.has(i.href))
-    .map((i) => i.href),
+    .map((i) => i.href)
+    .filter(isGeneratedPage),
   ...EXTRA_PAGES.map((p) => p.href),
 ].map((href) => href.split('/').filter(Boolean));
 
