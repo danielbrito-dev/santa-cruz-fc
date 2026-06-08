@@ -3974,22 +3974,24 @@ textarea.admin-input {
 .info-card p{font-size:13.5px;line-height:1.6;color:rgba(255,255,255,.7)}
 .info-card-more{margin-top:auto;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:inline-flex;gap:6px}
 
-/* CTA band — red, white frame keeps it off the dark sections (BRAND.md) */
+/* CTA band — black (não vermelho: fica colado ao footer vermelho). White frame +
+   red pill com anel branco = tricolor preto/branco/vermelho, separação BRAND.md. */
 .info-cta{
-  position:relative;z-index:2;background:var(--red);color:var(--white);
+  position:relative;z-index:2;background:var(--ink);color:var(--white);
   border-top:3px solid var(--white);border-bottom:3px solid var(--white);
 }
 .info-cta-inner{display:flex;align-items:center;justify-content:space-between;gap:28px;padding:44px 0;flex-wrap:wrap}
-.info-cta-eyebrow{font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;opacity:.85}
+.info-cta-eyebrow{font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
 .info-cta h2{font-size:clamp(22px,3vw,38px);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1;margin:8px 0 6px;max-width:18ch}
-.info-cta p{font-size:14px;opacity:.92;max-width:42ch}
+.info-cta p{font-size:14px;opacity:.85;max-width:42ch}
 .info-cta-btn{
   flex:0 0 auto;display:inline-flex;align-items:center;gap:10px;
-  background:var(--white);color:var(--red);padding:14px 24px;border-radius:999px;
+  background:var(--red);color:var(--white);padding:14px 24px;border-radius:999px;
+  box-shadow:0 0 0 1.5px var(--white); /* white ring keeps red off the black band */
   font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
-  transition:transform .2s, gap .2s;
+  transition:transform .2s, gap .2s, background .2s;
 }
-.info-cta-btn:hover{transform:translateY(-2px);gap:14px}
+.info-cta-btn:hover{transform:translateY(-2px);gap:14px;background:#B80000}
 
 .info-fill{flex:1 0 auto;background:var(--section-bg);position:relative;z-index:2}
 
