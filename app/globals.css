@@ -3845,10 +3845,17 @@ textarea.admin-input {
 }
 .squad-bg > span{position:absolute;display:block;inset:0}
 /* tiled crest micro-pattern (mask → faint crest silhouettes across the whole height) */
+/* Pattern autoral conectado ao escudo: escudos estilizados + estrelas (dos títulos)
+   sobre uma trama diagonal (argyle) que liga os motivos. Desenhado em SVG, não o
+   logo repetido. Branco em baixa opacidade → vale light e dark. */
 .squad-bg-tile{
-  background:rgba(255,255,255,.035);
-  -webkit-mask:url('/images/logo.png') 0 0 / 150px auto repeat;
-  mask:url('/images/logo.png') 0 0 / 150px auto repeat;
+  background-color:transparent;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.3' stroke-opacity='0.08'%3E%3Cpath d='M45 40 H75 V57 C75 68 60 76 60 76 C60 76 45 68 45 57 Z M60 40 V72'/%3E%3C/g%3E%3Cpath d='M60 9 L62.2 13.8 L67 16 L62.2 18.2 L60 23 L57.8 18.2 L53 16 L57.8 13.8 Z' fill='%23ffffff' fill-opacity='0.07'/%3E%3C/svg%3E"),
+    repeating-linear-gradient(45deg, rgba(255,255,255,.022) 0 1px, transparent 1px 26px),
+    repeating-linear-gradient(-45deg, rgba(255,255,255,.022) 0 1px, transparent 1px 26px);
+  background-size:120px 120px, auto, auto;
+  background-repeat:repeat;
 }
 /* film grain — subtle premium texture */
 .squad-bg-grain{
@@ -3857,7 +3864,7 @@ textarea.admin-input {
   background-size:140px 140px;
 }
 @media (max-width:768px){
-  .squad-bg-tile{ -webkit-mask-size:112px auto; mask-size:112px auto }
+  .squad-bg-tile{ background-size:96px 96px, auto, auto }
 }
 .squad-group{scroll-margin-top:64px}
 .squad-group + .squad-group{margin-top:56px}
@@ -3881,10 +3888,11 @@ textarea.admin-input {
 .player-card{
   display:flex;flex-direction:column;overflow:hidden;
   background:#fff;
-  box-shadow:0 10px 26px -14px rgba(0,0,0,.55);
+  /* white ring (BRAND.md): keeps the red bar from touching the dark canvas */
+  box-shadow:0 0 0 2px #fff, 0 10px 26px -14px rgba(0,0,0,.55);
   transition:transform .3s, box-shadow .3s;
 }
-.player-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px -14px rgba(0,0,0,.6)}
+.player-card:hover{transform:translateY(-4px);box-shadow:0 0 0 2px #fff, 0 16px 34px -14px rgba(0,0,0,.6)}
 .player-photo{
   position:relative;aspect-ratio:1/1;overflow:hidden;
   background:radial-gradient(120% 92% at 50% 0%, #ffffff 0%, #ebecf0 76%, #dcdde3 100%);
