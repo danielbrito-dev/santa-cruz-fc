@@ -1,9 +1,13 @@
+import type { ReactNode } from 'react';
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing, type Locale } from '@/lib/i18n/routing';
 import { INFO_PAGE_PATHS, resolvePage } from '@/lib/site-nav';
+import { getPageData, type EditorialData } from '@/lib/site-pages';
 import { SiteShell } from '@/components/site/site-shell';
-import { InfoPage } from '@/components/site/info-page';
+import { Editorial } from '@/components/site/pages/editorial';
+import { Legal } from '@/components/site/pages/legal';
+import { Faq } from '@/components/site/pages/faq';
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -22,9 +26,31 @@ export default async function InternalPage({
   const page = resolvePage(path);
   if (!page) notFound();
 
-  return (
-    <SiteShell locale={locale}>
-      <InfoPage sectionKey={page.sectionKey} titleKey={page.titleKey} locale={locale} />
-    </SiteShell>
-  );
+  const href = '/' + path.join('/');
+  const common = { sectionKey: page.sectionKey, titleKey: page.titleKey, locale };
+
+  // Fallback p/ páginas ainda sem conteúdo dedicado (fases B–D) — Editorial genérico.
+  const fallback: EditorialData = {
+    archetype: 'editorial',
+    lead: 'Conteúdo em construção.',
+    sections: [{ heading: 'Em breve', paragraphs: ['Esta página será preenchida em breve.'] }],
+  };
+  const data = getPageData(href) ?? fallback;
+
+  let body: ReactNode;
+  switch (data.archetype) {
+    case 'legal':
+      body = <Legal {...common} data={data} />;
+      break;
+    case 'faq':
+      body = <Faq {...common} data={data} />;
+      break;
+    case 'editorial':
+      body = <Editorial {...common} data={data} />;
+      break;
+    default:
+      body = <Editorial {...common} data={fallback} />;
+  }
+
+  return <SiteShell locale={locale}>{body}</SiteShell>;
 }

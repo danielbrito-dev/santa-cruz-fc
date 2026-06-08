@@ -74,7 +74,8 @@
     "factCity": "Cidade",
     "factColors": "Cores",
     "factMascot": "Mascote",
-    "colorsValue": "Preto · Branco · Vermelho"
+    "colorsValue": "Preto · Branco · Vermelho",
+    "updatedAt": "Atualizado em"
   },
   "common": { "allNews": "Todas as notícias", "matchCenter": "Match Center", "becomeMember": "Seja Sócio Coral", "skipToContent": "Pular para o conteúdo" },
   "news": { "heading1": "Notícias", "heading2": "do Clube", "photos": "{count, plural, one {# foto} other {# fotos}}" },

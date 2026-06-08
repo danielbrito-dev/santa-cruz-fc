@@ -4006,6 +4006,28 @@ textarea.admin-input {
   .info-cta-inner{flex-direction:column;align-items:flex-start;gap:18px}
 }
 
+/* ===== arquétipo Legal (documento) ===== */
+.legal-doc{max-width:74ch;margin:0 auto}
+.legal-section{margin-bottom:30px}
+.legal-section h2{
+  font-size:clamp(16px,1.8vw,20px);font-weight:900;text-transform:uppercase;letter-spacing:-.01em;
+  margin-bottom:10px;
+}
+.legal-section p{font-size:15px;line-height:1.8;opacity:.9;margin-bottom:12px}
+
+/* ===== arquétipo FAQ (acordeão) ===== */
+.faq-list{max-width:74ch;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.faq-item{border:1px solid var(--line);border-radius:10px;background:var(--bg-2);overflow:hidden}
+.faq-q{
+  cursor:pointer;list-style:none;padding:18px 20px;
+  font-size:15px;font-weight:800;display:flex;justify-content:space-between;align-items:center;
+}
+.faq-q::-webkit-details-marker{display:none}
+.faq-q::after{content:"+";font-size:20px;font-weight:700;color:var(--red);line-height:1}
+[data-theme="dark"] .faq-q::after{color:var(--gold)}
+.faq-item[open] .faq-q::after{content:"–"}
+.faq-a{padding:0 20px 18px;font-size:14.5px;line-height:1.7;opacity:.9}
+
 /* ================== ELENCO / SQUAD ==================
    Connects to the home: light hero band (so the fixed transparent header reads
    identically), then the squad on the dark "stadium" canvas (--section-bg) with
