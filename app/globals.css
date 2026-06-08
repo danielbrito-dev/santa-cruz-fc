@@ -3974,10 +3974,11 @@ textarea.admin-input {
 .info-card p{font-size:13.5px;line-height:1.6;color:rgba(255,255,255,.7)}
 .info-card-more{margin-top:auto;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:inline-flex;gap:6px}
 
-/* CTA band — black (não vermelho: fica colado ao footer vermelho). White frame +
-   red pill com anel branco = tricolor preto/branco/vermelho, separação BRAND.md. */
+/* CTA band — Fita Azul (#0A1A3D, herança de 1979): distinto do "Veja também"
+   preto acima e do footer vermelho abaixo. White frame + red pill com anel
+   branco mantêm a separação do BRAND.md. */
 .info-cta{
-  position:relative;z-index:2;background:var(--ink);color:var(--white);
+  position:relative;z-index:2;background:var(--fita-azul);color:var(--white);
   border-top:3px solid var(--white);border-bottom:3px solid var(--white);
 }
 .info-cta-inner{display:flex;align-items:center;justify-content:space-between;gap:28px;padding:44px 0;flex-wrap:wrap}
