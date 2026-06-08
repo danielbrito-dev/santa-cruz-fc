@@ -37,6 +37,21 @@
     "cookies": "Cookies",
     "termos": "Terms of Use"
   },
+  "page": {
+    "overview": "Overview",
+    "quickFacts": "Quick facts",
+    "related": "See also",
+    "ctaEyebrow": "Coral Nation",
+    "ctaTitle": "Join the biggest in the Northeast",
+    "ctaText": "Cheer, live and make history with Santa Cruz Futebol Clube.",
+    "ctaButton": "Become a Member",
+    "factFounded": "Founded",
+    "factStadium": "Stadium",
+    "factCity": "City",
+    "factColors": "Colors",
+    "factMascot": "Mascot",
+    "colorsValue": "Black · White · Red"
+  },
   "common": { "allNews": "All news", "matchCenter": "Match Center", "becomeMember": "Become a Member", "skipToContent": "Skip to content" },
   "news": { "heading1": "News", "heading2": "from the Club", "photos": "{count, plural, one {# photo} other {# photos}}" },
   "calendar": { "title": "Schedule", "prev": "Previous", "next": "Next" },

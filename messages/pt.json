@@ -37,6 +37,21 @@
     "cookies": "Cookies",
     "termos": "Termos de Uso"
   },
+  "page": {
+    "overview": "Visão geral",
+    "quickFacts": "Fatos rápidos",
+    "related": "Veja também",
+    "ctaEyebrow": "Nação Coral",
+    "ctaTitle": "Faça parte da maior do Nordeste",
+    "ctaText": "Torça, viva e faça história com o Santa Cruz Futebol Clube.",
+    "ctaButton": "Seja Sócio Coral",
+    "factFounded": "Fundação",
+    "factStadium": "Estádio",
+    "factCity": "Cidade",
+    "factColors": "Cores",
+    "factMascot": "Mascote",
+    "colorsValue": "Preto · Branco · Vermelho"
+  },
   "common": { "allNews": "Todas as notícias", "matchCenter": "Match Center", "becomeMember": "Seja Sócio Coral", "skipToContent": "Pular para o conteúdo" },
   "news": { "heading1": "Notícias", "heading2": "do Clube", "photos": "{count, plural, one {# foto} other {# fotos}}" },
   "calendar": { "title": "Calendário", "prev": "Anterior", "next": "Próximo" },

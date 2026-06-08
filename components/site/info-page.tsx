@@ -8,8 +8,9 @@ const LOREM = [
 ];
 
 /**
- * Generic internal content page (placeholder/lorem). Hero band (themed via tokens
- * so the fixed header reads in both light and dark) + a readable prose body.
+ * Editorial template for internal pages. Composed blocks (decorative hero, lead,
+ * two-column body with a sticky facts aside, pull-quote, related cards, CTA band).
+ * Placeholder content; real club facts in the aside. Light/dark via tokens.
  */
 export async function InfoPage({
   sectionKey,
@@ -20,38 +21,108 @@ export async function InfoPage({
   locale: Locale;
 }) {
   const t = await getTranslations('menu');
+  const p = await getTranslations('page');
+
+  const facts: { k: string; v: string }[] = [
+    { k: p('factFounded'), v: '1914' },
+    { k: p('factStadium'), v: 'Arruda' },
+    { k: p('factCity'), v: 'Recife · PE' },
+    { k: p('factColors'), v: p('colorsValue') },
+    { k: p('factMascot'), v: 'Cobra Coral' },
+  ];
 
   return (
-    <div className="info-page">
+    <div className="info">
+      {/* HERO */}
       <header className="info-hero">
-        <div className="container">
+        <div className="container info-hero-inner">
           <nav className="info-breadcrumb" aria-label="breadcrumb">
             <span>{t(sectionKey)}</span>
             <span className="info-breadcrumb-sep">/</span>
             <span className="info-breadcrumb-current">{t(titleKey)}</span>
           </nav>
           <h1 className="info-title">{t(titleKey)}</h1>
-          <p className="info-subtitle">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit — conteúdo em construção.
+          <p className="info-lead">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua.
           </p>
         </div>
       </header>
 
-      <div className="info-body">
-        <div className="container">
-          <article className="info-prose">
-            {LOREM.map((p, i) => (
-              <p key={`a${i}`}>{p}</p>
-            ))}
+      {/* BODY + ASIDE */}
+      <div className="info-main">
+        <div className="container info-grid">
+          <article className="info-content">
+            <p className="info-content-lead">{LOREM[0]}</p>
+
+            <h2>{p('overview')}</h2>
+            <p>{LOREM[1]}</p>
+            <p>{LOREM[2]}</p>
+
+            <blockquote className="info-quote">
+              “Lorem ipsum dolor sit amet, consectetur adipiscing elit — tradição que não é moda.”
+              <cite>Santa Cruz Futebol Clube</cite>
+            </blockquote>
+
             <h2>Lorem ipsum</h2>
-            {LOREM.map((p, i) => (
-              <p key={`b${i}`}>{p}</p>
-            ))}
+            <p>{LOREM[0]}</p>
+            <p>{LOREM[1]}</p>
           </article>
+
+          <aside className="info-aside">
+            <div className="info-facts">
+              <h3>{p('quickFacts')}</h3>
+              <dl>
+                {facts.map((f) => (
+                  <div className="row" key={f.k}>
+                    <dt>{f.k}</dt>
+                    <dd>{f.v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </aside>
         </div>
       </div>
 
-      {/* keeps short pages tall enough so the parallax footer reveals only on scroll */}
+      {/* RELATED */}
+      <section className="info-related">
+        <div className="container">
+          <h2 className="info-related-title">
+            {p('related')} <em>—</em>
+          </h2>
+          <div className="info-cards">
+            {[0, 1, 2].map((i) => (
+              <article className="info-card" key={i}>
+                <span className="info-card-idx">{String(i + 1).padStart(2, '0')}</span>
+                <h3>Lorem ipsum dolor</h3>
+                <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                <span className="info-card-more">{p('related')} →</span>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="info-cta">
+        <div className="container info-cta-inner">
+          <div>
+            <span className="info-cta-eyebrow">{p('ctaEyebrow')}</span>
+            <h2>{p('ctaTitle')}</h2>
+            <p>{p('ctaText')}</p>
+          </div>
+          <a
+            className="info-cta-btn"
+            href="https://socio-santacruz.futebolcard.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {p('ctaButton')} →
+          </a>
+        </div>
+      </section>
+
       <div className="info-fill" aria-hidden="true" />
     </div>
   );
