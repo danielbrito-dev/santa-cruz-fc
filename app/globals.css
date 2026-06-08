@@ -183,8 +183,16 @@ ul{list-style:none}
 .btn-pill--ghost{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.3)}
 .btn-pill--ghost:hover{background:var(--white);color:var(--ink);border-color:var(--white)}
 
+@media (min-width:1025px){
+  /* desktop: the inline section dropdowns are the nav — hide the hamburger (redundant) */
+  .menu-trigger{display:none}
+}
 @media (max-width:1024px){
   .header-right .header-link.hide-mobile{display:none}
+  /* small screens: hide the inline nav — the hamburger/drawer takes over.
+     Scoped to .header-inner so it outranks the base .header-nav{display:flex}
+     defined later in the stylesheet. */
+  .header-inner .header-nav{display:none}
 }
 @media (max-width:768px){
   .header-inner{grid-template-columns:auto 1fr auto;height:60px;padding:0 16px}
