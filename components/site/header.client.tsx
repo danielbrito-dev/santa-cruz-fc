@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { useLocale } from 'next-intl';
 import { usePathname, useRouter, Link } from '@/lib/i18n/navigation';
 import { routing } from '@/lib/i18n/routing';
+import { SITE_NAV } from '@/lib/site-nav';
 import { LocaleSwitcher } from './locale-switcher';
 import { ThemeToggle } from './theme-toggle';
 
@@ -12,6 +13,7 @@ const DELTA = 6;
 
 export function HeaderClient() {
   const nav = useTranslations('nav');
+  const menu = useTranslations('menu');
   const drawer = useTranslations('drawer');
   const common = useTranslations('common');
   const a11y = useTranslations('a11y');
@@ -41,10 +43,8 @@ export function HeaderClient() {
 
       if (y > THRESHOLD && Math.abs(delta) > DELTA) {
         if (delta > 0) {
-          // scrolling down → hide (only if drawer is closed)
           if (!drawerOpen) header.classList.add('hide');
         } else {
-          // scrolling up → show
           header.classList.remove('hide');
         }
       }
@@ -122,18 +122,29 @@ export function HeaderClient() {
             <Link href="/" className="header-logo">
               <img src="/images/logo.png" alt="Escudo Santa Cruz FC" />
             </Link>
-            <a href="#noticias" className="header-link hide-mobile">
-              {nav('news')}
-            </a>
-            <a href="#calendario" className="header-link hide-mobile">
-              {nav('calendar')}
-            </a>
-            <Link href="/elenco" className="header-link hide-mobile">
-              {nav('squad')}
-            </Link>
-            <a href="#" className="header-link hide-mobile">
-              {nav('tvCoral')}
-            </a>
+
+            {/* Desktop nav — the 6 sections, each a hover/focus dropdown */}
+            <nav className="header-nav hide-mobile" aria-label="Menu principal">
+              {SITE_NAV.map((section) => (
+                <div className="header-nav-item" key={section.key}>
+                  <button type="button" className="header-nav-label" aria-haspopup="true">
+                    {menu(section.key)}
+                  </button>
+                  <div className="header-dropdown" role="menu">
+                    {section.items.map((it) => (
+                      <Link
+                        key={it.key}
+                        href={it.href}
+                        className="header-dropdown-link"
+                        role="menuitem"
+                      >
+                        {menu(it.key)}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </nav>
           </div>
 
           <div className="header-right">
@@ -144,12 +155,6 @@ export function HeaderClient() {
               </svg>
               {nav('login')}
             </Link>
-            <a href="#" className="header-link hide-mobile">
-              {nav('tickets')}
-            </a>
-            <a href="#" className="header-link hide-mobile">
-              {nav('shop')}
-            </a>
             <ThemeToggle />
             <LocaleSwitcher />
           </div>
@@ -164,151 +169,41 @@ export function HeaderClient() {
       />
 
       {/* DRAWER */}
-      <aside
-        className={`drawer${drawerOpen ? ' open' : ''}`}
-        aria-label="Menu principal"
-      >
+      <aside className={`drawer${drawerOpen ? ' open' : ''}`} aria-label="Menu principal">
         <div className="drawer-head">
           <Link href="/">
             <img src="/images/logo.png" alt="Santa Cruz FC" />
           </Link>
-          <button
-            className="drawer-close"
-            aria-label={a11y('closeMenu')}
-            onClick={closeDrawer}
-          >
+          <button className="drawer-close" aria-label={a11y('closeMenu')} onClick={closeDrawer}>
             ✕
           </button>
         </div>
 
         <nav className="drawer-nav">
-          {/* Início */}
-          <div className="drawer-item">
-            <a href="#" className="drawer-item-trigger" style={{ display: 'flex' }}>
-              {drawer('home')}
-            </a>
-          </div>
-
-          {/* Clube */}
-          <div className={`drawer-item${openSections.club ? ' open' : ''}`}>
-            <button
-              className="drawer-item-trigger"
-              aria-expanded={!!openSections.club}
-              onClick={() => toggleSection('club')}
+          {SITE_NAV.map((section) => (
+            <div
+              key={section.key}
+              className={`drawer-item${openSections[section.key] ? ' open' : ''}`}
             >
-              {drawer('sections.club')}
-              <span className="chevron" />
-            </button>
-            <div className="drawer-sub">
-              <a href="#historia" onClick={handleDrawerLinkClick}>
-                {drawer('items.history')}
-              </a>
-              <a href="#" onClick={handleDrawerLinkClick}>
-                {drawer('items.board')}
-              </a>
-              <a href="#" onClick={handleDrawerLinkClick}>
-                {drawer('items.symbols')}
-              </a>
-              <a href="#" onClick={handleDrawerLinkClick}>
-                {drawer('items.stadium')}
-              </a>
-              <a href="#" onClick={handleDrawerLinkClick}>
-                {drawer('items.council')}
-              </a>
-            </div>
-          </div>
-
-          {/* Futebol */}
-          <div className={`drawer-item${openSections.football ? ' open' : ''}`}>
-            <button
-              className="drawer-item-trigger"
-              aria-expanded={!!openSections.football}
-              onClick={() => toggleSection('football')}
-            >
-              {drawer('sections.football')}
-              <span className="chevron" />
-            </button>
-            <div className="drawer-sub">
-              <Link href="/elenco" onClick={handleDrawerLinkClick}>
-                {drawer('items.squad')}
-              </Link>
-              <a href="#" onClick={handleDrawerLinkClick}>
-                {drawer('items.coachingStaff')}
-              </a>
-              <a href="#" onClick={handleDrawerLinkClick}>
-                {drawer('items.youth')}
-              </a>
-              <a href="#" onClick={handleDrawerLinkClick}>
-                {drawer('items.women')}
-              </a>
-            </div>
-          </div>
-
-          {/* Marketing */}
-          <div className={`drawer-item${openSections.marketing ? ' open' : ''}`}>
-            <button
-              className="drawer-item-trigger"
-              aria-expanded={!!openSections.marketing}
-              onClick={() => toggleSection('marketing')}
-            >
-              {drawer('sections.marketing')}
-              <span className="chevron" />
-            </button>
-            <div className="drawer-sub">
-              <a
-                href="https://socio-santacruz.futebolcard.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={handleDrawerLinkClick}
+              <button
+                className="drawer-item-trigger"
+                aria-expanded={!!openSections[section.key]}
+                onClick={() => toggleSection(section.key)}
               >
-                {drawer('items.member')}
-              </a>
-              <a href="#" onClick={handleDrawerLinkClick}>
-                {drawer('items.shop')}
-              </a>
-              <a href="#patrocinadores" onClick={handleDrawerLinkClick}>
-                {drawer('items.sponsors')}
-              </a>
-              <a href="#" onClick={handleDrawerLinkClick}>
-                {drawer('items.licensed')}
-              </a>
+                {menu(section.key)}
+                <span className="chevron" />
+              </button>
+              <div className="drawer-sub">
+                {section.items.map((it) => (
+                  <Link key={it.key} href={it.href} onClick={handleDrawerLinkClick}>
+                    {menu(it.key)}
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
+          ))}
 
-          {/* Imprensa */}
-          <div className={`drawer-item${openSections.press ? ' open' : ''}`}>
-            <button
-              className="drawer-item-trigger"
-              aria-expanded={!!openSections.press}
-              onClick={() => toggleSection('press')}
-            >
-              {drawer('sections.press')}
-              <span className="chevron" />
-            </button>
-            <div className="drawer-sub">
-              <a href="#noticias" onClick={handleDrawerLinkClick}>
-                {drawer('items.news')}
-              </a>
-              <a href="#" onClick={handleDrawerLinkClick}>
-                {drawer('items.tvCoral')}
-              </a>
-              <a href="#" onClick={handleDrawerLinkClick}>
-                {drawer('items.gallery')}
-              </a>
-              <a href="#" onClick={handleDrawerLinkClick}>
-                {drawer('items.pressContact')}
-              </a>
-            </div>
-          </div>
-
-          {/* Contato */}
-          <div className="drawer-item">
-            <a href="#" className="drawer-item-trigger" style={{ display: 'flex' }}>
-              {drawer('contact')}
-            </a>
-          </div>
-
-          {/* Entrar (login) — gives mobile users a path to /entrar */}
+          {/* Entrar (login) — caminho para o admin no mobile */}
           <div className="drawer-item">
             <Link
               href="/entrar"
@@ -356,10 +251,6 @@ export function HeaderClient() {
             onClick={handleDrawerLinkClick}
           >
             {common('becomeMember')}
-            <span>→</span>
-          </a>
-          <a href="#" className="outline" onClick={handleDrawerLinkClick}>
-            {nav('tickets')}
             <span>→</span>
           </a>
         </div>

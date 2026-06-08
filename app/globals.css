@@ -3851,6 +3851,77 @@ textarea.admin-input {
   .athlete-silhouette{position:relative;width:62%;height:340px;margin:0 auto}
 }
 
+/* ================== HEADER NAV (desktop dropdowns) ================== */
+.header-nav{display:flex;align-items:center;gap:2px;margin-left:10px}
+.header-nav-item{position:relative}
+.header-nav-label{
+  padding:8px 12px;border:none;background:none;color:inherit;cursor:pointer;
+  font-size:13px;font-weight:700;letter-spacing:.01em;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.header-nav-label::after{
+  content:"";width:5px;height:5px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;
+  transform:rotate(45deg);opacity:.6;margin-top:-2px;transition:transform .2s;
+}
+.header-nav-item:hover .header-nav-label::after,
+.header-nav-item:focus-within .header-nav-label::after{transform:rotate(225deg);margin-top:2px}
+.header-dropdown{
+  position:absolute;top:calc(100% + 4px);left:0;min-width:230px;
+  background:var(--panel);color:var(--panel-text);
+  border:1px solid var(--line);border-radius:10px;
+  box-shadow:0 16px 36px -12px rgba(0,0,0,.32);
+  padding:8px;
+  opacity:0;visibility:hidden;transform:translateY(6px);
+  transition:opacity .18s ease, transform .18s ease, visibility .18s ease;
+  z-index:120;
+}
+.header-nav-item:hover .header-dropdown,
+.header-nav-item:focus-within .header-dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+.header-dropdown-link{
+  display:block;padding:9px 12px;border-radius:6px;
+  font-size:13px;font-weight:600;color:var(--panel-text);white-space:nowrap;
+  transition:background .15s, color .15s;
+}
+.header-dropdown-link:hover{background:var(--bg-2);color:var(--red)}
+[data-theme="dark"] .header-dropdown-link:hover{color:var(--gold)} /* red would touch near-black panel */
+
+/* ================== INTERNAL CONTENT PAGE (InfoPage) ================== */
+.info-page{display:flex;flex-direction:column;min-height:100vh}
+.info-hero{
+  position:relative;z-index:2;
+  background:var(--hero-bg);color:var(--hero-text);
+  padding:120px 0 44px;border-bottom:1px solid var(--line);
+}
+.info-breadcrumb{
+  display:flex;align-items:center;gap:8px;margin-bottom:14px;
+  font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+}
+.info-breadcrumb-sep{opacity:.5}
+.info-breadcrumb-current{color:var(--red)}
+[data-theme="dark"] .info-breadcrumb-current{color:var(--gold)} /* red off near-black hero */
+.info-title{
+  font-size:clamp(34px,5vw,64px);font-weight:900;line-height:.95;letter-spacing:-.02em;text-transform:uppercase;
+}
+.info-subtitle{margin-top:12px;max-width:60ch;font-size:15px;color:var(--muted);font-weight:500}
+
+.info-body{
+  position:relative;z-index:2;flex:0 0 auto;
+  background:var(--panel);color:var(--panel-text);
+  padding:48px 0 64px;
+}
+.info-prose{max-width:72ch}
+.info-prose p{font-size:15.5px;line-height:1.8;color:var(--panel-text);opacity:.9;margin-bottom:18px}
+.info-prose h2{
+  font-size:clamp(18px,2.2vw,24px);font-weight:900;text-transform:uppercase;letter-spacing:-.01em;
+  margin:36px 0 16px;padding-top:8px;border-top:2px solid var(--red);display:inline-block;
+}
+[data-theme="dark"] .info-prose h2{border-top-color:var(--gold)} /* red would touch near-black panel */
+.info-fill{flex:1 0 auto;background:var(--panel);position:relative;z-index:2}
+
+@media (max-width:768px){
+  .info-hero{padding:96px 0 32px}
+}
+
 /* ================== ELENCO / SQUAD ==================
    Connects to the home: light hero band (so the fixed transparent header reads
    identically), then the squad on the dark "stadium" canvas (--section-bg) with

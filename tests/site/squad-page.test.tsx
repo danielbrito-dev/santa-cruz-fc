@@ -3,6 +3,16 @@ import { render, screen } from '@testing-library/react';
 import { NextIntlClientProvider } from 'next-intl';
 import pt from '@/messages/pt.json';
 
+vi.mock('@/lib/i18n/navigation', () => ({
+  Link: ({ href, children, ...rest }: { href: string; children: React.ReactNode; [k: string]: unknown }) => (
+    <a href={String(href)} {...rest}>
+      {children}
+    </a>
+  ),
+  usePathname: () => '/',
+  useRouter: () => ({ replace: () => {}, push: () => {} }),
+}));
+
 vi.mock('next-intl/server', () => ({
   getTranslations: async () => {
     const map: Record<string, string> = {
