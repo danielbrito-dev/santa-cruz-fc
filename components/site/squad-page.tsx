@@ -14,7 +14,7 @@ function PlayerSilhouette() {
   );
 }
 
-function PlayerCard({ player, position }: { player: Player; position: string }) {
+function PlayerCard({ player }: { player: Player }) {
   return (
     <article className="player-card" data-empty={player.photo ? undefined : 'true'}>
       <div className="player-photo">
@@ -25,14 +25,8 @@ function PlayerCard({ player, position }: { player: Player; position: string }) 
           <PlayerSilhouette />
         )}
       </div>
-      <span className="player-number" aria-hidden="true">
-        {player.number}
-      </span>
-      <div className="player-meta">
-        <span className="player-pos">
-          {position}
-          {player.country ? ` · ${player.country}` : ''}
-        </span>
+      <div className="player-bar">
+        <span className="player-num">{player.number}</span>
         <h3 className="player-name">{player.name}</h3>
       </div>
     </article>
@@ -96,8 +90,6 @@ export async function SquadPage({
             tiled crest pattern + warm spotlight + grain + vignette (all in CSS). */}
         <div className="squad-bg" aria-hidden="true">
           <span className="squad-bg-tile" />
-          <span className="squad-bg-crest" />
-          <span className="squad-bg-crest squad-bg-crest--2" />
           <span className="squad-bg-grain" />
         </div>
         <div className="container">
@@ -110,7 +102,7 @@ export async function SquadPage({
               </div>
               <div className="squad-grid">
                 {g.players.map((p) => (
-                  <PlayerCard key={`${p.group}-${p.number}`} player={p} position={t(g.key)} />
+                  <PlayerCard key={`${p.group}-${p.number}`} player={p} />
                 ))}
               </div>
             </section>
