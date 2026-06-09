@@ -4006,14 +4006,42 @@ textarea.admin-input {
   .info-cta-inner{flex-direction:column;align-items:flex-start;gap:18px}
 }
 
-/* ===== arquétipo Legal (documento) ===== */
-.legal-doc{max-width:74ch;margin:0 auto}
-.legal-section{margin-bottom:30px}
-.legal-section h2{
-  font-size:clamp(16px,1.8vw,20px);font-weight:900;text-transform:uppercase;letter-spacing:-.01em;
-  margin-bottom:10px;
+/* ===== arquétipo Legal (documento utilitário — distinto do hero editorial) ===== */
+.legal{display:flex;flex-direction:column;min-height:100vh}
+.legal-head{
+  position:relative;z-index:2;background:var(--panel);color:var(--panel-text);
+  padding:120px 0 24px;border-bottom:1px solid var(--line);
 }
-.legal-section p{font-size:15px;line-height:1.8;opacity:.9;margin-bottom:12px}
+.legal-eyebrow{display:block;font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.legal-title{font-size:clamp(26px,3.2vw,40px);font-weight:800;letter-spacing:-.01em}
+.legal-date{display:block;margin-top:10px;font-size:13px;color:var(--muted)}
+.legal-body{position:relative;z-index:2;background:var(--panel);color:var(--panel-text);padding:36px 0 64px}
+.legal-grid{display:grid;grid-template-columns:220px minmax(0,1fr);gap:48px;align-items:start}
+.legal-toc{position:sticky;top:96px}
+.legal-toc-label{display:block;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.legal-toc nav{display:flex;flex-direction:column;border-left:2px solid var(--line)}
+.legal-toc a{padding:7px 14px;font-size:13px;color:var(--muted);border-left:2px solid transparent;margin-left:-2px;transition:color .15s,border-color .15s}
+.legal-toc a:hover{color:var(--red);border-left-color:var(--red)}
+[data-theme="dark"] .legal-toc a:hover{color:var(--gold);border-left-color:var(--gold)}
+.legal-article{max-width:70ch}
+.legal-section{margin-bottom:26px;scroll-margin-top:90px}
+.legal-section h2{font-size:16px;font-weight:800;margin-bottom:8px}
+.legal-section p{font-size:14.5px;line-height:1.75;opacity:.85;margin-bottom:10px}
+@media(max-width:860px){.legal-grid{grid-template-columns:1fr;gap:20px}.legal-toc{display:none}}
+
+/* ===== arquétipo FAQ — cabeçalho central "Central de Ajuda" (distinto) ===== */
+.faq{display:flex;flex-direction:column;min-height:100vh}
+.faq-head{position:relative;z-index:2;background:var(--hero-bg);color:var(--hero-text);padding:120px 0 40px;text-align:center;border-bottom:1px solid var(--line)}
+.faq-eyebrow{display:inline-block;padding:6px 12px;background:var(--red);color:var(--white);box-shadow:0 0 0 1.5px var(--white);font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin-bottom:16px}
+.faq-title{font-size:clamp(30px,4vw,52px);font-weight:900;text-transform:uppercase;letter-spacing:-.02em}
+.faq-intro{max-width:52ch;margin:14px auto 0;color:var(--muted);font-size:15px}
+.faq-body{position:relative;z-index:2;background:var(--panel);color:var(--panel-text);padding:40px 0 64px}
+
+/* Editorial: drop-cap (cara de revista — separa do Legal/FAQ) */
+.info-content section:first-of-type p:first-of-type::first-letter{
+  float:left;font-size:3.4em;line-height:.78;font-weight:900;padding:6px 12px 0 0;color:var(--red);
+}
+[data-theme="dark"] .info-content section:first-of-type p:first-of-type::first-letter{color:var(--gold)}
 
 /* ===== arquétipo FAQ (acordeão) ===== */
 .faq-list{max-width:74ch;margin:0 auto;display:flex;flex-direction:column;gap:10px}

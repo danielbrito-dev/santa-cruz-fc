@@ -24,7 +24,8 @@ describe('Legal', () => {
   it('renderiza título, data e seção', async () => {
     const C = await Legal({ sectionKey: 'ajuda', titleKey: 'privacidade', locale: 'pt', data });
     render(<NextIntlClientProvider locale="pt" messages={pt}>{C}</NextIntlClientProvider>);
-    expect(screen.getByText('1. Teste')).toBeInTheDocument();
+    // heading aparece no índice (TOC) e na seção
+    expect(screen.getAllByText('1. Teste').length).toBeGreaterThanOrEqual(1);
     expect(screen.getByText('Texto jurídico de teste.')).toBeInTheDocument();
     expect(screen.getByText(/Atualizado em/)).toBeInTheDocument();
   });

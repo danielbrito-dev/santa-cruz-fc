@@ -50,15 +50,41 @@ export interface LocationsData {
   lead: string;
   groups: { region: string; places: { name: string; address: string; city: string }[] }[];
 }
+export interface DocumentsData {
+  archetype: 'documents';
+  lead: string;
+  items: { title: string; kind: string; meta?: string; href: string }[];
+}
+export interface GalleryData {
+  archetype: 'gallery';
+  lead: string;
+  images: { src: string; alt: string }[];
+}
+export interface ListingData {
+  archetype: 'listing';
+  lead: string;
+  items: { group?: string; tag?: string; title: string; meta?: string; href?: string }[];
+}
+export interface LandingData {
+  archetype: 'landing';
+  lead: string;
+  highlights: { title: string; text: string }[];
+  ctaLabel: string;
+  ctaHref: string;
+}
 
-// União estendida nas fases C–D com os demais arquétipos.
+// União estendida na fase D com Formulário e Histórias.
 export type PageData =
   | EditorialData
   | LegalData
   | FaqData
   | AchievementsData
   | PeopleData
-  | LocationsData;
+  | LocationsData
+  | DocumentsData
+  | GalleryData
+  | ListingData
+  | LandingData;
 
 const LEGAL_SECTIONS: LegalData['sections'] = [
   {

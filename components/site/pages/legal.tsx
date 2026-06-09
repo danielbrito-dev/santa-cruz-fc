@@ -19,30 +19,40 @@ export async function Legal({
     day: '2-digit',
     month: 'long',
     year: 'numeric',
-    timeZone: 'UTC', // data ISO armazenada em UTC; evita off-by-one por fuso
+    timeZone: 'UTC',
   }).format(new Date(data.updatedAt));
 
   return (
-    <div className="info">
-      <header className="info-hero">
-        <div className="container info-hero-inner">
-          <nav className="info-breadcrumb" aria-label="breadcrumb">
-            <span>{t(sectionKey)}</span>
-            <span className="info-breadcrumb-sep">/</span>
-            <span className="info-breadcrumb-current">{t(titleKey)}</span>
-          </nav>
-          <h1 className="info-title">{t(titleKey)}</h1>
-          <p className="info-lead">
+    <div className="legal">
+      {/* cabeçalho compacto — documento, não hero de revista */}
+      <header className="legal-head">
+        <div className="container">
+          <span className="legal-eyebrow">
+            {t(sectionKey)} · {p('document')}
+          </span>
+          <h1 className="legal-title">{t(titleKey)}</h1>
+          <span className="legal-date">
             {p('updatedAt')} {date}
-          </p>
+          </span>
         </div>
       </header>
 
-      <div className="info-main">
-        <div className="container">
-          <article className="legal-doc">
+      <div className="legal-body">
+        <div className="container legal-grid">
+          <aside className="legal-toc">
+            <span className="legal-toc-label">{p('onThisPage')}</span>
+            <nav>
+              {data.sections.map((s, i) => (
+                <a key={i} href={`#s-${i}`}>
+                  {s.heading}
+                </a>
+              ))}
+            </nav>
+          </aside>
+
+          <article className="legal-article">
             {data.sections.map((s, i) => (
-              <section key={i} className="legal-section">
+              <section id={`s-${i}`} className="legal-section" key={i}>
                 <h2>{s.heading}</h2>
                 {s.paragraphs.map((par, j) => (
                   <p key={j}>{par}</p>
