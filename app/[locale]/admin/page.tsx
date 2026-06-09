@@ -1,20 +1,14 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server';
-import { readSiteContent } from '@/server/content/store';
-import type { NewsItem } from '@/server/content/types';
+import { getAnalyticsSummary } from '@/server/analytics/source';
 import { AdminAnalytics } from '@/components/admin/admin-analytics';
+
+export const dynamic = 'force-dynamic';
 
 export default async function AdminDashboardPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations('admin');
-
-  let news: NewsItem[] = [];
-  try {
-    const content = await readSiteContent();
-    news = content.news;
-  } catch {
-    news = [];
-  }
+  const summary = await getAnalyticsSummary();
 
   return (
     <div className="admin-page">
@@ -23,7 +17,7 @@ export default async function AdminDashboardPage({ params }: { params: Promise<{
         <p className="admin-page-sub">{t('scopeNote')}</p>
       </div>
 
-      <AdminAnalytics news={news} />
+      <AdminAnalytics summary={summary} />
     </div>
   );
 }

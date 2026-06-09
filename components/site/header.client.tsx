@@ -140,6 +140,8 @@ export function HeaderClient() {
                           rel="noopener noreferrer"
                           className="header-dropdown-link"
                           role="menuitem"
+                          data-cta={it.key}
+                          data-cta-label={menu(it.key)}
                         >
                           {menu(it.key)}
                         </a>
@@ -215,6 +217,8 @@ export function HeaderClient() {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={handleDrawerLinkClick}
+                      data-cta={it.key}
+                      data-cta-label={menu(it.key)}
                     >
                       {menu(it.key)}
                     </a>
@@ -274,6 +278,8 @@ export function HeaderClient() {
             rel="noopener noreferrer"
             className="primary"
             onClick={handleDrawerLinkClick}
+            data-cta="sejaSocio"
+            data-cta-label={common('becomeMember')}
           >
             {common('becomeMember')}
             <span>→</span>

@@ -5,6 +5,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing } from '@/lib/i18n/routing';
 import { inter } from '@/lib/fonts';
 import { CookieBanner } from '@/components/site/cookie-banner';
+import { AnalyticsTracker } from '@/components/site/analytics-tracker';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -46,6 +47,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           {children}
           <CookieBanner />
+          <AnalyticsTracker />
         </NextIntlClientProvider>
       </body>
     </html>

@@ -1,6 +1,15 @@
 import type { SectionProps } from './types';
 import { resolveLocalized } from '@/server/content/localized';
 
+/** Classifica a URL do banner num id de CTA legível para o analytics. */
+function ctaId(url: string): string {
+  const u = url.toLowerCase();
+  if (/socio/.test(u)) return 'sejaSocio';
+  if (/ingress|futebolcard|ticket/.test(u)) return 'ingressos';
+  if (/loja|shop|store/.test(u)) return 'lojas';
+  return 'banner';
+}
+
 export function BannerStrip({ content, locale }: SectionProps) {
   const banners = [...content.banners].sort((a, b) => a.position - b.position);
   return (
@@ -8,7 +17,15 @@ export function BannerStrip({ content, locale }: SectionProps) {
       <div className="container">
         <div className="banner-grid">
           {banners.map((b) => (
-            <a key={b.id} className="banner-card" href={b.ctaUrl} target="_blank" rel="noopener noreferrer">
+            <a
+              key={b.id}
+              className="banner-card"
+              href={b.ctaUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cta={ctaId(b.ctaUrl)}
+              data-cta-label={resolveLocalized(b.ctaLabel, locale) || resolveLocalized(b.title, locale)}
+            >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={b.image} alt={resolveLocalized(b.title, locale)} />
               <div className="grad" />

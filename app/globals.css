@@ -3607,6 +3607,7 @@ textarea.admin-input {
 .adm-rank-bar i { display: block; height: 100%; background: var(--red); border-radius: 4px; }
 .adm-rank-val { flex: 0 0 auto; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--ink); font-size: 12px; white-space: nowrap; }
 [data-theme="dark"] .adm-rank-val { color: #fff; }
+.adm-empty { font-size: 13px; color: var(--muted); padding: 8px 0; }
 
 @media (max-width: 1024px) { .adm-kpis { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 760px) { .adm-an-grid { grid-template-columns: 1fr; } .adm-kpis { grid-template-columns: repeat(2, 1fr); } .adm-an-sources-row { flex-direction: column; align-items: flex-start; } }

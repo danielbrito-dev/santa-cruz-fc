@@ -331,6 +331,8 @@
     "analyticsTitle": "Visão geral — Analytics",
     "last30": "Últimos 30 dias",
     "demoData": "Dados de demonstração",
+    "liveData": "Ao vivo",
+    "noData": "Sem dados ainda",
     "kpiVisits": "Acessos",
     "kpiUniques": "Visitantes únicos",
     "kpiPageviews": "Páginas vistas",

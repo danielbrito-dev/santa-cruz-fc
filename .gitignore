@@ -23,3 +23,6 @@ C\*scratchpad*
 /.playwright-mcp
 /.vercel
 nul
+
+# Analytics events (dev sink — produção usa o banco)
+content/analytics/
