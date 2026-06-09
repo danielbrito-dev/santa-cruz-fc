@@ -3558,6 +3558,56 @@ textarea.admin-input {
 .admin-jogos-actions { display: flex; gap: 8px; }
 .admin-elenco-group { margin-top: 16px; }
 .admin-elenco-group-title { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; color: var(--muted); margin: 14px 0 8px; }
+
+/* ── Admin · Analytics (dashboard) ─────────────────────────────────────── */
+.adm-an { margin-bottom: 36px; }
+.adm-an-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+.adm-an-title { font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; color: var(--ink); }
+[data-theme="dark"] .adm-an-title { color: #fff; }
+.adm-an-head-meta { display: flex; align-items: center; gap: 10px; }
+.adm-an-period { font-size: 12px; font-weight: 700; color: var(--muted); }
+
+.adm-kpis { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-bottom: 14px; }
+.adm-kpi { background: var(--panel); border: 1px solid var(--line); border-top: 3px solid var(--red); padding: 16px; display: flex; flex-direction: column; gap: 4px; }
+[data-theme="dark"] .adm-kpi { background: #1A1A1A; border-color: rgba(255,255,255,.10); }
+.adm-kpi-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
+.adm-kpi-value { font-size: 24px; font-weight: 900; letter-spacing: -.02em; color: var(--ink); font-variant-numeric: tabular-nums; line-height: 1.1; }
+[data-theme="dark"] .adm-kpi-value { color: #fff; }
+.adm-kpi-delta { font-size: 11px; font-weight: 800; }
+.adm-kpi-delta.up { color: #1a8f3c; }
+.adm-kpi-delta.down { color: var(--red); }
+[data-theme="dark"] .adm-kpi-delta.up { color: #46d36f; }
+
+.adm-an-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+.adm-card { background: var(--panel); border: 1px solid var(--line); padding: 18px; }
+[data-theme="dark"] .adm-card { background: #1A1A1A; border-color: rgba(255,255,255,.10); }
+.adm-an-card-title { display: block; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin-bottom: 14px; }
+
+.adm-bars { display: flex; align-items: flex-end; gap: 6px; height: 140px; }
+.adm-bar { flex: 1; background: linear-gradient(180deg, #ff5a5a, var(--red)); min-height: 4px; border-radius: 3px 3px 0 0; }
+
+.adm-an-sources-row { display: flex; align-items: center; gap: 22px; }
+.adm-donut { width: 120px; height: 120px; border-radius: 50%; flex: 0 0 auto; position: relative; }
+.adm-donut span { position: absolute; inset: 26px; background: var(--panel); border-radius: 50%; }
+[data-theme="dark"] .adm-donut span { background: #1A1A1A; }
+.adm-legend { display: flex; flex-direction: column; gap: 9px; font-size: 13px; color: var(--ink); flex: 1; }
+[data-theme="dark"] .adm-legend { color: #fff; }
+.adm-legend li { display: flex; align-items: center; gap: 8px; }
+.adm-legend i { width: 12px; height: 12px; border-radius: 3px; flex: 0 0 auto; }
+.adm-legend strong { margin-left: auto; font-variant-numeric: tabular-nums; }
+
+.adm-rank { display: flex; flex-direction: column; gap: 11px; }
+.adm-rank li { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+.adm-rank-label { flex: 1 1 auto; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--ink); font-weight: 600; }
+[data-theme="dark"] .adm-rank-label { color: #fff; }
+.adm-rank-bar { flex: 0 0 38%; height: 8px; background: var(--bg-2); border-radius: 4px; overflow: hidden; }
+[data-theme="dark"] .adm-rank-bar { background: rgba(255,255,255,.08); }
+.adm-rank-bar i { display: block; height: 100%; background: var(--red); border-radius: 4px; }
+.adm-rank-val { flex: 0 0 auto; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--ink); font-size: 12px; white-space: nowrap; }
+[data-theme="dark"] .adm-rank-val { color: #fff; }
+
+@media (max-width: 1024px) { .adm-kpis { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 760px) { .adm-an-grid { grid-template-columns: 1fr; } .adm-kpis { grid-template-columns: repeat(2, 1fr); } .adm-an-sources-row { flex-direction: column; align-items: flex-start; } }
 @media (max-width: 640px) {
   .admin-jogos-row { grid-template-columns: 1fr auto; row-gap: 8px; }
   .admin-jogos-row .admin-badge { grid-column: 1 / -1; justify-self: start; }
