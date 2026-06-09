@@ -9,6 +9,10 @@ const match = z.object({
   status: localized, scoreHome: z.number().nullable(), scoreAway: z.number().nullable(),
   matchCenterUrl: z.string(),
 });
+const club = z.object({
+  id: z.string(), name: z.string(), shortName: z.string(),
+  crestUrl: z.string().nullable(),
+});
 const news = z.object({
   id: z.string(), slug: z.string(), tag: localized, title: localized, excerpt: localized,
   body: localized, coverImage: z.string(), photoCount: z.number(), publishedAt: z.string(),
@@ -34,6 +38,7 @@ export const SiteContentSchema = z.object({
     titleLine1: localized, titleLine2: localized,
   }),
   matches: z.array(match),
+  clubs: z.array(club).default([]),
   news: z.array(news),
   banners: z.array(card),
   institutional: z.array(card),

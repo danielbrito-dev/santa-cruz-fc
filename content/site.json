@@ -1,9 +1,21 @@
 {
   "hero": {
-    "titleLine1": { "pt": "Coral não", "en": "Coral never" },
-    "titleLine2": { "pt": "recua.", "en": "backs down." },
-    "tagline": { "pt": "Coral não recua.", "en": "Coral never backs down." },
-    "ctaLabel": { "pt": "Garantir ingresso", "en": "Get tickets" },
+    "titleLine1": {
+      "pt": "Coral não",
+      "en": "Coral never"
+    },
+    "titleLine2": {
+      "pt": "recua.",
+      "en": "backs down."
+    },
+    "tagline": {
+      "pt": "Coral não recua.",
+      "en": "Coral never backs down."
+    },
+    "ctaLabel": {
+      "pt": "Garantir ingresso",
+      "en": "Get tickets"
+    },
     "ctaUrl": "#",
     "backdrop": "/images/torcida1.jpg"
   },
@@ -15,7 +27,10 @@
       "opponent": "Náutico",
       "opponentShort": "NAU",
       "isHome": true,
-      "status": { "pt": "DOM 25 MAI · FINAL", "en": "SUN MAY 25 · FINAL" },
+      "status": {
+        "pt": "DOM 25 MAI · FINAL",
+        "en": "SUN MAY 25 · FINAL"
+      },
       "scoreHome": 2,
       "scoreAway": 0,
       "matchCenterUrl": "#"
@@ -27,7 +42,10 @@
       "opponent": "Retrô",
       "opponentShort": "RET",
       "isHome": false,
-      "status": { "pt": "QUA 21 MAI · FINAL", "en": "WED MAY 21 · FINAL" },
+      "status": {
+        "pt": "QUA 21 MAI · FINAL",
+        "en": "WED MAY 21 · FINAL"
+      },
       "scoreHome": 0,
       "scoreAway": 2,
       "matchCenterUrl": "#"
@@ -39,7 +57,10 @@
       "opponent": "Bahia",
       "opponentShort": "BAH",
       "isHome": true,
-      "status": { "pt": "SÁB 17 MAI · FINAL", "en": "SAT MAY 17 · FINAL" },
+      "status": {
+        "pt": "SÁB 17 MAI · FINAL",
+        "en": "SAT MAY 17 · FINAL"
+      },
       "scoreHome": 1,
       "scoreAway": 1,
       "matchCenterUrl": "#"
@@ -51,7 +72,10 @@
       "opponent": "CRB",
       "opponentShort": "CRB",
       "isHome": false,
-      "status": { "pt": "QUA 14 MAI · FINAL", "en": "WED MAY 14 · FINAL" },
+      "status": {
+        "pt": "QUA 14 MAI · FINAL",
+        "en": "WED MAY 14 · FINAL"
+      },
       "scoreHome": 1,
       "scoreAway": 2,
       "matchCenterUrl": "#"
@@ -63,7 +87,10 @@
       "opponent": "Salgueiro",
       "opponentShort": "SAL",
       "isHome": true,
-      "status": { "pt": "SÁB 30 MAI · 19h30", "en": "SAT MAY 30 · 7:30 PM" },
+      "status": {
+        "pt": "SÁB 30 MAI · 19h30",
+        "en": "SAT MAY 30 · 7:30 PM"
+      },
       "scoreHome": null,
       "scoreAway": null,
       "matchCenterUrl": "#"
@@ -75,7 +102,10 @@
       "opponent": "CSA",
       "opponentShort": "CSA",
       "isHome": false,
-      "status": { "pt": "QUA 03 JUN · 21h30", "en": "WED JUN 03 · 9:30 PM" },
+      "status": {
+        "pt": "QUA 03 JUN · 21h30",
+        "en": "WED JUN 03 · 9:30 PM"
+      },
       "scoreHome": null,
       "scoreAway": null,
       "matchCenterUrl": "#"
@@ -87,7 +117,10 @@
       "opponent": "Retrô",
       "opponentShort": "RET",
       "isHome": true,
-      "status": { "pt": "SÁB 06 JUN · 16h30", "en": "SAT JUN 06 · 4:30 PM" },
+      "status": {
+        "pt": "SÁB 06 JUN · 16h30",
+        "en": "SAT JUN 06 · 4:30 PM"
+      },
       "scoreHome": null,
       "scoreAway": null,
       "matchCenterUrl": "#"
@@ -99,20 +132,85 @@
       "opponent": "Vasco",
       "opponentShort": "VAS",
       "isHome": true,
-      "status": { "pt": "QUA 10 JUN · 19h00", "en": "WED JUN 10 · 7:00 PM" },
+      "status": {
+        "pt": "QUA 10 JUN · 19h00",
+        "en": "WED JUN 10 · 7:00 PM"
+      },
       "scoreHome": null,
       "scoreAway": null,
       "matchCenterUrl": "#"
+    }
+  ],
+  "clubs": [
+    {
+      "id": "santa-cruz",
+      "name": "Santa Cruz",
+      "shortName": "SAN",
+      "crestUrl": "/images/logo.png"
+    },
+    {
+      "id": "nautico",
+      "name": "Náutico",
+      "shortName": "NAU",
+      "crestUrl": "https://upload.wikimedia.org/wikipedia/pt/thumb/d/de/Simbolo-escudo-nautico.png/120px-Simbolo-escudo-nautico.png"
+    },
+    {
+      "id": "retro",
+      "name": "Retrô",
+      "shortName": "RET",
+      "crestUrl": "https://upload.wikimedia.org/wikipedia/pt/thumb/4/4b/Retr%C3%B4_FC_Brasil-PE_%28BRA%29.png/120px-Retr%C3%B4_FC_Brasil-PE_%28BRA%29.png"
+    },
+    {
+      "id": "bahia",
+      "name": "Bahia",
+      "shortName": "BAH",
+      "crestUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Esporte_Clube_Bahia_logo.svg/250px-Esporte_Clube_Bahia_logo.svg.png"
+    },
+    {
+      "id": "crb",
+      "name": "CRB",
+      "shortName": "CRB",
+      "crestUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/CRB_logo.svg/250px-CRB_logo.svg.png"
+    },
+    {
+      "id": "salgueiro",
+      "name": "Salgueiro",
+      "shortName": "SAL",
+      "crestUrl": "https://upload.wikimedia.org/wikipedia/pt/thumb/2/2d/SalgueiroAC.png/120px-SalgueiroAC.png"
+    },
+    {
+      "id": "csa",
+      "name": "CSA",
+      "shortName": "CSA",
+      "crestUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Centro_Sportivo_Alagoano_logo.png/120px-Centro_Sportivo_Alagoano_logo.png"
+    },
+    {
+      "id": "vasco",
+      "name": "Vasco",
+      "shortName": "VAS",
+      "crestUrl": "https://upload.wikimedia.org/wikipedia/pt/thumb/8/8b/EscudoDoVascoDaGama.svg/250px-EscudoDoVascoDaGama.svg.png"
     }
   ],
   "news": [
     {
       "id": "arruda-lotado-32mil-ingressos",
       "slug": "arruda-lotado-32-mil-ingressos",
-      "tag": { "pt": "Destaque", "en": "Featured" },
-      "title": { "pt": "Arruda lotado: 32 mil ingressos vendidos para o clássico do Pernambucano", "en": "Packed Arruda: 32,000 tickets sold for the Pernambucano derby" },
-      "excerpt": { "pt": "", "en": "" },
-      "body": { "pt": "", "en": "" },
+      "tag": {
+        "pt": "Destaque",
+        "en": "Featured"
+      },
+      "title": {
+        "pt": "Arruda lotado: 32 mil ingressos vendidos para o clássico do Pernambucano",
+        "en": "Packed Arruda: 32,000 tickets sold for the Pernambucano derby"
+      },
+      "excerpt": {
+        "pt": "",
+        "en": ""
+      },
+      "body": {
+        "pt": "",
+        "en": ""
+      },
       "coverImage": "/images/estadio_arruda_em_2020_700_5.jpg",
       "photoCount": 0,
       "publishedAt": "2026-05-27T14:20:00",
@@ -123,10 +221,22 @@
     {
       "id": "patrick-allan-renova-contrato",
       "slug": "patrick-allan-renova-contrato",
-      "tag": { "pt": "Futebol Masculino", "en": "Men's Football" },
-      "title": { "pt": "Patrick Allan renova contrato com o Tricolor até 2027", "en": "Patrick Allan extends contract with Tricolor until 2027" },
-      "excerpt": { "pt": "", "en": "" },
-      "body": { "pt": "", "en": "" },
+      "tag": {
+        "pt": "Futebol Masculino",
+        "en": "Men's Football"
+      },
+      "title": {
+        "pt": "Patrick Allan renova contrato com o Tricolor até 2027",
+        "en": "Patrick Allan extends contract with Tricolor until 2027"
+      },
+      "excerpt": {
+        "pt": "",
+        "en": ""
+      },
+      "body": {
+        "pt": "",
+        "en": ""
+      },
       "coverImage": "/images/patrick_allan.jpg",
       "photoCount": 24,
       "publishedAt": "2026-05-27T00:00:00",
@@ -137,10 +247,22 @@
     {
       "id": "willian-jr-eleito-craque-do-mes",
       "slug": "willian-jr-eleito-craque-do-mes",
-      "tag": { "pt": "Eleição", "en": "Fan Vote" },
-      "title": { "pt": "Willian Jr é eleito craque do mês pela torcida tricolor", "en": "Willian Jr voted player of the month by tricolor fans" },
-      "excerpt": { "pt": "", "en": "" },
-      "body": { "pt": "", "en": "" },
+      "tag": {
+        "pt": "Eleição",
+        "en": "Fan Vote"
+      },
+      "title": {
+        "pt": "Willian Jr é eleito craque do mês pela torcida tricolor",
+        "en": "Willian Jr voted player of the month by tricolor fans"
+      },
+      "excerpt": {
+        "pt": "",
+        "en": ""
+      },
+      "body": {
+        "pt": "",
+        "en": ""
+      },
       "coverImage": "/images/willian_Jr_10.jpg",
       "photoCount": 12,
       "publishedAt": "2026-05-27T00:00:00",
@@ -151,10 +273,22 @@
     {
       "id": "vitinho-marca-dois-santa-vence-nautico",
       "slug": "vitinho-marca-dois-santa-vence-nautico",
-      "tag": { "pt": "Pernambucano", "en": "Pernambucano" },
-      "title": { "pt": "Vitinho marca dois e Santa vence o Náutico no Arruda", "en": "Vitinho scores twice as Santa beats Náutico at Arruda" },
-      "excerpt": { "pt": "", "en": "" },
-      "body": { "pt": "", "en": "" },
+      "tag": {
+        "pt": "Pernambucano",
+        "en": "Pernambucano"
+      },
+      "title": {
+        "pt": "Vitinho marca dois e Santa vence o Náutico no Arruda",
+        "en": "Vitinho scores twice as Santa beats Náutico at Arruda"
+      },
+      "excerpt": {
+        "pt": "",
+        "en": ""
+      },
+      "body": {
+        "pt": "",
+        "en": ""
+      },
       "coverImage": "/images/vitinho_19.jpg",
       "photoCount": 36,
       "publishedAt": "2026-05-27T00:00:00",
@@ -165,10 +299,22 @@
     {
       "id": "rockenedy-invencibilidade-arruda",
       "slug": "rockenedy-invencibilidade-arruda",
-      "tag": { "pt": "Goleiro", "en": "Goalkeeper" },
-      "title": { "pt": "Rockenedy mantém invencibilidade no Arruda há 9 jogos", "en": "Rockenedy keeps Arruda unbeaten run to 9 games" },
-      "excerpt": { "pt": "", "en": "" },
-      "body": { "pt": "", "en": "" },
+      "tag": {
+        "pt": "Goleiro",
+        "en": "Goalkeeper"
+      },
+      "title": {
+        "pt": "Rockenedy mantém invencibilidade no Arruda há 9 jogos",
+        "en": "Rockenedy keeps Arruda unbeaten run to 9 games"
+      },
+      "excerpt": {
+        "pt": "",
+        "en": ""
+      },
+      "body": {
+        "pt": "",
+        "en": ""
+      },
       "coverImage": "/images/rockenedy_goleiro.jpg",
       "photoCount": 16,
       "publishedAt": "2026-05-27T00:00:00",
@@ -179,10 +325,22 @@
     {
       "id": "sub-20-semifinais-pernambucano",
       "slug": "sub-20-semifinais-pernambucano",
-      "tag": { "pt": "Base", "en": "Youth" },
-      "title": { "pt": "Sub-20 garante vaga nas semifinais do Pernambucano", "en": "U-20 secures semifinal spot in the Pernambucano" },
-      "excerpt": { "pt": "", "en": "" },
-      "body": { "pt": "", "en": "" },
+      "tag": {
+        "pt": "Base",
+        "en": "Youth"
+      },
+      "title": {
+        "pt": "Sub-20 garante vaga nas semifinais do Pernambucano",
+        "en": "U-20 secures semifinal spot in the Pernambucano"
+      },
+      "excerpt": {
+        "pt": "",
+        "en": ""
+      },
+      "body": {
+        "pt": "",
+        "en": ""
+      },
       "coverImage": "/images/torcida_santa_cruz_mosaico.jpg",
       "photoCount": 14,
       "publishedAt": "2026-05-27T00:00:00",
@@ -194,9 +352,18 @@
   "banners": [
     {
       "id": "banner-socio-coral",
-      "eyebrow": { "pt": "Sócio Coral", "en": "Coral Membership" },
-      "title": { "pt": "Sua paixão é tricolor. Seu plano também.", "en": "Your passion is tricolor. So is your plan." },
-      "ctaLabel": { "pt": "Seja sócio", "en": "Become a member" },
+      "eyebrow": {
+        "pt": "Sócio Coral",
+        "en": "Coral Membership"
+      },
+      "title": {
+        "pt": "Sua paixão é tricolor. Seu plano também.",
+        "en": "Your passion is tricolor. So is your plan."
+      },
+      "ctaLabel": {
+        "pt": "Seja sócio",
+        "en": "Become a member"
+      },
       "ctaUrl": "https://socio-santacruz.futebolcard.com/",
       "image": "/images/torcida_santa_cruz_mosaico.jpg",
       "size": "normal",
@@ -204,9 +371,18 @@
     },
     {
       "id": "banner-loja-oficial",
-      "eyebrow": { "pt": "Loja Oficial", "en": "Official Store" },
-      "title": { "pt": "Camisa nova 26 disponível na loja.", "en": "New 26 jersey available in store." },
-      "ctaLabel": { "pt": "Comprar", "en": "Shop now" },
+      "eyebrow": {
+        "pt": "Loja Oficial",
+        "en": "Official Store"
+      },
+      "title": {
+        "pt": "Camisa nova 26 disponível na loja.",
+        "en": "New 26 jersey available in store."
+      },
+      "ctaLabel": {
+        "pt": "Comprar",
+        "en": "Shop now"
+      },
       "ctaUrl": "#",
       "image": "/images/estadio_arruda_em_2020_700_5.jpg",
       "size": "normal",
@@ -216,9 +392,18 @@
   "institutional": [
     {
       "id": "inst-social",
-      "eyebrow": { "pt": "Social", "en": "Social" },
-      "title": { "pt": "Santa pela Comunidade", "en": "Santa for the Community" },
-      "ctaLabel": { "pt": "Descobrir", "en": "Discover" },
+      "eyebrow": {
+        "pt": "Social",
+        "en": "Social"
+      },
+      "title": {
+        "pt": "Santa pela Comunidade",
+        "en": "Santa for the Community"
+      },
+      "ctaLabel": {
+        "pt": "Descobrir",
+        "en": "Discover"
+      },
       "ctaUrl": "#",
       "image": "/images/torcida_santa_cruz_mosaico.jpg",
       "size": "span",
@@ -226,9 +411,18 @@
     },
     {
       "id": "inst-tour-arruda",
-      "eyebrow": { "pt": "Visita", "en": "Visit" },
-      "title": { "pt": "Tour do Arruda", "en": "Arruda Tour" },
-      "ctaLabel": { "pt": "Reservar visita", "en": "Book a visit" },
+      "eyebrow": {
+        "pt": "Visita",
+        "en": "Visit"
+      },
+      "title": {
+        "pt": "Tour do Arruda",
+        "en": "Arruda Tour"
+      },
+      "ctaLabel": {
+        "pt": "Reservar visita",
+        "en": "Book a visit"
+      },
       "ctaUrl": "#",
       "image": "/images/estadio_arruda_em_2020_700_5.jpg",
       "size": "span",
@@ -236,9 +430,18 @@
     },
     {
       "id": "inst-podcast",
-      "eyebrow": { "pt": "Áudio", "en": "Audio" },
-      "title": { "pt": "Podcast Cobra Coral", "en": "Cobra Coral Podcast" },
-      "ctaLabel": { "pt": "Ouvir", "en": "Listen" },
+      "eyebrow": {
+        "pt": "Áudio",
+        "en": "Audio"
+      },
+      "title": {
+        "pt": "Podcast Cobra Coral",
+        "en": "Cobra Coral Podcast"
+      },
+      "ctaLabel": {
+        "pt": "Ouvir",
+        "en": "Listen"
+      },
       "ctaUrl": "#",
       "image": "/images/patrick_allan.jpg",
       "size": "normal",
@@ -246,9 +449,18 @@
     },
     {
       "id": "inst-memoria-tricolor",
-      "eyebrow": { "pt": "História", "en": "History" },
-      "title": { "pt": "Memória Tricolor", "en": "Tricolor Memory" },
-      "ctaLabel": { "pt": "Explorar", "en": "Explore" },
+      "eyebrow": {
+        "pt": "História",
+        "en": "History"
+      },
+      "title": {
+        "pt": "Memória Tricolor",
+        "en": "Tricolor Memory"
+      },
+      "ctaLabel": {
+        "pt": "Explorar",
+        "en": "Explore"
+      },
       "ctaUrl": "#",
       "image": "/images/arruda antigo.webp",
       "size": "normal",
@@ -354,12 +566,36 @@
     }
   ],
   "social": [
-    { "id": "facebook", "network": "facebook", "url": "https://www.facebook.com/SantaCruzFC" },
-    { "id": "instagram", "network": "instagram", "url": "https://www.instagram.com/SantaCruzFC" },
-    { "id": "x", "network": "x", "url": "https://twitter.com/SantaCruzFC" },
-    { "id": "youtube", "network": "youtube", "url": "https://www.youtube.com/user/TVcoralPE" },
-    { "id": "tiktok", "network": "tiktok", "url": "#" },
-    { "id": "whatsapp", "network": "whatsapp", "url": "#" }
+    {
+      "id": "facebook",
+      "network": "facebook",
+      "url": "https://www.facebook.com/SantaCruzFC"
+    },
+    {
+      "id": "instagram",
+      "network": "instagram",
+      "url": "https://www.instagram.com/SantaCruzFC"
+    },
+    {
+      "id": "x",
+      "network": "x",
+      "url": "https://twitter.com/SantaCruzFC"
+    },
+    {
+      "id": "youtube",
+      "network": "youtube",
+      "url": "https://www.youtube.com/user/TVcoralPE"
+    },
+    {
+      "id": "tiktok",
+      "network": "tiktok",
+      "url": "#"
+    },
+    {
+      "id": "whatsapp",
+      "network": "whatsapp",
+      "url": "#"
+    }
   ],
   "footer": {
     "brandBlurb": {
@@ -368,38 +604,146 @@
     },
     "columns": [
       {
-        "heading": { "pt": "Clube", "en": "Club" },
+        "heading": {
+          "pt": "Clube",
+          "en": "Club"
+        },
         "links": [
-          { "label": { "pt": "História", "en": "History" }, "url": "#" },
-          { "label": { "pt": "Diretoria", "en": "Board" }, "url": "#" },
-          { "label": { "pt": "Símbolos", "en": "Symbols" }, "url": "#" },
-          { "label": { "pt": "Estádio do Arruda", "en": "Arruda Stadium" }, "url": "#" },
-          { "label": { "pt": "Conselho Deliberativo", "en": "Deliberative Council" }, "url": "#" }
+          {
+            "label": {
+              "pt": "História",
+              "en": "History"
+            },
+            "url": "#"
+          },
+          {
+            "label": {
+              "pt": "Diretoria",
+              "en": "Board"
+            },
+            "url": "#"
+          },
+          {
+            "label": {
+              "pt": "Símbolos",
+              "en": "Symbols"
+            },
+            "url": "#"
+          },
+          {
+            "label": {
+              "pt": "Estádio do Arruda",
+              "en": "Arruda Stadium"
+            },
+            "url": "#"
+          },
+          {
+            "label": {
+              "pt": "Conselho Deliberativo",
+              "en": "Deliberative Council"
+            },
+            "url": "#"
+          }
         ]
       },
       {
-        "heading": { "pt": "Serviços", "en": "Services" },
+        "heading": {
+          "pt": "Serviços",
+          "en": "Services"
+        },
         "links": [
-          { "label": { "pt": "Sócio Coral", "en": "Coral Membership" }, "url": "https://socio-santacruz.futebolcard.com/" },
-          { "label": { "pt": "Ingressos", "en": "Tickets" }, "url": "#" },
-          { "label": { "pt": "Loja Oficial", "en": "Official Store" }, "url": "#" },
-          { "label": { "pt": "TV Coral", "en": "TV Coral" }, "url": "#" },
-          { "label": { "pt": "Patrocinadores", "en": "Sponsors" }, "url": "#" }
+          {
+            "label": {
+              "pt": "Sócio Coral",
+              "en": "Coral Membership"
+            },
+            "url": "https://socio-santacruz.futebolcard.com/"
+          },
+          {
+            "label": {
+              "pt": "Ingressos",
+              "en": "Tickets"
+            },
+            "url": "#"
+          },
+          {
+            "label": {
+              "pt": "Loja Oficial",
+              "en": "Official Store"
+            },
+            "url": "#"
+          },
+          {
+            "label": {
+              "pt": "TV Coral",
+              "en": "TV Coral"
+            },
+            "url": "#"
+          },
+          {
+            "label": {
+              "pt": "Patrocinadores",
+              "en": "Sponsors"
+            },
+            "url": "#"
+          }
         ]
       },
       {
-        "heading": { "pt": "Ajuda", "en": "Help" },
+        "heading": {
+          "pt": "Ajuda",
+          "en": "Help"
+        },
         "links": [
-          { "label": { "pt": "Contato", "en": "Contact" }, "url": "/ajuda/contato" },
-          { "label": { "pt": "Contato Imprensa", "en": "Press Contact" }, "url": "/ajuda/contato-imprensa" },
-          { "label": { "pt": "Política de Privacidade", "en": "Privacy Policy" }, "url": "/privacidade" },
-          { "label": { "pt": "Cookies", "en": "Cookies" }, "url": "/cookies" },
-          { "label": { "pt": "Termos de uso", "en": "Terms of Use" }, "url": "/termos-de-uso" }
+          {
+            "label": {
+              "pt": "Contato",
+              "en": "Contact"
+            },
+            "url": "/ajuda/contato"
+          },
+          {
+            "label": {
+              "pt": "Contato Imprensa",
+              "en": "Press Contact"
+            },
+            "url": "/ajuda/contato-imprensa"
+          },
+          {
+            "label": {
+              "pt": "Política de Privacidade",
+              "en": "Privacy Policy"
+            },
+            "url": "/privacidade"
+          },
+          {
+            "label": {
+              "pt": "Cookies",
+              "en": "Cookies"
+            },
+            "url": "/cookies"
+          },
+          {
+            "label": {
+              "pt": "Termos de uso",
+              "en": "Terms of Use"
+            },
+            "url": "/termos-de-uso"
+          }
         ]
       }
     ],
-    "chantLine1": { "pt": "É", "en": "It's" },
-    "chantEmphasis": { "pt": "tradição,", "en": "tradition," },
-    "chantLine2": { "pt": "não é moda.", "en": "not a trend." }
+    "chantLine1": {
+      "pt": "É",
+      "en": "It's"
+    },
+    "chantEmphasis": {
+      "pt": "tradição,",
+      "en": "tradition,"
+    },
+    "chantLine2": {
+      "pt": "não é moda.",
+      "en": "not a trend."
+    }
   }
 }

@@ -16,10 +16,16 @@ vi.mock('next-intl/server', () => ({
 
 import { MatchCalendar } from '@/components/site/match-calendar';
 
-const content: any = { matches: [
-  { id:'m1', comp:'pernambucano', competition:'Pernambucano', opponent:'Náutico', opponentShort:'NAU', isHome:true, status:{pt:'DOM 25 MAI · FINAL',en:'SUN MAY 25 · FINAL'}, scoreHome:2, scoreAway:0, matchCenterUrl:'#' },
-  { id:'m2', comp:'nordeste', competition:'Nordeste', opponent:'Bahia', opponentShort:'BAH', isHome:true, status:{pt:'SÁB 17 MAI · FINAL',en:'SAT MAY 17 · FINAL'}, scoreHome:1, scoreAway:1, matchCenterUrl:'#' },
-]};
+const content: any = {
+  matches: [
+    { id:'m1', comp:'pernambucano', competition:'Pernambucano', opponent:'Náutico', opponentShort:'NAU', isHome:true, status:{pt:'DOM 25 MAI · FINAL',en:'SUN MAY 25 · FINAL'}, scoreHome:2, scoreAway:0, matchCenterUrl:'#' },
+    { id:'m2', comp:'nordeste', competition:'Nordeste', opponent:'Bahia', opponentShort:'BAH', isHome:true, status:{pt:'SÁB 17 MAI · FINAL',en:'SAT MAY 17 · FINAL'}, scoreHome:1, scoreAway:1, matchCenterUrl:'#' },
+  ],
+  clubs: [
+    { id:'nautico', name:'Náutico', shortName:'NAU', crestUrl:'https://example.com/nau.png' },
+    // Bahia propositalmente SEM clube → cai na sigla (fallback)
+  ],
+};
 
 describe('MatchCalendar', () => {
   it('renders one card per match with opponent name and score', async () => {
@@ -33,5 +39,18 @@ describe('MatchCalendar', () => {
     expect(screen.getByText('Bahia')).toBeInTheDocument();
     // Santa Cruz is home in both → first row score is scoreHome=2 for m1
     expect(screen.getAllByText('Santa Cruz').length).toBe(2);
+  });
+
+  it('shows the opponent crest when the club has one, falls back to the sigla otherwise', async () => {
+    const Component = await MatchCalendar({ content, locale: 'pt' });
+    render(
+      <NextIntlClientProvider locale="pt" messages={pt}>
+        {Component}
+      </NextIntlClientProvider>
+    );
+    // Náutico tem clube com escudo → imagem
+    expect(screen.getByAltText('Náutico')).toBeInTheDocument();
+    // Bahia não tem clube → cai na sigla
+    expect(screen.getByText('BAH')).toBeInTheDocument();
   });
 });

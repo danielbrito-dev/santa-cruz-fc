@@ -7,9 +7,11 @@ import { MatchCalendarClient } from './match-calendar.client';
 function MatchCard({
   m,
   locale,
+  opponentCrest,
 }: {
   m: MatchItem;
   locale: string;
+  opponentCrest?: string | null;
 }) {
   // Row order: if isHome, Santa first then opponent; else opponent first then Santa.
   // First row always shows scoreHome; second row always shows scoreAway.
@@ -28,7 +30,14 @@ function MatchCard({
 
   const opponentRow = (score: number | null) => (
     <div className="match-row">
-      <div className="match-row-shield">{m.opponentShort}</div>
+      <div className={`match-row-shield${opponentCrest ? ' has-crest' : ''}`}>
+        {opponentCrest ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={opponentCrest} alt={m.opponent} loading="lazy" />
+        ) : (
+          m.opponentShort
+        )}
+      </div>
       <span className="match-row-name">{m.opponent}</span>
       {score !== null && <span className="match-row-score">{score}</span>}
     </div>
@@ -61,6 +70,11 @@ export async function MatchCalendar({ content, locale }: SectionProps) {
   const tCalendar = await getTranslations('calendar');
   const calendarTitle = tCalendar('title');
 
+  // escudo por sigla — definido uma vez por clube em content.clubs
+  const crestByShort = new Map(
+    (content.clubs ?? []).map((c) => [c.shortName, c.crestUrl]),
+  );
+
   return (
     <div className="hero-calendar">
       <div className="hero-calendar-inner">
@@ -74,6 +88,7 @@ export async function MatchCalendar({ content, locale }: SectionProps) {
               key={m.id}
               m={m}
               locale={locale}
+              opponentCrest={crestByShort.get(m.opponentShort) ?? null}
             />
           ))}
         </MatchCalendarClient>

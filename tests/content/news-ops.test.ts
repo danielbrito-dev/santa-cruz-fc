@@ -17,6 +17,7 @@ const baseContent: SiteContent = {
     titleLine2: { pt: 'recua.', en: 'backs down.' },
   },
   matches: [],
+  clubs: [],
   news: [
     {
       id: 'existing-1',

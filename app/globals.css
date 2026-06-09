@@ -627,6 +627,8 @@ ul{list-style:none}
 }
 .match-row-shield.home{background:transparent;border:none;width:32px;height:32px}
 .match-row-shield img{width:100%;height:100%;object-fit:contain}
+/* escudo do adversário sempre sobre branco (legível em light/dark — regra de marca) */
+.match-row-shield.has-crest{background:#fff;border-color:rgba(0,0,0,.12);padding:3px}
 .match-row-name{
   font-size:14px;font-weight:800;color:var(--ink);
   text-transform:uppercase;letter-spacing:.02em;

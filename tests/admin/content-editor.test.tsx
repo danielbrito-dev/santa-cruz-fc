@@ -42,6 +42,7 @@ const minimalContent: SiteContent = {
     ctaUrl: '#',
     backdrop: '/images/torcida1.jpg',
   },
+  clubs: [],
   matches: [
     {
       id: 'test-match',

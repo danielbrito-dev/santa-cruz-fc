@@ -15,6 +15,12 @@ export interface NewsItem {
   publishedAt: string; featured: boolean; position: number;
   status: 'draft' | 'published' | 'archived';
 }
+export interface Club {
+  id: string;
+  name: string;
+  shortName: string;       // sigla (casa com MatchItem.opponentShort)
+  crestUrl: string | null; // URL do escudo (null → cai na sigla)
+}
 export interface CardItem {
   id: string; eyebrow: LocalizedText; title: LocalizedText; image: string;
   ctaLabel: LocalizedText; ctaUrl: string; size: 'span' | 'normal'; position: number;
@@ -26,6 +32,7 @@ export interface FooterColumn { heading: LocalizedText; links: { label: Localize
 export interface SiteContent {
   hero: { tagline: LocalizedText; ctaLabel: LocalizedText; ctaUrl: string; backdrop: string; titleLine1: LocalizedText; titleLine2: LocalizedText };
   matches: MatchItem[];
+  clubs: Club[];
   news: NewsItem[];
   banners: CardItem[];
   institutional: CardItem[];
