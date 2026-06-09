@@ -625,14 +625,14 @@ ul{list-style:none}
   border:1px solid var(--line);
   flex-shrink:0;overflow:hidden;
 }
-.match-row-shield.home{background:transparent;border:none;width:32px;height:32px}
+.match-row-shield.home{background:transparent;border:none;width:38px;height:38px}
 .match-row-shield img{width:100%;height:100%;object-fit:contain}
 /* escudo do adversário: mesmo tamanho/estilo do escudo do Santa (.home) —
    transparente, sem bolinha/borda, 32px, imagem contida */
 .match-row-shield.has-crest{background:transparent;border:none;border-radius:0;width:32px;height:32px;padding:0;overflow:visible}
-/* rivais (Sport/Náutico): escudo levemente inclinado + negativo suave —
-   rivalidade, sem desrespeito às instituições (nada gritante) */
-.match-row-shield.is-rival img{transform:rotate(-7deg);filter:invert(.82) grayscale(.12);opacity:.9}
+/* rivais (Sport/Náutico): escudo levemente inclinado + negativo SUAVE —
+   rivalidade, sem desrespeito às instituições (efeito discreto, sem passar do tom) */
+.match-row-shield.is-rival img{transform:rotate(-6deg);filter:invert(.45) grayscale(.08);opacity:.95}
 
 /* card FIXO de memória — 7×0 no Sport (1934): acento dourado (cor comemorativa, BRAND.md §1) */
 .match--legacy{box-shadow:inset 0 0 0 1px rgba(201,184,150,.55)}
