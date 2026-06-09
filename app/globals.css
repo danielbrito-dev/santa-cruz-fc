@@ -3843,9 +3843,13 @@ textarea.admin-input {
 .athlete-fill{flex:1 0 auto;background:var(--section-bg);position:relative;z-index:2}
 .athlete-hero{
   position:relative;z-index:2;overflow:hidden;
-  background:var(--hero-bg);color:var(--hero-text);
+  /* fundo "estúdio" cinza idêntico ao fundo das fotos (≈ cinza de marca #D6D7D8)
+     nos DOIS temas — a foto funde no hero e não parece "foto com fundo". */
+  background:linear-gradient(180deg,#DBDCDE 0%,#D6D7D8 55%,#D0D1D3 100%);
+  color:var(--ink);
+  --hero-text:#0A0A0A;
   padding:120px 0 0;
-  border-bottom:1px solid var(--line);
+  border-bottom:1px solid rgba(0,0,0,.10);
 }
 .athlete-hero-inner{
   display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:end;min-height:440px;
@@ -3875,11 +3879,12 @@ textarea.admin-input {
   font-variant-numeric:tabular-nums;
   color:var(--red);-webkit-text-stroke:2px var(--white);paint-order:stroke fill;
 }
-.athlete-photo{position:relative;align-self:end;min-height:440px}
+/* z-index:1 → atrás do texto do hero (z-2) e do header fixo (z-100), acima do fundo do hero */
+.athlete-photo{position:relative;z-index:1;align-self:end;min-height:440px}
 .athlete-photo img{
   position:absolute;right:0;bottom:0;
   max-height:560px;max-width:100%;width:auto;object-fit:contain;object-position:bottom right;
-  filter:drop-shadow(0 24px 40px rgba(0,0,0,.35));
+  /* sem sombra — o fundo cinza da foto funde no hero (imperceptível) */
 }
 .athlete-silhouette{
   position:absolute;right:0;bottom:0;width:76%;height:94%;
@@ -4116,6 +4121,14 @@ textarea.admin-input {
 body:has(.page-hero-dark) .site-header:not(.scrolled){color:#fff}
 body:has(.page-hero-dark) .site-header:not(.scrolled) .header-nav-label,
 body:has(.page-hero-dark) .site-header:not(.scrolled) .header-link{color:#fff}
+
+/* ficha do atleta: hero cinza claro nos dois temas → header com texto escuro (tinta) */
+body:has(.athlete-hero) .site-header:not(.scrolled),
+body:has(.athlete-hero) .site-header:not(.scrolled) .header-nav-label,
+body:has(.athlete-hero) .site-header:not(.scrolled) .header-link{color:var(--ink)}
+/* "voltar" legível no cinza em ambos os temas */
+.athlete-hero .athlete-back{color:#5B5B5B}
+.athlete-hero .athlete-back:hover{color:var(--red)}
 
 /* ===== arquétipo FEATURE (página-bandeira: hero + manifesto + escudos + marcos + citação) ===== */
 .feat-hero{position:relative;z-index:2;min-height:82vh;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink)}

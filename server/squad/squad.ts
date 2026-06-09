@@ -22,6 +22,7 @@ export interface Player {
   name: string;
   group: PositionGroupKey;
   photo: string;
+  thumb?: string; // miniatura leve p/ o grid do elenco (cai em `photo` se ausente)
   country: string;
   // Optional fields used by the athlete detail page.
   age?: number;

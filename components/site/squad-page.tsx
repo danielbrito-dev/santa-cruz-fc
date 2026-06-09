@@ -23,7 +23,7 @@ function PlayerCard({ player }: { player: Player }) {
         <div className="player-photo">
           {player.photo ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={player.photo} alt={player.name} />
+            <img src={player.thumb ?? player.photo} alt={player.name} loading="lazy" decoding="async" />
           ) : (
             <PlayerSilhouette />
           )}

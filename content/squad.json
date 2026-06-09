@@ -7,7 +7,8 @@
       "group": "laterais",
       "photo": "/images/atletas/2_Thiago%20Ennes_30_RB.jpg",
       "country": "BRA",
-      "age": 30
+      "age": 30,
+      "thumb": "/images/atletas/thumb/2_Thiago%20Ennes_30_RB.jpg"
     },
     {
       "number": 3,
@@ -15,7 +16,8 @@
       "group": "zagueiros",
       "photo": "/images/atletas/3_Eurico_32_CB.jpg",
       "country": "BRA",
-      "age": 32
+      "age": 32,
+      "thumb": "/images/atletas/thumb/3_Eurico_32_CB.jpg"
     },
     {
       "number": 4,
@@ -23,7 +25,8 @@
       "group": "zagueiros",
       "photo": "/images/atletas/4_William%20Alves_39_CB.jpg",
       "country": "BRA",
-      "age": 39
+      "age": 39,
+      "thumb": "/images/atletas/thumb/4_William%20Alves_39_CB.jpg"
     },
     {
       "number": 5,
@@ -31,7 +34,8 @@
       "group": "meio-campistas",
       "photo": "/images/atletas/5_Pedro%20Favela_26_MD.jpg",
       "country": "BRA",
-      "age": 26
+      "age": 26,
+      "thumb": "/images/atletas/thumb/5_Pedro%20Favela_26_MD.jpg"
     },
     {
       "number": 6,
@@ -39,7 +43,8 @@
       "group": "laterais",
       "photo": "/images/atletas/6_Alex%20Ruan_33_LB.jpg",
       "country": "BRA",
-      "age": 33
+      "age": 33,
+      "thumb": "/images/atletas/thumb/6_Alex%20Ruan_33_LB.jpg"
     },
     {
       "number": 7,
@@ -47,7 +52,8 @@
       "group": "meio-campistas",
       "photo": "/images/atletas/7_Fabinho_39_MD.jpg",
       "country": "BRA",
-      "age": 39
+      "age": 39,
+      "thumb": "/images/atletas/thumb/7_Fabinho_39_MD.jpg"
     },
     {
       "number": 9,
@@ -55,7 +61,8 @@
       "group": "atacantes",
       "photo": "/images/atletas/9_Quirino_32_ST.jpg",
       "country": "BRA",
-      "age": 32
+      "age": 32,
+      "thumb": "/images/atletas/thumb/9_Quirino_32_ST.jpg"
     },
     {
       "number": 11,
@@ -63,7 +70,8 @@
       "group": "meio-campistas",
       "photo": "/images/atletas/11_Nilton_23_MD.jpg",
       "country": "BRA",
-      "age": 23
+      "age": 23,
+      "thumb": "/images/atletas/thumb/11_Nilton_23_MD.jpg"
     },
     {
       "number": 12,
@@ -71,7 +79,8 @@
       "group": "goleiros",
       "photo": "/images/atletas/12_Rockened_23_GK.jpg",
       "country": "BRA",
-      "age": 23
+      "age": 23,
+      "thumb": "/images/atletas/thumb/12_Rockened_23_GK.jpg"
     },
     {
       "number": 13,
@@ -79,7 +88,8 @@
       "group": "zagueiros",
       "photo": "/images/atletas/13_Mateus%20Vinicius_27_CB.jpg",
       "country": "BRA",
-      "age": 27
+      "age": 27,
+      "thumb": "/images/atletas/thumb/13_Mateus%20Vinicius_27_CB.jpg"
     },
     {
       "number": 15,
@@ -87,7 +97,8 @@
       "group": "meio-campistas",
       "photo": "/images/atletas/15_Andrey_28_MD.jpg",
       "country": "BRA",
-      "age": 28
+      "age": 28,
+      "thumb": "/images/atletas/thumb/15_Andrey_28_MD.jpg"
     },
     {
       "number": 17,
@@ -95,7 +106,8 @@
       "group": "atacantes",
       "photo": "/images/atletas/17_Ronald_29_LW.jpg",
       "country": "BRA",
-      "age": 29
+      "age": 29,
+      "thumb": "/images/atletas/thumb/17_Ronald_29_LW.jpg"
     },
     {
       "number": 18,
@@ -103,7 +115,8 @@
       "group": "atacantes",
       "photo": "/images/atletas/18_Vitinho_22_LW.jpg",
       "country": "BRA",
-      "age": 22
+      "age": 22,
+      "thumb": "/images/atletas/thumb/18_Vitinho_22_LW.jpg"
     },
     {
       "number": 19,
@@ -111,7 +124,8 @@
       "group": "atacantes",
       "photo": "/images/atletas/19_Renato_36_RW.jpg",
       "country": "BRA",
-      "age": 36
+      "age": 36,
+      "thumb": "/images/atletas/thumb/19_Renato_36_RW.jpg"
     },
     {
       "number": 20,
@@ -119,7 +133,8 @@
       "group": "meio-campistas",
       "photo": "/images/atletas/20_Patrick%20Allan_31_MD.jpg",
       "country": "BRA",
-      "age": 31
+      "age": 31,
+      "thumb": "/images/atletas/thumb/20_Patrick%20Allan_31_MD.jpg"
     },
     {
       "number": 21,
@@ -127,7 +142,8 @@
       "group": "atacantes",
       "photo": "/images/atletas/21_Eron_27_ST.jpg",
       "country": "BRA",
-      "age": 27
+      "age": 27,
+      "thumb": "/images/atletas/thumb/21_Eron_27_ST.jpg"
     },
     {
       "number": 22,
@@ -135,7 +151,8 @@
       "group": "meio-campistas",
       "photo": "/images/atletas/22_Mateus%20Castilho_21_MD.jpg",
       "country": "BRA",
-      "age": 21
+      "age": 21,
+      "thumb": "/images/atletas/thumb/22_Mateus%20Castilho_21_MD.jpg"
     },
     {
       "number": 23,
@@ -143,7 +160,8 @@
       "group": "atacantes",
       "photo": "/images/atletas/23_Tiago%20Marques_38_ST.jpg",
       "country": "BRA",
-      "age": 38
+      "age": 38,
+      "thumb": "/images/atletas/thumb/23_Tiago%20Marques_38_ST.jpg"
     },
     {
       "number": 25,
@@ -151,7 +169,8 @@
       "group": "goleiros",
       "photo": "/images/atletas/25_Gabriel%20Souza_21_GK.jpg",
       "country": "BRA",
-      "age": 21
+      "age": 21,
+      "thumb": "/images/atletas/thumb/25_Gabriel%20Souza_21_GK.jpg"
     },
     {
       "number": 26,
@@ -159,7 +178,8 @@
       "group": "meio-campistas",
       "photo": "/images/atletas/26_Silva_30_MD.jpg",
       "country": "BRA",
-      "age": 30
+      "age": 30,
+      "thumb": "/images/atletas/thumb/26_Silva_30_MD.jpg"
     },
     {
       "number": 27,
@@ -167,7 +187,8 @@
       "group": "meio-campistas",
       "photo": "/images/atletas/27_Edson%20Miranda_27_MD.jpg",
       "country": "BRA",
-      "age": 27
+      "age": 27,
+      "thumb": "/images/atletas/thumb/27_Edson%20Miranda_27_MD.jpg"
     },
     {
       "number": 29,
@@ -175,7 +196,8 @@
       "group": "atacantes",
       "photo": "/images/atletas/29_Marquinhos_23_RW.jpg",
       "country": "BRA",
-      "age": 23
+      "age": 23,
+      "thumb": "/images/atletas/thumb/29_Marquinhos_23_RW.jpg"
     },
     {
       "number": 30,
@@ -183,7 +205,8 @@
       "group": "zagueiros",
       "photo": "/images/atletas/30_Jerfeson%20Bahia_34_CB.jpg",
       "country": "BRA",
-      "age": 34
+      "age": 34,
+      "thumb": "/images/atletas/thumb/30_Jerfeson%20Bahia_34_CB.jpg"
     },
     {
       "number": 31,
@@ -191,7 +214,8 @@
       "group": "laterais",
       "photo": "/images/atletas/31_Z%C3%A9%20Mario_34_LB.jpg",
       "country": "BRA",
-      "age": 34
+      "age": 34,
+      "thumb": "/images/atletas/thumb/31_Z%C3%A9%20Mario_34_LB.jpg"
     },
     {
       "number": 35,
@@ -199,7 +223,8 @@
       "group": "meio-campistas",
       "photo": "/images/atletas/35_Denis_20_MB.jpg",
       "country": "BRA",
-      "age": 20
+      "age": 20,
+      "thumb": "/images/atletas/thumb/35_Denis_20_MB.jpg"
     },
     {
       "number": 37,
@@ -207,7 +232,8 @@
       "group": "atacantes",
       "photo": "/images/atletas/37_Everaldo_32_RW.jpg",
       "country": "BRA",
-      "age": 32
+      "age": 32,
+      "thumb": "/images/atletas/thumb/37_Everaldo_32_RW.jpg"
     },
     {
       "number": 40,
@@ -215,7 +241,8 @@
       "group": "goleiros",
       "photo": "/images/atletas/40_Thiago%20Coleho_31_GK.jpg",
       "country": "BRA",
-      "age": 31
+      "age": 31,
+      "thumb": "/images/atletas/thumb/40_Thiago%20Coleho_31_GK.jpg"
     },
     {
       "number": 41,
@@ -223,7 +250,8 @@
       "group": "meio-campistas",
       "photo": "/images/atletas/41_Thiago%20Henrique_22.jpg",
       "country": "BRA",
-      "age": 22
+      "age": 22,
+      "thumb": "/images/atletas/thumb/41_Thiago%20Henrique_22.jpg"
     },
     {
       "number": 55,
@@ -231,7 +259,8 @@
       "group": "meio-campistas",
       "photo": "/images/atletas/55_Leo%20Costa_30_CM.jpg",
       "country": "BRA",
-      "age": 30
+      "age": 30,
+      "thumb": "/images/atletas/thumb/55_Leo%20Costa_30_CM.jpg"
     }
   ],
   "staff": [
