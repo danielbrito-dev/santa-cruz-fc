@@ -9,7 +9,8 @@
       "country": "BRA",
       "age": 30,
       "thumb": "/images/atletas/thumb/2_Thiago%20Ennes_30_RB.jpg",
-      "bg": "#cecece"
+      "bg": "#cecece",
+      "birthDate": "05/03/1996"
     },
     {
       "number": 3,
@@ -19,7 +20,8 @@
       "country": "BRA",
       "age": 32,
       "thumb": "/images/atletas/thumb/3_Eurico_32_CB.jpg",
-      "bg": "#dadada"
+      "bg": "#dadada",
+      "birthDate": "16/04/1994"
     },
     {
       "number": 4,
@@ -29,7 +31,8 @@
       "country": "BRA",
       "age": 39,
       "thumb": "/images/atletas/thumb/4_William%20Alves_39_CB.jpg",
-      "bg": "#d5d5d5"
+      "bg": "#d5d5d5",
+      "birthDate": "29/04/1987"
     },
     {
       "number": 5,
@@ -39,17 +42,19 @@
       "country": "BRA",
       "age": 26,
       "thumb": "/images/atletas/thumb/5_Pedro%20Favela_26_MD.jpg",
-      "bg": "#d4d4d4"
+      "bg": "#d4d4d4",
+      "birthDate": "10/07/1999"
     },
     {
       "number": 6,
       "name": "Alex Ruan",
-      "group": "laterais",
+      "group": "zagueiros",
       "photo": "/images/atletas/6_Alex%20Ruan_33_LB.jpg",
       "country": "BRA",
       "age": 33,
       "thumb": "/images/atletas/thumb/6_Alex%20Ruan_33_LB.jpg",
-      "bg": "#cccccc"
+      "bg": "#cccccc",
+      "birthDate": "05/02/1993"
     },
     {
       "number": 7,
@@ -59,7 +64,8 @@
       "country": "BRA",
       "age": 39,
       "thumb": "/images/atletas/thumb/7_Fabinho_39_MD.jpg",
-      "bg": "#e6e6e6"
+      "bg": "#e6e6e6",
+      "birthDate": "19/11/1986"
     },
     {
       "number": 9,
@@ -69,7 +75,8 @@
       "country": "BRA",
       "age": 32,
       "thumb": "/images/atletas/thumb/9_Quirino_32_ST.jpg",
-      "bg": "#e0e0e0"
+      "bg": "#e0e0e0",
+      "birthDate": "14/10/1993"
     },
     {
       "number": 11,
@@ -79,27 +86,30 @@
       "country": "BRA",
       "age": 23,
       "thumb": "/images/atletas/thumb/11_Nilton_23_MD.jpg",
-      "bg": "#eaeaea"
+      "bg": "#eaeaea",
+      "birthDate": "22/11/2002"
     },
     {
       "number": 12,
-      "name": "Rockened",
+      "name": "Rokenedy",
       "group": "goleiros",
       "photo": "/images/atletas/12_Rockened_23_GK.jpg",
       "country": "BRA",
       "age": 23,
       "thumb": "/images/atletas/thumb/12_Rockened_23_GK.jpg",
-      "bg": "#ebebeb"
+      "bg": "#ebebeb",
+      "birthDate": "16/08/2002"
     },
     {
       "number": 13,
-      "name": "Mateus Vinicius",
+      "name": "Matheus Vinícius",
       "group": "zagueiros",
       "photo": "/images/atletas/13_Mateus%20Vinicius_27_CB.jpg",
       "country": "BRA",
       "age": 27,
       "thumb": "/images/atletas/thumb/13_Mateus%20Vinicius_27_CB.jpg",
-      "bg": "#d1d1d1"
+      "bg": "#d1d1d1",
+      "birthDate": "08/03/1999"
     },
     {
       "number": 15,
@@ -109,7 +119,8 @@
       "country": "BRA",
       "age": 28,
       "thumb": "/images/atletas/thumb/15_Andrey_28_MD.jpg",
-      "bg": "#cfcfcf"
+      "bg": "#cfcfcf",
+      "birthDate": "15/02/1998"
     },
     {
       "number": 17,
@@ -119,7 +130,8 @@
       "country": "BRA",
       "age": 29,
       "thumb": "/images/atletas/thumb/17_Ronald_29_LW.jpg",
-      "bg": "#e9e9e9"
+      "bg": "#e9e9e9",
+      "birthDate": "05/02/1997"
     },
     {
       "number": 18,
@@ -129,7 +141,8 @@
       "country": "BRA",
       "age": 22,
       "thumb": "/images/atletas/thumb/18_Vitinho_22_LW.jpg",
-      "bg": "#ededed"
+      "bg": "#ededed",
+      "birthDate": "28/04/2004"
     },
     {
       "number": 19,
@@ -139,7 +152,8 @@
       "country": "BRA",
       "age": 36,
       "thumb": "/images/atletas/thumb/19_Renato_36_RW.jpg",
-      "bg": "#e1e1e1"
+      "bg": "#e1e1e1",
+      "birthDate": "19/01/1990"
     },
     {
       "number": 20,
@@ -149,7 +163,8 @@
       "country": "BRA",
       "age": 31,
       "thumb": "/images/atletas/thumb/20_Patrick%20Allan_31_MD.jpg",
-      "bg": "#dbdbdb"
+      "bg": "#dbdbdb",
+      "birthDate": "24/12/1994"
     },
     {
       "number": 21,
@@ -159,17 +174,19 @@
       "country": "BRA",
       "age": 27,
       "thumb": "/images/atletas/thumb/21_Eron_27_ST.jpg",
-      "bg": "#ededed"
+      "bg": "#ededed",
+      "birthDate": "16/07/1998"
     },
     {
       "number": 22,
-      "name": "Mateus Castilho",
-      "group": "meio-campistas",
+      "name": "Matheus Castilho",
+      "group": "laterais",
       "photo": "/images/atletas/22_Mateus%20Castilho_21_MD.jpg",
       "country": "BRA",
       "age": 21,
       "thumb": "/images/atletas/thumb/22_Mateus%20Castilho_21_MD.jpg",
-      "bg": "#d4d4d4"
+      "bg": "#d4d4d4",
+      "birthDate": "24/02/2005"
     },
     {
       "number": 23,
@@ -179,7 +196,8 @@
       "country": "BRA",
       "age": 38,
       "thumb": "/images/atletas/thumb/23_Tiago%20Marques_38_ST.jpg",
-      "bg": "#ebebeb"
+      "bg": "#ebebeb",
+      "birthDate": "03/03/1988"
     },
     {
       "number": 25,
@@ -189,7 +207,8 @@
       "country": "BRA",
       "age": 21,
       "thumb": "/images/atletas/thumb/25_Gabriel%20Souza_21_GK.jpg",
-      "bg": "#eaeaea"
+      "bg": "#eaeaea",
+      "birthDate": "03/08/2004"
     },
     {
       "number": 26,
@@ -199,17 +218,19 @@
       "country": "BRA",
       "age": 30,
       "thumb": "/images/atletas/thumb/26_Silva_30_MD.jpg",
-      "bg": "#dfdfdf"
+      "bg": "#dfdfdf",
+      "birthDate": "07/09/1995"
     },
     {
       "number": 27,
       "name": "Edson Miranda",
-      "group": "meio-campistas",
+      "group": "zagueiros",
       "photo": "/images/atletas/27_Edson%20Miranda_27_MD.jpg",
       "country": "BRA",
       "age": 27,
       "thumb": "/images/atletas/thumb/27_Edson%20Miranda_27_MD.jpg",
-      "bg": "#d3d3d3"
+      "bg": "#d3d3d3",
+      "birthDate": "18/04/1999"
     },
     {
       "number": 29,
@@ -219,37 +240,41 @@
       "country": "BRA",
       "age": 23,
       "thumb": "/images/atletas/thumb/29_Marquinhos_23_RW.jpg",
-      "bg": "#e2e2e2"
+      "bg": "#e2e2e2",
+      "birthDate": "01/03/2003"
     },
     {
       "number": 30,
-      "name": "Jerfeson Bahia",
+      "name": "Jeferson Bahia",
       "group": "zagueiros",
       "photo": "/images/atletas/30_Jerfeson%20Bahia_34_CB.jpg",
       "country": "BRA",
       "age": 34,
       "thumb": "/images/atletas/thumb/30_Jerfeson%20Bahia_34_CB.jpg",
-      "bg": "#e6e6e6"
+      "bg": "#e6e6e6",
+      "birthDate": "28/05/1992"
     },
     {
       "number": 31,
-      "name": "Zé Mario",
+      "name": "Zé Mário",
       "group": "laterais",
       "photo": "/images/atletas/31_Z%C3%A9%20Mario_34_LB.jpg",
       "country": "BRA",
       "age": 34,
       "thumb": "/images/atletas/thumb/31_Z%C3%A9%20Mario_34_LB.jpg",
-      "bg": "#cdcdcd"
+      "bg": "#cdcdcd",
+      "birthDate": "20/02/1992"
     },
     {
       "number": 35,
       "name": "Denis",
-      "group": "meio-campistas",
+      "group": "zagueiros",
       "photo": "/images/atletas/35_Denis_20_MB.jpg",
       "country": "BRA",
       "age": 20,
       "thumb": "/images/atletas/thumb/35_Denis_20_MB.jpg",
-      "bg": "#dfdfdf"
+      "bg": "#dfdfdf",
+      "birthDate": "24/12/2005"
     },
     {
       "number": 37,
@@ -259,17 +284,19 @@
       "country": "BRA",
       "age": 32,
       "thumb": "/images/atletas/thumb/37_Everaldo_32_RW.jpg",
-      "bg": "#d7d7d7"
+      "bg": "#d7d7d7",
+      "birthDate": "28/05/1994"
     },
     {
       "number": 40,
-      "name": "Thiago Coleho",
+      "name": "Thiago Coelho",
       "group": "goleiros",
       "photo": "/images/atletas/40_Thiago%20Coleho_31_GK.jpg",
       "country": "BRA",
       "age": 31,
       "thumb": "/images/atletas/thumb/40_Thiago%20Coleho_31_GK.jpg",
-      "bg": "#e2e2e2"
+      "bg": "#e2e2e2",
+      "birthDate": "26/05/1995"
     },
     {
       "number": 41,
@@ -279,17 +306,19 @@
       "country": "BRA",
       "age": 22,
       "thumb": "/images/atletas/thumb/41_Thiago%20Henrique_22_GK.jpg",
-      "bg": "#e1e1e1"
+      "bg": "#e1e1e1",
+      "birthDate": "11/07/2003"
     },
     {
       "number": 55,
-      "name": "Leo Costa",
+      "name": "Léo Costa",
       "group": "meio-campistas",
       "photo": "/images/atletas/55_Leo%20Costa_30_CM.jpg",
       "country": "BRA",
       "age": 30,
       "thumb": "/images/atletas/thumb/55_Leo%20Costa_30_CM.jpg",
-      "bg": "#cacaca"
+      "bg": "#cacaca",
+      "birthDate": "12/11/1995"
     }
   ],
   "staff": [
