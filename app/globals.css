@@ -4058,6 +4058,52 @@ body:has(.page-hero-dark) .site-header:not(.scrolled){color:#fff}
 body:has(.page-hero-dark) .site-header:not(.scrolled) .header-nav-label,
 body:has(.page-hero-dark) .site-header:not(.scrolled) .header-link{color:#fff}
 
+/* ===== arquétipo FEATURE (página-bandeira: hero + manifesto + escudos + marcos + citação) ===== */
+.feat-hero{position:relative;z-index:2;min-height:82vh;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink)}
+.feat-hero-media{position:absolute;inset:0;z-index:0}
+.feat-hero-media img{width:100%;height:100%;object-fit:cover;object-position:center}
+.feat-hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,.1) 30%,rgba(0,0,0,.5) 66%,rgba(0,0,0,.95) 100%)}
+.feat-hero-inner{position:relative;z-index:2;width:100%;padding-bottom:clamp(40px,7vh,80px)}
+.feat-kicker{display:block;font-size:clamp(13px,1.4vw,16px);font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;animation:infoUp .5s both}
+.feat-eyebrow{display:inline-flex;padding:6px 12px;background:var(--red);color:#fff;box-shadow:0 0 0 1.5px #fff;font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;margin-bottom:18px;animation:infoUp .5s .05s both}
+.feat-title{color:#fff;font-size:clamp(56px,11vw,176px);font-weight:900;line-height:.82;letter-spacing:-.04em;text-transform:uppercase;text-shadow:0 2px 40px rgba(0,0,0,.5);animation:infoUp .5s .1s both}
+
+.feat-intro{position:relative;z-index:2;background:var(--panel);color:var(--panel-text);padding:64px 0}
+.feat-intro-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center}
+.feat-lead{font-size:clamp(20px,2.6vw,32px);font-weight:600;line-height:1.35;letter-spacing:-.01em}
+.feat-stats{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.feat-stat{padding:16px 0;border-bottom:1px solid var(--line)}
+.feat-stat:nth-child(odd){padding-right:16px}
+.feat-stat dt{font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.feat-stat dd{font-size:clamp(20px,2.2vw,28px);font-weight:900;letter-spacing:-.02em;margin-top:4px}
+@media(max-width:860px){.feat-intro-grid{grid-template-columns:1fr;gap:28px}}
+
+.feat-h2{font-size:clamp(20px,2.6vw,32px);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;margin-bottom:28px;display:inline-block;padding-bottom:8px;border-bottom:3px solid var(--red)}
+[data-theme="dark"] .feat-h2{border-bottom-color:var(--gold)}
+.feat-h2--onDark{color:#fff;border-bottom-color:var(--gold)}
+
+.feat-crests{position:relative;z-index:2;background:var(--bg-2);color:var(--panel-text);padding:64px 0}
+.feat-crest-row{display:flex;gap:28px;flex-wrap:wrap;align-items:flex-end}
+.feat-crest{display:flex;flex-direction:column;align-items:center;gap:14px;flex:1 1 150px;max-width:220px}
+.feat-crest-tile{width:100%;aspect-ratio:1/1;background:#fff;border:1px solid var(--line);border-radius:14px;display:flex;align-items:center;justify-content:center;padding:22px;box-shadow:0 12px 32px -18px rgba(0,0,0,.45)}
+.feat-crest-tile img{max-width:100%;max-height:100%;object-fit:contain}
+.feat-crest figcaption{font-size:14px;font-weight:900;letter-spacing:.04em;color:var(--red)}
+[data-theme="dark"] .feat-crest figcaption{color:var(--gold)}
+.feat-crest-note{margin-top:28px;max-width:60ch;color:var(--muted);font-size:14px;line-height:1.6}
+
+.feat-marcos{position:relative;z-index:2;background:var(--section-bg);color:#fff;padding:64px 0}
+.feat-timeline{list-style:none;max-width:780px;position:relative;padding-left:8px}
+.feat-timeline::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:rgba(255,255,255,.18)}
+.feat-tl-item{position:relative;padding:0 0 30px 30px}
+.feat-tl-item::before{content:"";position:absolute;left:0;top:6px;width:13px;height:13px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px var(--section-bg)}
+.feat-tl-year{font-size:14px;font-weight:900;color:var(--gold);letter-spacing:.02em}
+.feat-tl-body h3{font-size:19px;font-weight:800;margin:4px 0 6px;color:#fff}
+.feat-tl-body p{font-size:14.5px;line-height:1.6;color:rgba(255,255,255,.78)}
+
+.feat-quote{position:relative;z-index:2;background:var(--fita-azul);color:#fff;padding:72px 0;border-top:3px solid #fff;border-bottom:3px solid #fff}
+.feat-quote-text{font-size:clamp(28px,5vw,60px);font-weight:900;line-height:1.02;letter-spacing:-.03em;text-transform:uppercase;max-width:20ch;font-style:normal}
+.feat-quote-cite{display:block;margin-top:18px;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-style:normal}
+
 /* ===== arquétipo Documentos (lista de downloads) ===== */
 .doc{display:flex;flex-direction:column;min-height:100vh}
 .doc-head{position:relative;z-index:2;background:var(--panel);color:var(--panel-text);padding:120px 0 26px;border-bottom:1px solid var(--line)}

@@ -17,6 +17,7 @@ import { Listing } from '@/components/site/pages/listing';
 import { Landing } from '@/components/site/pages/landing';
 import { FormPage } from '@/components/site/pages/form-page';
 import { Stories } from '@/components/site/pages/stories';
+import { Feature } from '@/components/site/pages/feature';
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -80,6 +81,9 @@ export default async function InternalPage({
       break;
     case 'stories':
       body = <Stories {...common} data={data} />;
+      break;
+    case 'feature':
+      body = <Feature {...common} data={data} />;
       break;
     case 'editorial':
       body = <Editorial {...common} data={data} />;

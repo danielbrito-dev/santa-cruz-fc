@@ -14,7 +14,8 @@ export type ArchetypeKey =
   | 'locations'
   | 'form'
   | 'landing'
-  | 'stories';
+  | 'stories'
+  | 'feature';
 
 export interface EditorialData {
   archetype: 'editorial';
@@ -94,6 +95,19 @@ export interface StoriesData {
   mode: 'all' | 'featured' | 'city' | 'generation';
   stories: { author: string; city: string; generation: string; excerpt: string; featured?: boolean }[];
 }
+export interface FeatureData {
+  archetype: 'feature';
+  heroImage: string;
+  heroKicker?: string;
+  intro: string;
+  stats: { label: string; value: string }[];
+  crests?: { year: string; src: string }[];
+  crestsTitle?: string;
+  crestsNote?: string;
+  marcosTitle?: string;
+  marcos: { year: string; title: string; desc: string }[];
+  quote?: { text: string; cite: string };
+}
 
 export type PageData =
   | EditorialData
@@ -107,7 +121,8 @@ export type PageData =
   | ListingData
   | LandingData
   | FormPageData
-  | StoriesData;
+  | StoriesData
+  | FeatureData;
 
 // Dados reais derivados do content/site.json (notícias publicadas + jogos).
 const sj = site as unknown as {
@@ -182,24 +197,30 @@ const LEGAL_SECTIONS: LegalData['sections'] = [
 
 export const SITE_PAGES: Record<string, PageData> = {
   '/o-santa/historia': {
-    archetype: 'editorial',
+    archetype: 'feature',
     heroImage: '/images/torcida1.jpg',
-    lead: 'Fundado em 3 de fevereiro de 1914, no bairro da Boa Vista, em Recife, o Santa Cruz nasceu da paixão de um grupo de jovens e se tornou um dos clubes mais queridos do Nordeste.',
-    sections: [
-      {
-        heading: 'A fundação, em 1914',
-        paragraphs: [
-          'O Santa Cruz Futebol Clube foi fundado em 3 de fevereiro de 1914, no bairro da Boa Vista, em Recife, por um grupo de onze jovens. Entre eles, Teófilo de Carvalho, o "Lacraia", autor do primeiro escudo do clube.',
-          'Das ruas do centro do Recife para o coração de Pernambuco, o tricolor de preto, branco e vermelho cresceu junto com a sua torcida — apelidada de "A Mais Apaixonada".',
-        ],
-      },
-      {
-        heading: 'A Cobra Coral e o Arruda',
-        paragraphs: [
-          'O apelido "Cobra Coral" — mascote do clube — faz referência às listras coral do uniforme tricolor. O Estádio do Arruda, casa do Santa, tornou-se um dos maiores palcos do futebol nordestino.',
-          'Mais do que um clube, o Santa Cruz é um símbolo de pertencimento para milhões de torcedores.',
-        ],
-      },
+    heroKicker: 'Desde 1914',
+    intro: 'O Santa Cruz Futebol Clube nasceu em 3 de fevereiro de 1914, no bairro da Boa Vista, em Recife, das mãos de onze jovens. Mais de um século depois, é a paixão de milhões — "A Mais Apaixonada".',
+    stats: [
+      { label: 'Fundação', value: '03·02·1914' },
+      { label: 'Fundadores', value: '11' },
+      { label: 'Bairro', value: 'Boa Vista' },
+      { label: 'Cidade', value: 'Recife · PE' },
+    ],
+    crestsTitle: 'A evolução do escudo',
+    crests: [
+      { year: '1915', src: '/images/escudo-santa-cruz_1915-212x200.jpg' },
+      { year: '1916', src: '/images/escudo-santa-cruz_1916-212x200.jpg' },
+      { year: 'Atual', src: '/images/logo.png' },
+    ],
+    crestsNote: 'Foram oito versões do escudo — o primeiro desenhado por Teófilo de Carvalho, o "Lacraia", em 1914 — até a marca atual.',
+    marcosTitle: 'Marcos da história',
+    marcos: [
+      { year: '1934', title: '7×0 no Sport', desc: 'A maior diferença de gols do Clássico das Multidões.' },
+      { year: '1972', title: 'Inauguração do Arruda', desc: 'O Santa passa a mandar seus jogos no maior estádio de Pernambuco.' },
+      { year: '1979', title: 'Fita Azul', desc: 'Excursão internacional invicta — um marco tricolor.' },
+      { year: '2013', title: 'Campeão da Série C', desc: 'Título nacional somado ao tricampeonato estadual.' },
+      { year: '2016', title: 'Copa do Nordeste', desc: 'O título regional diante da nação coral.' },
     ],
     quote: { text: 'É tradição, não é moda.', cite: 'Torcida do Santa Cruz' },
   },

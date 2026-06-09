@@ -28,6 +28,7 @@ describe('site-pages registry', () => {
       'landing',
       'form',
       'stories',
+      'feature',
     ]);
     for (const data of Object.values(SITE_PAGES)) expect(valid.has(data.archetype)).toBe(true);
   });
@@ -46,14 +47,13 @@ describe('site-pages registry', () => {
     expect(getPageData('/clube/diretoria')?.archetype).toBe('people');
   });
   it('getPageData devolve a entrada e undefined p/ href desconhecido', () => {
-    expect(getPageData('/o-santa/historia')?.archetype).toBe('editorial');
+    expect(getPageData('/privacidade')?.archetype).toBe('legal');
     expect(getPageData('/nao-existe')).toBeUndefined();
   });
-  it('História traz fatos reais (1914)', () => {
+  it('História é um feature com dados reais (1914 / Fita Azul)', () => {
     const h = getPageData('/o-santa/historia');
-    expect(h?.archetype).toBe('editorial');
-    if (h?.archetype === 'editorial') {
-      expect(JSON.stringify(h.sections)).toContain('1914');
-    }
+    expect(h?.archetype).toBe('feature');
+    expect(JSON.stringify(h)).toContain('1914');
+    expect(JSON.stringify(h)).toContain('Fita Azul');
   });
 });
