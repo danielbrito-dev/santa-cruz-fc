@@ -1,15 +1,14 @@
 import { getTranslations } from 'next-intl/server';
 import type { Locale } from '@/lib/i18n/routing';
 import type { PeopleData } from '@/lib/site-pages';
+import { Kicker } from './_shared';
 
 function Bust() {
   return (
-    <span className="person-silhouette" aria-hidden="true">
-      <svg viewBox="0 0 100 100" fill="currentColor">
-        <circle cx="50" cy="38" r="20" />
-        <path d="M16 100c2-22 16-34 34-34s32 12 34 34Z" />
-      </svg>
-    </span>
+    <svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+      <circle cx="50" cy="36" r="19" />
+      <path d="M14 100c2-24 17-37 36-37s34 13 36 37Z" />
+    </svg>
   );
 }
 
@@ -26,28 +25,33 @@ export async function People({
   const t = await getTranslations('menu');
 
   return (
-    <div className="info">
-      <header className="people-head">
-        <div className="container">
-          <span className="people-eyebrow">{t(sectionKey)}</span>
-          <h1 className="people-title">{t(titleKey)}</h1>
-          <p className="people-lead">{data.lead}</p>
+    <div className="sc-page">
+      <header className="sc-dhero">
+        <span className="sc-dhero-ghost" aria-hidden="true">
+          SCFC
+        </span>
+        <div className="sc-wrap sc-dhero-inner sc-hero-in">
+          <Kicker label={t(sectionKey)} />
+          <h1 className="sc-dhero-title">{t(titleKey)}</h1>
+          <p className="sc-dhero-lead">{data.lead}</p>
         </div>
       </header>
 
-      <div className="info-main">
-        <div className="container">
+      <div className="sc-people">
+        <div className="sc-wrap">
           {data.groups.map((g, i) => (
-            <section className="people-group" key={i}>
-              <h2 className="people-group-title">{g.title}</h2>
-              <div className="people-grid">
+            <section className="sc-people-group" key={i}>
+              <h2>{g.title}</h2>
+              <div className="sc-people-grid">
                 {g.members.map((m, j) => (
-                  <article className="person-card" key={j}>
-                    <div className="person-photo">
+                  <article className="sc-person sc-reveal" key={j}>
+                    <div className="sc-person-photo">
                       <Bust />
                     </div>
-                    <span className="person-role">{m.role}</span>
-                    <h3 className="person-name">{m.name}</h3>
+                    <div className="sc-person-body">
+                      <span className="sc-person-role">{m.role}</span>
+                      <h3 className="sc-person-name">{m.name}</h3>
+                    </div>
                   </article>
                 ))}
               </div>
@@ -56,7 +60,7 @@ export async function People({
         </div>
       </div>
 
-      <div className="info-fill" aria-hidden="true" />
+      <div className="sc-fill" aria-hidden="true" />
     </div>
   );
 }

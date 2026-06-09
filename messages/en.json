@@ -83,7 +83,8 @@
     "download": "Download",
     "formSuccess": "Message sent!",
     "formSuccessNote": "Thanks for reaching out — we'll get back soon. (Demo: submissions aren't stored yet.)",
-    "sendStory": "Submit my story"
+    "sendStory": "Submit my story",
+    "scrollExplore": "Scroll to explore"
   },
   "common": { "allNews": "All news", "matchCenter": "Match Center", "becomeMember": "Become a Member", "skipToContent": "Skip to content" },
   "news": { "heading1": "News", "heading2": "from the Club", "photos": "{count, plural, one {# photo} other {# photos}}" },

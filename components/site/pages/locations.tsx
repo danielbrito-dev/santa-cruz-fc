@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import type { Locale } from '@/lib/i18n/routing';
 import type { LocationsData } from '@/lib/site-pages';
+import { Kicker } from './_shared';
 
 export async function Locations({
   sectionKey,
@@ -15,26 +16,29 @@ export async function Locations({
   const t = await getTranslations('menu');
 
   return (
-    <div className="info">
-      <header className="loc-head">
-        <div className="container">
-          <span className="loc-eyebrow">◉ {t(sectionKey)}</span>
-          <h1 className="loc-title">{t(titleKey)}</h1>
-          <p className="loc-lead">{data.lead}</p>
+    <div className="sc-page">
+      <header className="sc-dhero">
+        <span className="sc-dhero-ghost" aria-hidden="true">
+          ◉
+        </span>
+        <div className="sc-wrap sc-dhero-inner sc-hero-in">
+          <Kicker label={t(sectionKey)} />
+          <h1 className="sc-dhero-title">{t(titleKey)}</h1>
+          <p className="sc-dhero-lead">{data.lead}</p>
         </div>
       </header>
 
-      <div className="info-main">
-        <div className="container">
+      <div className="sc-loc">
+        <div className="sc-wrap">
           {data.groups.map((g, i) => (
-            <section className="loc-group" key={i}>
-              <h2 className="loc-region">{g.region}</h2>
-              <div className="loc-grid">
+            <section className="sc-loc-group" key={i}>
+              <h2 className="sc-loc-region">{g.region}</h2>
+              <div className="sc-loc-grid">
                 {g.places.map((pl, j) => (
-                  <article className="loc-card" key={j}>
-                    <h3 className="loc-name">{pl.name}</h3>
-                    <p className="loc-addr">{pl.address}</p>
-                    <span className="loc-city">{pl.city}</span>
+                  <article className="sc-loc-card sc-reveal" key={j}>
+                    <h3 className="sc-loc-name">{pl.name}</h3>
+                    <p className="sc-loc-addr">{pl.address}</p>
+                    <span className="sc-loc-city">{pl.city}</span>
                   </article>
                 ))}
               </div>
@@ -43,7 +47,7 @@ export async function Locations({
         </div>
       </div>
 
-      <div className="info-fill" aria-hidden="true" />
+      <div className="sc-fill" aria-hidden="true" />
     </div>
   );
 }

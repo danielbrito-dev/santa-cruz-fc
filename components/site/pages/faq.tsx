@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import type { Locale } from '@/lib/i18n/routing';
 import type { FaqData } from '@/lib/site-pages';
+import { Kicker, Marquee } from './_shared';
 
 export async function Faq({
   sectionKey,
@@ -17,29 +18,34 @@ export async function Faq({
   void sectionKey;
 
   return (
-    <div className="faq">
-      <header className="faq-head">
-        <div className="container">
-          <span className="faq-eyebrow">{p('helpCenter')}</span>
-          <h1 className="faq-title">{t(titleKey)}</h1>
-          <p className="faq-intro">{data.intro}</p>
+    <div className="sc-page">
+      <header className="sc-dhero">
+        <span className="sc-dhero-ghost" aria-hidden="true">
+          ?
+        </span>
+        <div className="sc-wrap sc-dhero-inner sc-hero-in">
+          <Kicker label={p('helpCenter')} />
+          <h1 className="sc-dhero-title">{t(titleKey)}</h1>
+          <p className="sc-dhero-lead">{data.intro}</p>
         </div>
       </header>
 
-      <div className="faq-body">
-        <div className="container">
-          <div className="faq-list">
+      <Marquee />
+
+      <div className="sc-faq">
+        <div className="sc-wrap">
+          <div className="sc-faq-list">
             {data.items.map((it, i) => (
-              <details className="faq-item" key={i}>
-                <summary className="faq-q">{it.q}</summary>
-                <div className="faq-a">{it.a}</div>
+              <details className="sc-faq-item sc-reveal" key={i}>
+                <summary className="sc-faq-q">{it.q}</summary>
+                <div className="sc-faq-a">{it.a}</div>
               </details>
             ))}
           </div>
         </div>
       </div>
 
-      <div className="info-fill" aria-hidden="true" />
+      <div className="sc-fill" aria-hidden="true" />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import type { Locale } from '@/lib/i18n/routing';
 import type { LegalData } from '@/lib/site-pages';
+import { Kicker } from './_shared';
 
 export async function Legal({
   sectionKey,
@@ -23,24 +24,21 @@ export async function Legal({
   }).format(new Date(data.updatedAt));
 
   return (
-    <div className="legal">
-      {/* cabeçalho compacto — documento, não hero de revista */}
-      <header className="legal-head">
-        <div className="container">
-          <span className="legal-eyebrow">
-            {t(sectionKey)} · {p('document')}
-          </span>
-          <h1 className="legal-title">{t(titleKey)}</h1>
-          <span className="legal-date">
+    <div className="sc-page">
+      <header className="sc-dhero sc-dhero--doc">
+        <div className="sc-wrap sc-dhero-inner sc-hero-in">
+          <Kicker label={`${t(sectionKey)} · ${p('document')}`} />
+          <h1 className="sc-dhero-title">{t(titleKey)}</h1>
+          <span className="sc-dhero-date">
             {p('updatedAt')} {date}
           </span>
         </div>
       </header>
 
-      <div className="legal-body">
-        <div className="container legal-grid">
-          <aside className="legal-toc">
-            <span className="legal-toc-label">{p('onThisPage')}</span>
+      <div className="sc-legal">
+        <div className="sc-wrap sc-legal-grid">
+          <aside className="sc-legal-toc">
+            <span>{p('onThisPage')}</span>
             <nav>
               {data.sections.map((s, i) => (
                 <a key={i} href={`#s-${i}`}>
@@ -50,9 +48,9 @@ export async function Legal({
             </nav>
           </aside>
 
-          <article className="legal-article">
+          <article className="sc-legal-article">
             {data.sections.map((s, i) => (
-              <section id={`s-${i}`} className="legal-section" key={i}>
+              <section id={`s-${i}`} className="sc-legal-section sc-reveal" key={i}>
                 <h2>{s.heading}</h2>
                 {s.paragraphs.map((par, j) => (
                   <p key={j}>{par}</p>
@@ -63,7 +61,7 @@ export async function Legal({
         </div>
       </div>
 
-      <div className="info-fill" aria-hidden="true" />
+      <div className="sc-fill" aria-hidden="true" />
     </div>
   );
 }

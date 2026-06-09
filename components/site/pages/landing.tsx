@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import type { Locale } from '@/lib/i18n/routing';
 import type { LandingData } from '@/lib/site-pages';
+import { Kicker, Marquee } from './_shared';
 
 export async function Landing({
   sectionKey,
@@ -16,15 +17,17 @@ export async function Landing({
   const external = data.ctaHref.startsWith('http');
 
   return (
-    <div className="landing">
-      {/* hero ESCURO com CTA — cara de marketing, distinta do editorial claro */}
-      <header className="landing-hero">
-        <div className="container">
-          <span className="landing-eyebrow">{t(sectionKey)}</span>
-          <h1 className="landing-title">{t(titleKey)}</h1>
-          <p className="landing-lead">{data.lead}</p>
+    <div className="sc-page page-hero-dark">
+      <header className="sc-dhero sc-dhero--ink">
+        <span className="sc-dhero-ghost" aria-hidden="true">
+          SC
+        </span>
+        <div className="sc-wrap sc-dhero-inner sc-hero-in">
+          <Kicker label={t(sectionKey)} />
+          <h1 className="sc-dhero-title">{t(titleKey)}</h1>
+          <p className="sc-dhero-lead">{data.lead}</p>
           <a
-            className="landing-cta"
+            className="sc-btn"
             href={data.ctaHref}
             {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
           >
@@ -33,19 +36,23 @@ export async function Landing({
         </div>
       </header>
 
-      <div className="landing-body">
-        <div className="container landing-grid">
+      <Marquee />
+
+      <div className="sc-land-blocks">
+        <div className="sc-wrap sc-wrap--narrow">
           {data.highlights.map((h, i) => (
-            <article className="landing-card" key={i}>
-              <span className="landing-card-idx">{String(i + 1).padStart(2, '0')}</span>
-              <h3>{h.title}</h3>
-              <p>{h.text}</p>
+            <article className="sc-land-block sc-reveal" key={i}>
+              <span className="sc-land-idx">{String(i + 1).padStart(2, '0')}</span>
+              <div>
+                <h3>{h.title}</h3>
+                <p>{h.text}</p>
+              </div>
             </article>
           ))}
         </div>
       </div>
 
-      <div className="info-fill" aria-hidden="true" />
+      <div className="sc-fill" aria-hidden="true" />
     </div>
   );
 }

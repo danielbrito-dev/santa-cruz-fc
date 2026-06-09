@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import type { Locale } from '@/lib/i18n/routing';
 import type { EditorialData } from '@/lib/site-pages';
+import { Kicker, Marquee } from './_shared';
 
 export async function Editorial({
   sectionKey,
@@ -17,39 +18,41 @@ export async function Editorial({
   const photo = data.heroImage;
 
   return (
-    <div className={`info editorial${photo ? ' page-hero-dark' : ''}`}>
+    <div className={`sc-page${photo ? ' page-hero-dark' : ''}`}>
       {photo ? (
-        <header className="ed-hero">
-          <div className="ed-hero-media">
+        <header className="sc-hero">
+          <div className="sc-hero-media">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={photo} alt="" />
           </div>
-          <div className="ed-hero-overlay" aria-hidden="true" />
-          <div className="container ed-hero-inner">
-            <span className="ed-hero-eyebrow">{t(sectionKey)}</span>
-            <h1 className="ed-hero-title">{t(titleKey)}</h1>
-            <p className="ed-hero-lead">{data.lead}</p>
+          <div className="sc-hero-scrim" aria-hidden="true" />
+          <div className="sc-hero-grain" aria-hidden="true" />
+          <div className="sc-wrap sc-hero-inner sc-hero-in">
+            <Kicker label={t(sectionKey)} />
+            <h1 className="sc-hero-title">{t(titleKey)}</h1>
+            <p className="sc-hero-lead">{data.lead}</p>
           </div>
         </header>
       ) : (
-        <header className="info-hero">
-          <div className="container info-hero-inner">
-            <nav className="info-breadcrumb" aria-label="breadcrumb">
-              <span>{t(sectionKey)}</span>
-              <span className="info-breadcrumb-sep">/</span>
-              <span className="info-breadcrumb-current">{t(titleKey)}</span>
-            </nav>
-            <h1 className="info-title">{t(titleKey)}</h1>
-            <p className="info-lead">{data.lead}</p>
+        <header className="sc-dhero">
+          <span className="sc-dhero-ghost" aria-hidden="true">
+            SCFC
+          </span>
+          <div className="sc-wrap sc-dhero-inner sc-hero-in">
+            <Kicker label={t(sectionKey)} />
+            <h1 className="sc-dhero-title">{t(titleKey)}</h1>
+            <p className="sc-dhero-lead">{data.lead}</p>
           </div>
         </header>
       )}
 
-      <div className="info-main">
-        <div className="container">
-          <article className="info-content">
+      <Marquee />
+
+      <div className="sc-article">
+        <div className="sc-wrap sc-wrap--read">
+          <article>
             {data.sections.map((s, i) => (
-              <section key={i}>
+              <section className="sc-reveal" key={i}>
                 <h2>{s.heading}</h2>
                 {s.paragraphs.map((par, j) => (
                   <p key={j}>{par}</p>
@@ -57,23 +60,24 @@ export async function Editorial({
               </section>
             ))}
             {data.quote && (
-              <blockquote className="info-quote">
-                “{data.quote.text}”<cite>{data.quote.cite}</cite>
+              <blockquote className="sc-pullquote sc-reveal">
+                <q>{data.quote.text}</q>
+                <cite>{data.quote.cite}</cite>
               </blockquote>
             )}
           </article>
         </div>
       </div>
 
-      <section className="info-cta">
-        <div className="container info-cta-inner">
+      <section className="sc-cta">
+        <div className="sc-wrap sc-cta-inner">
           <div>
-            <span className="info-cta-eyebrow">{p('ctaEyebrow')}</span>
+            <span className="sc-cta-eyebrow">{p('ctaEyebrow')}</span>
             <h2>{p('ctaTitle')}</h2>
             <p>{p('ctaText')}</p>
           </div>
           <a
-            className="info-cta-btn"
+            className="sc-btn"
             href="https://socio-santacruz.futebolcard.com/"
             target="_blank"
             rel="noopener noreferrer"
@@ -83,7 +87,7 @@ export async function Editorial({
         </div>
       </section>
 
-      <div className="info-fill" aria-hidden="true" />
+      <div className="sc-fill" aria-hidden="true" />
     </div>
   );
 }

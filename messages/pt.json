@@ -83,7 +83,8 @@
     "download": "Baixar",
     "formSuccess": "Mensagem enviada!",
     "formSuccessNote": "Obrigado pelo contato — retornaremos em breve. (Demonstração: o envio ainda não é persistido.)",
-    "sendStory": "Enviar minha história"
+    "sendStory": "Enviar minha história",
+    "scrollExplore": "Role para explorar"
   },
   "common": { "allNews": "Todas as notícias", "matchCenter": "Match Center", "becomeMember": "Seja Sócio Coral", "skipToContent": "Pular para o conteúdo" },
   "news": { "heading1": "Notícias", "heading2": "do Clube", "photos": "{count, plural, one {# foto} other {# fotos}}" },
