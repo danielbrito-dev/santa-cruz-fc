@@ -354,7 +354,7 @@ export const SITE_PAGES: Record<string, PageData> = {
 
   '/o-santa/titulos': {
     archetype: 'achievements',
-    lead: 'Mais de um século de glórias: o Santa Cruz é um dos maiores campeões do Nordeste.',
+    lead: 'Mais de um século de glórias: 29 Campeonatos Pernambucanos, a Copa do Nordeste de 2016, a Série C de 2013, 5 Copas Pernambuco e o exclusivo Tri-Supercampeonato.',
     stats: [
       { label: 'Pernambucanos', value: '29' },
       { label: 'Supercampeonatos', value: '3' },
@@ -390,12 +390,12 @@ export const SITE_PAGES: Record<string, PageData> = {
 
   '/o-santa/enderecos': {
     archetype: 'locations',
-    lead: 'A casa da Cobra Coral — o Arruda, um dos maiores estádios do Nordeste.',
+    lead: 'A casa da Cobra Coral — o Arruda, sexto maior estádio do Brasil e o segundo maior particular.',
     groups: [
       {
         region: 'Recife',
         places: [
-          { name: 'Estádio José do Rego Maciel (Arruda)', address: 'Praça do Arruda, s/n — Arruda · Inaugurado em 1972, com recorde de 76 mil em 1983', city: 'Recife · PE' },
+          { name: 'Estádio José do Rego Maciel (Arruda)', address: 'Praça do Arruda, s/n — Arruda · Inaugurado em 1972 · Recorde de público: 78.391 (Santa Cruz 1×1 Sport, 1999)', city: 'Recife · PE' },
           { name: 'Sede Social', address: 'Endereço a confirmar', city: 'Recife · PE' },
         ],
       },
