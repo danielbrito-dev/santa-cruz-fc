@@ -23,7 +23,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
       <Header />
       <SvgFilters />
       <main>
-        <section className="hero page-hero-dark" id="calendario">
+        <section className="hero" id="calendario">
           <Hero content={content} locale={locale} />
           <MatchCalendar content={content} locale={locale} />
         </section>
