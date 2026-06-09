@@ -10,7 +10,12 @@
       "age": 30,
       "thumb": "/images/atletas/thumb/2_Thiago%20Ennes_30_RB.jpg",
       "bg": "#cecece",
-      "birthDate": "05/03/1996"
+      "birthDate": "05/03/1996",
+      "stats": {
+        "jogos": 4,
+        "gols": 0,
+        "assist": 0
+      }
     },
     {
       "number": 3,
@@ -21,7 +26,12 @@
       "age": 32,
       "thumb": "/images/atletas/thumb/3_Eurico_32_CB.jpg",
       "bg": "#dadada",
-      "birthDate": "16/04/1994"
+      "birthDate": "16/04/1994",
+      "stats": {
+        "jogos": 8,
+        "gols": 0,
+        "assist": 0
+      }
     },
     {
       "number": 4,
@@ -32,18 +42,28 @@
       "age": 39,
       "thumb": "/images/atletas/thumb/4_William%20Alves_39_CB.jpg",
       "bg": "#d5d5d5",
-      "birthDate": "29/04/1987"
+      "birthDate": "29/04/1987",
+      "stats": {
+        "jogos": 7,
+        "gols": 0,
+        "assist": 0
+      }
     },
     {
       "number": 5,
       "name": "Pedro Favela",
-      "group": "meio-campistas",
+      "group": "volantes",
       "photo": "/images/atletas/5_Pedro%20Favela_26_MD.jpg",
       "country": "BRA",
       "age": 26,
       "thumb": "/images/atletas/thumb/5_Pedro%20Favela_26_MD.jpg",
       "bg": "#d4d4d4",
-      "birthDate": "10/07/1999"
+      "birthDate": "10/07/1999",
+      "stats": {
+        "jogos": 7,
+        "gols": 2,
+        "assist": 0
+      }
     },
     {
       "number": 6,
@@ -54,34 +74,49 @@
       "age": 33,
       "thumb": "/images/atletas/thumb/6_Alex%20Ruan_33_LB.jpg",
       "bg": "#cccccc",
-      "birthDate": "05/02/1993"
+      "birthDate": "05/02/1993",
+      "stats": {
+        "jogos": 4,
+        "gols": 0,
+        "assist": 0
+      }
     },
     {
       "number": 7,
       "name": "Fabinho",
-      "group": "meio-campistas",
+      "group": "volantes",
       "photo": "/images/atletas/7_Fabinho_39_MD.jpg",
       "country": "BRA",
       "age": 39,
       "thumb": "/images/atletas/thumb/7_Fabinho_39_MD.jpg",
       "bg": "#e6e6e6",
-      "birthDate": "19/11/1986"
+      "birthDate": "19/11/1986",
+      "stats": {
+        "jogos": 7,
+        "gols": 0,
+        "assist": 0
+      }
     },
     {
       "number": 9,
       "name": "Quirino",
-      "group": "atacantes",
+      "group": "centroavantes",
       "photo": "/images/atletas/9_Quirino_32_ST.jpg",
       "country": "BRA",
       "age": 32,
       "thumb": "/images/atletas/thumb/9_Quirino_32_ST.jpg",
       "bg": "#e0e0e0",
-      "birthDate": "14/10/1993"
+      "birthDate": "14/10/1993",
+      "stats": {
+        "jogos": 5,
+        "gols": 0,
+        "assist": 0
+      }
     },
     {
       "number": 11,
       "name": "Nilton",
-      "group": "meio-campistas",
+      "group": "meias",
       "photo": "/images/atletas/11_Nilton_23_MD.jpg",
       "country": "BRA",
       "age": 23,
@@ -109,78 +144,113 @@
       "age": 27,
       "thumb": "/images/atletas/thumb/13_Mateus%20Vinicius_27_CB.jpg",
       "bg": "#d1d1d1",
-      "birthDate": "08/03/1999"
+      "birthDate": "08/03/1999",
+      "stats": {
+        "jogos": 1,
+        "gols": 0,
+        "assist": 0
+      }
     },
     {
       "number": 15,
       "name": "Andrey",
-      "group": "meio-campistas",
+      "group": "volantes",
       "photo": "/images/atletas/15_Andrey_28_MD.jpg",
       "country": "BRA",
       "age": 28,
       "thumb": "/images/atletas/thumb/15_Andrey_28_MD.jpg",
       "bg": "#cfcfcf",
-      "birthDate": "15/02/1998"
+      "birthDate": "15/02/1998",
+      "stats": {
+        "jogos": 2,
+        "gols": 0,
+        "assist": 0
+      }
     },
     {
       "number": 17,
       "name": "Ronald",
-      "group": "atacantes",
+      "group": "pontas",
       "photo": "/images/atletas/17_Ronald_29_LW.jpg",
       "country": "BRA",
       "age": 29,
       "thumb": "/images/atletas/thumb/17_Ronald_29_LW.jpg",
       "bg": "#e9e9e9",
-      "birthDate": "05/02/1997"
+      "birthDate": "05/02/1997",
+      "stats": {
+        "jogos": 8,
+        "gols": 1,
+        "assist": 0
+      }
     },
     {
       "number": 18,
       "name": "Vitinho",
-      "group": "atacantes",
+      "group": "pontas",
       "photo": "/images/atletas/18_Vitinho_22_LW.jpg",
       "country": "BRA",
       "age": 22,
       "thumb": "/images/atletas/thumb/18_Vitinho_22_LW.jpg",
       "bg": "#ededed",
-      "birthDate": "28/04/2004"
+      "birthDate": "28/04/2004",
+      "stats": {
+        "jogos": 5,
+        "gols": 0,
+        "assist": 0
+      }
     },
     {
       "number": 19,
       "name": "Renato",
-      "group": "atacantes",
+      "group": "pontas",
       "photo": "/images/atletas/19_Renato_36_RW.jpg",
       "country": "BRA",
       "age": 36,
       "thumb": "/images/atletas/thumb/19_Renato_36_RW.jpg",
       "bg": "#e1e1e1",
-      "birthDate": "19/01/1990"
+      "birthDate": "19/01/1990",
+      "stats": {
+        "jogos": 5,
+        "gols": 0,
+        "assist": 1
+      }
     },
     {
       "number": 20,
       "name": "Patrick Allan",
-      "group": "meio-campistas",
+      "group": "meias",
       "photo": "/images/atletas/20_Patrick%20Allan_31_MD.jpg",
       "country": "BRA",
       "age": 31,
       "thumb": "/images/atletas/thumb/20_Patrick%20Allan_31_MD.jpg",
       "bg": "#dbdbdb",
-      "birthDate": "24/12/1994"
+      "birthDate": "24/12/1994",
+      "stats": {
+        "jogos": 5,
+        "gols": 0,
+        "assist": 0
+      }
     },
     {
       "number": 21,
       "name": "Eron",
-      "group": "atacantes",
+      "group": "centroavantes",
       "photo": "/images/atletas/21_Eron_27_ST.jpg",
       "country": "BRA",
       "age": 27,
       "thumb": "/images/atletas/thumb/21_Eron_27_ST.jpg",
       "bg": "#ededed",
-      "birthDate": "16/07/1998"
+      "birthDate": "16/07/1998",
+      "stats": {
+        "jogos": 2,
+        "gols": 0,
+        "assist": 0
+      }
     },
     {
       "number": 22,
       "name": "Matheus Castilho",
-      "group": "meio-campistas",
+      "group": "volantes",
       "photo": "/images/atletas/22_Mateus%20Castilho_21_MD.jpg",
       "country": "BRA",
       "age": 21,
@@ -191,13 +261,18 @@
     {
       "number": 23,
       "name": "Tiago Marques",
-      "group": "atacantes",
+      "group": "centroavantes",
       "photo": "/images/atletas/23_Tiago%20Marques_38_ST.jpg",
       "country": "BRA",
       "age": 38,
       "thumb": "/images/atletas/thumb/23_Tiago%20Marques_38_ST.jpg",
       "bg": "#ebebeb",
-      "birthDate": "03/03/1988"
+      "birthDate": "03/03/1988",
+      "stats": {
+        "jogos": 7,
+        "gols": 1,
+        "assist": 0
+      }
     },
     {
       "number": 25,
@@ -208,18 +283,28 @@
       "age": 21,
       "thumb": "/images/atletas/thumb/25_Gabriel%20Souza_21_GK.jpg",
       "bg": "#eaeaea",
-      "birthDate": "03/08/2004"
+      "birthDate": "03/08/2004",
+      "stats": {
+        "jogos": 3,
+        "gols": 0,
+        "assist": 0
+      }
     },
     {
       "number": 26,
       "name": "Silva",
-      "group": "meio-campistas",
+      "group": "volantes",
       "photo": "/images/atletas/26_Silva_30_MD.jpg",
       "country": "BRA",
       "age": 30,
       "thumb": "/images/atletas/thumb/26_Silva_30_MD.jpg",
       "bg": "#dfdfdf",
-      "birthDate": "07/09/1995"
+      "birthDate": "07/09/1995",
+      "stats": {
+        "jogos": 5,
+        "gols": 0,
+        "assist": 0
+      }
     },
     {
       "number": 27,
@@ -230,18 +315,28 @@
       "age": 27,
       "thumb": "/images/atletas/thumb/27_Edson%20Miranda_27_MD.jpg",
       "bg": "#d3d3d3",
-      "birthDate": "18/04/1999"
+      "birthDate": "18/04/1999",
+      "stats": {
+        "jogos": 2,
+        "gols": 0,
+        "assist": 0
+      }
     },
     {
       "number": 29,
       "name": "Marquinhos",
-      "group": "atacantes",
+      "group": "centroavantes",
       "photo": "/images/atletas/29_Marquinhos_23_RW.jpg",
       "country": "BRA",
       "age": 23,
       "thumb": "/images/atletas/thumb/29_Marquinhos_23_RW.jpg",
       "bg": "#e2e2e2",
-      "birthDate": "01/03/2003"
+      "birthDate": "01/03/2003",
+      "stats": {
+        "jogos": 6,
+        "gols": 2,
+        "assist": 0
+      }
     },
     {
       "number": 30,
@@ -252,7 +347,12 @@
       "age": 34,
       "thumb": "/images/atletas/thumb/30_Jerfeson%20Bahia_34_CB.jpg",
       "bg": "#e6e6e6",
-      "birthDate": "28/05/1992"
+      "birthDate": "28/05/1992",
+      "stats": {
+        "jogos": 2,
+        "gols": 0,
+        "assist": 0
+      }
     },
     {
       "number": 31,
@@ -263,7 +363,12 @@
       "age": 34,
       "thumb": "/images/atletas/thumb/31_Z%C3%A9%20Mario_34_LB.jpg",
       "bg": "#cdcdcd",
-      "birthDate": "20/02/1992"
+      "birthDate": "20/02/1992",
+      "stats": {
+        "jogos": 7,
+        "gols": 0,
+        "assist": 1
+      }
     },
     {
       "number": 35,
@@ -279,13 +384,18 @@
     {
       "number": 37,
       "name": "Everaldo",
-      "group": "meio-campistas",
+      "group": "meias",
       "photo": "/images/atletas/37_Everaldo_32_RW.jpg",
       "country": "BRA",
       "age": 32,
       "thumb": "/images/atletas/thumb/37_Everaldo_32_RW.jpg",
       "bg": "#d7d7d7",
-      "birthDate": "28/05/1994"
+      "birthDate": "28/05/1994",
+      "stats": {
+        "jogos": 4,
+        "gols": 0,
+        "assist": 0
+      }
     },
     {
       "number": 40,
@@ -312,13 +422,18 @@
     {
       "number": 55,
       "name": "Léo Costa",
-      "group": "meio-campistas",
+      "group": "volantes",
       "photo": "/images/atletas/55_Leo%20Costa_30_CM.jpg",
       "country": "BRA",
       "age": 30,
       "thumb": "/images/atletas/thumb/55_Leo%20Costa_30_CM.jpg",
       "bg": "#cacaca",
-      "birthDate": "12/11/1995"
+      "birthDate": "12/11/1995",
+      "stats": {
+        "jogos": 2,
+        "gols": 0,
+        "assist": 0
+      }
     }
   ],
   "staff": [

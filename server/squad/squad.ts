@@ -5,16 +5,20 @@ export type PositionGroupKey =
   | 'goleiros'
   | 'laterais'
   | 'zagueiros'
-  | 'meio-campistas'
-  | 'atacantes';
+  | 'volantes'
+  | 'meias'
+  | 'pontas'
+  | 'centroavantes';
 
 /** Ordem canônica de exibição das posições (do gol pro ataque). */
 export const GROUP_ORDER: PositionGroupKey[] = [
   'goleiros',
   'laterais',
   'zagueiros',
-  'meio-campistas',
-  'atacantes',
+  'volantes',
+  'meias',
+  'pontas',
+  'centroavantes',
 ];
 
 export interface Player {
@@ -32,6 +36,14 @@ export interface Player {
   height?: string;
   joinedAt?: string;
   bio?: LocalizedText;
+  stats?: PlayerStats; // números na Série C (Press Kit)
+}
+
+/** Números do jogador na competição (Press Kit). */
+export interface PlayerStats {
+  jogos: number;
+  gols: number;
+  assist: number;
 }
 
 export interface StaffMember {

@@ -40,13 +40,13 @@ const squad: Squad = {
   season: '2026',
   players: [
     { number: 1, name: 'Gabriel Felix', group: 'goleiros', photo: '', country: 'BRA' },
-    { number: 9, name: 'Everaldo', group: 'atacantes', photo: '/images/everaldo_sembg.png', country: 'BRA' },
+    { number: 9, name: 'Everaldo', group: 'centroavantes', photo: '/images/everaldo_sembg.png', country: 'BRA' },
   ],
   staff: [{ role: { pt: 'Técnico', en: 'Head Coach' }, name: 'Treinador X' }],
 };
 const groups: PlayerGroup[] = [
   { key: 'goleiros', players: [squad.players[0]] },
-  { key: 'atacantes', players: [squad.players[1]] },
+  { key: 'centroavantes', players: [squad.players[1]] },
 ];
 
 describe('SquadPage', () => {

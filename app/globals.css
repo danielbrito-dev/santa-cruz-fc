@@ -559,16 +559,16 @@ ul{list-style:none}
 }
 .carousel::-webkit-scrollbar{display:none}
 
-/* Match card: 293×248px (retangular/pôster), 24px padding owned by the card.
+/* Match card: 360×184px (retangular ALONGADO NA HORIZONTAL), 24px padding owned by the card.
    Children use NO horizontal/edge padding — the card's own padding is the single inset. */
 .match{
-  flex:0 0 293px;
-  width:293px;
-  height:248px;
+  flex:0 0 360px;
+  width:360px;
+  height:184px;
   scroll-snap-align:start;
   background:var(--bg-2);color:var(--ink);
   display:flex;flex-direction:column;
-  justify-content:space-between;
+  justify-content:center;
   overflow:hidden;
   transition:transform .2s, box-shadow .2s;
   cursor:pointer;
@@ -660,7 +660,7 @@ ul{list-style:none}
   .hero-card{left:20px;right:20px;bottom:32px}
   .hero-calendar{padding:16px 0 28px}
   .carousel-wrap::before,.carousel-wrap::after{width:32px}
-  .match{flex:0 0 220px;width:220px}
+  .match{flex:0 0 300px;width:300px}
 }
 
 /* ===== news ===== */
@@ -1499,7 +1499,7 @@ body{ background:var(--page-bg) }
   .hero-title .ht-l2{padding-left:.8em}
 
   /* ---- Calendar card smallest ---- */
-  .match{flex:0 0 210px;width:210px}
+  .match{flex:0 0 270px;width:270px}
 
   /* ---- Banner: single column (already covered by 768 rule, reinforce) ---- */
   .banner-card .body{padding:16px 18px}
@@ -3910,6 +3910,13 @@ textarea.admin-input {
 .athlete-detail-item strong{display:block;font-size:22px;font-weight:900;letter-spacing:-.01em}
 .athlete-detail-item small{
   display:block;margin-top:5px;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+}
+/* bloco de números (Série C) — mesma faixa escura, com rótulo */
+.athlete-stats{border-top:1px solid rgba(255,255,255,.12)}
+.athlete-stats .athlete-detail-grid{padding-top:14px;padding-bottom:6px}
+.athlete-stats-eyebrow{
+  display:block;padding:18px 24px 0;
+  font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
 }
 
 /* biography — dark band */

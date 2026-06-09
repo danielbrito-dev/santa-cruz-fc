@@ -83,6 +83,29 @@ export async function AthletePage({ player, locale }: { player: Player; locale: 
         </div>
       </section>
 
+      {/* NÚMEROS NA SÉRIE C (Press Kit) */}
+      {player.stats && (
+        <section className="athlete-detail athlete-stats">
+          <div className="container">
+            <span className="athlete-stats-eyebrow">{t('statsTitle')}</span>
+            <div className="athlete-detail-grid">
+              <div className="athlete-detail-item">
+                <strong>{player.stats.jogos}</strong>
+                <small>{t('lblGames')}</small>
+              </div>
+              <div className="athlete-detail-item">
+                <strong>{player.stats.gols}</strong>
+                <small>{t('lblGoals')}</small>
+              </div>
+              <div className="athlete-detail-item">
+                <strong>{player.stats.assist}</strong>
+                <small>{t('lblAssists')}</small>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* BIOGRAPHY */}
       {bioParas.length > 0 && (
         <section className="athlete-bio">
