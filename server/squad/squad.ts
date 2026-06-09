@@ -23,6 +23,7 @@ export interface Player {
   group: PositionGroupKey;
   photo: string;
   thumb?: string; // miniatura leve p/ o grid do elenco (cai em `photo` se ausente)
+  bg?: string;    // cor exata do fundo da foto → hero da ficha funde com ela
   country: string;
   // Optional fields used by the athlete detail page.
   age?: number;

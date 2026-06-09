@@ -8,7 +8,8 @@
       "photo": "/images/atletas/2_Thiago%20Ennes_30_RB.jpg",
       "country": "BRA",
       "age": 30,
-      "thumb": "/images/atletas/thumb/2_Thiago%20Ennes_30_RB.jpg"
+      "thumb": "/images/atletas/thumb/2_Thiago%20Ennes_30_RB.jpg",
+      "bg": "#cecece"
     },
     {
       "number": 3,
@@ -17,7 +18,8 @@
       "photo": "/images/atletas/3_Eurico_32_CB.jpg",
       "country": "BRA",
       "age": 32,
-      "thumb": "/images/atletas/thumb/3_Eurico_32_CB.jpg"
+      "thumb": "/images/atletas/thumb/3_Eurico_32_CB.jpg",
+      "bg": "#dadada"
     },
     {
       "number": 4,
@@ -26,7 +28,8 @@
       "photo": "/images/atletas/4_William%20Alves_39_CB.jpg",
       "country": "BRA",
       "age": 39,
-      "thumb": "/images/atletas/thumb/4_William%20Alves_39_CB.jpg"
+      "thumb": "/images/atletas/thumb/4_William%20Alves_39_CB.jpg",
+      "bg": "#d5d5d5"
     },
     {
       "number": 5,
@@ -35,7 +38,8 @@
       "photo": "/images/atletas/5_Pedro%20Favela_26_MD.jpg",
       "country": "BRA",
       "age": 26,
-      "thumb": "/images/atletas/thumb/5_Pedro%20Favela_26_MD.jpg"
+      "thumb": "/images/atletas/thumb/5_Pedro%20Favela_26_MD.jpg",
+      "bg": "#d4d4d4"
     },
     {
       "number": 6,
@@ -44,7 +48,8 @@
       "photo": "/images/atletas/6_Alex%20Ruan_33_LB.jpg",
       "country": "BRA",
       "age": 33,
-      "thumb": "/images/atletas/thumb/6_Alex%20Ruan_33_LB.jpg"
+      "thumb": "/images/atletas/thumb/6_Alex%20Ruan_33_LB.jpg",
+      "bg": "#cccccc"
     },
     {
       "number": 7,
@@ -53,7 +58,8 @@
       "photo": "/images/atletas/7_Fabinho_39_MD.jpg",
       "country": "BRA",
       "age": 39,
-      "thumb": "/images/atletas/thumb/7_Fabinho_39_MD.jpg"
+      "thumb": "/images/atletas/thumb/7_Fabinho_39_MD.jpg",
+      "bg": "#e6e6e6"
     },
     {
       "number": 9,
@@ -62,7 +68,8 @@
       "photo": "/images/atletas/9_Quirino_32_ST.jpg",
       "country": "BRA",
       "age": 32,
-      "thumb": "/images/atletas/thumb/9_Quirino_32_ST.jpg"
+      "thumb": "/images/atletas/thumb/9_Quirino_32_ST.jpg",
+      "bg": "#e0e0e0"
     },
     {
       "number": 11,
@@ -71,7 +78,8 @@
       "photo": "/images/atletas/11_Nilton_23_MD.jpg",
       "country": "BRA",
       "age": 23,
-      "thumb": "/images/atletas/thumb/11_Nilton_23_MD.jpg"
+      "thumb": "/images/atletas/thumb/11_Nilton_23_MD.jpg",
+      "bg": "#eaeaea"
     },
     {
       "number": 12,
@@ -80,7 +88,8 @@
       "photo": "/images/atletas/12_Rockened_23_GK.jpg",
       "country": "BRA",
       "age": 23,
-      "thumb": "/images/atletas/thumb/12_Rockened_23_GK.jpg"
+      "thumb": "/images/atletas/thumb/12_Rockened_23_GK.jpg",
+      "bg": "#ebebeb"
     },
     {
       "number": 13,
@@ -89,7 +98,8 @@
       "photo": "/images/atletas/13_Mateus%20Vinicius_27_CB.jpg",
       "country": "BRA",
       "age": 27,
-      "thumb": "/images/atletas/thumb/13_Mateus%20Vinicius_27_CB.jpg"
+      "thumb": "/images/atletas/thumb/13_Mateus%20Vinicius_27_CB.jpg",
+      "bg": "#d1d1d1"
     },
     {
       "number": 15,
@@ -98,7 +108,8 @@
       "photo": "/images/atletas/15_Andrey_28_MD.jpg",
       "country": "BRA",
       "age": 28,
-      "thumb": "/images/atletas/thumb/15_Andrey_28_MD.jpg"
+      "thumb": "/images/atletas/thumb/15_Andrey_28_MD.jpg",
+      "bg": "#cfcfcf"
     },
     {
       "number": 17,
@@ -107,7 +118,8 @@
       "photo": "/images/atletas/17_Ronald_29_LW.jpg",
       "country": "BRA",
       "age": 29,
-      "thumb": "/images/atletas/thumb/17_Ronald_29_LW.jpg"
+      "thumb": "/images/atletas/thumb/17_Ronald_29_LW.jpg",
+      "bg": "#e9e9e9"
     },
     {
       "number": 18,
@@ -116,7 +128,8 @@
       "photo": "/images/atletas/18_Vitinho_22_LW.jpg",
       "country": "BRA",
       "age": 22,
-      "thumb": "/images/atletas/thumb/18_Vitinho_22_LW.jpg"
+      "thumb": "/images/atletas/thumb/18_Vitinho_22_LW.jpg",
+      "bg": "#ededed"
     },
     {
       "number": 19,
@@ -125,7 +138,8 @@
       "photo": "/images/atletas/19_Renato_36_RW.jpg",
       "country": "BRA",
       "age": 36,
-      "thumb": "/images/atletas/thumb/19_Renato_36_RW.jpg"
+      "thumb": "/images/atletas/thumb/19_Renato_36_RW.jpg",
+      "bg": "#e1e1e1"
     },
     {
       "number": 20,
@@ -134,7 +148,8 @@
       "photo": "/images/atletas/20_Patrick%20Allan_31_MD.jpg",
       "country": "BRA",
       "age": 31,
-      "thumb": "/images/atletas/thumb/20_Patrick%20Allan_31_MD.jpg"
+      "thumb": "/images/atletas/thumb/20_Patrick%20Allan_31_MD.jpg",
+      "bg": "#dbdbdb"
     },
     {
       "number": 21,
@@ -143,7 +158,8 @@
       "photo": "/images/atletas/21_Eron_27_ST.jpg",
       "country": "BRA",
       "age": 27,
-      "thumb": "/images/atletas/thumb/21_Eron_27_ST.jpg"
+      "thumb": "/images/atletas/thumb/21_Eron_27_ST.jpg",
+      "bg": "#ededed"
     },
     {
       "number": 22,
@@ -152,7 +168,8 @@
       "photo": "/images/atletas/22_Mateus%20Castilho_21_MD.jpg",
       "country": "BRA",
       "age": 21,
-      "thumb": "/images/atletas/thumb/22_Mateus%20Castilho_21_MD.jpg"
+      "thumb": "/images/atletas/thumb/22_Mateus%20Castilho_21_MD.jpg",
+      "bg": "#d4d4d4"
     },
     {
       "number": 23,
@@ -161,7 +178,8 @@
       "photo": "/images/atletas/23_Tiago%20Marques_38_ST.jpg",
       "country": "BRA",
       "age": 38,
-      "thumb": "/images/atletas/thumb/23_Tiago%20Marques_38_ST.jpg"
+      "thumb": "/images/atletas/thumb/23_Tiago%20Marques_38_ST.jpg",
+      "bg": "#ebebeb"
     },
     {
       "number": 25,
@@ -170,7 +188,8 @@
       "photo": "/images/atletas/25_Gabriel%20Souza_21_GK.jpg",
       "country": "BRA",
       "age": 21,
-      "thumb": "/images/atletas/thumb/25_Gabriel%20Souza_21_GK.jpg"
+      "thumb": "/images/atletas/thumb/25_Gabriel%20Souza_21_GK.jpg",
+      "bg": "#eaeaea"
     },
     {
       "number": 26,
@@ -179,7 +198,8 @@
       "photo": "/images/atletas/26_Silva_30_MD.jpg",
       "country": "BRA",
       "age": 30,
-      "thumb": "/images/atletas/thumb/26_Silva_30_MD.jpg"
+      "thumb": "/images/atletas/thumb/26_Silva_30_MD.jpg",
+      "bg": "#dfdfdf"
     },
     {
       "number": 27,
@@ -188,7 +208,8 @@
       "photo": "/images/atletas/27_Edson%20Miranda_27_MD.jpg",
       "country": "BRA",
       "age": 27,
-      "thumb": "/images/atletas/thumb/27_Edson%20Miranda_27_MD.jpg"
+      "thumb": "/images/atletas/thumb/27_Edson%20Miranda_27_MD.jpg",
+      "bg": "#d3d3d3"
     },
     {
       "number": 29,
@@ -197,7 +218,8 @@
       "photo": "/images/atletas/29_Marquinhos_23_RW.jpg",
       "country": "BRA",
       "age": 23,
-      "thumb": "/images/atletas/thumb/29_Marquinhos_23_RW.jpg"
+      "thumb": "/images/atletas/thumb/29_Marquinhos_23_RW.jpg",
+      "bg": "#e2e2e2"
     },
     {
       "number": 30,
@@ -206,7 +228,8 @@
       "photo": "/images/atletas/30_Jerfeson%20Bahia_34_CB.jpg",
       "country": "BRA",
       "age": 34,
-      "thumb": "/images/atletas/thumb/30_Jerfeson%20Bahia_34_CB.jpg"
+      "thumb": "/images/atletas/thumb/30_Jerfeson%20Bahia_34_CB.jpg",
+      "bg": "#e6e6e6"
     },
     {
       "number": 31,
@@ -215,7 +238,8 @@
       "photo": "/images/atletas/31_Z%C3%A9%20Mario_34_LB.jpg",
       "country": "BRA",
       "age": 34,
-      "thumb": "/images/atletas/thumb/31_Z%C3%A9%20Mario_34_LB.jpg"
+      "thumb": "/images/atletas/thumb/31_Z%C3%A9%20Mario_34_LB.jpg",
+      "bg": "#cdcdcd"
     },
     {
       "number": 35,
@@ -224,7 +248,8 @@
       "photo": "/images/atletas/35_Denis_20_MB.jpg",
       "country": "BRA",
       "age": 20,
-      "thumb": "/images/atletas/thumb/35_Denis_20_MB.jpg"
+      "thumb": "/images/atletas/thumb/35_Denis_20_MB.jpg",
+      "bg": "#dfdfdf"
     },
     {
       "number": 37,
@@ -233,7 +258,8 @@
       "photo": "/images/atletas/37_Everaldo_32_RW.jpg",
       "country": "BRA",
       "age": 32,
-      "thumb": "/images/atletas/thumb/37_Everaldo_32_RW.jpg"
+      "thumb": "/images/atletas/thumb/37_Everaldo_32_RW.jpg",
+      "bg": "#d7d7d7"
     },
     {
       "number": 40,
@@ -242,7 +268,8 @@
       "photo": "/images/atletas/40_Thiago%20Coleho_31_GK.jpg",
       "country": "BRA",
       "age": 31,
-      "thumb": "/images/atletas/thumb/40_Thiago%20Coleho_31_GK.jpg"
+      "thumb": "/images/atletas/thumb/40_Thiago%20Coleho_31_GK.jpg",
+      "bg": "#e2e2e2"
     },
     {
       "number": 41,
@@ -251,7 +278,8 @@
       "photo": "/images/atletas/41_Thiago%20Henrique_22_GK.jpg",
       "country": "BRA",
       "age": 22,
-      "thumb": "/images/atletas/thumb/41_Thiago%20Henrique_22_GK.jpg"
+      "thumb": "/images/atletas/thumb/41_Thiago%20Henrique_22_GK.jpg",
+      "bg": "#e1e1e1"
     },
     {
       "number": 55,
@@ -260,7 +288,8 @@
       "photo": "/images/atletas/55_Leo%20Costa_30_CM.jpg",
       "country": "BRA",
       "age": 30,
-      "thumb": "/images/atletas/thumb/55_Leo%20Costa_30_CM.jpg"
+      "thumb": "/images/atletas/thumb/55_Leo%20Costa_30_CM.jpg",
+      "bg": "#cacaca"
     }
   ],
   "staff": [

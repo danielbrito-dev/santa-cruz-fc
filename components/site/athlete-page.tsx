@@ -38,8 +38,8 @@ export async function AthletePage({ player, locale }: { player: Player; locale: 
 
   return (
     <div className="athlete">
-      {/* HERO — name + number + photo */}
-      <section className="athlete-hero">
+      {/* HERO — name + number + photo. Fundo = cor exata do fundo da foto (funde a foto) */}
+      <section className="athlete-hero" style={player.bg ? { background: player.bg } : undefined}>
         <div className="container athlete-hero-inner">
           <div className="athlete-hero-text">
             <Link href="/elenco" className="athlete-back">
