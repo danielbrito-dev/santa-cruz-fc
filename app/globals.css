@@ -3843,9 +3843,9 @@ textarea.admin-input {
 .athlete-fill{flex:1 0 auto;background:var(--section-bg);position:relative;z-index:2}
 .athlete-hero{
   position:relative;z-index:2;overflow:hidden;
-  /* fundo "estúdio" cinza idêntico ao fundo das fotos (≈ cinza de marca #D6D7D8)
-     nos DOIS temas — a foto funde no hero e não parece "foto com fundo". */
-  background:linear-gradient(180deg,#DBDCDE 0%,#D6D7D8 55%,#D0D1D3 100%);
+  /* fundo "estúdio" EXATAMENTE igual ao fundo das fotos (#DDDDDD) nos DOIS temas —
+     sólido (sem gradiente) p/ a foto fundir totalmente, sem retângulo marcado. */
+  background:#DDDDDD;
   color:var(--ink);
   --hero-text:#0A0A0A;
   padding:120px 0 0;
