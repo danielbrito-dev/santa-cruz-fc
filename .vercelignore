@@ -15,3 +15,6 @@ nul
 # Imagens dentro de images/ que não são referenciadas pelo HTML
 images/*.exe
 images/Captura*
+
+# PDFs-fonte (não servir/deployar)
+docs/fontes/
