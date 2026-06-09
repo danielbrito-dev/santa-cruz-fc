@@ -3931,7 +3931,7 @@ textarea.admin-input {
 /* BODY + sticky aside */
 .info-main{position:relative;z-index:2;background:var(--panel);color:var(--panel-text);padding:56px 0 64px}
 .info-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:56px;align-items:start}
-.info-content{min-width:0}
+.info-content{min-width:0;max-width:74ch}
 .info-content-lead{
   font-size:clamp(18px,2vw,22px);line-height:1.55;font-weight:600;
   padding-left:20px;border-left:3px solid var(--red);margin-bottom:32px;

@@ -15,15 +15,6 @@ export async function Editorial({
   const t = await getTranslations('menu');
   const p = await getTranslations('page');
 
-  const facts =
-    data.facts ?? [
-      { k: p('factFounded'), v: '1914' },
-      { k: p('factStadium'), v: 'Arruda' },
-      { k: p('factCity'), v: 'Recife · PE' },
-      { k: p('factColors'), v: p('colorsValue') },
-      { k: p('factMascot'), v: 'Cobra Coral' },
-    ];
-
   return (
     <div className="info">
       <header className="info-hero">
@@ -39,7 +30,7 @@ export async function Editorial({
       </header>
 
       <div className="info-main">
-        <div className="container info-grid">
+        <div className="container">
           <article className="info-content">
             {data.sections.map((s, i) => (
               <section key={i}>
@@ -55,20 +46,6 @@ export async function Editorial({
               </blockquote>
             )}
           </article>
-
-          <aside className="info-aside">
-            <div className="info-facts">
-              <h3>{p('quickFacts')}</h3>
-              <dl>
-                {facts.map((f) => (
-                  <div className="row" key={f.k}>
-                    <dt>{f.k}</dt>
-                    <dd>{f.v}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          </aside>
         </div>
       </div>
 
