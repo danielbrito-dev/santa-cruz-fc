@@ -61,11 +61,11 @@ export default async function AdminDashboardPage({ params }: { params: Promise<{
       icon: <svg viewBox="0 0 24 24" {...S}><circle cx="12" cy="12" r="9" /><path d="M12 7l4.5 3.3-1.7 5.3H9.2L7.5 10.3 12 7Z" /></svg>,
     },
     {
-      title: t('elenco'), desc: t('elencoDesc'), href: `/${locale}/admin/elenco`,
+      title: t('elenco'), desc: t('elencoDesc'), href: `/${locale}/admin/elenco`, active: true, action: t('manage'),
       icon: <svg viewBox="0 0 24 24" {...S}><path d="M9 21v-2a4 4 0 0 1 8 0v2" /><circle cx="13" cy="7" r="4" /><path d="M3 21v-1a3 3 0 0 1 3-3" /><circle cx="6" cy="10" r="2" /></svg>,
     },
     {
-      title: t('patrocinadores'), desc: t('patrocinadoresDesc'), href: `/${locale}/admin/patrocinadores`,
+      title: t('patrocinadores'), desc: t('patrocinadoresDesc'), href: `/${locale}/admin/patrocinadores`, active: true, action: t('manage'),
       icon: <svg viewBox="0 0 24 24" {...S}><path d="M20.6 7.4 13 15l-3-3 7.6-7.6a2 2 0 0 1 2.8 0l.2.2a2 2 0 0 1 0 2.8Z" /><path d="M3 21l6-6M3 21v-4h4" /><circle cx="6.5" cy="6.5" r="2" /></svg>,
     },
     {

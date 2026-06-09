@@ -3556,6 +3556,8 @@ textarea.admin-input {
 [data-theme="dark"] .admin-jogos-score { color: #fff; }
 .admin-jogos-url { color: var(--muted); }
 .admin-jogos-actions { display: flex; gap: 8px; }
+.admin-elenco-group { margin-top: 16px; }
+.admin-elenco-group-title { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; color: var(--muted); margin: 14px 0 8px; }
 @media (max-width: 640px) {
   .admin-jogos-row { grid-template-columns: 1fr auto; row-gap: 8px; }
   .admin-jogos-row .admin-badge { grid-column: 1 / -1; justify-self: start; }
