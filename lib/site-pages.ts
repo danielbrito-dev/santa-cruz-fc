@@ -243,8 +243,8 @@ export const SITE_PAGES: Record<string, PageData> = {
       {
         heading: 'Pioneiro da inclusão',
         paragraphs: [
-          'Numa época em que o futebol era reservado às elites brancas, o Santa Cruz foi um dos primeiros clubes de Pernambuco a aceitar jogadores negros. Teófilo de Carvalho, o "Lacraia", ligado às origens do clube, é apontado como o primeiro jogador negro do time — algo raro para o período.',
-          'Mais do que um detalhe histórico, foi uma escolha de identidade: o Santa abraçou o povo que o futebol da época rejeitava.',
+          'Até a fundação do Santa Cruz, negros e mestiços eram proibidos de integrar o elenco do Náutico e de outros times da capital. O Santa nasceu para mudar isso: foi um dos primeiros clubes a abrir as portas a jogadores de todas as origens.',
+          'Teófilo de Carvalho — estudante de engenharia que também desenhou o escudo — foi o primeiro jogador negro do futebol do Norte-Nordeste. A união entre negros, mestiços e brancos fez o Santa Cruz se tornar o clube mais popular do Nordeste já nos primeiros anos de vida.',
         ],
       },
       {
@@ -331,14 +331,14 @@ export const SITE_PAGES: Record<string, PageData> = {
       {
         heading: 'O nome e o escudo',
         paragraphs: [
-          'O clube foi batizado de Santa Cruz Foot-Ball Club em referência ao pátio da Igreja de Santa Cruz, na Boa Vista, onde os fundadores jogavam. O primeiro emblema é atribuído a Teófilo de Carvalho, o "Lacraia" — figura ligada às origens do time.',
-          'Ao longo da história o escudo passou por várias versões, até o desenho atual, que combina o monograma "SCFC" entrelaçado com o escudo tricolor contornado.',
+          'O clube foi batizado de Santa Cruz Foot-Ball Club em referência ao pátio da Igreja de Santa Cruz, na Boa Vista, onde os fundadores jogavam.',
+          'O escudo foi desenhado por Teófilo de Carvalho — estudante de engenharia e o primeiro jogador negro do futebol nordestino. Ele criou uma âncora branca estilizada, ladeada por gomos vermelho e preto, com o monograma "SCFC" sobreposto. A âncora simboliza firmeza e tranquilidade; nos anos 1970, uma mudança estatutária inverteu a posição do vermelho e do preto.',
         ],
       },
       {
         heading: 'As cores',
         paragraphs: [
-          'Fundado em 1914 apenas com o preto e o branco, o clube incorporou o vermelho em 1915 — nascia o tricolor. O branco sempre separa o preto do vermelho, regra que vale até hoje na identidade visual.',
+          'O Santa Cruz nasceu alvinegro, em 1914: preto e branco foram escolhidos como símbolo de aproximar adeptos de todas as raças. Em 1915 o clube incorporou o vermelho e tornou-se tricolor — e o branco sempre separa o preto do vermelho na identidade visual.',
           'Para o historiador Leonardo Dantas, as três cores traduzem a alma do clube: o preto remete ao povo negro, o branco aos brancos e o vermelho aos povos indígenas — um retrato da mistura do povo pernambucano.',
         ],
       },
@@ -373,28 +373,18 @@ export const SITE_PAGES: Record<string, PageData> = {
   },
 
   '/o-santa/artilheiros': {
-    archetype: 'editorial',
-    lead: 'Os nomes que escreveram a história do gol coral — ao menos sete deles passaram da marca de 100 gols com o manto tricolor.',
-    sections: [
-      {
-        heading: 'Ídolos do gol',
-        paragraphs: [
-          'Desde os primórdios o Santa Cruz teve no ataque alguns de seus maiores ídolos. Tará e Sherlock foram figuras centrais do primeiro título estadual, em 1931, e nomes como Pitota e Tiano marcaram as primeiras décadas.',
-          'Na era de ouro dos anos 1970, o gol coral teve craques como Givanildo, Nunes, Luiz Fumanchu e Ramón — protagonistas dos títulos e das grandes campanhas do clube.',
-        ],
-      },
-      {
-        heading: 'Da base para o mundo',
-        paragraphs: [
-          'O maior nome revelado pelo clube é Rivaldo, que passou pelo Santa Cruz no início da carreira e foi campeão pernambucano em 1990, antes de se tornar um dos maiores craques da história do futebol brasileiro.',
-        ],
-      },
-      {
-        heading: 'Ranking histórico',
-        paragraphs: [
-          'A lista completa dos maiores artilheiros, com os números de gols de cada um, segue em curadoria pelo departamento histórico do clube.',
-        ],
-      },
+    archetype: 'achievements',
+    lead: 'Os maiores goleadores da história coral — sete jogadores ultrapassaram a marca de 100 gols com o manto tricolor.',
+    rankingNote:
+      'O Santa Cruz foi o primeiro clube do Nordeste a atingir 10.000 gols. Givanildo Oliveira é quem mais vestiu o manto, com 599 jogos. Abaixo, os artilheiros com mais de 100 gols pelo clube.',
+    ranking: [
+      { pos: 1, name: 'Tará', value: '207' },
+      { pos: 2, name: 'Luciano Veloso', value: '174' },
+      { pos: 3, name: 'Ramón', value: '148' },
+      { pos: 4, name: 'Betinho', value: '143' },
+      { pos: 5, name: 'Fernando Santana', value: '123' },
+      { pos: 6, name: 'Elói de Paula', value: '115' },
+      { pos: 7, name: 'Siduca', value: '105' },
     ],
   },
 
