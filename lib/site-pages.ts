@@ -32,9 +32,33 @@ export interface FaqData {
   intro: string;
   items: { q: string; a: string }[];
 }
+export interface AchievementsData {
+  archetype: 'achievements';
+  lead: string;
+  stats?: { label: string; value: string }[];
+  timeline?: { year: string; title: string; desc: string }[];
+  ranking?: { pos: number; name: string; value: string }[];
+  rankingNote?: string;
+}
+export interface PeopleData {
+  archetype: 'people';
+  lead: string;
+  groups: { title: string; members: { role: string; name: string }[] }[];
+}
+export interface LocationsData {
+  archetype: 'locations';
+  lead: string;
+  groups: { region: string; places: { name: string; address: string; city: string }[] }[];
+}
 
-// União estendida nas fases B–D com os demais arquétipos.
-export type PageData = EditorialData | LegalData | FaqData;
+// União estendida nas fases C–D com os demais arquétipos.
+export type PageData =
+  | EditorialData
+  | LegalData
+  | FaqData
+  | AchievementsData
+  | PeopleData
+  | LocationsData;
 
 const LEGAL_SECTIONS: LegalData['sections'] = [
   {
@@ -169,6 +193,123 @@ export const SITE_PAGES: Record<string, PageData> = {
       {
         q: 'Como falo com o clube?',
         a: 'Use a página Fale Conosco, no menu Contato. Conteúdo de exemplo.',
+      },
+    ],
+  },
+
+  '/o-santa/simbolos': {
+    archetype: 'editorial',
+    lead: 'O escudo, as cores e a Cobra Coral: os símbolos que identificam o Santa Cruz desde 1914.',
+    sections: [
+      {
+        heading: 'O escudo',
+        paragraphs: [
+          'O primeiro escudo do Santa Cruz foi criado por Teófilo de Carvalho, o "Lacraia", um dos onze fundadores. Ao longo da história, o escudo passou por oito versões — de 1914 até o emblema atual.',
+          'O desenho atual combina o monograma "SCFC" entrelaçado com o escudo dividido em preto e vermelho, contornado para destacar a marca.',
+        ],
+      },
+      {
+        heading: 'As cores',
+        paragraphs: [
+          'O tricolor preto, branco e vermelho é a assinatura do clube. O branco sempre separa o preto do vermelho — regra que vale até hoje na identidade visual.',
+        ],
+      },
+      {
+        heading: 'A Cobra Coral',
+        paragraphs: [
+          'A mascote do clube faz referência às listras coral do uniforme tricolor. "Cobra Coral" e "A Mais Apaixonada" estão entre os apelidos mais queridos da torcida.',
+        ],
+      },
+    ],
+  },
+
+  '/o-santa/titulos': {
+    archetype: 'achievements',
+    lead: 'Mais de um século de glórias: o Santa Cruz é um dos maiores campeões do Nordeste.',
+    stats: [
+      { label: 'Pernambucanos', value: '29' },
+      { label: 'Copa do Nordeste', value: '1' },
+      { label: 'Série C', value: '1' },
+      { label: 'Desde', value: '1914' },
+    ],
+    timeline: [
+      { year: '1934', title: '7×0 no Sport', desc: 'A maior diferença de gols da história do Clássico das Multidões.' },
+      { year: '1957 · 1976 · 1983', title: 'Tri-Supercampeonato Pernambucano', desc: 'Feito exclusivo do clube, reunindo os vencedores dos turnos do estadual.' },
+      { year: '1972', title: 'Inauguração do Arruda', desc: 'O Santa passa a mandar seus jogos no maior estádio de Pernambuco.' },
+      { year: '1979', title: 'Fita Azul', desc: 'Excursão internacional invicta — um marco na história tricolor.' },
+      { year: '2013', title: 'Campeão da Série C', desc: 'Título nacional somado ao tricampeonato estadual.' },
+      { year: '2015', title: 'Centenário do Pernambucano', desc: 'Campeão da edição do centenário do Campeonato Pernambucano.' },
+      { year: '2016', title: 'Copa do Nordeste', desc: 'O Santa conquista o título regional diante de sua nação.' },
+    ],
+  },
+
+  '/o-santa/artilheiros': {
+    archetype: 'achievements',
+    lead: 'Os nomes que escreveram a história do gol coral.',
+    rankingNote: 'Ranking histórico em curadoria — nomes e números a confirmar pelo departamento histórico do clube.',
+    ranking: [
+      { pos: 1, name: 'A definir', value: '—' },
+      { pos: 2, name: 'A definir', value: '—' },
+      { pos: 3, name: 'A definir', value: '—' },
+      { pos: 4, name: 'A definir', value: '—' },
+      { pos: 5, name: 'A definir', value: '—' },
+    ],
+  },
+
+  '/o-santa/enderecos': {
+    archetype: 'locations',
+    lead: 'Onde encontrar o Santa Cruz.',
+    groups: [
+      {
+        region: 'Recife',
+        places: [
+          { name: 'Estádio do Arruda', address: 'Praça do Arruda, s/n — Arruda', city: 'Recife · PE' },
+          { name: 'Sede Social', address: 'Endereço a confirmar', city: 'Recife · PE' },
+        ],
+      },
+    ],
+  },
+
+  '/o-santa/consulados': {
+    archetype: 'locations',
+    lead: 'A nação coral está em todo lugar. Encontre o consulado mais perto de você.',
+    groups: [
+      {
+        region: 'Pernambuco',
+        places: [
+          { name: 'Consulado Recife', address: 'Endereço a confirmar', city: 'Recife · PE' },
+          { name: 'Consulado Caruaru', address: 'Endereço a confirmar', city: 'Caruaru · PE' },
+        ],
+      },
+      {
+        region: 'Sudeste',
+        places: [
+          { name: 'Consulado São Paulo', address: 'Endereço a confirmar', city: 'São Paulo · SP' },
+          { name: 'Consulado Rio de Janeiro', address: 'Endereço a confirmar', city: 'Rio de Janeiro · RJ' },
+        ],
+      },
+    ],
+  },
+
+  '/clube/diretoria': {
+    archetype: 'people',
+    lead: 'A gestão do Santa Cruz Futebol Clube.',
+    groups: [
+      {
+        title: 'Presidência',
+        members: [
+          { role: 'Presidente', name: 'A definir' },
+          { role: 'Vice-Presidente', name: 'A definir' },
+        ],
+      },
+      {
+        title: 'Diretorias',
+        members: [
+          { role: 'Diretor de Futebol', name: 'A definir' },
+          { role: 'Diretor Administrativo', name: 'A definir' },
+          { role: 'Diretor Financeiro', name: 'A definir' },
+          { role: 'Diretor de Marketing', name: 'A definir' },
+        ],
       },
     ],
   },

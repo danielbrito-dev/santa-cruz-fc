@@ -8,6 +8,9 @@ import { SiteShell } from '@/components/site/site-shell';
 import { Editorial } from '@/components/site/pages/editorial';
 import { Legal } from '@/components/site/pages/legal';
 import { Faq } from '@/components/site/pages/faq';
+import { Achievements } from '@/components/site/pages/achievements';
+import { People } from '@/components/site/pages/people';
+import { Locations } from '@/components/site/pages/locations';
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -44,6 +47,15 @@ export default async function InternalPage({
       break;
     case 'faq':
       body = <Faq {...common} data={data} />;
+      break;
+    case 'achievements':
+      body = <Achievements {...common} data={data} />;
+      break;
+    case 'people':
+      body = <People {...common} data={data} />;
+      break;
+    case 'locations':
+      body = <Locations {...common} data={data} />;
       break;
     case 'editorial':
       body = <Editorial {...common} data={data} />;
