@@ -200,7 +200,7 @@ export const SITE_PAGES: Record<string, PageData> = {
     archetype: 'feature',
     heroImage: '/images/torcida1.jpg',
     heroKicker: 'Desde 1914',
-    intro: 'Em 3 de fevereiro de 1914, no pátio da Igreja de Santa Cruz, no bairro da Boa Vista, onze meninos entre 14 e 16 anos fundaram o Santa Cruz Foot-Ball Club. Mais de um século depois, a agremiação virou a maior paixão de Pernambuco — "A Mais Apaixonada" — com uma das maiores torcidas do Brasil e uma história de pioneirismo, glórias e superação.',
+    intro: 'Em 3 de fevereiro de 1914, no pátio da Igreja de Santa Cruz, na Boa Vista, onze meninos entre 14 e 16 anos fundaram o Santa Cruz Foot-Ball Club. Nascido alvinegro — para unir torcedores de todas as raças, numa época em que negros e mestiços eram barrados em outros clubes — o Santa logo virou o time do povo. Mais de um século depois, é a maior paixão de Pernambuco, "A Mais Apaixonada": dona do Arruda, de uma das maiores torcidas do Brasil e de uma história feita de pioneirismo, glórias e superação.',
     stats: [
       { label: 'Fundação', value: '03·02·1914' },
       { label: 'Fundadores', value: '11' },
@@ -213,18 +213,22 @@ export const SITE_PAGES: Record<string, PageData> = {
       { year: '1916', src: '/images/escudo-santa-cruz_1916-212x200.jpg' },
       { year: 'Atual', src: '/images/logo.png' },
     ],
-    crestsNote: 'As cores nasceram em etapas: preto e branco em 1914, com o vermelho somado em 1915 — formando o tricolor. O escudo passou por várias versões, do primeiro emblema, atribuído a Teófilo de Carvalho, o "Lacraia", até a marca atual.',
+    crestsNote: 'As cores nasceram em etapas: preto e branco em 1914, com o vermelho somado em 1915 — formando o tricolor. O escudo, atribuído a Teófilo de Carvalho, traz uma âncora branca (símbolo de firmeza) ladeada pelos gomos vermelho e preto, com o monograma "SCFC" sobreposto — e passou por várias versões até a marca atual.',
     marcosTitle: 'Marcos da história',
     marcos: [
-      { year: '1934', title: '7×0 no Sport', desc: 'A maior diferença de gols da história do Clássico das Multidões.' },
-      { year: '1957', title: 'Quebra do jejum', desc: 'Campeão pernambucano sobre o Sport diante de 29 mil — e o primeiro Supercampeonato.' },
-      { year: '1972', title: 'Inauguração do Arruda', desc: 'Em 4 de julho, 0 a 0 com o Flamengo diante de 57.688 pagantes.' },
-      { year: '1975', title: '4º no Brasileirão', desc: 'Melhor campanha na Série A, com vitórias sobre Palmeiras e Flamengo no Maracanã.' },
-      { year: '1979', title: 'Fita Azul', desc: 'Excursão internacional invicta — enfrentou Paris Saint-Germain e a seleção romena.' },
-      { year: '1983', title: 'Tri-Supercampeão', desc: 'Final com o Náutico diante de 76 mil, decidida nos pênaltis — feito exclusivo do clube.' },
-      { year: '2013', title: 'Campeão da Série C', desc: 'Primeiro título nacional, somado ao tricampeonato estadual.' },
-      { year: '2016', title: 'Copa do Nordeste', desc: 'O primeiro título regional e a estreia internacional do clube.' },
-      { year: '2025', title: 'SAF e acesso', desc: 'Nova era empresarial e o retorno à Série C após o acesso na Série D.' },
+      { year: '1914', title: 'A fundação', desc: 'Onze meninos fundam o clube no pátio da Igreja de Santa Cruz; na estreia, 7 a 0 sobre o Rio Negro.' },
+      { year: '1931', title: 'Primeiro título', desc: 'O primeiro Campeonato Pernambucano, com Tará e Sherlock entre os ídolos.' },
+      { year: '1934', title: '7×0 no Sport', desc: 'A maior goleada da história do Clássico das Multidões.' },
+      { year: '1957', title: 'Fim do jejum', desc: 'Campeão sobre o Sport (3×2) diante de 29 mil — e o primeiro Supercampeonato Pernambucano.' },
+      { year: '1967', title: 'Hexagonal Norte-Nordeste', desc: 'Primeiro título regional, com direito a 9×0 no Remo.' },
+      { year: '1972', title: 'Inauguração do Arruda', desc: 'Em 4 de julho, 0 a 0 com o Flamengo diante de 57.688 — começa a era do Gigante.' },
+      { year: '1975', title: '4º no Brasileirão', desc: 'Melhor campanha na Série A, com vitórias sobre Palmeiras e sobre o Flamengo no Maracanã.' },
+      { year: '1979', title: 'Fita Azul', desc: 'Excursão internacional invicta; enfrentou o Paris Saint-Germain e a seleção da Romênia.' },
+      { year: '1983', title: 'Tri-Supercampeão', desc: 'Final com o Náutico diante de 76 mil, vencida nos pênaltis — feito exclusivo do clube.' },
+      { year: '1990', title: 'A cria Rivaldo', desc: 'Campeão pernambucano com um jovem Rivaldo, futuro melhor do mundo, revelado pela base.' },
+      { year: '2013', title: 'Tri estadual e Série C', desc: 'Tricampeão pernambucano e, pela primeira vez, campeão nacional na Série C.' },
+      { year: '2016', title: 'Copa do Nordeste', desc: 'O título regional sobre o Campinense e a estreia internacional, na Copa Sul-Americana.' },
+      { year: '2025', title: 'Nova era', desc: 'A chegada da SAF e o acesso à Série C reacendem a esperança coral.' },
     ],
     quote: { text: 'É tradição, não é moda.', cite: 'Torcida do Santa Cruz' },
   },
@@ -404,7 +408,7 @@ export const SITE_PAGES: Record<string, PageData> = {
 
   '/o-santa/consulados': {
     archetype: 'locations',
-    lead: 'A nação coral está em todo lugar. Encontre o consulado mais perto de você.',
+    lead: 'A nação coral está em todo o Brasil. Com cerca de 1,2 milhão de torcedores, a maior paixão de Pernambuco tem consulados onde quer que bata um coração tricolor.',
     groups: [
       {
         region: 'Pernambuco',
@@ -586,7 +590,7 @@ export const SITE_PAGES: Record<string, PageData> = {
   // ---- Landing ----
   '/futebol/categorias-de-base': {
     archetype: 'landing',
-    lead: 'O celeiro de craques da Cobra Coral — formando talentos para o futuro tricolor.',
+    lead: 'O celeiro de craques da Cobra Coral — a base que revelou nomes como Rivaldo e segue formando talentos para o futuro tricolor.',
     highlights: [
       { title: 'Formação', text: 'Categorias do Sub-15 ao Sub-20, com estrutura e acompanhamento profissional.' },
       { title: 'Peneiras', text: 'Acompanhe as datas de avaliação e como participar.' },
@@ -597,7 +601,7 @@ export const SITE_PAGES: Record<string, PageData> = {
   },
   '/viva-o-santa/experiencias': {
     archetype: 'landing',
-    lead: 'Viva o Santa por dentro: experiências exclusivas para o torcedor coral.',
+    lead: 'Viva o Santa por dentro — do gramado do Arruda às áreas exclusivas do Gigante, experiências para quem é da nação.',
     highlights: [
       { title: 'Tour do Arruda', text: 'Conheça os bastidores do maior estádio de Pernambuco.' },
       { title: 'Day use', text: 'Um dia de torcedor com acesso a áreas exclusivas.' },
