@@ -11,6 +11,10 @@ import { Faq } from '@/components/site/pages/faq';
 import { Achievements } from '@/components/site/pages/achievements';
 import { People } from '@/components/site/pages/people';
 import { Locations } from '@/components/site/pages/locations';
+import { Documents } from '@/components/site/pages/documents';
+import { Gallery } from '@/components/site/pages/gallery';
+import { Listing } from '@/components/site/pages/listing';
+import { Landing } from '@/components/site/pages/landing';
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -56,6 +60,18 @@ export default async function InternalPage({
       break;
     case 'locations':
       body = <Locations {...common} data={data} />;
+      break;
+    case 'documents':
+      body = <Documents {...common} data={data} />;
+      break;
+    case 'gallery':
+      body = <Gallery {...common} data={data} />;
+      break;
+    case 'listing':
+      body = <Listing {...common} data={data} />;
+      break;
+    case 'landing':
+      body = <Landing {...common} data={data} />;
       break;
     case 'editorial':
       body = <Editorial {...common} data={data} />;

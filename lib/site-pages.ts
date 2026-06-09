@@ -1,5 +1,6 @@
 // Conteúdo estático de cada página interna + qual arquétipo a renderiza.
 // Dados reais onde há base (CLAUDE.md/BRAND.md); placeholder honesto no resto.
+import site from '@/content/site.json';
 
 export type ArchetypeKey =
   | 'editorial'
@@ -85,6 +86,28 @@ export type PageData =
   | GalleryData
   | ListingData
   | LandingData;
+
+// Dados reais derivados do content/site.json (notícias publicadas + jogos).
+const sj = site as unknown as {
+  news: { slug: string; title: { pt: string }; tag: { pt: string }; publishedAt: string; status: string }[];
+  matches: { competition: string; opponent: string; isHome: boolean; scoreHome: number | null; scoreAway: number | null }[];
+};
+const NEWS_ITEMS: ListingData['items'] = sj.news
+  .filter((n) => n.status === 'published')
+  .map((n) => ({
+    tag: n.tag.pt,
+    title: n.title.pt,
+    meta: n.publishedAt.slice(0, 10).split('-').reverse().join('/'),
+  }));
+const MATCH_ITEMS: ListingData['items'] = sj.matches.map((m) => ({
+  group: m.competition,
+  tag: m.competition,
+  title: m.isHome ? `Santa Cruz × ${m.opponent}` : `${m.opponent} × Santa Cruz`,
+  meta:
+    m.scoreHome != null && m.scoreAway != null
+      ? `${m.scoreHome} – ${m.scoreAway}`
+      : 'A definir',
+}));
 
 const LEGAL_SECTIONS: LegalData['sections'] = [
   {
@@ -336,6 +359,162 @@ export const SITE_PAGES: Record<string, PageData> = {
           { role: 'Diretor Financeiro', name: 'A definir' },
           { role: 'Diretor de Marketing', name: 'A definir' },
         ],
+      },
+    ],
+  },
+
+  // ---- Documentos ----
+  '/clube/transparencia': {
+    archetype: 'documents',
+    lead: 'Prestação de contas e documentos de gestão do clube.',
+    items: [
+      { title: 'Demonstrações Financeiras 2025', kind: 'PDF', meta: '2025', href: '#' },
+      { title: 'Demonstrações Financeiras 2024', kind: 'PDF', meta: '2024', href: '#' },
+      { title: 'Parecer do Conselho Fiscal', kind: 'PDF', meta: '2025', href: '#' },
+    ],
+  },
+  '/clube/estatuto': {
+    archetype: 'documents',
+    lead: 'O Estatuto Social do Santa Cruz Futebol Clube.',
+    items: [{ title: 'Estatuto Social', kind: 'PDF', meta: 'Vigente', href: '#' }],
+  },
+  '/clube/documentos': {
+    archetype: 'documents',
+    lead: 'Documentos institucionais e regimentos do clube.',
+    items: [
+      { title: 'Regimento Interno', kind: 'PDF', href: '#' },
+      { title: 'Código de Ética', kind: 'PDF', href: '#' },
+      { title: 'Política de Privacidade', kind: 'PDF', href: '/privacidade' },
+    ],
+  },
+  '/clube/relatorios': {
+    archetype: 'documents',
+    lead: 'Relatórios de gestão e atividades.',
+    items: [
+      { title: 'Relatório Anual 2025', kind: 'PDF', meta: '2025', href: '#' },
+      { title: 'Relatório Anual 2024', kind: 'PDF', meta: '2024', href: '#' },
+    ],
+  },
+  '/midia/guia-da-partida': {
+    archetype: 'documents',
+    lead: 'O guia oficial de cada partida do tricolor.',
+    items: [
+      { title: 'Guia da Partida — Pernambucano', kind: 'PDF', meta: 'Edição mais recente', href: '#' },
+      { title: 'Guia da Partida — Copa do Nordeste', kind: 'PDF', href: '#' },
+    ],
+  },
+  '/midia/press-kit': {
+    archetype: 'documents',
+    lead: 'Materiais oficiais para imprensa e parceiros.',
+    items: [
+      { title: 'Escudo oficial (PNG)', kind: 'PNG', meta: 'Marca', href: '/images/logo.png' },
+      { title: 'Manual de Marca', kind: 'PDF', meta: '2025', href: '#' },
+      { title: 'Banco de fotos oficiais', kind: 'ZIP', href: '#' },
+    ],
+  },
+  '/midia/conteudo-imprensa': {
+    archetype: 'documents',
+    lead: 'Releases e materiais de apoio para jornalistas.',
+    items: [
+      { title: 'Release — Coletiva de imprensa', kind: 'PDF', href: '#' },
+      { title: 'Notas oficiais', kind: 'PDF', href: '#' },
+    ],
+  },
+
+  // ---- Galeria ----
+  '/midia/fotos': {
+    archetype: 'gallery',
+    lead: 'A nação coral, o Arruda e os momentos do tricolor.',
+    images: [
+      { src: '/images/torcida1.jpg', alt: 'Torcida do Santa Cruz' },
+      { src: '/images/foto_arruda.jpg', alt: 'Estádio do Arruda' },
+      { src: '/images/estadio_arruda_em_2020_700_5.jpg', alt: 'Arruda em 2020' },
+      { src: '/images/everaldo.JPG', alt: 'Everaldo' },
+      { src: '/images/Everaldo-SantaCruz-Divulgacao.jpeg', alt: 'Everaldo — divulgação' },
+      { src: '/images/jogador_02.png', alt: 'Atleta tricolor' },
+      { src: '/images/jogador_03.png', alt: 'Atleta tricolor' },
+      { src: '/images/goleiro.png', alt: 'Goleiro tricolor' },
+      { src: '/images/escudo-santa-cruz_1915-212x200.jpg', alt: 'Escudo de 1915' },
+      { src: '/images/escudo-santa-cruz_1916-212x200.jpg', alt: 'Escudo de 1916' },
+    ],
+  },
+
+  // ---- Listagem ----
+  '/midia/noticias': {
+    archetype: 'listing',
+    lead: 'As últimas do tricolor.',
+    items: NEWS_ITEMS,
+  },
+  '/futebol/calendario': {
+    archetype: 'listing',
+    lead: 'Os próximos compromissos da Cobra Coral.',
+    items: MATCH_ITEMS,
+  },
+  '/futebol/resultados': {
+    archetype: 'listing',
+    lead: 'Os últimos resultados do tricolor.',
+    items: MATCH_ITEMS,
+  },
+  '/viva-o-santa/tv-coral': {
+    archetype: 'listing',
+    lead: 'Bastidores, entrevistas e a emoção coral em vídeo.',
+    items: [
+      { tag: 'Bastidores', title: 'Bastidores da vitória coral', meta: 'Vídeo' },
+      { tag: 'Entrevista', title: 'Entrevista exclusiva', meta: 'Vídeo' },
+      { tag: 'Gols', title: 'Os gols da rodada', meta: 'Vídeo' },
+    ],
+  },
+
+  // ---- Landing ----
+  '/futebol/categorias-de-base': {
+    archetype: 'landing',
+    lead: 'O celeiro de craques da Cobra Coral — formando talentos para o futuro tricolor.',
+    highlights: [
+      { title: 'Formação', text: 'Categorias do Sub-15 ao Sub-20, com estrutura e acompanhamento profissional.' },
+      { title: 'Peneiras', text: 'Acompanhe as datas de avaliação e como participar.' },
+      { title: 'Talentos', text: 'Jovens revelados que sonham em vestir o tricolor profissional.' },
+    ],
+    ctaLabel: 'Saiba mais',
+    ctaHref: '#',
+  },
+  '/viva-o-santa/experiencias': {
+    archetype: 'landing',
+    lead: 'Viva o Santa por dentro: experiências exclusivas para o torcedor coral.',
+    highlights: [
+      { title: 'Tour do Arruda', text: 'Conheça os bastidores do maior estádio de Pernambuco.' },
+      { title: 'Day use', text: 'Um dia de torcedor com acesso a áreas exclusivas.' },
+      { title: 'Camarote Coral', text: 'Assista aos jogos com conforto e gastronomia.' },
+    ],
+    ctaLabel: 'Quero viver',
+    ctaHref: '#',
+  },
+  '/viva-o-santa/censo': {
+    archetype: 'landing',
+    lead: 'Conte pro Santa quem é você. O Censo do Santa mapeia a maior nação do Nordeste.',
+    highlights: [
+      { title: 'Participe', text: 'Responda o censo e ajude o clube a te conhecer melhor.' },
+      { title: 'Vantagens', text: 'Torcedores cadastrados recebem novidades e ofertas em primeira mão.' },
+      { title: 'A nação', text: 'Juntos, somos a torcida mais apaixonada do Brasil.' },
+    ],
+    ctaLabel: 'Participar do Censo',
+    ctaHref: '#',
+  },
+
+  // ---- Locais ----
+  '/viva-o-santa/lojas': {
+    archetype: 'locations',
+    lead: 'Vista o manto em uma das lojas oficiais do Santa Cruz.',
+    groups: [
+      {
+        region: 'Recife',
+        places: [
+          { name: 'Loja Oficial Arruda', address: 'Praça do Arruda, s/n', city: 'Recife · PE' },
+          { name: 'Loja Oficial Shopping', address: 'Endereço a confirmar', city: 'Recife · PE' },
+        ],
+      },
+      {
+        region: 'Online',
+        places: [{ name: 'Loja Virtual', address: 'Entrega para todo o Brasil', city: 'santacruz.com.br' }],
       },
     ],
   },

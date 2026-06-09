@@ -16,15 +16,11 @@ export async function Locations({
 
   return (
     <div className="info">
-      <header className="info-hero">
-        <div className="container info-hero-inner">
-          <nav className="info-breadcrumb" aria-label="breadcrumb">
-            <span>{t(sectionKey)}</span>
-            <span className="info-breadcrumb-sep">/</span>
-            <span className="info-breadcrumb-current">{t(titleKey)}</span>
-          </nav>
-          <h1 className="info-title">{t(titleKey)}</h1>
-          <p className="info-lead">{data.lead}</p>
+      <header className="loc-head">
+        <div className="container">
+          <span className="loc-eyebrow">◉ {t(sectionKey)}</span>
+          <h1 className="loc-title">{t(titleKey)}</h1>
+          <p className="loc-lead">{data.lead}</p>
         </div>
       </header>
 

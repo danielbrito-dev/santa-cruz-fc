@@ -4043,6 +4043,96 @@ textarea.admin-input {
 }
 [data-theme="dark"] .info-content section:first-of-type p:first-of-type::first-letter{color:var(--gold)}
 
+/* ===== arquétipo Documentos (lista de downloads) ===== */
+.doc{display:flex;flex-direction:column;min-height:100vh}
+.doc-head{position:relative;z-index:2;background:var(--panel);color:var(--panel-text);padding:120px 0 26px;border-bottom:1px solid var(--line)}
+.doc-eyebrow{display:block;font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.doc-title{font-size:clamp(28px,3.6vw,46px);font-weight:900;text-transform:uppercase;letter-spacing:-.02em}
+.doc-lead{margin-top:10px;color:var(--muted);font-size:15px;max-width:56ch}
+.doc-body{position:relative;z-index:2;background:var(--panel);color:var(--panel-text);padding:32px 0 64px}
+.doc-list{max-width:820px;margin:0 auto;list-style:none}
+.doc-row{display:flex;align-items:center;gap:16px;padding:16px 18px;border:1px solid var(--line);border-radius:10px;margin-bottom:10px;color:inherit;transition:border-color .2s,transform .2s}
+.doc-row:hover{border-color:var(--red);transform:translateX(2px)}
+[data-theme="dark"] .doc-row:hover{border-color:var(--gold)}
+.doc-icon{flex:0 0 auto;width:40px;height:40px;display:flex;align-items:center;justify-content:center;color:var(--red);background:var(--bg-2);border-radius:8px}
+[data-theme="dark"] .doc-icon{color:var(--gold)}
+.doc-icon svg{width:20px;height:20px}
+.doc-info{flex:1;display:flex;flex-direction:column;gap:2px;min-width:0}
+.doc-name{font-weight:800;font-size:15px}
+.doc-meta{font-size:12px;color:var(--muted)}
+.doc-kind{flex:0 0 auto;font-size:10px;font-weight:800;letter-spacing:.1em;padding:4px 8px;border:1px solid var(--line);border-radius:5px;color:var(--muted)}
+.doc-dl{flex:0 0 auto;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
+[data-theme="dark"] .doc-dl{color:var(--gold)}
+@media(max-width:560px){.doc-kind,.doc-dl{display:none}}
+
+/* ===== arquétipo Galeria ===== */
+.gallery{display:flex;flex-direction:column;min-height:100vh}
+.gallery-head{position:relative;z-index:2;background:var(--panel);color:var(--panel-text);padding:120px 0 24px;text-align:center}
+.gallery-eyebrow{display:block;font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:10px}
+[data-theme="dark"] .gallery-eyebrow{color:var(--gold)}
+.gallery-title{font-size:clamp(28px,3.6vw,46px);font-weight:900;text-transform:uppercase;letter-spacing:-.02em}
+.gallery-lead{margin:8px auto 0;color:var(--muted);font-size:15px;max-width:52ch}
+.gallery-body{position:relative;z-index:2;background:var(--section-bg);padding:32px 0 64px}
+.gallery-grid{columns:4;column-gap:10px}
+@media(max-width:1024px){.gallery-grid{columns:3}}
+@media(max-width:680px){.gallery-grid{columns:2}}
+.gallery-item{break-inside:avoid;margin:0 0 10px;overflow:hidden;border-radius:8px;background:var(--ink)}
+.gallery-item img{width:100%;display:block;transition:transform .5s,filter .3s;filter:saturate(.95)}
+.gallery-item:hover img{transform:scale(1.05);filter:saturate(1.1)}
+
+/* ===== arquétipo Listagem ===== */
+.listing{display:flex;flex-direction:column;min-height:100vh}
+.listing-head{position:relative;z-index:2;background:var(--hero-bg);color:var(--hero-text);padding:120px 0 32px;border-bottom:1px solid var(--line)}
+.listing-head-inner{display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
+.listing-title{font-size:clamp(32px,4.5vw,60px);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;margin-top:8px}
+.listing-lead{margin-top:10px;color:var(--muted);font-size:15px}
+.listing-count{flex:0 0 auto;font-size:clamp(40px,6vw,80px);font-weight:900;line-height:.8;color:transparent;-webkit-text-stroke:2px var(--red);font-variant-numeric:tabular-nums}
+[data-theme="dark"] .listing-count{-webkit-text-stroke-color:var(--gold)}
+.listing-body{position:relative;z-index:2;background:var(--panel);color:var(--panel-text);padding:36px 0 64px}
+.listing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:860px){.listing-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.listing-grid{grid-template-columns:1fr}}
+.listing-card{border:1px solid var(--line);border-radius:10px;padding:20px;display:flex;flex-direction:column;gap:8px;min-height:120px;transition:transform .2s,border-color .2s}
+.listing-card:hover{transform:translateY(-3px);border-color:var(--red)}
+[data-theme="dark"] .listing-card:hover{border-color:var(--gold)}
+.listing-tag{align-self:flex-start;font-size:9.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:4px 8px;background:var(--bg-2);color:var(--red)}
+[data-theme="dark"] .listing-tag{color:var(--gold)}
+.listing-card-title{font-size:16px;font-weight:800;line-height:1.2}
+.listing-meta{font-size:12px;color:var(--muted);font-weight:700;margin-top:auto}
+
+/* ===== arquétipo Landing (hero escuro + CTA) ===== */
+.landing{display:flex;flex-direction:column;min-height:100vh}
+.landing-hero{position:relative;z-index:2;background:var(--section-bg);color:var(--white);padding:130px 0 56px;overflow:hidden}
+.landing-hero::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(60% 50% at 80% 0%,rgba(150,16,16,.22),transparent 60%)}
+.landing-hero>.container{position:relative;z-index:1}
+.landing-eyebrow{display:inline-block;padding:6px 12px;background:var(--red);color:var(--white);box-shadow:0 0 0 1.5px var(--white);font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin-bottom:18px}
+.landing-title{font-size:clamp(36px,6vw,80px);font-weight:900;text-transform:uppercase;letter-spacing:-.03em;line-height:.92;max-width:16ch}
+.landing-lead{margin-top:18px;max-width:52ch;font-size:clamp(15px,1.6vw,18px);color:rgba(255,255,255,.8);line-height:1.5}
+.landing-cta{display:inline-flex;align-items:center;gap:10px;margin-top:26px;background:var(--white);color:var(--ink);padding:15px 26px;border-radius:999px;font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;transition:transform .2s,gap .2s}
+.landing-cta:hover{transform:translateY(-2px);gap:14px}
+.landing-body{position:relative;z-index:2;background:var(--panel);color:var(--panel-text);padding:48px 0 64px}
+.landing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:780px){.landing-grid{grid-template-columns:1fr}}
+.landing-card{border:1px solid var(--line);border-radius:12px;padding:26px 24px}
+.landing-card-idx{font-size:13px;font-weight:900;color:var(--red);font-variant-numeric:tabular-nums}
+[data-theme="dark"] .landing-card-idx{color:var(--gold)}
+.landing-card h3{font-size:18px;font-weight:800;margin:8px 0}
+.landing-card p{font-size:14px;line-height:1.6;opacity:.85}
+
+/* ===== Pessoas — header centrado (distinto) ===== */
+.people-head{position:relative;z-index:2;background:var(--panel);color:var(--panel-text);padding:120px 0 36px;text-align:center}
+.people-eyebrow{display:block;font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.people-title{font-size:clamp(30px,4vw,52px);font-weight:900;text-transform:uppercase;letter-spacing:-.02em}
+.people-title::after{content:"";display:block;width:54px;height:4px;background:var(--gold);margin:18px auto 0}
+.people-lead{margin:14px auto 0;color:var(--muted);font-size:15px;max-width:48ch}
+
+/* ===== Locais — header com pin (distinto) ===== */
+.loc-head{position:relative;z-index:2;background:var(--hero-bg);color:var(--hero-text);padding:120px 0 32px;border-bottom:1px solid var(--line)}
+.loc-eyebrow{display:block;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:10px}
+[data-theme="dark"] .loc-eyebrow{color:var(--gold)}
+.loc-title{font-size:clamp(30px,4.5vw,58px);font-weight:900;text-transform:uppercase;letter-spacing:-.02em}
+.loc-lead{margin-top:10px;color:var(--muted);font-size:15px;max-width:54ch}
+
 /* ===== arquétipo FAQ (acordeão) ===== */
 .faq-list{max-width:74ch;margin:0 auto;display:flex;flex-direction:column;gap:10px}
 .faq-item{border:1px solid var(--line);border-radius:10px;background:var(--bg-2);overflow:hidden}

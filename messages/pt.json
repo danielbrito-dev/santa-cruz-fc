@@ -78,7 +78,9 @@
     "updatedAt": "Atualizado em",
     "document": "Documento",
     "onThisPage": "Nesta página",
-    "helpCenter": "Central de Ajuda"
+    "helpCenter": "Central de Ajuda",
+    "downloads": "Arquivos",
+    "download": "Baixar"
   },
   "common": { "allNews": "Todas as notícias", "matchCenter": "Match Center", "becomeMember": "Seja Sócio Coral", "skipToContent": "Pular para o conteúdo" },
   "news": { "heading1": "Notícias", "heading2": "do Clube", "photos": "{count, plural, one {# foto} other {# fotos}}" },
