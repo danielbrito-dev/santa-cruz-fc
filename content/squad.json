@@ -1,37 +1,267 @@
 {
-  "_seed": "Dados de exemplo (placeholder). Biografias em lorem ipsum — substituir pelo elenco real (futuramente via admin).",
   "season": "2026",
   "players": [
-    { "number": 1, "name": "Gabriel Felix", "group": "goleiros", "photo": "/images/goleiro.png", "country": "BRA", "birthDate": "12/03/1996", "birthPlace": "Recife-PE", "height": "1,90 m", "joinedAt": "01/2026", "bio": { "pt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.", "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor." } },
-    { "number": 12, "name": "Léo Vieira", "group": "goleiros", "photo": "", "country": "BRA", "birthDate": "08/07/1994", "birthPlace": "Recife-PE", "height": "1,88 m", "joinedAt": "01/2026", "bio": { "pt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.", "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor." } },
-    { "number": 22, "name": "Diego Lopes", "group": "goleiros", "photo": "", "country": "BRA", "birthDate": "19/11/1998", "birthPlace": "Olinda-PE", "height": "1,86 m", "joinedAt": "01/2026", "bio": { "pt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.", "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor." } },
-
-    { "number": 2, "name": "Wallian", "group": "laterais", "photo": "", "country": "BRA", "birthDate": "03/02/1997", "birthPlace": "Jaboatão-PE", "height": "1,78 m", "joinedAt": "01/2026", "bio": { "pt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.", "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor." } },
-    { "number": 6, "name": "Vinícius Barba", "group": "laterais", "photo": "", "country": "BRA", "birthDate": "27/09/1995", "birthPlace": "Recife-PE", "height": "1,76 m", "joinedAt": "01/2026", "bio": { "pt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.", "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor." } },
-    { "number": 13, "name": "Caju", "group": "laterais", "photo": "", "country": "BRA", "birthDate": "15/04/1999", "birthPlace": "Caruaru-PE", "height": "1,74 m", "joinedAt": "01/2026", "bio": { "pt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.", "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor." } },
-    { "number": 26, "name": "Hélio Borges", "group": "laterais", "photo": "", "country": "BRA", "birthDate": "30/06/2000", "birthPlace": "Recife-PE", "height": "1,80 m", "joinedAt": "01/2026", "bio": { "pt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.", "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor." } },
-
-    { "number": 3, "name": "Wagner Balotelli", "group": "zagueiros", "photo": "/images/jogador_02.png", "country": "BRA", "birthDate": "21/08/1993", "birthPlace": "Recife-PE", "height": "1,87 m", "joinedAt": "01/2026", "bio": { "pt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.", "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor." } },
-    { "number": 4, "name": "Adaílton", "group": "zagueiros", "photo": "", "country": "BRA", "birthDate": "11/01/1992", "birthPlace": "Garanhuns-PE", "height": "1,89 m", "joinedAt": "01/2026", "bio": { "pt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.", "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor." } },
-    { "number": 14, "name": "Joécio", "group": "zagueiros", "photo": "", "country": "BRA", "birthDate": "05/12/1997", "birthPlace": "Recife-PE", "height": "1,85 m", "joinedAt": "01/2026", "bio": { "pt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.", "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor." } },
-    { "number": 33, "name": "Rayan Costa", "group": "zagueiros", "photo": "", "country": "BRA", "birthDate": "18/03/2002", "birthPlace": "Recife-PE", "height": "1,83 m", "joinedAt": "01/2026", "bio": { "pt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.", "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor." } },
-
-    { "number": 5, "name": "Lucas Siqueira", "group": "meio-campistas", "photo": "", "country": "BRA", "birthDate": "23/07/1991", "birthPlace": "Recife-PE", "height": "1,81 m", "joinedAt": "01/2026", "bio": { "pt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.", "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor." } },
-    { "number": 8, "name": "Pedro Castro", "group": "meio-campistas", "photo": "", "country": "BRA", "birthDate": "09/10/1996", "birthPlace": "Recife-PE", "height": "1,79 m", "joinedAt": "01/2026", "bio": { "pt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.", "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor." } },
-    { "number": 10, "name": "Renatinho", "group": "meio-campistas", "photo": "/images/jogador_03.png", "country": "BRA", "birthDate": "20/05/1995", "birthPlace": "Olinda-PE", "height": "1,74 m", "joinedAt": "01/2026", "bio": { "pt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.", "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor." } },
-    { "number": 18, "name": "Matheus Melo", "group": "meio-campistas", "photo": "", "country": "BRA", "birthDate": "14/02/2001", "birthPlace": "Recife-PE", "height": "1,77 m", "joinedAt": "01/2026", "bio": { "pt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.", "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor." } },
-    { "number": 20, "name": "João Pedro", "group": "meio-campistas", "photo": "", "country": "BRA", "birthDate": "07/06/2003", "birthPlace": "Recife-PE", "height": "1,75 m", "joinedAt": "01/2026", "bio": { "pt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.", "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor." } },
-
-    { "number": 7, "name": "Chiquinho", "group": "atacantes", "photo": "", "country": "BRA", "birthDate": "02/04/1998", "birthPlace": "Recife-PE", "height": "1,73 m", "joinedAt": "01/2026", "bio": { "pt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.", "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor." } },
-    { "number": 9, "name": "Everaldo", "group": "atacantes", "photo": "/images/everaldo_sembg.png", "country": "BRA", "birthDate": "01/07/1992", "birthPlace": "Salgueiro-PE", "height": "1,80 m", "joinedAt": "01/2026", "bio": { "pt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.", "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor." } },
-    { "number": 11, "name": "Pingo", "group": "atacantes", "photo": "", "country": "BRA", "birthDate": "16/09/1999", "birthPlace": "Recife-PE", "height": "1,72 m", "joinedAt": "01/2026", "bio": { "pt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.", "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor." } },
-    { "number": 19, "name": "Kayke", "group": "atacantes", "photo": "", "country": "BRA", "birthDate": "28/01/2002", "birthPlace": "Recife-PE", "height": "1,84 m", "joinedAt": "01/2026", "bio": { "pt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.", "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor." } },
-    { "number": 77, "name": "Bruno Mota", "group": "atacantes", "photo": "", "country": "BRA", "birthDate": "13/11/1997", "birthPlace": "Recife-PE", "height": "1,82 m", "joinedAt": "01/2026", "bio": { "pt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.", "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor." } }
+    {
+      "number": 2,
+      "name": "Thiago Ennes",
+      "group": "laterais",
+      "photo": "/images/atletas/2_Thiago%20Ennes_30_RB.jpg",
+      "country": "BRA",
+      "age": 30
+    },
+    {
+      "number": 3,
+      "name": "Eurico",
+      "group": "zagueiros",
+      "photo": "/images/atletas/3_Eurico_32_CB.jpg",
+      "country": "BRA",
+      "age": 32
+    },
+    {
+      "number": 4,
+      "name": "William Alves",
+      "group": "zagueiros",
+      "photo": "/images/atletas/4_William%20Alves_39_CB.jpg",
+      "country": "BRA",
+      "age": 39
+    },
+    {
+      "number": 5,
+      "name": "Pedro Favela",
+      "group": "meio-campistas",
+      "photo": "/images/atletas/5_Pedro%20Favela_26_MD.jpg",
+      "country": "BRA",
+      "age": 26
+    },
+    {
+      "number": 6,
+      "name": "Alex Ruan",
+      "group": "laterais",
+      "photo": "/images/atletas/6_Alex%20Ruan_33_LB.jpg",
+      "country": "BRA",
+      "age": 33
+    },
+    {
+      "number": 7,
+      "name": "Fabinho",
+      "group": "meio-campistas",
+      "photo": "/images/atletas/7_Fabinho_39_MD.jpg",
+      "country": "BRA",
+      "age": 39
+    },
+    {
+      "number": 9,
+      "name": "Quirino",
+      "group": "atacantes",
+      "photo": "/images/atletas/9_Quirino_32_ST.jpg",
+      "country": "BRA",
+      "age": 32
+    },
+    {
+      "number": 11,
+      "name": "Nilton",
+      "group": "meio-campistas",
+      "photo": "/images/atletas/11_Nilton_23_MD.jpg",
+      "country": "BRA",
+      "age": 23
+    },
+    {
+      "number": 12,
+      "name": "Rockened",
+      "group": "goleiros",
+      "photo": "/images/atletas/12_Rockened_23_GK.jpg",
+      "country": "BRA",
+      "age": 23
+    },
+    {
+      "number": 13,
+      "name": "Mateus Vinicius",
+      "group": "zagueiros",
+      "photo": "/images/atletas/13_Mateus%20Vinicius_27_CB.jpg",
+      "country": "BRA",
+      "age": 27
+    },
+    {
+      "number": 15,
+      "name": "Andrey",
+      "group": "meio-campistas",
+      "photo": "/images/atletas/15_Andrey_28_MD.jpg",
+      "country": "BRA",
+      "age": 28
+    },
+    {
+      "number": 17,
+      "name": "Ronald",
+      "group": "atacantes",
+      "photo": "/images/atletas/17_Ronald_29_LW.jpg",
+      "country": "BRA",
+      "age": 29
+    },
+    {
+      "number": 18,
+      "name": "Vitinho",
+      "group": "atacantes",
+      "photo": "/images/atletas/18_Vitinho_22_LW.jpg",
+      "country": "BRA",
+      "age": 22
+    },
+    {
+      "number": 19,
+      "name": "Renato",
+      "group": "atacantes",
+      "photo": "/images/atletas/19_Renato_36_RW.jpg",
+      "country": "BRA",
+      "age": 36
+    },
+    {
+      "number": 20,
+      "name": "Patrick Allan",
+      "group": "meio-campistas",
+      "photo": "/images/atletas/20_Patrick%20Allan_31_MD.jpg",
+      "country": "BRA",
+      "age": 31
+    },
+    {
+      "number": 21,
+      "name": "Eron",
+      "group": "atacantes",
+      "photo": "/images/atletas/21_Eron_27_ST.jpg",
+      "country": "BRA",
+      "age": 27
+    },
+    {
+      "number": 22,
+      "name": "Mateus Castilho",
+      "group": "meio-campistas",
+      "photo": "/images/atletas/22_Mateus%20Castilho_21_MD.jpg",
+      "country": "BRA",
+      "age": 21
+    },
+    {
+      "number": 23,
+      "name": "Tiago Marques",
+      "group": "atacantes",
+      "photo": "/images/atletas/23_Tiago%20Marques_38_ST.jpg",
+      "country": "BRA",
+      "age": 38
+    },
+    {
+      "number": 25,
+      "name": "Gabriel Souza",
+      "group": "goleiros",
+      "photo": "/images/atletas/25_Gabriel%20Souza_21_GK.jpg",
+      "country": "BRA",
+      "age": 21
+    },
+    {
+      "number": 26,
+      "name": "Silva",
+      "group": "meio-campistas",
+      "photo": "/images/atletas/26_Silva_30_MD.jpg",
+      "country": "BRA",
+      "age": 30
+    },
+    {
+      "number": 27,
+      "name": "Edson Miranda",
+      "group": "meio-campistas",
+      "photo": "/images/atletas/27_Edson%20Miranda_27_MD.jpg",
+      "country": "BRA",
+      "age": 27
+    },
+    {
+      "number": 29,
+      "name": "Marquinhos",
+      "group": "atacantes",
+      "photo": "/images/atletas/29_Marquinhos_23_RW.jpg",
+      "country": "BRA",
+      "age": 23
+    },
+    {
+      "number": 30,
+      "name": "Jerfeson Bahia",
+      "group": "zagueiros",
+      "photo": "/images/atletas/30_Jerfeson%20Bahia_34_CB.jpg",
+      "country": "BRA",
+      "age": 34
+    },
+    {
+      "number": 31,
+      "name": "Zé Mario",
+      "group": "laterais",
+      "photo": "/images/atletas/31_Z%C3%A9%20Mario_34_LB.jpg",
+      "country": "BRA",
+      "age": 34
+    },
+    {
+      "number": 35,
+      "name": "Denis",
+      "group": "meio-campistas",
+      "photo": "/images/atletas/35_Denis_20_MB.jpg",
+      "country": "BRA",
+      "age": 20
+    },
+    {
+      "number": 37,
+      "name": "Everaldo",
+      "group": "atacantes",
+      "photo": "/images/atletas/37_Everaldo_32_RW.jpg",
+      "country": "BRA",
+      "age": 32
+    },
+    {
+      "number": 40,
+      "name": "Thiago Coleho",
+      "group": "goleiros",
+      "photo": "/images/atletas/40_Thiago%20Coleho_31_GK.jpg",
+      "country": "BRA",
+      "age": 31
+    },
+    {
+      "number": 41,
+      "name": "Thiago Henrique",
+      "group": "meio-campistas",
+      "photo": "/images/atletas/41_Thiago%20Henrique_22.jpg",
+      "country": "BRA",
+      "age": 22
+    },
+    {
+      "number": 55,
+      "name": "Leo Costa",
+      "group": "meio-campistas",
+      "photo": "/images/atletas/55_Leo%20Costa_30_CM.jpg",
+      "country": "BRA",
+      "age": 30
+    }
   ],
   "staff": [
-    { "role": { "pt": "Técnico", "en": "Head Coach" }, "name": "Lorem Ipsum" },
-    { "role": { "pt": "Auxiliar Técnico", "en": "Assistant Coach" }, "name": "Lorem Ipsum" },
-    { "role": { "pt": "Preparador Físico", "en": "Fitness Coach" }, "name": "Lorem Ipsum" },
-    { "role": { "pt": "Treinador de Goleiros", "en": "Goalkeeping Coach" }, "name": "Lorem Ipsum" }
+    {
+      "role": {
+        "pt": "Técnico",
+        "en": "Head Coach"
+      },
+      "name": "Lorem Ipsum"
+    },
+    {
+      "role": {
+        "pt": "Auxiliar Técnico",
+        "en": "Assistant Coach"
+      },
+      "name": "Lorem Ipsum"
+    },
+    {
+      "role": {
+        "pt": "Preparador Físico",
+        "en": "Fitness Coach"
+      },
+      "name": "Lorem Ipsum"
+    },
+    {
+      "role": {
+        "pt": "Treinador de Goleiros",
+        "en": "Goalkeeping Coach"
+      },
+      "name": "Lorem Ipsum"
+    }
   ]
 }

@@ -23,7 +23,8 @@ export interface Player {
   group: PositionGroupKey;
   photo: string;
   country: string;
-  // Optional fields used by the athlete detail page (placeholder data for now).
+  // Optional fields used by the athlete detail page.
+  age?: number;
   birthDate?: string;
   birthPlace?: string;
   height?: string;

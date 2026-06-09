@@ -26,6 +26,7 @@ export async function AthletePage({ player, locale }: { player: Player; locale: 
     { label: t('lblNumber'), value: String(player.number) },
     { label: t('lblNationality'), value: player.country },
   ];
+  if (player.age) details.push({ label: t('lblAge'), value: `${player.age}` });
   if (player.birthDate) details.push({ label: t('lblBirth'), value: player.birthDate });
   if (player.birthPlace) details.push({ label: t('lblBirthPlace'), value: player.birthPlace });
   if (player.height) details.push({ label: t('lblHeight'), value: player.height });

@@ -1,0 +1,5 @@
+Os nomes dos arquivos são compostos por:
+
+NUMERO-CAMISA_NOME_IDADE_POSICAO
+
+o underline é usado para separar as informações 
