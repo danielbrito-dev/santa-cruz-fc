@@ -48,7 +48,7 @@
     {
       "number": 6,
       "name": "Alex Ruan",
-      "group": "zagueiros",
+      "group": "laterais",
       "photo": "/images/atletas/6_Alex%20Ruan_33_LB.jpg",
       "country": "BRA",
       "age": 33,
@@ -180,7 +180,7 @@
     {
       "number": 22,
       "name": "Matheus Castilho",
-      "group": "laterais",
+      "group": "meio-campistas",
       "photo": "/images/atletas/22_Mateus%20Castilho_21_MD.jpg",
       "country": "BRA",
       "age": 21,
@@ -279,7 +279,7 @@
     {
       "number": 37,
       "name": "Everaldo",
-      "group": "atacantes",
+      "group": "meio-campistas",
       "photo": "/images/atletas/37_Everaldo_32_RW.jpg",
       "country": "BRA",
       "age": 32,
