@@ -632,7 +632,7 @@ ul{list-style:none}
 .match-row-shield.has-crest{background:transparent;border:none;border-radius:0;width:32px;height:32px;padding:0;overflow:visible}
 /* rivais (Sport/Náutico): escudo levemente inclinado + negativo SUAVE —
    rivalidade, sem desrespeito às instituições (efeito discreto, sem passar do tom) */
-.match-row-shield.is-rival img{transform:rotate(-6deg);filter:invert(.45) grayscale(.08);opacity:.95}
+.match-row-shield.is-rival img{transform:rotate(-5deg);filter:invert(.12) grayscale(.05);opacity:.95}
 
 /* card FIXO de memória — 7×0 no Sport (1934): acento dourado (cor comemorativa, BRAND.md §1) */
 .match--legacy{box-shadow:inset 0 0 0 1px rgba(201,184,150,.55)}
