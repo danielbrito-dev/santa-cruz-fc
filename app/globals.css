@@ -3885,7 +3885,12 @@ textarea.admin-input {
   position:absolute;right:0;bottom:0;
   max-height:560px;max-width:100%;width:auto;object-fit:contain;object-position:bottom right;
   /* sem sombra — o fundo cinza da foto funde no hero (imperceptível) */
+  transform-origin:bottom center;
+  transition:transform .55s cubic-bezier(.2,.7,.2,1), filter .45s ease;
 }
+/* hover: o atleta "ganha vida" — escala suave + leve realce de cor/luz */
+.athlete-photo:hover img{transform:scale(1.045) translateY(-4px);filter:saturate(1.08) brightness(1.03)}
+@media (prefers-reduced-motion:reduce){ .athlete-photo:hover img{transform:none} }
 .athlete-silhouette{
   position:absolute;right:0;bottom:0;width:76%;height:94%;
   color:var(--hero-text);opacity:.12;line-height:0;
