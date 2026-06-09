@@ -442,28 +442,56 @@
         "pt": "Técnico",
         "en": "Head Coach"
       },
-      "name": "Lorem Ipsum"
+      "name": "Cristian Souza"
     },
     {
       "role": {
         "pt": "Auxiliar Técnico",
         "en": "Assistant Coach"
       },
-      "name": "Lorem Ipsum"
+      "name": "Júnior Matos"
+    },
+    {
+      "role": {
+        "pt": "Auxiliar Técnico",
+        "en": "Assistant Coach"
+      },
+      "name": "Fábio Cortez"
+    },
+    {
+      "role": {
+        "pt": "Auxiliar Técnico",
+        "en": "Assistant Coach"
+      },
+      "name": "César Lucena"
+    },
+    {
+      "role": {
+        "pt": "Auxiliar Técnico",
+        "en": "Assistant Coach"
+      },
+      "name": "Gabriel Cabo"
     },
     {
       "role": {
         "pt": "Preparador Físico",
         "en": "Fitness Coach"
       },
-      "name": "Lorem Ipsum"
+      "name": "Cleber Queiroga"
     },
     {
       "role": {
-        "pt": "Treinador de Goleiros",
+        "pt": "Preparador de Goleiros",
         "en": "Goalkeeping Coach"
       },
-      "name": "Lorem Ipsum"
+      "name": "Wagner Miranda"
+    },
+    {
+      "role": {
+        "pt": "Preparador de Goleiros",
+        "en": "Goalkeeping Coach"
+      },
+      "name": "Diego Inácio"
     }
   ]
 }
