@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect, useCallback, type ReactNode } from 'react';
+import { useRef, useEffect, useState, useCallback, type ReactNode } from 'react';
 
 interface MatchCalendarClientProps {
   calendarTitle: string;
@@ -16,48 +16,41 @@ export function MatchCalendarClient({
   children,
 }: MatchCalendarClientProps) {
   const carouselRef = useRef<HTMLDivElement>(null);
-  const prevRef = useRef<HTMLButtonElement>(null);
-  const nextRef = useRef<HTMLButtonElement>(null);
+  // disabled controlado por estado (React) — evita conflito com manipulação direta do DOM
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(true);
 
-  const syncButtons = useCallback(() => {
+  const sync = useCallback(() => {
     const cal = carouselRef.current;
-    const prev = prevRef.current;
-    const next = nextRef.current;
-    if (!cal || !prev || !next) return;
+    if (!cal) return;
     const maxScroll = cal.scrollWidth - cal.clientWidth - 2;
-    prev.disabled = cal.scrollLeft <= 1;
-    next.disabled = cal.scrollLeft >= maxScroll;
+    setCanPrev(cal.scrollLeft > 1);
+    setCanNext(cal.scrollLeft < maxScroll);
   }, []);
 
-  const getStep = useCallback(() => {
+  const step = useCallback(() => {
     const cal = carouselRef.current;
     if (!cal) return 240;
     const card = cal.querySelector<HTMLElement>('.match');
-    if (!card) return 240;
-    const cs = getComputedStyle(cal);
-    const gap = parseFloat(cs.gap) || 10;
-    return (card.getBoundingClientRect().width + gap) * 2;
+    const gap = parseFloat(getComputedStyle(cal).gap) || 10;
+    return card ? (card.getBoundingClientRect().width + gap) * 2 : 240;
   }, []);
 
   useEffect(() => {
     const cal = carouselRef.current;
     if (!cal) return;
-    const onScroll = () => requestAnimationFrame(syncButtons);
+    const onScroll = () => requestAnimationFrame(sync);
     cal.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', syncButtons);
-    syncButtons();
+    window.addEventListener('resize', sync);
+    sync();
     return () => {
       cal.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', syncButtons);
+      window.removeEventListener('resize', sync);
     };
-  }, [syncButtons]);
+  }, [sync]);
 
-  const handlePrev = () => {
-    carouselRef.current?.scrollBy({ left: -getStep(), behavior: 'smooth' });
-  };
-
-  const handleNext = () => {
-    carouselRef.current?.scrollBy({ left: getStep(), behavior: 'smooth' });
+  const scroll = (dir: -1 | 1) => {
+    carouselRef.current?.scrollBy({ left: dir * step(), behavior: 'smooth' });
   };
 
   return (
@@ -69,21 +62,20 @@ export function MatchCalendarClient({
         </div>
         <div className="cal-controls">
           <button
-            ref={prevRef}
             className="cal-btn"
             aria-label={labelPrev}
-            disabled
-            onClick={handlePrev}
+            disabled={!canPrev}
+            onClick={() => scroll(-1)}
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
               <path d="M15 19l-7-7 7-7" />
             </svg>
           </button>
           <button
-            ref={nextRef}
             className="cal-btn"
             aria-label={labelNext}
-            onClick={handleNext}
+            disabled={!canNext}
+            onClick={() => scroll(1)}
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
               <path d="M9 5l7 7-7 7" />
