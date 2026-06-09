@@ -163,8 +163,8 @@
       "opponentShort": "BRU",
       "isHome": false,
       "status": {
-        "pt": "DOM 14 JUN · 14:00",
-        "en": "SUN JUN 14 · 14:00"
+        "pt": "DOM 14 JUN · 11:00",
+        "en": "SUN JUN 14 · 11:00"
       },
       "scoreHome": null,
       "scoreAway": null,
@@ -178,8 +178,8 @@
       "opponentShort": "YPI",
       "isHome": true,
       "status": {
-        "pt": "SÁB 20 JUN · 22:00",
-        "en": "SAT JUN 20 · 22:00"
+        "pt": "SÁB 20 JUN · 19:00",
+        "en": "SAT JUN 20 · 19:00"
       },
       "scoreHome": null,
       "scoreAway": null,
@@ -193,8 +193,8 @@
       "opponentShort": "PAY",
       "isHome": false,
       "status": {
-        "pt": "SÁB 27 JUN · 20:00",
-        "en": "SAT JUN 27 · 20:00"
+        "pt": "SÁB 27 JUN · 17:00",
+        "en": "SAT JUN 27 · 17:00"
       },
       "scoreHome": null,
       "scoreAway": null,
@@ -208,8 +208,8 @@
       "opponentShort": "ITU",
       "isHome": true,
       "status": {
-        "pt": "DOM 05 JUL · 21:00",
-        "en": "SUN JUL 05 · 21:00"
+        "pt": "SÁB 04 JUL · 21:00",
+        "en": "SAT JUL 04 · 21:00"
       },
       "scoreHome": null,
       "scoreAway": null,
@@ -223,8 +223,8 @@
       "opponentShort": "BAR",
       "isHome": false,
       "status": {
-        "pt": "SÁB 11 JUL · 20:00",
-        "en": "SAT JUL 11 · 20:00"
+        "pt": "SÁB 11 JUL · 17:00",
+        "en": "SAT JUL 11 · 17:00"
       },
       "scoreHome": null,
       "scoreAway": null,
@@ -238,8 +238,8 @@
       "opponentShort": "FIG",
       "isHome": true,
       "status": {
-        "pt": "SÁB 25 JUL · 20:00",
-        "en": "SAT JUL 25 · 20:00"
+        "pt": "SÁB 25 JUL · 17:00",
+        "en": "SAT JUL 25 · 17:00"
       },
       "scoreHome": null,
       "scoreAway": null,
@@ -253,8 +253,8 @@
       "opponentShort": "BOT",
       "isHome": false,
       "status": {
-        "pt": "SÁB 08 AGO · 20:00",
-        "en": "SAT AUG 08 · 20:00"
+        "pt": "SÁB 08 AGO · 17:00",
+        "en": "SAT AUG 08 · 17:00"
       },
       "scoreHome": null,
       "scoreAway": null,
@@ -268,8 +268,8 @@
       "opponentShort": "MRN",
       "isHome": true,
       "status": {
-        "pt": "SÁB 15 AGO · 20:00",
-        "en": "SAT AUG 15 · 20:00"
+        "pt": "SÁB 15 AGO · 17:00",
+        "en": "SAT AUG 15 · 17:00"
       },
       "scoreHome": null,
       "scoreAway": null,
@@ -283,8 +283,8 @@
       "opponentShort": "CAX",
       "isHome": true,
       "status": {
-        "pt": "SÁB 22 AGO · 20:00",
-        "en": "SAT AUG 22 · 20:00"
+        "pt": "SÁB 22 AGO · 17:00",
+        "en": "SAT AUG 22 · 17:00"
       },
       "scoreHome": null,
       "scoreAway": null,
@@ -298,8 +298,8 @@
       "opponentShort": "ANA",
       "isHome": false,
       "status": {
-        "pt": "DOM 30 AGO · 20:00",
-        "en": "SUN AUG 30 · 20:00"
+        "pt": "DOM 30 AGO · 17:00",
+        "en": "SUN AUG 30 · 17:00"
       },
       "scoreHome": null,
       "scoreAway": null,

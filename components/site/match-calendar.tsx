@@ -45,11 +45,13 @@ function MatchCard({
   locale,
   opponentCrest,
   opponentRival,
+  isNext,
 }: {
   m: MatchItem;
   locale: string;
   opponentCrest?: string | null;
   opponentRival?: boolean;
+  isNext?: boolean;
 }) {
   // Row order: if isHome, Santa first then opponent; else opponent first then Santa.
   // First row always shows scoreHome; second row always shows scoreAway.
@@ -82,7 +84,7 @@ function MatchCard({
   );
 
   return (
-    <article className="match" data-comp={m.comp}>
+    <article className="match" data-comp={m.comp} data-next={isNext ? 'true' : undefined}>
       <div className="match-comp">
         <span className="badge">{m.competition}</span>
         <span className="status">{resolveLocalized(m.status, locale as 'pt' | 'en')}</span>
@@ -111,6 +113,8 @@ export async function MatchCalendar({ content, locale }: SectionProps) {
   // clube por sigla — escudo + flag de rival definidos uma vez em content.clubs
   const clubByShort = new Map((content.clubs ?? []).map((c) => [c.shortName, c]));
   const sportCrest = clubByShort.get('SPT')?.crestUrl ?? null;
+  // próximo jogo = primeiro sem placar (não disputado)
+  const nextIdx = content.matches.findIndex((m) => m.scoreHome === null && m.scoreAway === null);
 
   return (
     <div className="hero-calendar">
@@ -121,7 +125,7 @@ export async function MatchCalendar({ content, locale }: SectionProps) {
           labelNext={tCalendar('next')}
         >
           <LegacyCard sportCrest={sportCrest} />
-          {content.matches.map((m) => {
+          {content.matches.map((m, i) => {
             const club = clubByShort.get(m.opponentShort);
             return (
               <MatchCard
@@ -130,6 +134,7 @@ export async function MatchCalendar({ content, locale }: SectionProps) {
                 locale={locale}
                 opponentCrest={club?.crestUrl ?? null}
                 opponentRival={club?.rival ?? false}
+                isNext={i === nextIdx}
               />
             );
           })}

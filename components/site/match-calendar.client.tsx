@@ -42,6 +42,13 @@ export function MatchCalendarClient({
     const onScroll = () => requestAnimationFrame(sync);
     cal.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', sync);
+    // centraliza no próximo jogo (primeiro card marcado com data-next)
+    const next = cal.querySelector<HTMLElement>('[data-next]');
+    if (next) {
+      const calRect = cal.getBoundingClientRect();
+      const nextRect = next.getBoundingClientRect();
+      cal.scrollLeft += nextRect.left - calRect.left - (cal.clientWidth - next.offsetWidth) / 2;
+    }
     sync();
     return () => {
       cal.removeEventListener('scroll', onScroll);
