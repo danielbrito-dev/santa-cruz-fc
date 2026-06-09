@@ -264,7 +264,22 @@
     "fCrestUrl": "Crest URL",
     "edit": "Edit",
     "matchSaved": "Match saved.",
-    "clubSaved": "Club saved."
+    "clubSaved": "Club saved.",
+    "paginas": "Pages",
+    "paginasDesc": "Institutional page copy — History, Symbols, Titles, Inclusion Pioneer and more.",
+    "elenco": "Squad",
+    "elencoDesc": "Players (number, name, position, age, photo and stats) and the coaching staff.",
+    "patrocinadores": "Sponsors",
+    "patrocinadoresDesc": "Sponsors and partners — logo, link and tier (master, supplier, support).",
+    "galeria": "Gallery",
+    "galeriaDesc": "The club photo gallery.",
+    "documentos": "Documents",
+    "documentosDesc": "Documents and PDFs — transparency, statute, reports, press kit and press content.",
+    "historias": "Fan Stories",
+    "historiasDesc": "Moderate and publish stories submitted by supporters.",
+    "soonGeneric": "Coming soon: full management here (wired in the infrastructure stage).",
+    "scopeNote": "All site content is maintained here by the marketing team.",
+    "manage": "Manage"
   },
   "drawer": {
     "home": "Home",

@@ -264,7 +264,22 @@
     "fCrestUrl": "URL do escudo",
     "edit": "Editar",
     "matchSaved": "Partida salva.",
-    "clubSaved": "Clube salvo."
+    "clubSaved": "Clube salvo.",
+    "paginas": "Páginas",
+    "paginasDesc": "Textos das páginas institucionais — História, Símbolos, Títulos, Precursor da Inclusão e demais.",
+    "elenco": "Elenco",
+    "elencoDesc": "Jogadores (número, nome, posição, idade, foto e números) e a comissão técnica.",
+    "patrocinadores": "Patrocinadores",
+    "patrocinadoresDesc": "Patrocinadores e parceiros — logo, link e categoria (master, fornecedor, apoio).",
+    "galeria": "Galeria",
+    "galeriaDesc": "As fotos da galeria do clube.",
+    "documentos": "Documentos",
+    "documentosDesc": "Documentos e PDFs — transparência, estatuto, relatórios, press kit e conteúdo para imprensa.",
+    "historias": "Histórias Coral",
+    "historiasDesc": "Moderação e publicação das histórias enviadas pelos torcedores.",
+    "soonGeneric": "Em breve: gestão completa por aqui (ligada na etapa de infraestrutura).",
+    "scopeNote": "Todo o conteúdo do site é mantido aqui pelo time de marketing.",
+    "manage": "Gerenciar"
   },
   "drawer": {
     "home": "Início",
