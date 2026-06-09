@@ -362,20 +362,15 @@ ul{list-style:none}
    (handoff suave para o calendário branco). Sem vignette dramático. */
 .hero-grad{
   position:absolute;inset:0;pointer-events:none;z-index:1;
-  /* Light: top 0–15% stays opaque enough so ink header text is legible against the
-     header zone. Mid/lower sections are now much lighter so the backdrop photo reads
-     clearly. Only the very base (≥88%) ramps back to white for the calendar handoff. */
+  /* Dark como base nos dois temas: foto vívida, scrim escuro no topo (header branco
+     legível) e na base (handoff). Sem véu branco — light e dark ficam iguais. */
   background:
     linear-gradient(180deg,
-      rgba(255,255,255,.92) 0%,
-      rgba(255,255,255,.82) 8%,
-      rgba(255,255,255,.60) 16%,
-      rgba(255,255,255,.28) 32%,
-      rgba(255,255,255,.14) 50%,
-      rgba(255,255,255,.22) 68%,
-      rgba(255,255,255,.62) 84%,
-      rgba(255,255,255,.92) 92%,
-      rgba(255,255,255,1)   100%
+      rgba(0,0,0,.46) 0%,
+      rgba(0,0,0,.06) 34%,
+      rgba(0,0,0,.06) 64%,
+      rgba(0,0,0,.82) 92%,
+      rgba(0,0,0,.92) 100%
     );
 }
 /* .hero-bg removido — agora só o backdrop full-bleed faz o trabalho visual */
@@ -396,7 +391,7 @@ ul{list-style:none}
   left:14%;bottom:80px;
   max-width:560px;
   text-align:left;
-  color:var(--hero-text);
+  color:#fff;
   z-index:5;
   opacity:0;transform:translateY(24px);
   animation:heroIn 1s .4s cubic-bezier(.2,.7,.2,1) forwards;
@@ -419,9 +414,9 @@ ul{list-style:none}
   color:var(--gold);font-variant-numeric:tabular-nums;
 }
 .hero-eyebrow .div{
-  flex:0 0 32px;height:1px;background:rgba(0,0,0,.25);
+  flex:0 0 32px;height:1px;background:rgba(255,255,255,.3);
 }
-.hero-eyebrow .cat{color:rgba(0,0,0,.75)}
+.hero-eyebrow .cat{color:rgba(255,255,255,.8)}
 
 .hero-tag{
   display:inline-flex;align-items:center;gap:8px;
@@ -441,28 +436,28 @@ ul{list-style:none}
 }
 .hero-title{
   font-size:clamp(40px,5.4vw,68px);font-weight:900;line-height:1.02;letter-spacing:-.025em;
-  margin-bottom:22px;text-transform:uppercase;
-  text-shadow:0 2px 20px rgba(255,255,255,.95), 0 0 40px rgba(255,255,255,.75), 0 1px 4px rgba(255,255,255,.9);
+  margin-bottom:22px;text-transform:uppercase;color:#fff;
+  text-shadow:0 2px 30px rgba(0,0,0,.55), 0 1px 4px rgba(0,0,0,.5);
 }
 .hero-title .ht-l1,
 .hero-title .ht-l2{display:block}
 /* Segunda linha começa alinhada com o "A" de CORAL (~3 caracteres de offset no peso 900 uppercase) */
 .hero-title .ht-l2{padding-left:2.05em}
-.hero-title q{text-shadow:0 1px 10px rgba(255,255,255,.85)}
+.hero-title q{text-shadow:0 1px 10px rgba(0,0,0,.5)}
 /* "DO TRICOLOR" volta a vermelho — sem stroke (BRAND.md: separação branco/preto não se aplica em bg light) */
 .hero-title em{
   color:var(--red);font-style:normal;
 }
 .hero-title q{
-  font-weight:600;color:rgba(10,10,10,.85);quotes:'"' '"';
+  font-weight:600;color:rgba(255,255,255,.85);quotes:'"' '"';
   display:block;font-size:.74em;letter-spacing:-.02em;margin-top:6px;
 }
 .hero-cta{
   display:inline-flex;align-items:center;gap:10px;
-  padding:0;background:transparent;color:var(--ink);
+  padding:0;background:transparent;color:#fff;
   font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:.18em;
   transition:gap .25s, color .25s;
-  border-bottom:1px solid rgba(0,0,0,.4);padding-bottom:6px;
+  border-bottom:1px solid rgba(255,255,255,.45);padding-bottom:6px;
 }
 .hero-cta:hover{gap:16px;color:var(--red);border-color:var(--red)}
 .hero-cta svg{width:14px;height:14px}
@@ -1217,9 +1212,7 @@ body{ background:var(--page-bg) }
 /* .no-scroll is defined above in the header/drawer section */
 
 /* ===== dark theme contrast overrides ===== */
-[data-theme="dark"] .hero-title{ text-shadow:none }
-[data-theme="dark"] .hero-title q{ color:rgba(255,255,255,.85); text-shadow:none }
-[data-theme="dark"] .hero-cta{ color:var(--white); border-color:rgba(255,255,255,.4) }
+/* hero text is now white in both themes (base) — no dark-only override needed */
 [data-theme="dark"] .hero-calendar{ color:var(--panel-text) }
 [data-theme="dark"] .hero-calendar-title,
 [data-theme="dark"] .match-comp .badge,
@@ -1229,9 +1222,7 @@ body{ background:var(--page-bg) }
 [data-theme="dark"] .drawer-sub a{ color:rgba(255,255,255,.8) }
 [data-theme="dark"] .drawer-head{ border-color:var(--line) }
 [data-theme="dark"] .cookie-banner p{ color:rgba(255,255,255,.78) }
-/* Secondary dark text — eyebrows, status badges, hero-eyebrow */
-[data-theme="dark"] .hero-eyebrow .cat{ color:rgba(255,255,255,.72) }
-[data-theme="dark"] .hero-eyebrow .div{ background:rgba(255,255,255,.22) }
+/* Secondary dark text — status badges (hero-eyebrow já é branco no base) */
 [data-theme="dark"] .match-comp .status{ color:var(--muted) }
 [data-theme="dark"] .cal-btn{ background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.14); color:var(--white) }
 [data-theme="dark"] .cal-btn:hover{ background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.28) }
@@ -4103,6 +4094,24 @@ body:has(.page-hero-dark) .site-header:not(.scrolled) .header-link{color:#fff}
 .feat-quote{position:relative;z-index:2;background:var(--fita-azul);color:#fff;padding:72px 0;border-top:3px solid #fff;border-bottom:3px solid #fff}
 .feat-quote-text{font-size:clamp(28px,5vw,60px);font-weight:900;line-height:1.02;letter-spacing:-.03em;text-transform:uppercase;max-width:20ch;font-style:normal}
 .feat-quote-cite{display:block;margin-top:18px;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-style:normal}
+
+/* ===== Home: hero + calendário escuros nos DOIS temas (dark como base) ===== */
+.hero.page-hero-dark{background:var(--section-bg)}
+.hero.page-hero-dark .hero-calendar{color:#fff;box-shadow:none}
+.hero.page-hero-dark .hero-calendar-title,
+.hero.page-hero-dark .hero-calendar-title a,
+.hero.page-hero-dark .match-comp .badge,
+.hero.page-hero-dark .match-row-name,
+.hero.page-hero-dark .match-row-score{color:#fff}
+.hero.page-hero-dark .hero-calendar-title a:hover{color:var(--gold)}
+.hero.page-hero-dark .match-comp .status{color:var(--muted)}
+.hero.page-hero-dark .match{background:#202020;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),0 6px 20px -8px rgba(0,0,0,.6)}
+/* stripe vermelho/dourado do card com separação branca (BRAND.md) */
+.hero.page-hero-dark .match::before{box-shadow:0 -2px 0 0 var(--white),inset 1px 0 0 0 var(--white),inset -1px 0 0 0 var(--white)}
+.hero.page-hero-dark .cal-btn{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16);color:#fff}
+.hero.page-hero-dark .cal-btn:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3)}
+.hero.page-hero-dark .carousel-wrap::before{background:linear-gradient(90deg,var(--section-bg),transparent)}
+.hero.page-hero-dark .carousel-wrap::after{background:linear-gradient(270deg,var(--section-bg),transparent)}
 
 /* ===== arquétipo Documentos (lista de downloads) ===== */
 .doc{display:flex;flex-direction:column;min-height:100vh}
