@@ -37,8 +37,8 @@ describe('MatchCalendar', () => {
     );
     expect(screen.getByText('Náutico')).toBeInTheDocument();
     expect(screen.getByText('Bahia')).toBeInTheDocument();
-    // Santa Cruz is home in both → first row score is scoreHome=2 for m1
-    expect(screen.getAllByText('Santa Cruz').length).toBe(2);
+    // 2 partidas (Santa mandante) + o card fixo do 7×0 = 3 ocorrências de "Santa Cruz"
+    expect(screen.getAllByText('Santa Cruz').length).toBe(3);
   });
 
   it('shows the opponent crest when the club has one, falls back to the sigla otherwise', async () => {

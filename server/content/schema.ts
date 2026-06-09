@@ -11,7 +11,7 @@ const match = z.object({
 });
 const club = z.object({
   id: z.string(), name: z.string(), shortName: z.string(),
-  crestUrl: z.string().nullable(),
+  crestUrl: z.string().nullable(), rival: z.boolean().optional(),
 });
 const news = z.object({
   id: z.string(), slug: z.string(), tag: localized, title: localized, excerpt: localized,

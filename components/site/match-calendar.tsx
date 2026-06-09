@@ -4,14 +4,52 @@ import type { MatchItem } from '@/server/content/types';
 import { resolveLocalized } from '@/server/content/localized';
 import { MatchCalendarClient } from './match-calendar.client';
 
+/** Card fixo de memória: 7×0 no Sport (1934) — escudo do Sport com tratamento de rival. */
+function LegacyCard({ sportCrest }: { sportCrest: string | null }) {
+  return (
+    <article className="match match--legacy" data-comp="legacy">
+      <div className="match-comp">
+        <span className="badge">Clássico das Multidões</span>
+        <span className="status legacy">1934</span>
+      </div>
+      <div className="match-rows">
+        <div className="match-row">
+          <div className="match-row-shield home">
+            <img src="/images/logo.png" alt="Santa Cruz" />
+          </div>
+          <span className="match-row-name">
+            <span className="club-full">Santa Cruz</span>
+            <span className="club-short">Santa</span>
+          </span>
+          <span className="match-row-score">7</span>
+        </div>
+        <div className="match-row">
+          <div className="match-row-shield has-crest is-rival">
+            {sportCrest ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={sportCrest} alt="Sport" />
+            ) : (
+              'SPT'
+            )}
+          </div>
+          <span className="match-row-name">Sport</span>
+          <span className="match-row-score">0</span>
+        </div>
+      </div>
+    </article>
+  );
+}
+
 function MatchCard({
   m,
   locale,
   opponentCrest,
+  opponentRival,
 }: {
   m: MatchItem;
   locale: string;
   opponentCrest?: string | null;
+  opponentRival?: boolean;
 }) {
   // Row order: if isHome, Santa first then opponent; else opponent first then Santa.
   // First row always shows scoreHome; second row always shows scoreAway.
@@ -30,7 +68,7 @@ function MatchCard({
 
   const opponentRow = (score: number | null) => (
     <div className="match-row">
-      <div className={`match-row-shield${opponentCrest ? ' has-crest' : ''}`}>
+      <div className={`match-row-shield${opponentCrest ? ' has-crest' : ''}${opponentCrest && opponentRival ? ' is-rival' : ''}`}>
         {opponentCrest ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={opponentCrest} alt={m.opponent} loading="lazy" />
@@ -70,10 +108,9 @@ export async function MatchCalendar({ content, locale }: SectionProps) {
   const tCalendar = await getTranslations('calendar');
   const calendarTitle = tCalendar('title');
 
-  // escudo por sigla — definido uma vez por clube em content.clubs
-  const crestByShort = new Map(
-    (content.clubs ?? []).map((c) => [c.shortName, c.crestUrl]),
-  );
+  // clube por sigla — escudo + flag de rival definidos uma vez em content.clubs
+  const clubByShort = new Map((content.clubs ?? []).map((c) => [c.shortName, c]));
+  const sportCrest = clubByShort.get('SPT')?.crestUrl ?? null;
 
   return (
     <div className="hero-calendar">
@@ -83,14 +120,19 @@ export async function MatchCalendar({ content, locale }: SectionProps) {
           labelPrev={tCalendar('prev')}
           labelNext={tCalendar('next')}
         >
-          {content.matches.map((m) => (
-            <MatchCard
-              key={m.id}
-              m={m}
-              locale={locale}
-              opponentCrest={crestByShort.get(m.opponentShort) ?? null}
-            />
-          ))}
+          <LegacyCard sportCrest={sportCrest} />
+          {content.matches.map((m) => {
+            const club = clubByShort.get(m.opponentShort);
+            return (
+              <MatchCard
+                key={m.id}
+                m={m}
+                locale={locale}
+                opponentCrest={club?.crestUrl ?? null}
+                opponentRival={club?.rival ?? false}
+              />
+            );
+          })}
         </MatchCalendarClient>
       </div>
     </div>

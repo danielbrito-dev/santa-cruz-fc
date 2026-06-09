@@ -51,6 +51,96 @@
       "matchCenterUrl": "#"
     },
     {
+      "id": "serie-c-con-2026-04-18",
+      "competition": "Série C",
+      "comp": "serie-c",
+      "opponent": "Confiança",
+      "opponentShort": "CON",
+      "isHome": false,
+      "status": {
+        "pt": "SÁB 18 ABR · FINAL",
+        "en": "SAT APR 18 · FINAL"
+      },
+      "scoreHome": 1,
+      "scoreAway": 0,
+      "matchCenterUrl": "#"
+    },
+    {
+      "id": "serie-c-ama-2026-04-26",
+      "competition": "Série C",
+      "comp": "serie-c",
+      "opponent": "Amazonas",
+      "opponentShort": "AMA",
+      "isHome": true,
+      "status": {
+        "pt": "DOM 26 ABR · FINAL",
+        "en": "SUN APR 26 · FINAL"
+      },
+      "scoreHome": 0,
+      "scoreAway": 1,
+      "matchCenterUrl": "#"
+    },
+    {
+      "id": "serie-c-gua-2026-05-02",
+      "competition": "Série C",
+      "comp": "serie-c",
+      "opponent": "Guarani",
+      "opponentShort": "GUA",
+      "isHome": false,
+      "status": {
+        "pt": "SÁB 02 MAI · FINAL",
+        "en": "SAT MAY 02 · FINAL"
+      },
+      "scoreHome": 1,
+      "scoreAway": 0,
+      "matchCenterUrl": "#"
+    },
+    {
+      "id": "serie-c-int-2026-05-11",
+      "competition": "Série C",
+      "comp": "serie-c",
+      "opponent": "Inter de Limeira",
+      "opponentShort": "INT",
+      "isHome": false,
+      "status": {
+        "pt": "SEG 11 MAI · FINAL",
+        "en": "MON MAY 11 · FINAL"
+      },
+      "scoreHome": 1,
+      "scoreAway": 2,
+      "matchCenterUrl": "#"
+    },
+    {
+      "id": "serie-c-vol-2026-05-16",
+      "competition": "Série C",
+      "comp": "serie-c",
+      "opponent": "Volta Redonda",
+      "opponentShort": "VOL",
+      "isHome": true,
+      "status": {
+        "pt": "SÁB 16 MAI · FINAL",
+        "en": "SAT MAY 16 · FINAL"
+      },
+      "scoreHome": 2,
+      "scoreAway": 0,
+      "matchCenterUrl": "#"
+    },
+    {
+      "id": "serie-c-mar-2026-05-23",
+      "competition": "Série C",
+      "comp": "serie-c",
+      "opponent": "Maringá",
+      "opponentShort": "MAR",
+      "isHome": false,
+      "status": {
+        "pt": "SÁB 23 MAI · FINAL",
+        "en": "SAT MAY 23 · FINAL"
+      },
+      "scoreHome": 1,
+      "scoreAway": 1,
+      "matchCenterUrl": "#"
+    },
+    {
       "id": "serie-c-fer-2026-05-31",
       "competition": "Série C",
       "comp": "serie-c",
@@ -79,6 +169,141 @@
       "scoreHome": null,
       "scoreAway": null,
       "matchCenterUrl": "#"
+    },
+    {
+      "id": "serie-c-ypi-2026-06-20",
+      "competition": "Série C",
+      "comp": "serie-c",
+      "opponent": "Ypiranga",
+      "opponentShort": "YPI",
+      "isHome": true,
+      "status": {
+        "pt": "SÁB 20 JUN · 22:00",
+        "en": "SAT JUN 20 · 22:00"
+      },
+      "scoreHome": null,
+      "scoreAway": null,
+      "matchCenterUrl": "#"
+    },
+    {
+      "id": "serie-c-pay-2026-06-27",
+      "competition": "Série C",
+      "comp": "serie-c",
+      "opponent": "Paysandu",
+      "opponentShort": "PAY",
+      "isHome": false,
+      "status": {
+        "pt": "SÁB 27 JUN · 20:00",
+        "en": "SAT JUN 27 · 20:00"
+      },
+      "scoreHome": null,
+      "scoreAway": null,
+      "matchCenterUrl": "#"
+    },
+    {
+      "id": "serie-c-itu-2026-07-05",
+      "competition": "Série C",
+      "comp": "serie-c",
+      "opponent": "Ituano",
+      "opponentShort": "ITU",
+      "isHome": true,
+      "status": {
+        "pt": "DOM 05 JUL · 21:00",
+        "en": "SUN JUL 05 · 21:00"
+      },
+      "scoreHome": null,
+      "scoreAway": null,
+      "matchCenterUrl": "#"
+    },
+    {
+      "id": "serie-c-bar-2026-07-11",
+      "competition": "Série C",
+      "comp": "serie-c",
+      "opponent": "Barra",
+      "opponentShort": "BAR",
+      "isHome": false,
+      "status": {
+        "pt": "SÁB 11 JUL · 20:00",
+        "en": "SAT JUL 11 · 20:00"
+      },
+      "scoreHome": null,
+      "scoreAway": null,
+      "matchCenterUrl": "#"
+    },
+    {
+      "id": "serie-c-fig-2026-07-25",
+      "competition": "Série C",
+      "comp": "serie-c",
+      "opponent": "Figueirense",
+      "opponentShort": "FIG",
+      "isHome": true,
+      "status": {
+        "pt": "SÁB 25 JUL · 20:00",
+        "en": "SAT JUL 25 · 20:00"
+      },
+      "scoreHome": null,
+      "scoreAway": null,
+      "matchCenterUrl": "#"
+    },
+    {
+      "id": "serie-c-bot-2026-08-08",
+      "competition": "Série C",
+      "comp": "serie-c",
+      "opponent": "Botafogo-PB",
+      "opponentShort": "BOT",
+      "isHome": false,
+      "status": {
+        "pt": "SÁB 08 AGO · 20:00",
+        "en": "SAT AUG 08 · 20:00"
+      },
+      "scoreHome": null,
+      "scoreAway": null,
+      "matchCenterUrl": "#"
+    },
+    {
+      "id": "serie-c-mrn-2026-08-15",
+      "competition": "Série C",
+      "comp": "serie-c",
+      "opponent": "Maranhão",
+      "opponentShort": "MRN",
+      "isHome": true,
+      "status": {
+        "pt": "SÁB 15 AGO · 20:00",
+        "en": "SAT AUG 15 · 20:00"
+      },
+      "scoreHome": null,
+      "scoreAway": null,
+      "matchCenterUrl": "#"
+    },
+    {
+      "id": "serie-c-cax-2026-08-22",
+      "competition": "Série C",
+      "comp": "serie-c",
+      "opponent": "Caxias",
+      "opponentShort": "CAX",
+      "isHome": true,
+      "status": {
+        "pt": "SÁB 22 AGO · 20:00",
+        "en": "SAT AUG 22 · 20:00"
+      },
+      "scoreHome": null,
+      "scoreAway": null,
+      "matchCenterUrl": "#"
+    },
+    {
+      "id": "serie-c-ana-2026-08-30",
+      "competition": "Série C",
+      "comp": "serie-c",
+      "opponent": "Anápolis",
+      "opponentShort": "ANA",
+      "isHome": false,
+      "status": {
+        "pt": "DOM 30 AGO · 20:00",
+        "en": "SUN AUG 30 · 20:00"
+      },
+      "scoreHome": null,
+      "scoreAway": null,
+      "matchCenterUrl": "#"
     }
   ],
   "clubs": [
@@ -92,7 +317,8 @@
       "id": "nautico",
       "name": "Náutico",
       "shortName": "NAU",
-      "crestUrl": "https://upload.wikimedia.org/wikipedia/pt/thumb/d/de/Simbolo-escudo-nautico.png/120px-Simbolo-escudo-nautico.png"
+      "crestUrl": "https://upload.wikimedia.org/wikipedia/pt/thumb/d/de/Simbolo-escudo-nautico.png/120px-Simbolo-escudo-nautico.png",
+      "rival": true
     },
     {
       "id": "retro",
@@ -131,28 +357,125 @@
       "crestUrl": "https://upload.wikimedia.org/wikipedia/pt/thumb/8/8b/EscudoDoVascoDaGama.svg/250px-EscudoDoVascoDaGama.svg.png"
     },
     {
-      "id": "itabaiana",
+      "id": "ita",
       "name": "Itabaiana",
       "shortName": "ITA",
       "crestUrl": "https://r2.thesportsdb.com/images/media/team/badge/u0v5vk1766508720.png"
     },
     {
-      "id": "floresta",
+      "id": "flo",
       "name": "Floresta",
       "shortName": "FLO",
       "crestUrl": "https://r2.thesportsdb.com/images/media/team/badge/1ch7n01617198950.png"
     },
     {
-      "id": "ferroviaria",
+      "id": "fer",
       "name": "Ferroviária",
       "shortName": "FER",
       "crestUrl": "https://r2.thesportsdb.com/images/media/team/badge/zfo1y81766506623.png"
     },
     {
-      "id": "brusque",
+      "id": "bru",
       "name": "Brusque",
       "shortName": "BRU",
       "crestUrl": "https://r2.thesportsdb.com/images/media/team/badge/o7p43b1766507803.png"
+    },
+    {
+      "id": "con",
+      "name": "Confiança",
+      "shortName": "CON",
+      "crestUrl": "https://r2.thesportsdb.com/images/media/team/badge/v9y3ye1579337829.png"
+    },
+    {
+      "id": "ama",
+      "name": "Amazonas",
+      "shortName": "AMA",
+      "crestUrl": "https://r2.thesportsdb.com/images/media/team/badge/owccd41754110658.png"
+    },
+    {
+      "id": "gua",
+      "name": "Guarani",
+      "shortName": "GUA",
+      "crestUrl": "https://r2.thesportsdb.com/images/media/team/badge/tpipb21766508536.png"
+    },
+    {
+      "id": "int",
+      "name": "Inter de Limeira",
+      "shortName": "INT",
+      "crestUrl": "https://r2.thesportsdb.com/images/media/team/badge/26em5b1772177092.png"
+    },
+    {
+      "id": "vol",
+      "name": "Volta Redonda",
+      "shortName": "VOL",
+      "crestUrl": "https://r2.thesportsdb.com/images/media/team/badge/phc5fs1736379773.png"
+    },
+    {
+      "id": "mar",
+      "name": "Maringá",
+      "shortName": "MAR",
+      "crestUrl": "https://r2.thesportsdb.com/images/media/team/badge/u8cdlj1677056366.png"
+    },
+    {
+      "id": "ypi",
+      "name": "Ypiranga",
+      "shortName": "YPI",
+      "crestUrl": "https://r2.thesportsdb.com/images/media/team/badge/ryok221688146977.png"
+    },
+    {
+      "id": "pay",
+      "name": "Paysandu",
+      "shortName": "PAY",
+      "crestUrl": "https://r2.thesportsdb.com/images/media/team/badge/9rrdrn1740851540.png"
+    },
+    {
+      "id": "itu",
+      "name": "Ituano",
+      "shortName": "ITU",
+      "crestUrl": "https://r2.thesportsdb.com/images/media/team/badge/7fg7n71596796444.png"
+    },
+    {
+      "id": "bar",
+      "name": "Barra",
+      "shortName": "BAR",
+      "crestUrl": "https://r2.thesportsdb.com/images/media/team/badge/bu1jtg1713439315.png"
+    },
+    {
+      "id": "fig",
+      "name": "Figueirense",
+      "shortName": "FIG",
+      "crestUrl": "https://r2.thesportsdb.com/images/media/team/badge/yvvyps1473538067.png"
+    },
+    {
+      "id": "bot",
+      "name": "Botafogo-PB",
+      "shortName": "BOT",
+      "crestUrl": "https://r2.thesportsdb.com/images/media/team/badge/pa05bv1733850713.png"
+    },
+    {
+      "id": "mrn",
+      "name": "Maranhão",
+      "shortName": "MRN",
+      "crestUrl": "https://r2.thesportsdb.com/images/media/team/badge/rkxo201679387874.png"
+    },
+    {
+      "id": "cax",
+      "name": "Caxias",
+      "shortName": "CAX",
+      "crestUrl": "https://r2.thesportsdb.com/images/media/team/badge/o4jhxw1625417717.png"
+    },
+    {
+      "id": "ana",
+      "name": "Anápolis",
+      "shortName": "ANA",
+      "crestUrl": "https://r2.thesportsdb.com/images/media/team/badge/ofh9od1733798605.png"
+    },
+    {
+      "id": "sport",
+      "name": "Sport",
+      "shortName": "SPT",
+      "crestUrl": "https://upload.wikimedia.org/wikipedia/pt/thumb/1/17/Sport_Club_do_Recife.png/120px-Sport_Club_do_Recife.png",
+      "rival": true
     }
   ],
   "news": [

@@ -20,6 +20,7 @@ export interface Club {
   name: string;
   shortName: string;       // sigla (casa com MatchItem.opponentShort)
   crestUrl: string | null; // URL do escudo (null → cai na sigla)
+  rival?: boolean;         // rivais (Sport/Náutico) → escudo levemente inclinado + negativo suave
 }
 export interface CardItem {
   id: string; eyebrow: LocalizedText; title: LocalizedText; image: string;
