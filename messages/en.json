@@ -80,7 +80,10 @@
     "onThisPage": "On this page",
     "helpCenter": "Help Center",
     "downloads": "Files",
-    "download": "Download"
+    "download": "Download",
+    "formSuccess": "Message sent!",
+    "formSuccessNote": "Thanks for reaching out — we'll get back soon. (Demo: submissions aren't stored yet.)",
+    "sendStory": "Submit my story"
   },
   "common": { "allNews": "All news", "matchCenter": "Match Center", "becomeMember": "Become a Member", "skipToContent": "Skip to content" },
   "news": { "heading1": "News", "heading2": "from the Club", "photos": "{count, plural, one {# photo} other {# photos}}" },

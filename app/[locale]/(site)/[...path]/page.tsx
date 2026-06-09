@@ -15,6 +15,8 @@ import { Documents } from '@/components/site/pages/documents';
 import { Gallery } from '@/components/site/pages/gallery';
 import { Listing } from '@/components/site/pages/listing';
 import { Landing } from '@/components/site/pages/landing';
+import { FormPage } from '@/components/site/pages/form-page';
+import { Stories } from '@/components/site/pages/stories';
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -72,6 +74,12 @@ export default async function InternalPage({
       break;
     case 'landing':
       body = <Landing {...common} data={data} />;
+      break;
+    case 'form':
+      body = <FormPage sectionKey={page.sectionKey} titleKey={page.titleKey} data={data} />;
+      break;
+    case 'stories':
+      body = <Stories {...common} data={data} />;
       break;
     case 'editorial':
       body = <Editorial {...common} data={data} />;

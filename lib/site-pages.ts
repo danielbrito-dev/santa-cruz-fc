@@ -73,8 +73,27 @@ export interface LandingData {
   ctaLabel: string;
   ctaHref: string;
 }
+export interface FormField {
+  name: string;
+  label: string;
+  type: 'text' | 'email' | 'tel' | 'textarea' | 'select';
+  options?: string[];
+  required?: boolean;
+}
+export interface FormPageData {
+  archetype: 'form';
+  lead: string;
+  fields: FormField[];
+  consent?: string;
+  submitLabel: string;
+}
+export interface StoriesData {
+  archetype: 'stories';
+  lead: string;
+  mode: 'all' | 'featured' | 'city' | 'generation';
+  stories: { author: string; city: string; generation: string; excerpt: string; featured?: boolean }[];
+}
 
-// União estendida na fase D com Formulário e Histórias.
 export type PageData =
   | EditorialData
   | LegalData
@@ -85,7 +104,9 @@ export type PageData =
   | DocumentsData
   | GalleryData
   | ListingData
-  | LandingData;
+  | LandingData
+  | FormPageData
+  | StoriesData;
 
 // Dados reais derivados do content/site.json (notícias publicadas + jogos).
 const sj = site as unknown as {
@@ -108,6 +129,22 @@ const MATCH_ITEMS: ListingData['items'] = sj.matches.map((m) => ({
       ? `${m.scoreHome} – ${m.scoreAway}`
       : 'A definir',
 }));
+
+const CONTACT_FIELDS: FormField[] = [
+  { name: 'nome', label: 'Nome', type: 'text', required: true },
+  { name: 'email', label: 'E-mail', type: 'email', required: true },
+  { name: 'assunto', label: 'Assunto', type: 'select', options: ['Dúvida geral', 'Sócio Coral', 'Ingressos', 'Imprensa', 'Outro'] },
+  { name: 'mensagem', label: 'Mensagem', type: 'textarea', required: true },
+];
+
+const CORAL_STORIES: StoriesData['stories'] = [
+  { author: 'Carlos Henrique', city: 'Recife · PE', generation: 'Anos 80', excerpt: 'Meu avô me levou ao Arruda pela primeira vez em 1983. Nunca mais larguei o tricolor.', featured: true },
+  { author: 'José Mário', city: 'São Paulo · SP', generation: 'Anos 70', excerpt: 'Saí de Pernambuco, mas o coração ficou no Arruda. Fundei um consulado coral por aqui.', featured: true },
+  { author: 'Ana Beatriz', city: 'Caruaru · PE', generation: 'Anos 2000', excerpt: 'Cresci ouvindo as histórias da Fita Azul. Hoje levo meus filhos pra torcer comigo.' },
+  { author: 'Rafaela Lima', city: 'Olinda · PE', generation: 'Anos 90', excerpt: 'A maior alegria foi a Copa do Nordeste em 2016, com a nação lotando o estádio.' },
+  { author: 'Pedro Lucas', city: 'Petrolina · PE', generation: 'Anos 2010', excerpt: 'Sou da geração que aprendeu, desde cedo, que é tradição — não é moda.' },
+  { author: 'Dona Severina', city: 'Recife · PE', generation: 'Anos 60', excerpt: 'Torço desde menina. O Santa é a paixão da minha vida inteira.' },
+];
 
 const LEGAL_SECTIONS: LegalData['sections'] = [
   {
@@ -517,6 +554,91 @@ export const SITE_PAGES: Record<string, PageData> = {
         places: [{ name: 'Loja Virtual', address: 'Entrega para todo o Brasil', city: 'santacruz.com.br' }],
       },
     ],
+  },
+
+  // ---- Formulário ----
+  '/contato/fale-conosco': {
+    archetype: 'form',
+    lead: 'Fale com o Santa Cruz. Respondemos o mais rápido possível.',
+    fields: CONTACT_FIELDS,
+    submitLabel: 'Enviar mensagem',
+  },
+  '/ajuda/contato': {
+    archetype: 'form',
+    lead: 'Precisa de ajuda? Envie sua mensagem.',
+    fields: CONTACT_FIELDS,
+    submitLabel: 'Enviar mensagem',
+  },
+  '/contato/trabalhe-conosco': {
+    archetype: 'form',
+    lead: 'Quer fazer parte da Cobra Coral? Conte pra gente sobre você.',
+    fields: [
+      { name: 'nome', label: 'Nome', type: 'text', required: true },
+      { name: 'email', label: 'E-mail', type: 'email', required: true },
+      { name: 'area', label: 'Área de interesse', type: 'select', options: ['Administrativo', 'Futebol', 'Marketing', 'Comunicação', 'Outro'] },
+      { name: 'mensagem', label: 'Conte sobre você', type: 'textarea', required: true },
+    ],
+    submitLabel: 'Enviar candidatura',
+  },
+  '/contato/ouvidoria': {
+    archetype: 'form',
+    lead: 'Canal direto para manifestações do torcedor. Sua voz importa.',
+    fields: [
+      { name: 'nome', label: 'Nome', type: 'text' },
+      { name: 'email', label: 'E-mail', type: 'email', required: true },
+      { name: 'tipo', label: 'Tipo de manifestação', type: 'select', options: ['Denúncia', 'Reclamação', 'Sugestão', 'Elogio'] },
+      { name: 'mensagem', label: 'Sua manifestação', type: 'textarea', required: true },
+    ],
+    submitLabel: 'Registrar manifestação',
+  },
+  '/ajuda/contato-imprensa': {
+    archetype: 'form',
+    lead: 'Canal exclusivo para a imprensa.',
+    fields: [
+      { name: 'nome', label: 'Nome', type: 'text', required: true },
+      { name: 'veiculo', label: 'Veículo', type: 'text' },
+      { name: 'email', label: 'E-mail', type: 'email', required: true },
+      { name: 'mensagem', label: 'Pauta / solicitação', type: 'textarea', required: true },
+    ],
+    submitLabel: 'Enviar',
+  },
+  '/historias/enviar': {
+    archetype: 'form',
+    lead: 'Toda história coral merece ser contada. Envie a sua e faça parte da nação.',
+    fields: [
+      { name: 'nome', label: 'Seu nome', type: 'text', required: true },
+      { name: 'cidade', label: 'Cidade', type: 'text', required: true },
+      { name: 'geracao', label: 'Geração', type: 'select', options: ['Anos 60', 'Anos 70', 'Anos 80', 'Anos 90', 'Anos 2000', 'Anos 2010', 'Anos 2020'] },
+      { name: 'historia', label: 'Sua história coral', type: 'textarea', required: true },
+    ],
+    consent: 'Autorizo o Santa Cruz a publicar minha história no site oficial (conforme a LGPD).',
+    submitLabel: 'Enviar minha história',
+  },
+
+  // ---- Histórias Coral ----
+  '/historias/explorar': {
+    archetype: 'stories',
+    lead: 'Histórias de quem faz a maior nação do Nordeste. Explore e se emocione.',
+    mode: 'all',
+    stories: CORAL_STORIES,
+  },
+  '/historias/destaque': {
+    archetype: 'stories',
+    lead: 'As histórias corais em destaque, escolhidas pela nação.',
+    mode: 'featured',
+    stories: CORAL_STORIES,
+  },
+  '/historias/por-cidade': {
+    archetype: 'stories',
+    lead: 'A paixão coral espalhada pelo Brasil — histórias por cidade.',
+    mode: 'city',
+    stories: CORAL_STORIES,
+  },
+  '/historias/por-geracao': {
+    archetype: 'stories',
+    lead: 'De geração em geração: a tradição que não é moda.',
+    mode: 'generation',
+    stories: CORAL_STORIES,
   },
 };
 
