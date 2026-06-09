@@ -22,6 +22,7 @@ export interface EditorialData {
   sections: { heading: string; paragraphs: string[] }[];
   quote?: { text: string; cite: string };
   facts?: { k: string; v: string }[];
+  heroImage?: string;
 }
 export interface LegalData {
   archetype: 'legal';
@@ -182,6 +183,7 @@ const LEGAL_SECTIONS: LegalData['sections'] = [
 export const SITE_PAGES: Record<string, PageData> = {
   '/o-santa/historia': {
     archetype: 'editorial',
+    heroImage: '/images/torcida1.jpg',
     lead: 'Fundado em 3 de fevereiro de 1914, no bairro da Boa Vista, em Recife, o Santa Cruz nasceu da paixão de um grupo de jovens e se tornou um dos clubes mais queridos do Nordeste.',
     sections: [
       {
@@ -203,6 +205,7 @@ export const SITE_PAGES: Record<string, PageData> = {
   },
   '/o-santa/precursor-da-inclusao': {
     archetype: 'editorial',
+    heroImage: '/images/foto_arruda.jpg',
     lead: 'Conhecido como "o clube do povo", o Santa Cruz carrega na sua história uma identidade popular e plural, abraçada por torcedores de todas as origens.',
     sections: [
       {

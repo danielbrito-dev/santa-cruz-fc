@@ -14,20 +14,36 @@ export async function Editorial({
 }) {
   const t = await getTranslations('menu');
   const p = await getTranslations('page');
+  const photo = data.heroImage;
 
   return (
-    <div className="info">
-      <header className="info-hero">
-        <div className="container info-hero-inner">
-          <nav className="info-breadcrumb" aria-label="breadcrumb">
-            <span>{t(sectionKey)}</span>
-            <span className="info-breadcrumb-sep">/</span>
-            <span className="info-breadcrumb-current">{t(titleKey)}</span>
-          </nav>
-          <h1 className="info-title">{t(titleKey)}</h1>
-          <p className="info-lead">{data.lead}</p>
-        </div>
-      </header>
+    <div className={`info editorial${photo ? ' page-hero-dark' : ''}`}>
+      {photo ? (
+        <header className="ed-hero">
+          <div className="ed-hero-media">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={photo} alt="" />
+          </div>
+          <div className="ed-hero-overlay" aria-hidden="true" />
+          <div className="container ed-hero-inner">
+            <span className="ed-hero-eyebrow">{t(sectionKey)}</span>
+            <h1 className="ed-hero-title">{t(titleKey)}</h1>
+            <p className="ed-hero-lead">{data.lead}</p>
+          </div>
+        </header>
+      ) : (
+        <header className="info-hero">
+          <div className="container info-hero-inner">
+            <nav className="info-breadcrumb" aria-label="breadcrumb">
+              <span>{t(sectionKey)}</span>
+              <span className="info-breadcrumb-sep">/</span>
+              <span className="info-breadcrumb-current">{t(titleKey)}</span>
+            </nav>
+            <h1 className="info-title">{t(titleKey)}</h1>
+            <p className="info-lead">{data.lead}</p>
+          </div>
+        </header>
+      )}
 
       <div className="info-main">
         <div className="container">
