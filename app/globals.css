@@ -1562,6 +1562,8 @@ body{ background:var(--page-bg) }
 }
 [data-theme="dark"] .login-card{
   box-shadow:0 4px 40px -8px rgba(0,0,0,.7), 0 1px 4px rgba(0,0,0,.4);
+  /* BRAND.md: no escuro o acento de topo vira dourado (vermelho não toca o near-black) */
+  border-top-color:var(--gold);
 }
 
 /* Escudo — BRAND.md §3: ≥50px, no effects (no shadow/blur/gradient) */
@@ -3608,6 +3610,24 @@ textarea.admin-input {
 
 @media (max-width: 1024px) { .adm-kpis { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 760px) { .adm-an-grid { grid-template-columns: 1fr; } .adm-kpis { grid-template-columns: repeat(2, 1fr); } .adm-an-sources-row { flex-direction: column; align-items: flex-start; } }
+
+/* ── BRAND.md · preto nunca toca vermelho ──────────────────────────────────
+   No tema escuro as superfícies do admin são near-black (#1A1A1A/#111), então
+   o acento VERMELHO decorativo encostaria no preto. Solução de marca: no escuro
+   esses acentos viram DOURADO (cor de apoio, sem restrição de contato com preto).
+   O vermelho permanece só onde há anel branco (botões, avatar, pills, status). */
+[data-theme="dark"] .admin-card,
+[data-theme="dark"] .ce-panel,
+[data-theme="dark"] .admin-news-empty,
+[data-theme="dark"] .admin-news-list,
+[data-theme="dark"] .adm-kpi {
+  border-top-color: var(--gold);
+}
+[data-theme="dark"] .adm-bar { background: linear-gradient(180deg, #E6D9B4, var(--gold)); }
+[data-theme="dark"] .adm-rank-bar i { background: var(--gold); }
+[data-theme="dark"] .adm-kpi-delta.down { color: var(--gold); }
+/* Donut: anel branco separa o arco vermelho da superfície escura do card */
+[data-theme="dark"] .adm-donut { box-shadow: 0 0 0 2px rgba(255,255,255,.92); }
 @media (max-width: 640px) {
   .admin-jogos-row { grid-template-columns: 1fr auto; row-gap: 8px; }
   .admin-jogos-row .admin-badge { grid-column: 1 / -1; justify-self: start; }

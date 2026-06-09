@@ -14,9 +14,9 @@ const KPIS: { key: string; value: string; delta: string; good: boolean }[] = [
 const SERIES = [42, 38, 51, 47, 63, 58, 71, 66, 59, 74, 69, 82, 77, 90];
 const SOURCES = [
   { key: 'srcSearch', pct: 41, color: 'var(--red)' },
-  { key: 'srcDirect', pct: 34, color: 'var(--ink)' },
+  { key: 'srcDirect', pct: 34, color: '#5C6066' },
   { key: 'srcSocial', pct: 19, color: 'var(--gold)' },
-  { key: 'srcReferral', pct: 6, color: '#9aa0a6' },
+  { key: 'srcReferral', pct: 6, color: '#A2A7AD' },
 ];
 const DEVICES = [
   { key: 'devMobile', pct: 78 },
