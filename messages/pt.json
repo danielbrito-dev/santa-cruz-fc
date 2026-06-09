@@ -321,7 +321,13 @@
     "fAuthor": "Autor",
     "fCity": "Cidade",
     "fGeneration": "Geração",
-    "statusPending": "Pendente"
+    "statusPending": "Pendente",
+    "pageSaved": "Página salva.",
+    "fLead": "Texto de abertura",
+    "fHeading": "Título da seção",
+    "fParagraphs": "Parágrafos (uma linha em branco separa cada parágrafo)",
+    "addSection": "Adicionar seção",
+    "removeSection": "Remover seção"
   },
   "drawer": {
     "home": "Início",

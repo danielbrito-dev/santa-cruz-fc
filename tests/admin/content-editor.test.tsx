@@ -46,6 +46,7 @@ const minimalContent: SiteContent = {
   gallery: [],
   documents: [],
   stories: [],
+  pages: [],
   matches: [
     {
       id: 'test-match',

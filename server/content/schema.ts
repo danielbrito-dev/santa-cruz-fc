@@ -21,6 +21,10 @@ const story = z.object({
   id: z.string(), author: z.string(), city: z.string(), generation: z.string(),
   excerpt: z.string(), featured: z.boolean(), status: z.enum(['pending', 'published']),
 });
+const pageContent = z.object({
+  href: z.string(), title: z.string(), lead: z.string(),
+  sections: z.array(z.object({ heading: z.string(), paragraphs: z.array(z.string()) })),
+});
 const news = z.object({
   id: z.string(), slug: z.string(), tag: localized, title: localized, excerpt: localized,
   body: localized, coverImage: z.string(), photoCount: z.number(), publishedAt: z.string(),
@@ -50,6 +54,7 @@ export const SiteContentSchema = z.object({
   gallery: z.array(galleryImage).default([]),
   documents: z.array(docItem).default([]),
   stories: z.array(story).default([]),
+  pages: z.array(pageContent).default([]),
   news: z.array(news),
   banners: z.array(card),
   institutional: z.array(card),

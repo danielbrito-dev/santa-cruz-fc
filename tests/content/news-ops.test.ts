@@ -21,6 +21,7 @@ const baseContent: SiteContent = {
   gallery: [],
   documents: [],
   stories: [],
+  pages: [],
   news: [
     {
       id: 'existing-1',

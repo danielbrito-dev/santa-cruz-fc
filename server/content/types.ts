@@ -30,6 +30,8 @@ export interface Sponsor { id: string; name: string; logo: string; url: string; 
 export interface GalleryImage { id: string; src: string; alt: string; }
 export interface DocItem { id: string; page: string; title: string; kind: string; meta: string; href: string; }
 export interface StoryItem { id: string; author: string; city: string; generation: string; excerpt: string; featured: boolean; status: 'pending' | 'published'; }
+export interface PageSection { heading: string; paragraphs: string[]; }
+export interface PageContent { href: string; title: string; lead: string; sections: PageSection[]; }
 export interface SocialLink { id: string; network: string; url: string; }
 export interface FooterColumn { heading: LocalizedText; links: { label: LocalizedText; url: string }[]; }
 
@@ -40,6 +42,7 @@ export interface SiteContent {
   gallery: GalleryImage[];
   documents: DocItem[];
   stories: StoryItem[];
+  pages: PageContent[];
   news: NewsItem[];
   banners: CardItem[];
   institutional: CardItem[];

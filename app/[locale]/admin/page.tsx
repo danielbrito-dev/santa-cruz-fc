@@ -49,7 +49,7 @@ export default async function AdminDashboardPage({ params }: { params: Promise<{
       icon: <svg viewBox="0 0 24 24" {...S}><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></svg>,
     },
     {
-      title: t('paginas'), desc: t('paginasDesc'), href: `/${locale}/admin/paginas`,
+      title: t('paginas'), desc: t('paginasDesc'), href: `/${locale}/admin/paginas`, active: true, action: t('manage'),
       icon: <svg viewBox="0 0 24 24" {...S}><path d="M4 4h11l5 5v11H4Z" /><path d="M14 4v6h6M8 14h8M8 18h5" /></svg>,
     },
     {

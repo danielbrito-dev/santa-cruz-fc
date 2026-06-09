@@ -131,6 +131,7 @@ const sj = site as unknown as {
   gallery: { id: string; src: string; alt: string }[];
   documents: { id: string; page: string; title: string; kind: string; meta: string; href: string }[];
   stories: { id: string; author: string; city: string; generation: string; excerpt: string; featured: boolean; status: string }[];
+  pages: { href: string; title: string; lead: string; sections: { heading: string; paragraphs: string[] }[] }[];
 };
 const GALLERY_IMAGES: GalleryData['images'] = (sj.gallery ?? []).map((g) => ({ src: g.src, alt: g.alt }));
 function docsFor(page: string): DocumentsData['items'] {
@@ -138,6 +139,14 @@ function docsFor(page: string): DocumentsData['items'] {
     .filter((d) => d.page === page)
     .map((d) => ({ title: d.title, kind: d.kind, meta: d.meta || undefined, href: d.href }));
 }
+// Override editável de páginas institucionais (admin → content.pages). Mantém o
+// conteúdo estático como fallback; se houver override, sobrescreve lead + seções.
+const PAGE_OV = new Map((sj.pages ?? []).map((p) => [p.href, p]));
+/** Páginas editoriais editáveis pelo admin (Páginas). */
+export const EDITABLE_PAGES: { href: string; title: string }[] = [
+  { href: '/o-santa/simbolos', title: 'Símbolos' },
+  { href: '/o-santa/precursor-da-inclusao', title: 'Precursor da Inclusão' },
+];
 const NEWS_ITEMS: ListingData['items'] = sj.news
   .filter((n) => n.status === 'published')
   .map((n) => ({
@@ -700,6 +709,24 @@ export const SITE_PAGES: Record<string, PageData> = {
   },
 };
 
+// Aplica os overrides editáveis (admin → content.pages) sobre as páginas editoriais.
+for (const { href } of EDITABLE_PAGES) {
+  const ov = PAGE_OV.get(href);
+  const cur = SITE_PAGES[href];
+  if (ov && cur && cur.archetype === 'editorial') {
+    SITE_PAGES[href] = { ...cur, lead: ov.lead, sections: ov.sections };
+  }
+}
+
 export function getPageData(href: string): PageData | undefined {
   return SITE_PAGES[href];
 }
+
+/** Conteúdo editorial efetivo (com override aplicado) — usado pelo admin de Páginas. */
+export function getEditablePage(href: string): { title: string; lead: string; sections: PageSectionData[] } | null {
+  const meta = EDITABLE_PAGES.find((p) => p.href === href);
+  const data = SITE_PAGES[href];
+  if (!meta || !data || data.archetype !== 'editorial') return null;
+  return { title: meta.title, lead: data.lead, sections: data.sections };
+}
+export type PageSectionData = { heading: string; paragraphs: string[] };

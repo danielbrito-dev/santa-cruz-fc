@@ -321,7 +321,13 @@
     "fAuthor": "Author",
     "fCity": "City",
     "fGeneration": "Generation",
-    "statusPending": "Pending"
+    "statusPending": "Pending",
+    "pageSaved": "Page saved.",
+    "fLead": "Lead paragraph",
+    "fHeading": "Section heading",
+    "fParagraphs": "Paragraphs (a blank line separates each paragraph)",
+    "addSection": "Add section",
+    "removeSection": "Remove section"
   },
   "drawer": {
     "home": "Home",
