@@ -21,120 +21,60 @@
   },
   "matches": [
     {
-      "id": "pernambucano-santa-nautico-2026-05-25",
-      "competition": "Pernambucano",
-      "comp": "pernambucano",
-      "opponent": "Náutico",
-      "opponentShort": "NAU",
+      "id": "serie-c-ita-2026-04-06",
+      "competition": "Série C",
+      "comp": "serie-c",
+      "opponent": "Itabaiana",
+      "opponentShort": "ITA",
       "isHome": true,
       "status": {
-        "pt": "DOM 25 MAI · FINAL",
-        "en": "SUN MAY 25 · FINAL"
+        "pt": "SEG 06 ABR · FINAL",
+        "en": "MON APR 06 · FINAL"
       },
-      "scoreHome": 2,
+      "scoreHome": 1,
       "scoreAway": 0,
       "matchCenterUrl": "#"
     },
     {
-      "id": "pernambucano-retro-santa-2026-05-21",
-      "competition": "Pernambucano",
-      "comp": "pernambucano",
-      "opponent": "Retrô",
-      "opponentShort": "RET",
+      "id": "serie-c-flo-2026-04-11",
+      "competition": "Série C",
+      "comp": "serie-c",
+      "opponent": "Floresta",
+      "opponentShort": "FLO",
       "isHome": false,
       "status": {
-        "pt": "QUA 21 MAI · FINAL",
-        "en": "WED MAY 21 · FINAL"
-      },
-      "scoreHome": 0,
-      "scoreAway": 2,
-      "matchCenterUrl": "#"
-    },
-    {
-      "id": "nordeste-santa-bahia-2026-05-17",
-      "competition": "Nordeste",
-      "comp": "nordeste",
-      "opponent": "Bahia",
-      "opponentShort": "BAH",
-      "isHome": true,
-      "status": {
-        "pt": "SÁB 17 MAI · FINAL",
-        "en": "SAT MAY 17 · FINAL"
+        "pt": "SÁB 11 ABR · FINAL",
+        "en": "SAT APR 11 · FINAL"
       },
       "scoreHome": 1,
       "scoreAway": 1,
       "matchCenterUrl": "#"
     },
     {
-      "id": "copa-br-crb-santa-2026-05-14",
-      "competition": "Copa do Brasil",
-      "comp": "copa-br",
-      "opponent": "CRB",
-      "opponentShort": "CRB",
-      "isHome": false,
+      "id": "serie-c-fer-2026-05-31",
+      "competition": "Série C",
+      "comp": "serie-c",
+      "opponent": "Ferroviária",
+      "opponentShort": "FER",
+      "isHome": true,
       "status": {
-        "pt": "QUA 14 MAI · FINAL",
-        "en": "WED MAY 14 · FINAL"
+        "pt": "DOM 31 MAI · FINAL",
+        "en": "SUN MAY 31 · FINAL"
       },
       "scoreHome": 1,
-      "scoreAway": 2,
+      "scoreAway": 1,
       "matchCenterUrl": "#"
     },
     {
-      "id": "pernambucano-santa-salgueiro-2026-05-30",
-      "competition": "Pernambucano",
-      "comp": "pernambucano",
-      "opponent": "Salgueiro",
-      "opponentShort": "SAL",
-      "isHome": true,
-      "status": {
-        "pt": "SÁB 30 MAI · 19h30",
-        "en": "SAT MAY 30 · 7:30 PM"
-      },
-      "scoreHome": null,
-      "scoreAway": null,
-      "matchCenterUrl": "#"
-    },
-    {
-      "id": "nordeste-csa-santa-2026-06-03",
-      "competition": "Nordeste",
-      "comp": "nordeste",
-      "opponent": "CSA",
-      "opponentShort": "CSA",
+      "id": "serie-c-bru-2026-06-14",
+      "competition": "Série C",
+      "comp": "serie-c",
+      "opponent": "Brusque",
+      "opponentShort": "BRU",
       "isHome": false,
       "status": {
-        "pt": "QUA 03 JUN · 21h30",
-        "en": "WED JUN 03 · 9:30 PM"
-      },
-      "scoreHome": null,
-      "scoreAway": null,
-      "matchCenterUrl": "#"
-    },
-    {
-      "id": "pernambucano-santa-retro-2026-06-06",
-      "competition": "Pernambucano",
-      "comp": "pernambucano",
-      "opponent": "Retrô",
-      "opponentShort": "RET",
-      "isHome": true,
-      "status": {
-        "pt": "SÁB 06 JUN · 16h30",
-        "en": "SAT JUN 06 · 4:30 PM"
-      },
-      "scoreHome": null,
-      "scoreAway": null,
-      "matchCenterUrl": "#"
-    },
-    {
-      "id": "copa-br-santa-vasco-2026-06-10",
-      "competition": "Copa do Brasil",
-      "comp": "copa-br",
-      "opponent": "Vasco",
-      "opponentShort": "VAS",
-      "isHome": true,
-      "status": {
-        "pt": "QUA 10 JUN · 19h00",
-        "en": "WED JUN 10 · 7:00 PM"
+        "pt": "DOM 14 JUN · 14:00",
+        "en": "SUN JUN 14 · 14:00"
       },
       "scoreHome": null,
       "scoreAway": null,
@@ -189,6 +129,30 @@
       "name": "Vasco",
       "shortName": "VAS",
       "crestUrl": "https://upload.wikimedia.org/wikipedia/pt/thumb/8/8b/EscudoDoVascoDaGama.svg/250px-EscudoDoVascoDaGama.svg.png"
+    },
+    {
+      "id": "itabaiana",
+      "name": "Itabaiana",
+      "shortName": "ITA",
+      "crestUrl": "https://r2.thesportsdb.com/images/media/team/badge/u0v5vk1766508720.png"
+    },
+    {
+      "id": "floresta",
+      "name": "Floresta",
+      "shortName": "FLO",
+      "crestUrl": "https://r2.thesportsdb.com/images/media/team/badge/1ch7n01617198950.png"
+    },
+    {
+      "id": "ferroviaria",
+      "name": "Ferroviária",
+      "shortName": "FER",
+      "crestUrl": "https://r2.thesportsdb.com/images/media/team/badge/zfo1y81766506623.png"
+    },
+    {
+      "id": "brusque",
+      "name": "Brusque",
+      "shortName": "BRU",
+      "crestUrl": "https://r2.thesportsdb.com/images/media/team/badge/o7p43b1766507803.png"
     }
   ],
   "news": [

@@ -4,7 +4,7 @@ const localized = z.object({ pt: z.string(), en: z.string() });
 
 const match = z.object({
   id: z.string(), competition: z.string(),
-  comp: z.enum(['pernambucano', 'nordeste', 'copa-br']),
+  comp: z.enum(['pernambucano', 'nordeste', 'copa-br', 'serie-c']),
   opponent: z.string(), opponentShort: z.string(), isHome: z.boolean(),
   status: localized, scoreHome: z.number().nullable(), scoreAway: z.number().nullable(),
   matchCenterUrl: z.string(),

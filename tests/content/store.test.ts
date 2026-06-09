@@ -9,9 +9,9 @@ const TMP = path.join(process.cwd(), 'tests', '.tmp-site.json');
 describe('content store', () => {
   afterAll(async () => { await fs.rm(TMP, { force: true }); });
 
-  it('reads the real site.json (8 matches, 12 sponsors)', async () => {
+  it('reads the real site.json (4 matches, 12 sponsors)', async () => {
     const c = await readSiteContent();
-    expect(c.matches).toHaveLength(8);
+    expect(c.matches).toHaveLength(4);
     expect(c.sponsors).toHaveLength(12);
   });
 

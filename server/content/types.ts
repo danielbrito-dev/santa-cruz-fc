@@ -4,7 +4,7 @@ export type LocalizedText = Record<Locale, string>;
 
 export interface MatchItem {
   // `comp` = machine key (icon/filter/styling); `competition` = display label.
-  id: string; competition: string; comp: 'pernambucano' | 'nordeste' | 'copa-br';
+  id: string; competition: string; comp: 'pernambucano' | 'nordeste' | 'copa-br' | 'serie-c';
   opponent: string; opponentShort: string; isHome: boolean;
   status: LocalizedText; scoreHome: number | null; scoreAway: number | null;
   matchCenterUrl: string;

@@ -41,6 +41,16 @@ const navItems = [
     ),
   },
   {
+    key: 'jogos' as const,
+    href: '/admin/jogos',
+    icon: (
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7l4.5 3.3-1.7 5.3H9.2L7.5 10.3 12 7Z" />
+      </svg>
+    ),
+  },
+  {
     key: 'users' as const,
     href: '/admin/usuarios',
     icon: (

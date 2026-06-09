@@ -15,9 +15,9 @@ describe('JsonContentSource', () => {
     expect(featured).toBeDefined();
     expect(featured!.position).toBe(0);
   });
-  it('has 8 matches and 12 sponsors', async () => {
+  it('has 4 matches and 12 sponsors', async () => {
     const c = await source.getSiteContent();
-    expect(c.matches).toHaveLength(8);
+    expect(c.matches).toHaveLength(4);
     expect(c.sponsors).toHaveLength(12);
   });
 });
