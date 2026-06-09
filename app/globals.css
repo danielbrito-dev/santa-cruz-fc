@@ -559,16 +559,16 @@ ul{list-style:none}
 }
 .carousel::-webkit-scrollbar{display:none}
 
-/* Match card: fixed 293×188px, 24px padding owned by the card.
+/* Match card: 293×248px (retangular/pôster), 24px padding owned by the card.
    Children use NO horizontal/edge padding — the card's own padding is the single inset. */
 .match{
   flex:0 0 293px;
   width:293px;
-  height:188px;
+  height:248px;
   scroll-snap-align:start;
   background:var(--bg-2);color:var(--ink);
   display:flex;flex-direction:column;
-  justify-content:center;
+  justify-content:space-between;
   overflow:hidden;
   transition:transform .2s, box-shadow .2s;
   cursor:pointer;
