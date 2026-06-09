@@ -43,6 +43,9 @@ const minimalContent: SiteContent = {
     backdrop: '/images/torcida1.jpg',
   },
   clubs: [],
+  gallery: [],
+  documents: [],
+  stories: [],
   matches: [
     {
       id: 'test-match',

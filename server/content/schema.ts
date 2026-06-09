@@ -13,6 +13,14 @@ const club = z.object({
   id: z.string(), name: z.string(), shortName: z.string(),
   crestUrl: z.string().nullable(), rival: z.boolean().optional(),
 });
+const galleryImage = z.object({ id: z.string(), src: z.string(), alt: z.string() });
+const docItem = z.object({
+  id: z.string(), page: z.string(), title: z.string(), kind: z.string(), meta: z.string(), href: z.string(),
+});
+const story = z.object({
+  id: z.string(), author: z.string(), city: z.string(), generation: z.string(),
+  excerpt: z.string(), featured: z.boolean(), status: z.enum(['pending', 'published']),
+});
 const news = z.object({
   id: z.string(), slug: z.string(), tag: localized, title: localized, excerpt: localized,
   body: localized, coverImage: z.string(), photoCount: z.number(), publishedAt: z.string(),
@@ -39,6 +47,9 @@ export const SiteContentSchema = z.object({
   }),
   matches: z.array(match),
   clubs: z.array(club).default([]),
+  gallery: z.array(galleryImage).default([]),
+  documents: z.array(docItem).default([]),
+  stories: z.array(story).default([]),
   news: z.array(news),
   banners: z.array(card),
   institutional: z.array(card),

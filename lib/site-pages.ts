@@ -128,7 +128,16 @@ export type PageData =
 const sj = site as unknown as {
   news: { slug: string; title: { pt: string }; tag: { pt: string }; publishedAt: string; status: string }[];
   matches: { competition: string; opponent: string; isHome: boolean; scoreHome: number | null; scoreAway: number | null }[];
+  gallery: { id: string; src: string; alt: string }[];
+  documents: { id: string; page: string; title: string; kind: string; meta: string; href: string }[];
+  stories: { id: string; author: string; city: string; generation: string; excerpt: string; featured: boolean; status: string }[];
 };
+const GALLERY_IMAGES: GalleryData['images'] = (sj.gallery ?? []).map((g) => ({ src: g.src, alt: g.alt }));
+function docsFor(page: string): DocumentsData['items'] {
+  return (sj.documents ?? [])
+    .filter((d) => d.page === page)
+    .map((d) => ({ title: d.title, kind: d.kind, meta: d.meta || undefined, href: d.href }));
+}
 const NEWS_ITEMS: ListingData['items'] = sj.news
   .filter((n) => n.status === 'published')
   .map((n) => ({
@@ -153,14 +162,10 @@ const CONTACT_FIELDS: FormField[] = [
   { name: 'mensagem', label: 'Mensagem', type: 'textarea', required: true },
 ];
 
-const CORAL_STORIES: StoriesData['stories'] = [
-  { author: 'Carlos Henrique', city: 'Recife · PE', generation: 'Anos 80', excerpt: 'Meu avô me levou ao Arruda pela primeira vez em 1983. Nunca mais larguei o tricolor.', featured: true },
-  { author: 'José Mário', city: 'São Paulo · SP', generation: 'Anos 70', excerpt: 'Saí de Pernambuco, mas o coração ficou no Arruda. Fundei um consulado coral por aqui.', featured: true },
-  { author: 'Ana Beatriz', city: 'Caruaru · PE', generation: 'Anos 2000', excerpt: 'Cresci ouvindo as histórias da Fita Azul. Hoje levo meus filhos pra torcer comigo.' },
-  { author: 'Rafaela Lima', city: 'Olinda · PE', generation: 'Anos 90', excerpt: 'A maior alegria foi a Copa do Nordeste em 2016, com a nação lotando o estádio.' },
-  { author: 'Pedro Lucas', city: 'Petrolina · PE', generation: 'Anos 2010', excerpt: 'Sou da geração que aprendeu, desde cedo, que é tradição — não é moda.' },
-  { author: 'Dona Severina', city: 'Recife · PE', generation: 'Anos 60', excerpt: 'Torço desde menina. O Santa é a paixão da minha vida inteira.' },
-];
+// Histórias publicadas (admin modera/publica — só status 'published' vão ao ar).
+const CORAL_STORIES: StoriesData['stories'] = (sj.stories ?? [])
+  .filter((s) => s.status === 'published')
+  .map((s) => ({ author: s.author, city: s.city, generation: s.generation, excerpt: s.excerpt, featured: s.featured }));
 
 const LEGAL_SECTIONS: LegalData['sections'] = [
   {
@@ -489,76 +494,44 @@ export const SITE_PAGES: Record<string, PageData> = {
   '/clube/transparencia': {
     archetype: 'documents',
     lead: 'Prestação de contas e documentos de gestão do clube.',
-    items: [
-      { title: 'Demonstrações Financeiras 2025', kind: 'PDF', meta: '2025', href: '#' },
-      { title: 'Demonstrações Financeiras 2024', kind: 'PDF', meta: '2024', href: '#' },
-      { title: 'Parecer do Conselho Fiscal', kind: 'PDF', meta: '2025', href: '#' },
-    ],
+    items: docsFor('transparencia'),
   },
   '/clube/estatuto': {
     archetype: 'documents',
     lead: 'O Estatuto Social do Santa Cruz Futebol Clube.',
-    items: [{ title: 'Estatuto Social', kind: 'PDF', meta: 'Vigente', href: '#' }],
+    items: docsFor('estatuto'),
   },
   '/clube/documentos': {
     archetype: 'documents',
     lead: 'Documentos institucionais e regimentos do clube.',
-    items: [
-      { title: 'Regimento Interno', kind: 'PDF', href: '#' },
-      { title: 'Código de Ética', kind: 'PDF', href: '#' },
-      { title: 'Política de Privacidade', kind: 'PDF', href: '/privacidade' },
-    ],
+    items: docsFor('documentos'),
   },
   '/clube/relatorios': {
     archetype: 'documents',
     lead: 'Relatórios de gestão e atividades.',
-    items: [
-      { title: 'Relatório Anual 2025', kind: 'PDF', meta: '2025', href: '#' },
-      { title: 'Relatório Anual 2024', kind: 'PDF', meta: '2024', href: '#' },
-    ],
+    items: docsFor('relatorios'),
   },
   '/midia/guia-da-partida': {
     archetype: 'documents',
     lead: 'O guia oficial de cada partida do tricolor.',
-    items: [
-      { title: 'Guia da Partida — Pernambucano', kind: 'PDF', meta: 'Edição mais recente', href: '#' },
-      { title: 'Guia da Partida — Copa do Nordeste', kind: 'PDF', href: '#' },
-    ],
+    items: docsFor('guia-da-partida'),
   },
   '/midia/press-kit': {
     archetype: 'documents',
     lead: 'Materiais oficiais para imprensa e parceiros.',
-    items: [
-      { title: 'Escudo oficial (PNG)', kind: 'PNG', meta: 'Marca', href: '/images/logo.png' },
-      { title: 'Manual de Marca', kind: 'PDF', meta: '2025', href: '#' },
-      { title: 'Banco de fotos oficiais', kind: 'ZIP', href: '#' },
-    ],
+    items: docsFor('press-kit'),
   },
   '/midia/conteudo-imprensa': {
     archetype: 'documents',
     lead: 'Releases e materiais de apoio para jornalistas.',
-    items: [
-      { title: 'Release — Coletiva de imprensa', kind: 'PDF', href: '#' },
-      { title: 'Notas oficiais', kind: 'PDF', href: '#' },
-    ],
+    items: docsFor('conteudo-imprensa'),
   },
 
   // ---- Galeria ----
   '/midia/fotos': {
     archetype: 'gallery',
     lead: 'A nação coral, o Arruda e os momentos do tricolor.',
-    images: [
-      { src: '/images/torcida1.jpg', alt: 'Torcida do Santa Cruz' },
-      { src: '/images/foto_arruda.jpg', alt: 'Estádio do Arruda' },
-      { src: '/images/estadio_arruda_em_2020_700_5.jpg', alt: 'Arruda em 2020' },
-      { src: '/images/everaldo.JPG', alt: 'Everaldo' },
-      { src: '/images/Everaldo-SantaCruz-Divulgacao.jpeg', alt: 'Everaldo — divulgação' },
-      { src: '/images/jogador_02.png', alt: 'Atleta tricolor' },
-      { src: '/images/jogador_03.png', alt: 'Atleta tricolor' },
-      { src: '/images/goleiro.png', alt: 'Goleiro tricolor' },
-      { src: '/images/escudo-santa-cruz_1915-212x200.jpg', alt: 'Escudo de 1915' },
-      { src: '/images/escudo-santa-cruz_1916-212x200.jpg', alt: 'Escudo de 1916' },
-    ],
+    images: GALLERY_IMAGES,
   },
 
   // ---- Listagem ----

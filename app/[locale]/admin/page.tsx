@@ -69,15 +69,15 @@ export default async function AdminDashboardPage({ params }: { params: Promise<{
       icon: <svg viewBox="0 0 24 24" {...S}><path d="M20.6 7.4 13 15l-3-3 7.6-7.6a2 2 0 0 1 2.8 0l.2.2a2 2 0 0 1 0 2.8Z" /><path d="M3 21l6-6M3 21v-4h4" /><circle cx="6.5" cy="6.5" r="2" /></svg>,
     },
     {
-      title: t('galeria'), desc: t('galeriaDesc'), href: `/${locale}/admin/galeria`,
+      title: t('galeria'), desc: t('galeriaDesc'), href: `/${locale}/admin/galeria`, active: true, action: t('manage'),
       icon: <svg viewBox="0 0 24 24" {...S}><rect x="3" y="3" width="18" height="18" rx="2" /><circle cx="9" cy="9" r="2" /><path d="m21 15-4.5-4.5L5 21" /></svg>,
     },
     {
-      title: t('documentos'), desc: t('documentosDesc'), href: `/${locale}/admin/documentos`,
+      title: t('documentos'), desc: t('documentosDesc'), href: `/${locale}/admin/documentos`, active: true, action: t('manage'),
       icon: <svg viewBox="0 0 24 24" {...S}><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" /><path d="M14 3v5h5M9 13h6M9 17h6" /></svg>,
     },
     {
-      title: t('historias'), desc: t('historiasDesc'), href: `/${locale}/admin/historias`,
+      title: t('historias'), desc: t('historiasDesc'), href: `/${locale}/admin/historias`, active: true, action: t('manage'),
       icon: <svg viewBox="0 0 24 24" {...S}><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /><path d="M8 9h8M8 13h5" /></svg>,
     },
     {

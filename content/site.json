@@ -478,6 +478,244 @@
       "rival": true
     }
   ],
+  "gallery": [
+    {
+      "id": "g1",
+      "src": "/images/torcida1.jpg",
+      "alt": "Torcida do Santa Cruz"
+    },
+    {
+      "id": "g2",
+      "src": "/images/foto_arruda.jpg",
+      "alt": "Estádio do Arruda"
+    },
+    {
+      "id": "g3",
+      "src": "/images/estadio_arruda_em_2020_700_5.jpg",
+      "alt": "Arruda em 2020"
+    },
+    {
+      "id": "g4",
+      "src": "/images/everaldo.JPG",
+      "alt": "Everaldo"
+    },
+    {
+      "id": "g5",
+      "src": "/images/Everaldo-SantaCruz-Divulgacao.jpeg",
+      "alt": "Everaldo — divulgação"
+    },
+    {
+      "id": "g6",
+      "src": "/images/jogador_02.png",
+      "alt": "Atleta tricolor"
+    },
+    {
+      "id": "g7",
+      "src": "/images/jogador_03.png",
+      "alt": "Atleta tricolor"
+    },
+    {
+      "id": "g8",
+      "src": "/images/goleiro.png",
+      "alt": "Goleiro tricolor"
+    },
+    {
+      "id": "g9",
+      "src": "/images/escudo-santa-cruz_1915-212x200.jpg",
+      "alt": "Escudo de 1915"
+    },
+    {
+      "id": "g10",
+      "src": "/images/escudo-santa-cruz_1916-212x200.jpg",
+      "alt": "Escudo de 1916"
+    }
+  ],
+  "documents": [
+    {
+      "id": "d1",
+      "page": "transparencia",
+      "title": "Demonstrações Financeiras 2025",
+      "kind": "PDF",
+      "meta": "2025",
+      "href": "#"
+    },
+    {
+      "id": "d2",
+      "page": "transparencia",
+      "title": "Demonstrações Financeiras 2024",
+      "kind": "PDF",
+      "meta": "2024",
+      "href": "#"
+    },
+    {
+      "id": "d3",
+      "page": "transparencia",
+      "title": "Parecer do Conselho Fiscal",
+      "kind": "PDF",
+      "meta": "2025",
+      "href": "#"
+    },
+    {
+      "id": "d4",
+      "page": "estatuto",
+      "title": "Estatuto Social",
+      "kind": "PDF",
+      "meta": "Vigente",
+      "href": "#"
+    },
+    {
+      "id": "d5",
+      "page": "documentos",
+      "title": "Regimento Interno",
+      "kind": "PDF",
+      "meta": "",
+      "href": "#"
+    },
+    {
+      "id": "d6",
+      "page": "documentos",
+      "title": "Código de Ética",
+      "kind": "PDF",
+      "meta": "",
+      "href": "#"
+    },
+    {
+      "id": "d7",
+      "page": "documentos",
+      "title": "Política de Privacidade",
+      "kind": "PDF",
+      "meta": "",
+      "href": "/privacidade"
+    },
+    {
+      "id": "d8",
+      "page": "relatorios",
+      "title": "Relatório Anual 2025",
+      "kind": "PDF",
+      "meta": "2025",
+      "href": "#"
+    },
+    {
+      "id": "d9",
+      "page": "relatorios",
+      "title": "Relatório Anual 2024",
+      "kind": "PDF",
+      "meta": "2024",
+      "href": "#"
+    },
+    {
+      "id": "d10",
+      "page": "guia-da-partida",
+      "title": "Guia da Partida — Pernambucano",
+      "kind": "PDF",
+      "meta": "Edição mais recente",
+      "href": "#"
+    },
+    {
+      "id": "d11",
+      "page": "guia-da-partida",
+      "title": "Guia da Partida — Copa do Nordeste",
+      "kind": "PDF",
+      "meta": "",
+      "href": "#"
+    },
+    {
+      "id": "d12",
+      "page": "press-kit",
+      "title": "Escudo oficial (PNG)",
+      "kind": "PNG",
+      "meta": "Marca",
+      "href": "/images/logo.png"
+    },
+    {
+      "id": "d13",
+      "page": "press-kit",
+      "title": "Manual de Marca",
+      "kind": "PDF",
+      "meta": "2025",
+      "href": "#"
+    },
+    {
+      "id": "d14",
+      "page": "press-kit",
+      "title": "Banco de fotos oficiais",
+      "kind": "ZIP",
+      "meta": "",
+      "href": "#"
+    },
+    {
+      "id": "d15",
+      "page": "conteudo-imprensa",
+      "title": "Release — Coletiva de imprensa",
+      "kind": "PDF",
+      "meta": "",
+      "href": "#"
+    },
+    {
+      "id": "d16",
+      "page": "conteudo-imprensa",
+      "title": "Notas oficiais",
+      "kind": "PDF",
+      "meta": "",
+      "href": "#"
+    }
+  ],
+  "stories": [
+    {
+      "id": "s1",
+      "author": "Carlos Henrique",
+      "city": "Recife · PE",
+      "generation": "Anos 80",
+      "excerpt": "Meu avô me levou ao Arruda pela primeira vez em 1983. Nunca mais larguei o tricolor.",
+      "featured": true,
+      "status": "published"
+    },
+    {
+      "id": "s2",
+      "author": "José Mário",
+      "city": "São Paulo · SP",
+      "generation": "Anos 70",
+      "excerpt": "Saí de Pernambuco, mas o coração ficou no Arruda. Fundei um consulado coral por aqui.",
+      "featured": true,
+      "status": "published"
+    },
+    {
+      "id": "s3",
+      "author": "Ana Beatriz",
+      "city": "Caruaru · PE",
+      "generation": "Anos 2000",
+      "excerpt": "Cresci ouvindo as histórias da Fita Azul. Hoje levo meus filhos pra torcer comigo.",
+      "featured": false,
+      "status": "published"
+    },
+    {
+      "id": "s4",
+      "author": "Rafaela Lima",
+      "city": "Olinda · PE",
+      "generation": "Anos 90",
+      "excerpt": "A maior alegria foi a Copa do Nordeste em 2016, com a nação lotando o estádio.",
+      "featured": false,
+      "status": "published"
+    },
+    {
+      "id": "s5",
+      "author": "Pedro Lucas",
+      "city": "Petrolina · PE",
+      "generation": "Anos 2010",
+      "excerpt": "Sou da geração que aprendeu, desde cedo, que é tradição — não é moda.",
+      "featured": false,
+      "status": "published"
+    },
+    {
+      "id": "s6",
+      "author": "Dona Severina",
+      "city": "Recife · PE",
+      "generation": "Anos 60",
+      "excerpt": "Torço desde menina. O Santa é a paixão da minha vida inteira.",
+      "featured": false,
+      "status": "published"
+    }
+  ],
   "news": [
     {
       "id": "arruda-lotado-32mil-ingressos",

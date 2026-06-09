@@ -18,6 +18,9 @@ const baseContent: SiteContent = {
   },
   matches: [],
   clubs: [],
+  gallery: [],
+  documents: [],
+  stories: [],
   news: [
     {
       id: 'existing-1',
