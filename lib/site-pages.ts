@@ -200,7 +200,7 @@ export const SITE_PAGES: Record<string, PageData> = {
     archetype: 'feature',
     heroImage: '/images/torcida1.jpg',
     heroKicker: 'Desde 1914',
-    intro: 'O Santa Cruz Futebol Clube nasceu em 3 de fevereiro de 1914, no bairro da Boa Vista, em Recife, das mãos de onze jovens. Mais de um século depois, é a paixão de milhões — "A Mais Apaixonada".',
+    intro: 'Em 3 de fevereiro de 1914, no pátio da Igreja de Santa Cruz, no bairro da Boa Vista, onze meninos entre 14 e 16 anos fundaram o Santa Cruz Foot-Ball Club. Mais de um século depois, a agremiação virou a maior paixão de Pernambuco — "A Mais Apaixonada" — com uma das maiores torcidas do Brasil e uma história de pioneirismo, glórias e superação.',
     stats: [
       { label: 'Fundação', value: '03·02·1914' },
       { label: 'Fundadores', value: '11' },
@@ -213,27 +213,44 @@ export const SITE_PAGES: Record<string, PageData> = {
       { year: '1916', src: '/images/escudo-santa-cruz_1916-212x200.jpg' },
       { year: 'Atual', src: '/images/logo.png' },
     ],
-    crestsNote: 'Foram oito versões do escudo — o primeiro desenhado por Teófilo de Carvalho, o "Lacraia", em 1914 — até a marca atual.',
+    crestsNote: 'As cores nasceram em etapas: preto e branco em 1914, com o vermelho somado em 1915 — formando o tricolor. O escudo passou por várias versões, do primeiro emblema, atribuído a Teófilo de Carvalho, o "Lacraia", até a marca atual.',
     marcosTitle: 'Marcos da história',
     marcos: [
-      { year: '1934', title: '7×0 no Sport', desc: 'A maior diferença de gols do Clássico das Multidões.' },
-      { year: '1972', title: 'Inauguração do Arruda', desc: 'O Santa passa a mandar seus jogos no maior estádio de Pernambuco.' },
-      { year: '1979', title: 'Fita Azul', desc: 'Excursão internacional invicta — um marco tricolor.' },
-      { year: '2013', title: 'Campeão da Série C', desc: 'Título nacional somado ao tricampeonato estadual.' },
-      { year: '2016', title: 'Copa do Nordeste', desc: 'O título regional diante da nação coral.' },
+      { year: '1934', title: '7×0 no Sport', desc: 'A maior diferença de gols da história do Clássico das Multidões.' },
+      { year: '1957', title: 'Quebra do jejum', desc: 'Campeão pernambucano sobre o Sport diante de 29 mil — e o primeiro Supercampeonato.' },
+      { year: '1972', title: 'Inauguração do Arruda', desc: 'Em 4 de julho, 0 a 0 com o Flamengo diante de 57.688 pagantes.' },
+      { year: '1975', title: '4º no Brasileirão', desc: 'Melhor campanha na Série A, com vitórias sobre Palmeiras e Flamengo no Maracanã.' },
+      { year: '1979', title: 'Fita Azul', desc: 'Excursão internacional invicta — enfrentou Paris Saint-Germain e a seleção romena.' },
+      { year: '1983', title: 'Tri-Supercampeão', desc: 'Final com o Náutico diante de 76 mil, decidida nos pênaltis — feito exclusivo do clube.' },
+      { year: '2013', title: 'Campeão da Série C', desc: 'Primeiro título nacional, somado ao tricampeonato estadual.' },
+      { year: '2016', title: 'Copa do Nordeste', desc: 'O primeiro título regional e a estreia internacional do clube.' },
+      { year: '2025', title: 'SAF e acesso', desc: 'Nova era empresarial e o retorno à Série C após o acesso na Série D.' },
     ],
     quote: { text: 'É tradição, não é moda.', cite: 'Torcida do Santa Cruz' },
   },
   '/o-santa/precursor-da-inclusao': {
     archetype: 'editorial',
     heroImage: '/images/foto_arruda.jpg',
-    lead: 'Conhecido como "o clube do povo", o Santa Cruz carrega na sua história uma identidade popular e plural, abraçada por torcedores de todas as origens.',
+    lead: 'Clube do povo desde a fundação, o Santa Cruz foi pioneiro ao abrir as portas do futebol pernambucano a quem a elite excluía.',
     sections: [
       {
         heading: 'O clube do povo',
         paragraphs: [
-          'Ao longo de mais de um século, o Santa Cruz construiu uma torcida marcada pela diversidade e pela paixão — "A Mais Apaixonada".',
-          'Esta página reúne a trajetória do clube como espaço de pertencimento e inclusão. Conteúdo em construção — a ser detalhado com a curadoria histórica do clube.',
+          'Fundado em 1914 por meninos das classes populares da Boa Vista, o Santa Cruz nasceu popular e assim permaneceu — "O Mais Querido das Multidões". Numa cidade dividida, virou o time da gente comum.',
+          'Essa origem se reflete na torcida: uma das maiores e mais apaixonadas do Brasil, que em 2011, mesmo na Série D, levou em média 39.916 pessoas por jogo — a maior média de público de todas as divisões do futebol brasileiro naquele ano.',
+        ],
+      },
+      {
+        heading: 'Pioneiro da inclusão',
+        paragraphs: [
+          'Numa época em que o futebol era reservado às elites brancas, o Santa Cruz foi um dos primeiros clubes de Pernambuco a aceitar jogadores negros. Teófilo de Carvalho, o "Lacraia", ligado às origens do clube, é apontado como o primeiro jogador negro do time — algo raro para o período.',
+          'Mais do que um detalhe histórico, foi uma escolha de identidade: o Santa abraçou o povo que o futebol da época rejeitava.',
+        ],
+      },
+      {
+        heading: 'Um tricolor que representa o povo',
+        paragraphs: [
+          'Não à toa, as cores carregam esse significado. Segundo o historiador Leonardo Dantas, o preto representa o povo negro, o branco os brancos e o vermelho os povos indígenas — o Santa Cruz como espelho da diversidade pernambucana.',
         ],
       },
     ],
@@ -309,25 +326,27 @@ export const SITE_PAGES: Record<string, PageData> = {
 
   '/o-santa/simbolos': {
     archetype: 'editorial',
-    lead: 'O escudo, as cores e a Cobra Coral: os símbolos que identificam o Santa Cruz desde 1914.',
+    lead: 'O escudo, o tricolor e a Cobra Coral: os símbolos que identificam o Santa Cruz desde 1914.',
     sections: [
       {
-        heading: 'O escudo',
+        heading: 'O nome e o escudo',
         paragraphs: [
-          'O primeiro escudo do Santa Cruz foi criado por Teófilo de Carvalho, o "Lacraia", um dos onze fundadores. Ao longo da história, o escudo passou por oito versões — de 1914 até o emblema atual.',
-          'O desenho atual combina o monograma "SCFC" entrelaçado com o escudo dividido em preto e vermelho, contornado para destacar a marca.',
+          'O clube foi batizado de Santa Cruz Foot-Ball Club em referência ao pátio da Igreja de Santa Cruz, na Boa Vista, onde os fundadores jogavam. O primeiro emblema é atribuído a Teófilo de Carvalho, o "Lacraia" — figura ligada às origens do time.',
+          'Ao longo da história o escudo passou por várias versões, até o desenho atual, que combina o monograma "SCFC" entrelaçado com o escudo tricolor contornado.',
         ],
       },
       {
         heading: 'As cores',
         paragraphs: [
-          'O tricolor preto, branco e vermelho é a assinatura do clube. O branco sempre separa o preto do vermelho — regra que vale até hoje na identidade visual.',
+          'Fundado em 1914 apenas com o preto e o branco, o clube incorporou o vermelho em 1915 — nascia o tricolor. O branco sempre separa o preto do vermelho, regra que vale até hoje na identidade visual.',
+          'Para o historiador Leonardo Dantas, as três cores traduzem a alma do clube: o preto remete ao povo negro, o branco aos brancos e o vermelho aos povos indígenas — um retrato da mistura do povo pernambucano.',
         ],
       },
       {
         heading: 'A Cobra Coral',
         paragraphs: [
-          'A mascote do clube faz referência às listras coral do uniforme tricolor. "Cobra Coral" e "A Mais Apaixonada" estão entre os apelidos mais queridos da torcida.',
+          'O mascote nasceu da semelhança entre as listras do uniforme tricolor e a serpente coral. O apelido pegou e virou identidade: na reforma do Arruda, em 1982, a pintura do estádio imitava as escamas da cobra.',
+          'Entre as alcunhas mais queridas estão "A Mais Apaixonada", "O Mais Querido das Multidões", "Cobra Coral" e "Gigante do Arruda".',
         ],
       },
     ],
@@ -338,18 +357,18 @@ export const SITE_PAGES: Record<string, PageData> = {
     lead: 'Mais de um século de glórias: o Santa Cruz é um dos maiores campeões do Nordeste.',
     stats: [
       { label: 'Pernambucanos', value: '29' },
+      { label: 'Supercampeonatos', value: '3' },
       { label: 'Copa do Nordeste', value: '1' },
       { label: 'Série C', value: '1' },
-      { label: 'Desde', value: '1914' },
     ],
     timeline: [
-      { year: '1934', title: '7×0 no Sport', desc: 'A maior diferença de gols da história do Clássico das Multidões.' },
+      { year: '1931', title: 'Primeiro Pernambucano', desc: 'O primeiro título estadual da história do clube.' },
       { year: '1957 · 1976 · 1983', title: 'Tri-Supercampeonato Pernambucano', desc: 'Feito exclusivo do clube, reunindo os vencedores dos turnos do estadual.' },
-      { year: '1972', title: 'Inauguração do Arruda', desc: 'O Santa passa a mandar seus jogos no maior estádio de Pernambuco.' },
-      { year: '1979', title: 'Fita Azul', desc: 'Excursão internacional invicta — um marco na história tricolor.' },
-      { year: '2013', title: 'Campeão da Série C', desc: 'Título nacional somado ao tricampeonato estadual.' },
-      { year: '2015', title: 'Centenário do Pernambucano', desc: 'Campeão da edição do centenário do Campeonato Pernambucano.' },
-      { year: '2016', title: 'Copa do Nordeste', desc: 'O Santa conquista o título regional diante de sua nação.' },
+      { year: '1967', title: 'Hexagonal Norte-Nordeste', desc: 'O primeiro título regional do Santa Cruz.' },
+      { year: '1979', title: 'Fita Azul', desc: 'Excursão internacional invicta — enfrentou o Paris Saint-Germain e a seleção romena.' },
+      { year: '2013', title: 'Campeão da Série C', desc: 'Primeiro título nacional, somado ao tricampeonato estadual.' },
+      { year: '2015', title: 'Centenário do Pernambucano', desc: 'Campeão na 100ª edição do Campeonato Pernambucano.' },
+      { year: '2016', title: 'Copa do Nordeste', desc: 'Título regional sobre o Campinense, diante da nação coral.' },
     ],
   },
 
@@ -368,12 +387,12 @@ export const SITE_PAGES: Record<string, PageData> = {
 
   '/o-santa/enderecos': {
     archetype: 'locations',
-    lead: 'Onde encontrar o Santa Cruz.',
+    lead: 'A casa da Cobra Coral — o Arruda, um dos maiores estádios do Nordeste.',
     groups: [
       {
         region: 'Recife',
         places: [
-          { name: 'Estádio do Arruda', address: 'Praça do Arruda, s/n — Arruda', city: 'Recife · PE' },
+          { name: 'Estádio José do Rego Maciel (Arruda)', address: 'Praça do Arruda, s/n — Arruda · Inaugurado em 1972, com recorde de 76 mil em 1983', city: 'Recife · PE' },
           { name: 'Sede Social', address: 'Endereço a confirmar', city: 'Recife · PE' },
         ],
       },
