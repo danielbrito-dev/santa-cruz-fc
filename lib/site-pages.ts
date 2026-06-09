@@ -373,15 +373,28 @@ export const SITE_PAGES: Record<string, PageData> = {
   },
 
   '/o-santa/artilheiros': {
-    archetype: 'achievements',
-    lead: 'Os nomes que escreveram a história do gol coral.',
-    rankingNote: 'Ranking histórico em curadoria — nomes e números a confirmar pelo departamento histórico do clube.',
-    ranking: [
-      { pos: 1, name: 'A definir', value: '—' },
-      { pos: 2, name: 'A definir', value: '—' },
-      { pos: 3, name: 'A definir', value: '—' },
-      { pos: 4, name: 'A definir', value: '—' },
-      { pos: 5, name: 'A definir', value: '—' },
+    archetype: 'editorial',
+    lead: 'Os nomes que escreveram a história do gol coral — ao menos sete deles passaram da marca de 100 gols com o manto tricolor.',
+    sections: [
+      {
+        heading: 'Ídolos do gol',
+        paragraphs: [
+          'Desde os primórdios o Santa Cruz teve no ataque alguns de seus maiores ídolos. Tará e Sherlock foram figuras centrais do primeiro título estadual, em 1931, e nomes como Pitota e Tiano marcaram as primeiras décadas.',
+          'Na era de ouro dos anos 1970, o gol coral teve craques como Givanildo, Nunes, Luiz Fumanchu e Ramón — protagonistas dos títulos e das grandes campanhas do clube.',
+        ],
+      },
+      {
+        heading: 'Da base para o mundo',
+        paragraphs: [
+          'O maior nome revelado pelo clube é Rivaldo, que passou pelo Santa Cruz no início da carreira e foi campeão pernambucano em 1990, antes de se tornar um dos maiores craques da história do futebol brasileiro.',
+        ],
+      },
+      {
+        heading: 'Ranking histórico',
+        paragraphs: [
+          'A lista completa dos maiores artilheiros, com os números de gols de cada um, segue em curadoria pelo departamento histórico do clube.',
+        ],
+      },
     ],
   },
 
@@ -587,7 +600,7 @@ export const SITE_PAGES: Record<string, PageData> = {
     highlights: [
       { title: 'Formação', text: 'Categorias do Sub-15 ao Sub-20, com estrutura e acompanhamento profissional.' },
       { title: 'Peneiras', text: 'Acompanhe as datas de avaliação e como participar.' },
-      { title: 'Talentos', text: 'Jovens revelados que sonham em vestir o tricolor profissional.' },
+      { title: 'Talentos', text: 'Da base coral saíram nomes que brilharam no Brasil e no mundo — caso de Rivaldo, que passou pelo Santa Cruz no início da carreira.' },
     ],
     ctaLabel: 'Saiba mais',
     ctaHref: '#',
