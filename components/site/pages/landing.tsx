@@ -17,7 +17,7 @@ export async function Landing({
   const external = data.ctaHref.startsWith('http');
 
   return (
-    <div className="sc-page page-hero-dark">
+    <div className="sc-page page-hero-dark" data-section={sectionKey}>
       <header className="sc-dhero sc-dhero--ink">
         <span className="sc-dhero-ghost" aria-hidden="true">
           SC

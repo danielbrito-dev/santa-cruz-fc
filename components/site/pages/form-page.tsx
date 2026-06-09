@@ -18,7 +18,7 @@ export function FormPage({
   const [sent, setSent] = useState(false);
 
   return (
-    <div className="sc-page">
+    <div className="sc-page" data-section={sectionKey}>
       <header className="sc-dhero sc-dhero--doc">
         <span className="sc-dhero-ghost" aria-hidden="true">
           @

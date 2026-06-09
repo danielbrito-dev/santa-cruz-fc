@@ -17,7 +17,7 @@ export async function Documents({
   const p = await getTranslations('page');
 
   return (
-    <div className="sc-page">
+    <div className="sc-page" data-section={sectionKey}>
       <header className="sc-dhero">
         <span className="sc-dhero-ghost" aria-hidden="true">
           PDF

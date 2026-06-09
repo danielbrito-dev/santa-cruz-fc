@@ -25,7 +25,7 @@ export async function People({
   const t = await getTranslations('menu');
 
   return (
-    <div className="sc-page">
+    <div className="sc-page" data-section={sectionKey}>
       <header className="sc-dhero">
         <span className="sc-dhero-ghost" aria-hidden="true">
           SCFC

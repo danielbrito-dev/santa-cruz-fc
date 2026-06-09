@@ -15,10 +15,9 @@ export async function Faq({
 }) {
   const t = await getTranslations('menu');
   const p = await getTranslations('page');
-  void sectionKey;
 
   return (
-    <div className="sc-page">
+    <div className="sc-page" data-section={sectionKey}>
       <header className="sc-dhero">
         <span className="sc-dhero-ghost" aria-hidden="true">
           ?

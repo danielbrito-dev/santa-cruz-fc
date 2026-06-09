@@ -24,7 +24,7 @@ export async function Legal({
   }).format(new Date(data.updatedAt));
 
   return (
-    <div className="sc-page">
+    <div className="sc-page" data-section={sectionKey}>
       <header className="sc-dhero sc-dhero--doc">
         <div className="sc-wrap sc-dhero-inner sc-hero-in">
           <Kicker label={`${t(sectionKey)} · ${p('document')}`} />

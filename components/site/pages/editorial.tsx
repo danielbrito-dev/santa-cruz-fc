@@ -18,7 +18,7 @@ export async function Editorial({
   const photo = data.heroImage;
 
   return (
-    <div className={`sc-page${photo ? ' page-hero-dark' : ''}`}>
+    <div className={`sc-page${photo ? ' page-hero-dark' : ''}`} data-section={sectionKey}>
       {photo ? (
         <header className="sc-hero">
           <div className="sc-hero-media">

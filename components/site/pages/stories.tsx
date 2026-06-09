@@ -19,7 +19,7 @@ export async function Stories({
   const list = data.mode === 'featured' ? data.stories.filter((s) => s.featured) : data.stories;
 
   return (
-    <div className="sc-page page-hero-dark">
+    <div className="sc-page page-hero-dark" data-section={sectionKey}>
       <header className="sc-dhero sc-dhero--ink">
         <span className="sc-dhero-ghost" aria-hidden="true">
           “”

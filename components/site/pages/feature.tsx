@@ -17,7 +17,7 @@ export async function Feature({
   const p = await getTranslations('page');
 
   return (
-    <div className="sc-page page-hero-dark">
+    <div className="sc-page page-hero-dark" data-section={sectionKey}>
       {/* HERO cinematográfico */}
       <header className="sc-hero">
         <div className="sc-hero-media">

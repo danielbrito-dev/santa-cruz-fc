@@ -16,7 +16,7 @@ export async function Gallery({
   const t = await getTranslations('menu');
 
   return (
-    <div className="sc-page">
+    <div className="sc-page" data-section={sectionKey}>
       <header className="sc-dhero sc-dhero--doc">
         <div className="sc-wrap sc-dhero-inner sc-hero-in">
           <Kicker label={t(sectionKey)} />
