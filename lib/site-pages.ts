@@ -582,7 +582,7 @@ export const SITE_PAGES: Record<string, PageData> = {
       { title: 'Talentos', text: 'Da base coral saíram nomes que brilharam no Brasil e no mundo — caso de Rivaldo, que passou pelo Santa Cruz no início da carreira.' },
     ],
     ctaLabel: 'Saiba mais',
-    ctaHref: '#',
+    ctaHref: '/contato/fale-conosco',
   },
   '/viva-o-santa/experiencias': {
     archetype: 'landing',
@@ -593,7 +593,7 @@ export const SITE_PAGES: Record<string, PageData> = {
       { title: 'Camarote Coral', text: 'Assista aos jogos com conforto e gastronomia.' },
     ],
     ctaLabel: 'Quero viver',
-    ctaHref: '#',
+    ctaHref: '/contato/fale-conosco',
   },
   '/viva-o-santa/censo': {
     archetype: 'landing',
@@ -604,7 +604,7 @@ export const SITE_PAGES: Record<string, PageData> = {
       { title: 'A nação', text: 'Juntos, somos a torcida mais apaixonada do Brasil.' },
     ],
     ctaLabel: 'Participar do Censo',
-    ctaHref: '#',
+    ctaHref: '/torcedor/perfil',
   },
 
   // ---- Locais ----

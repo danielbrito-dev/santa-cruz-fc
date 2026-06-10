@@ -16,7 +16,7 @@
       "pt": "Garantir ingresso",
       "en": "Get tickets"
     },
-    "ctaUrl": "#",
+    "ctaUrl": "/futebol/calendario",
     "backdrop": "/images/torcida1.jpg"
   },
   "matches": [
@@ -908,7 +908,7 @@
         "pt": "Comprar",
         "en": "Shop now"
       },
-      "ctaUrl": "#",
+      "ctaUrl": "/viva-o-santa/lojas",
       "image": "/images/estadio_arruda_em_2020_700_5.jpg",
       "size": "normal",
       "position": 1
@@ -929,7 +929,7 @@
         "pt": "Descobrir",
         "en": "Discover"
       },
-      "ctaUrl": "#",
+      "ctaUrl": "/o-santa/precursor-da-inclusao",
       "image": "/images/torcida_santa_cruz_mosaico.jpg",
       "size": "span",
       "position": 0
@@ -948,7 +948,7 @@
         "pt": "Reservar visita",
         "en": "Book a visit"
       },
-      "ctaUrl": "#",
+      "ctaUrl": "/viva-o-santa/experiencias",
       "image": "/images/estadio_arruda_em_2020_700_5.jpg",
       "size": "span",
       "position": 1
@@ -967,7 +967,7 @@
         "pt": "Ouvir",
         "en": "Listen"
       },
-      "ctaUrl": "#",
+      "ctaUrl": "/viva-o-santa/tv-coral",
       "image": "/images/patrick_allan.jpg",
       "size": "normal",
       "position": 2
@@ -986,7 +986,7 @@
         "pt": "Explorar",
         "en": "Explore"
       },
-      "ctaUrl": "#",
+      "ctaUrl": "/o-santa/historia",
       "image": "/images/arruda antigo.webp",
       "size": "normal",
       "position": 3
