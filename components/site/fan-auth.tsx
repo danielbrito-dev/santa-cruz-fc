@@ -13,9 +13,10 @@ function errText(t: (k: string) => string, code: string): string {
   return t('errGeneric');
 }
 
-/** Login + cadastro do torcedor — mesmo card, modo via prop. */
+/** Login + cadastro do torcedor — split editorial (mosaico da torcida + formulário). */
 export function FanAuth({ mode, next }: { mode: 'login' | 'signup'; next?: string }) {
   const t = useTranslations('fanAuth');
+  const f = useTranslations('fan');
   const locale = useLocale();
   const [isPending, start] = useTransition();
   const [err, setErr] = useState<string | null>(null);
@@ -45,6 +46,14 @@ export function FanAuth({ mode, next }: { mode: 'login' | 'signup'; next?: strin
 
   return (
     <div className="fan-auth">
+      <aside className="fan-auth-visual" aria-hidden="true">
+        <span className="fan-auth-ghost">1914</span>
+        <div className="fan-auth-visual-copy">
+          <span className="fan-auth-kicker">{f('kicker')}</span>
+          <p className="fan-auth-display">{f('title')}</p>
+        </div>
+      </aside>
+      <div className="fan-auth-panel">
       <div className="fan-auth-card">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/images/logo.png" alt="Santa Cruz FC" className="fan-auth-crest" width={64} height={64} />
@@ -81,6 +90,7 @@ export function FanAuth({ mode, next }: { mode: 'login' | 'signup'; next?: strin
             {isSignup ? t('loginLink') : t('signupLink')}
           </Link>
         </p>
+      </div>
       </div>
     </div>
   );

@@ -17,6 +17,8 @@
   --panel-text: var(--ink);
   --section-bg: var(--black);
   --footer-bg: var(--red);
+  /* hairline dos cards (mesma geometria nos dois temas; só a cor muda) */
+  --card-hair: rgba(0,0,0,.12);
   /* header text over the hero (transparent state) — ink on light white hero */
   --header-hero-text: var(--ink);
 }
@@ -33,6 +35,7 @@
   --bg-2: #1B1B1B;
   --bg-3: #161616;
   --muted: #9A9A9A;
+  --card-hair: rgba(255,255,255,.12);
   /* header text over the black hero (transparent state) — white on dark */
   --header-hero-text: var(--white);
 }
@@ -125,7 +128,7 @@ ul{list-style:none}
   min-width:80px;
   background:var(--panel);
   border:1px solid var(--line);
-  box-shadow:0 8px 24px -8px rgba(0,0,0,.18);
+  box-shadow:0 8px 24px -8px rgba(0,0,0,.55);
   z-index:150;
   overflow:hidden;
   /* hidden state */
@@ -280,7 +283,7 @@ ul{list-style:none}
   font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
   transition:background .2s;
 }
-.drawer-foot a.primary{background:var(--red);color:var(--white)}
+.drawer-foot a.primary{background:var(--red);color:var(--white);box-shadow:0 0 0 1.5px var(--white)}
 .drawer-foot a.primary:hover{background:#B80000}
 .drawer-foot a.outline{background:var(--bg-2);color:var(--ink)}
 .drawer-foot a.outline:hover{background:var(--line)}
@@ -428,6 +431,7 @@ ul{list-style:none}
   padding:6px 11px;background:var(--red);color:var(--white);
   font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.2em;
   margin-bottom:18px;
+  box-shadow:0 0 0 1.5px var(--white); /* BRAND.md: anel branco isola o vermelho (igual nos dois temas) */
 }
 .hero-tag::before{
   content:"";width:6px;height:6px;border-radius:50%;
@@ -442,13 +446,12 @@ ul{list-style:none}
 .hero-title{
   font-size:clamp(40px,5.4vw,68px);font-weight:900;line-height:1.02;letter-spacing:-.025em;
   margin-bottom:22px;text-transform:uppercase;
-  text-shadow:0 2px 20px rgba(255,255,255,.95), 0 0 40px rgba(255,255,255,.75), 0 1px 4px rgba(255,255,255,.9);
+  /* sem text-shadow — paridade com o dark (estrutura idêntica nos dois temas) */
 }
 .hero-title .ht-l1,
 .hero-title .ht-l2{display:block}
 /* Segunda linha começa alinhada com o "A" de CORAL (~3 caracteres de offset no peso 900 uppercase) */
 .hero-title .ht-l2{padding-left:2.05em}
-.hero-title q{text-shadow:0 1px 10px rgba(255,255,255,.85)}
 /* "DO TRICOLOR" volta a vermelho — sem stroke (BRAND.md: separação branco/preto não se aplica em bg light) */
 .hero-title em{
   color:var(--red);font-style:normal;
@@ -479,11 +482,7 @@ ul{list-style:none}
   color:var(--ink);
   /* Calendário pousa em branco puro (light) / panel escuro (dark) */
   background:var(--panel);
-  /* Drop-shadow branco difuso pra cima: dissolve a borda superior do calendar contra o
-     gradient champagne, costurando a transição sem deixar costura visível */
-  box-shadow:
-    0 -32px 56px -8px rgba(255,255,255,.95),
-    0 -12px 24px -6px rgba(255,255,255,.85);
+  /* sem glow — paridade com o dark; a costura fica por conta do ::before (gradiente temável) */
 }
 /* Pseudo de transição mantido como blur sutil — a costura cromática vem do .hero gradient */
 .hero-calendar::before{
@@ -575,14 +574,23 @@ ul{list-style:none}
   position:relative;
   /* 24px padding is the single inset; children inherit this spacing */
   padding:24px;
+  /* hairline + elevação iguais nos dois temas (estrutura do dark é a referência) */
+  box-shadow:
+    inset 0 0 0 1px var(--card-hair),
+    0 4px 18px -6px rgba(0,0,0,.55);
   /* PSG signature: corner clip bottom-right 24px diagonal */
   clip-path:polygon(0 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%);
 }
-.match:hover{transform:translateY(-2px);box-shadow:0 10px 24px -14px rgba(0,0,0,.25)}
-/* Stripe top — 2px de margem branca acima separa o vermelho do preto da calendar bg (BRAND.md compliance) */
+.match:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 1px var(--card-hair), 0 10px 24px -14px rgba(0,0,0,.55)}
+/* Stripe top — 2px de margem branca acima separa o vermelho do preto da calendar bg (BRAND.md compliance)
+   box-shadow: banda branca de 2px acima + filetes laterais de 1px (mesma geometria nos dois temas) */
 .match::before{
   content:"";position:absolute;left:0;right:0;top:2px;
   height:4px;background:var(--red);z-index:1;
+  box-shadow:
+    0 -2px 0 0 var(--white),
+    inset 1px 0 0 0 var(--white),
+    inset -1px 0 0 0 var(--white);
 }
 .match[data-comp="nordeste"]::before{background:var(--gold);top:2px}
 .match[data-comp="copa-br"]::before {background:var(--gold);top:2px}
@@ -635,7 +643,7 @@ ul{list-style:none}
 .match-row-shield.is-rival img{transform:rotate(-5deg);filter:invert(.12) grayscale(.05);opacity:.95}
 
 /* card FIXO de memória — 7×0 no Sport (1934): acento dourado (cor comemorativa, BRAND.md §1) */
-.match--legacy{box-shadow:inset 0 0 0 1px rgba(201,184,150,.55)}
+.match--legacy{box-shadow:inset 0 0 0 1px rgba(201,184,150,.55), 0 4px 18px -6px rgba(0,0,0,.55)}
 [data-theme="dark"] .match--legacy{box-shadow:inset 0 0 0 1px rgba(201,184,150,.40), 0 4px 18px -6px rgba(0,0,0,.55)}
 .match[data-comp="legacy"]::before{background:var(--gold)}
 .match--legacy .status.legacy{color:#8a6f2e;font-weight:900;letter-spacing:.14em}
@@ -1240,8 +1248,7 @@ body{ background:var(--page-bg) }
 /* .no-scroll is defined above in the header/drawer section */
 
 /* ===== dark theme contrast overrides ===== */
-[data-theme="dark"] .hero-title{ text-shadow:none }
-[data-theme="dark"] .hero-title q{ color:rgba(255,255,255,.85); text-shadow:none }
+[data-theme="dark"] .hero-title q{ color:rgba(255,255,255,.85) }
 [data-theme="dark"] .hero-cta{ color:var(--white); border-color:rgba(255,255,255,.4) }
 [data-theme="dark"] .hero-calendar{ color:var(--panel-text) }
 [data-theme="dark"] .hero-calendar-title,
@@ -1270,46 +1277,22 @@ body{ background:var(--page-bg) }
 /* Icons dark on the now-white strip (remove white override; base .social-strip a{color:var(--ink)} applies) */
 [data-theme="dark"] .social-strip a{ color:var(--ink) }
 
-/* ===== BRAND.md: red must not touch near-black without white between (dark theme) ===== */
-[data-theme="dark"] .hero-tag{ box-shadow:0 0 0 1.5px var(--white) }
-/* Dark calendar cards: elevate surface so it reads against the near-black calendar bg.
-   inset box-shadow used instead of border to avoid clip-path corner conflicts.
-   White hairline (inset 0 0 0 1px) separates the card edge from the panel bg.
-   Additional inset shadow lightens the card surface slightly for visual lift.
-   The red/gold top stripe is further isolated by a 2px white inset at the very top
-   so no colour of the stripe touches the near-black card surface directly.            */
-[data-theme="dark"] .match{
-  background:#232323;
-  box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,.12),
-    0 4px 18px -6px rgba(0,0,0,.55);
-}
-/* Stripe white-separation: a 2px white band above the coloured stripe + 1px on left and right
-   (achieved via box-shadow layers on the ::before pseudo).
-   box-shadow: top=-2px white (separates from card top), inset left/right white slivers.  */
-[data-theme="dark"] .match::before{
-  box-shadow:
-    0 -2px 0 0 var(--white),
-    inset 1px 0 0 0 var(--white),
-    inset -1px 0 0 0 var(--white);
-}
-/* red drawer-foot button sits on a near-black panel in dark — white ring separates it */
-[data-theme="dark"] .drawer-foot a.primary{ box-shadow:0 0 0 1.5px var(--white) }
+/* ===== BRAND.md: red must not touch near-black without white between (dark theme) =====
+   Estrutura (anéis/hairlines/sombras) agora vive nas regras BASE — aqui só sobra COR. */
+[data-theme="dark"] .match{ background:#232323 }
 
 /* ===== dark theme: suppress light-backdrop artifacts + fallback text ===== */
 /* default inherited text color flips to white on dark surfaces */
 [data-theme="dark"] body{ color:var(--white) }
 /* hero photo overlay: the light gold/white editorial fade would smear on the black hero — replace with a dark scrim that also keeps the hero-card text legible */
 [data-theme="dark"] .hero-grad{ background:linear-gradient(180deg, rgba(0,0,0,.40) 0%, rgba(0,0,0,0) 38%, rgba(0,0,0,0) 66%, rgba(0,0,0,.90) 100%) }
-/* calendar: kill the white upward glow + recolor the blur transition to dark */
-[data-theme="dark"] .hero-calendar{ box-shadow:none }
+/* calendar: recolor the blur transition to dark */
 [data-theme="dark"] .hero-calendar::before{ background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.35) 60%, rgba(0,0,0,.70) 100%) }
 /* drawer outline button + calendar "ver todos" hover were near-black text on a dark panel */
 [data-theme="dark"] .drawer-foot a.outline{ color:var(--white) }
 [data-theme="dark"] .hero-calendar-title a:hover{ color:var(--white) }
 
 /* ===== dark theme: lang dropdown ===== */
-[data-theme="dark"] .lang-menu{ box-shadow:0 8px 24px -8px rgba(0,0,0,.55) }
 [data-theme="dark"] .lang-menu button:hover{ color:var(--gold) }
 [data-theme="dark"] .lang-menu button[aria-current="true"]{ color:var(--gold) }
 
@@ -1318,10 +1301,6 @@ body{ background:var(--page-bg) }
   background:var(--bg-2);color:var(--white);border-color:var(--line);
 }
 [data-theme="dark"] .drawer-lang-btn:hover{background:rgba(255,255,255,.1)}
-[data-theme="dark"] .drawer-lang-btn.active{
-  background:var(--red);color:var(--white);border-color:var(--red);
-  box-shadow:0 0 0 1.5px var(--white);
-}
 
 /* ===== theme toggle ===== */
 .theme-toggle{
@@ -1562,8 +1541,8 @@ body{ background:var(--page-bg) }
   flex-direction:column;
   align-items:center;
   gap:0;
-  /* Subtle shadow for depth */
-  box-shadow:0 4px 40px -8px rgba(0,0,0,.12), 0 1px 4px rgba(0,0,0,.06);
+  /* Sombra idêntica nos dois temas (intensidade do dark é a referência) */
+  box-shadow:0 4px 40px -8px rgba(0,0,0,.7), 0 1px 4px rgba(0,0,0,.4);
   /* Red top accent border — signature brand touch, white card never touches red directly:
      the card bg (white/dark panel) naturally acts as separator */
   border-top:3px solid var(--red);
@@ -1571,7 +1550,6 @@ body{ background:var(--page-bg) }
   z-index:2;
 }
 [data-theme="dark"] .login-card{
-  box-shadow:0 4px 40px -8px rgba(0,0,0,.7), 0 1px 4px rgba(0,0,0,.4);
   /* BRAND.md: no escuro o acento de topo vira dourado (vermelho não toca o near-black) */
   border-top-color:var(--gold);
 }
@@ -2367,12 +2345,11 @@ body{ background:var(--page-bg) }
 }
 .admin-card--active:hover {
   border-color: var(--muted);
-  box-shadow: 0 6px 24px -8px rgba(0,0,0,.14);
+  box-shadow: 0 6px 24px -8px rgba(0,0,0,.6);
   transform: translateY(-2px);
 }
 [data-theme="dark"] .admin-card--active:hover {
   border-color: rgba(255,255,255,.22);
-  box-shadow: 0 6px 24px -8px rgba(0,0,0,.6);
 }
 
 /* Non-interactive / coming-soon card */
@@ -2472,9 +2449,6 @@ body{ background:var(--page-bg) }
 }
 .admin-input:focus {
   border-color: var(--red);
-  box-shadow: 0 0 0 3px rgba(221,0,0,.10);
-}
-[data-theme="dark"] .admin-input:focus {
   box-shadow: 0 0 0 3px rgba(221,0,0,.18);
 }
 .admin-input::placeholder { color: var(--muted); opacity: .6 }
@@ -3014,11 +2988,7 @@ textarea.admin-input {
   line-height: 1.05;
   letter-spacing: -.02em;
   text-transform: uppercase;
-  text-shadow: 0 1px 8px rgba(255,255,255,.9), 0 0 20px rgba(255,255,255,.6);
   margin: 0;
-}
-[data-theme="dark"] .ce-preview-hero-title {
-  text-shadow: none;
 }
 .ce-preview-ht-l1,
 .ce-preview-ht-l2 {
@@ -3599,7 +3569,7 @@ textarea.admin-input {
 .adm-bar { flex: 1; background: linear-gradient(180deg, #ff5a5a, var(--red)); min-height: 4px; border-radius: 3px 3px 0 0; }
 
 .adm-an-sources-row { display: flex; align-items: center; gap: 22px; }
-.adm-donut { width: 120px; height: 120px; border-radius: 50%; flex: 0 0 auto; position: relative; }
+.adm-donut { width: 120px; height: 120px; border-radius: 50%; flex: 0 0 auto; position: relative; box-shadow: 0 0 0 2px rgba(255,255,255,.92); }
 .adm-donut span { position: absolute; inset: 26px; background: var(--panel); border-radius: 50%; }
 [data-theme="dark"] .adm-donut span { background: #1A1A1A; }
 .adm-legend { display: flex; flex-direction: column; gap: 9px; font-size: 13px; color: var(--ink); flex: 1; }
@@ -3637,8 +3607,7 @@ textarea.admin-input {
 [data-theme="dark"] .adm-bar { background: linear-gradient(180deg, #E6D9B4, var(--gold)); }
 [data-theme="dark"] .adm-rank-bar i { background: var(--gold); }
 [data-theme="dark"] .adm-kpi-delta.down { color: var(--gold); }
-/* Donut: anel branco separa o arco vermelho da superfície escura do card */
-[data-theme="dark"] .adm-donut { box-shadow: 0 0 0 2px rgba(255,255,255,.92); }
+/* Donut: anel branco (na base — igual nos dois temas) separa o arco vermelho da superfície do card */
 
 /* ── Admin · Upload de imagem ──────────────────────────────────────────── */
 .img-upload { display: flex; gap: 14px; align-items: flex-start; }
@@ -3678,18 +3647,61 @@ textarea.admin-input {
 [data-theme="dark"] .fan-btn--ghost:hover { border-color: var(--gold); color: var(--gold); }
 
 /* ── Torcedor · auth (login/cadastro) ─────────────────────────────────── */
-.fan-auth { position: relative; z-index: 2; background: var(--page-bg); min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; padding: 72px 20px 110px; }
-.fan-auth-card { width: 100%; max-width: 420px; background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--red); padding: 36px 32px; text-align: center; }
-[data-theme="dark"] .fan-auth-card { background: #161616; border-color: rgba(255,255,255,.1); border-top-color: var(--gold); }
-.fan-auth-crest { display: block; margin: 0 auto 14px; }
-.fan-auth-title { font-size: 26px; font-weight: 900; letter-spacing: -.01em; color: var(--ink); }
+/* Split editorial: mosaico da torcida à esquerda (costura diagonal — assinatura dos
+   match cards), formulário sobre --panel à direita. O fundo deixa de ser o vermelho
+   da página → a tela não se funde mais com o footer vermelho. Estrutura idêntica
+   nos dois temas; só as cores (tokens) mudam. */
+.fan-auth { position: relative; z-index: 2; min-height: 100vh; display: grid; grid-template-columns: 1.15fr 1fr; background: var(--panel); }
+.fan-auth-visual {
+  position: relative; overflow: hidden; background: #000;
+  display: flex; align-items: flex-end;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 72px) 100%, 0 100%);
+}
+.fan-auth-visual::before {
+  content: ""; position: absolute; inset: 0;
+  background: url('/images/torcida_santa_cruz_mosaico.jpg') center/cover no-repeat;
+}
+.fan-auth-visual::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.32) 0%, rgba(0,0,0,.08) 42%, rgba(0,0,0,.88) 100%);
+}
+/* ano de fundação como ghost number (linguagem dos heroes tipográficos .sc-dhero) */
+.fan-auth-ghost {
+  position: absolute; top: 84px; right: 44px; z-index: 1;
+  font-size: clamp(96px, 10vw, 168px); font-weight: 900; line-height: 1; letter-spacing: -.04em;
+  color: transparent; -webkit-text-stroke: 1.5px rgba(201,184,150,.5);
+  user-select: none; pointer-events: none;
+}
+.fan-auth-visual-copy { position: relative; z-index: 1; padding: 0 56px 60px; }
+.fan-auth-kicker {
+  display: inline-flex; align-items: center; padding: 6px 11px;
+  background: var(--red); color: var(--white);
+  font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .2em;
+  box-shadow: 0 0 0 1.5px var(--white); /* BRAND.md: anel branco isola o vermelho */
+  margin-bottom: 18px;
+}
+.fan-auth-display {
+  font-size: clamp(34px, 3.6vw, 54px); font-weight: 900; line-height: 1.04; letter-spacing: -.02em;
+  text-transform: uppercase; color: var(--white); max-width: 480px;
+}
+.fan-auth-panel { display: flex; align-items: center; justify-content: center; padding: 96px 48px; }
+.fan-auth-card { width: 100%; max-width: 400px; }
+.fan-auth-crest { display: block; margin-bottom: 18px; }
+.fan-auth-title { font-size: clamp(24px, 2vw, 30px); font-weight: 900; letter-spacing: -.01em; text-transform: uppercase; line-height: 1.1; color: var(--ink); }
 [data-theme="dark"] .fan-auth-title { color: #fff; }
-.fan-auth-sub { font-size: 14px; color: var(--muted); margin: 6px 0 26px; }
+.fan-auth-sub { font-size: 14px; line-height: 1.55; color: var(--muted); margin: 10px 0 30px; }
+@media (max-width: 960px) {
+  .fan-auth { grid-template-columns: 1fr; }
+  .fan-auth-visual { min-height: 300px; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 36px), 0 100%); }
+  .fan-auth-visual-copy { padding: 0 24px 64px; }
+  .fan-auth-ghost { top: 40px; right: 20px; }
+  .fan-auth-panel { padding: 44px 20px 90px; }
+}
 .fan-auth-form { display: flex; flex-direction: column; gap: 16px; text-align: left; }
 .fan-field { display: flex; flex-direction: column; gap: 6px; flex: 1; }
 .fan-field span { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
 .fan-field input { padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 6px; background: var(--bg-2); color: var(--ink); font-size: 15px; }
-.fan-field input:focus { outline: none; border-color: var(--red); }
+.fan-field input:focus { outline: none; border-color: var(--red); box-shadow: 0 0 0 3px rgba(221,0,0,.18); }
 .fan-field input:disabled { opacity: .65; }
 .fan-field small { font-size: 11px; color: var(--muted); }
 [data-theme="dark"] .fan-field input { background: rgba(255,255,255,.06); color: #fff; border-color: rgba(255,255,255,.15); }
