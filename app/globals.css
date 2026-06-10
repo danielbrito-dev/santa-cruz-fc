@@ -3683,7 +3683,8 @@ textarea.admin-input {
 .fan-deck::before, .fan-area::before {
   content: ""; position: absolute; inset: 0; z-index: -1;
   background: url('/images/patterns/Pattern-Coral.png') top left / 460px repeat;
-  opacity: .12; pointer-events: none;
+  opacity: .06; /* Coral é saturado — acima disso briga com formulários/conteúdo */
+  pointer-events: none;
 }
 .fan-deck-grid { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; margin: 0 0 40px; padding: 0; }
 .fan-deck-grid > li { list-style: none; }
