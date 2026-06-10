@@ -3663,6 +3663,70 @@ textarea.admin-input {
 [data-theme="dark"] .fan-card h3 { color: #fff; }
 .fan-card p { font-size: 14px; color: var(--muted); line-height: 1.5; }
 .fan-soon { display: inline-block; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); border: 1px dashed var(--line); padding: 10px 16px; border-radius: 999px; }
+
+/* ── Torcedor · botões / CTAs ─────────────────────────────────────────── */
+.fan-cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+.fan-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--red); color: #fff; box-shadow: 0 0 0 1.5px #fff; border: none; border-radius: 999px; padding: 13px 26px; font-size: 13px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; cursor: pointer; transition: transform .15s, filter .15s; }
+.fan-btn:hover { transform: translateY(-1px); filter: brightness(1.06); }
+.fan-btn:disabled { opacity: .6; cursor: default; transform: none; }
+.fan-btn--ghost { background: transparent; color: var(--ink); box-shadow: none; border: 1.5px solid var(--line); }
+[data-theme="dark"] .fan-btn--ghost { color: #fff; border-color: rgba(255,255,255,.25); }
+.fan-btn--ghost:hover { filter: none; border-color: var(--red); color: var(--red); }
+[data-theme="dark"] .fan-btn--ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ── Torcedor · auth (login/cadastro) ─────────────────────────────────── */
+.fan-auth { display: flex; justify-content: center; padding: 72px 20px 110px; }
+.fan-auth-card { width: 100%; max-width: 420px; background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--red); padding: 36px 32px; text-align: center; }
+[data-theme="dark"] .fan-auth-card { background: #161616; border-color: rgba(255,255,255,.1); border-top-color: var(--gold); }
+.fan-auth-crest { display: block; margin: 0 auto 14px; }
+.fan-auth-title { font-size: 26px; font-weight: 900; letter-spacing: -.01em; color: var(--ink); }
+[data-theme="dark"] .fan-auth-title { color: #fff; }
+.fan-auth-sub { font-size: 14px; color: var(--muted); margin: 6px 0 26px; }
+.fan-auth-form { display: flex; flex-direction: column; gap: 16px; text-align: left; }
+.fan-field { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.fan-field span { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+.fan-field input { padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 6px; background: var(--bg-2); color: var(--ink); font-size: 15px; }
+.fan-field input:focus { outline: none; border-color: var(--red); }
+.fan-field input:disabled { opacity: .65; }
+.fan-field small { font-size: 11px; color: var(--muted); }
+[data-theme="dark"] .fan-field input { background: rgba(255,255,255,.06); color: #fff; border-color: rgba(255,255,255,.15); }
+[data-theme="dark"] .fan-field input:focus { border-color: var(--gold); }
+.fan-field-row { display: flex; gap: 12px; }
+.fan-auth-err { font-size: 13px; font-weight: 700; color: var(--red); }
+[data-theme="dark"] .fan-auth-err { color: #ff7a7a; }
+.fan-auth-ok { font-size: 13px; font-weight: 700; color: #1a8f3c; }
+[data-theme="dark"] .fan-auth-ok { color: #46d36f; }
+.fan-auth-swap { margin-top: 22px; font-size: 13px; color: var(--muted); }
+.fan-auth-swap a { color: var(--red); font-weight: 800; }
+[data-theme="dark"] .fan-auth-swap a { color: var(--gold); }
+
+/* ── Torcedor · dashboard + perfil ────────────────────────────────────── */
+.fan-dash-head { display: flex; align-items: center; gap: 18px; margin-bottom: 12px; }
+.fan-dash-photo { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px #fff, 0 0 0 3.5px var(--red); flex: 0 0 auto; }
+.fan-title--dash { font-size: clamp(26px, 4vw, 42px); }
+.fan-card--link { display: block; position: relative; text-decoration: none; transition: transform .15s, border-color .15s; }
+.fan-card--link:hover { transform: translateY(-2px); border-color: var(--red); }
+[data-theme="dark"] .fan-card--link:hover { border-color: var(--gold); }
+.fan-card-arrow { position: absolute; right: 18px; bottom: 14px; font-weight: 900; color: var(--red); }
+[data-theme="dark"] .fan-card-arrow { color: var(--gold); }
+.fan-grid > li { list-style: none; }
+.fan-narrow { max-width: 620px; }
+.fan-back { display: inline-block; font-size: 13px; font-weight: 700; color: var(--muted); margin-bottom: 18px; }
+.fan-back:hover { color: var(--red); }
+.fan-profile { margin-top: 8px; }
+.fan-profile-photo-row { display: flex; align-items: center; gap: 18px; margin-bottom: 26px; }
+.fan-profile-photo { width: 88px; height: 88px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px #fff, 0 0 0 3.5px var(--red); flex: 0 0 auto; }
+.fan-profile-photo-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.fan-chip-initial { display: inline-flex; align-items: center; justify-content: center; background: var(--red); color: #fff; font-weight: 900; }
+.fan-lgpd { margin-top: 26px; font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+/* ── Torcedor · chip no header + véu do gate ──────────────────────────── */
+.header-link--fan { gap: 8px; }
+.fan-chip-photo { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 1.5px #fff; font-size: 13px; }
+.fan-chip-name { font-weight: 700; }
+.fan-gate-veil { position: fixed; inset: 0; z-index: 80; background: var(--page-bg); }
+.sc-form-err { font-size: 13px; font-weight: 700; color: var(--red); }
+@media (max-width: 520px) { .fan-field-row { flex-direction: column; } }
 @media (max-width: 640px) {
   .admin-jogos-row { grid-template-columns: 1fr auto; row-gap: 8px; }
   .admin-jogos-row .admin-badge { grid-column: 1 / -1; justify-self: start; }

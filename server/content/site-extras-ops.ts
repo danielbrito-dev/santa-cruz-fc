@@ -35,6 +35,7 @@ export function applyDeleteDoc(c: SiteContent, id: string): SiteContent {
 export interface StoryInput {
   author: string; city: string; generation: string; excerpt: string;
   featured: boolean; status: StoryItem['status'];
+  fanId?: string;
 }
 export function applyCreateStory(c: SiteContent, input: StoryInput): SiteContent {
   const story: StoryItem = { id: uid('s'), ...input };

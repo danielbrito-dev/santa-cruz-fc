@@ -1,7 +1,7 @@
 'use server';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { verifyCredentials, isUserActive } from './users';
+import { verifyCredentials, isUserActive, isAdminEmail } from './users';
 import { createSessionToken, SESSION_COOKIE } from './session';
 
 const MAX_AGE = 60 * 60 * 24 * 7; // 7 days
@@ -13,6 +13,9 @@ export async function login(
 ): Promise<{ error?: 'invalid' | 'disabled' }> {
   if (!(await verifyCredentials(email, password))) {
     return { error: 'invalid' };
+  }
+  if (!(await isAdminEmail(email))) {
+    return { error: 'invalid' }; // credencial válida, mas não é um usuário do admin (ex.: torcedor)
   }
   if (!(await isUserActive(email))) {
     return { error: 'disabled' };

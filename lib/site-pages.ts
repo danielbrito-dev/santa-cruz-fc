@@ -88,6 +88,8 @@ export interface FormPageData {
   fields: FormField[];
   consent?: string;
   submitLabel: string;
+  /** true = envio REAL de história (vira pending no admin, vinculada ao torcedor logado). */
+  story?: boolean;
 }
 export interface StoriesData {
   archetype: 'stories';
@@ -671,6 +673,7 @@ export const SITE_PAGES: Record<string, PageData> = {
   },
   '/historias/enviar': {
     archetype: 'form',
+    story: true,
     lead: 'Toda história coral merece ser contada. Envie a sua e faça parte da nação.',
     fields: [
       { name: 'nome', label: 'Seu nome', type: 'text', required: true },

@@ -29,7 +29,7 @@ export interface CardItem {
 export interface Sponsor { id: string; name: string; logo: string; url: string; tier: 'master' | 'fornecedor' | 'apoio'; position: number; }
 export interface GalleryImage { id: string; src: string; alt: string; }
 export interface DocItem { id: string; page: string; title: string; kind: string; meta: string; href: string; }
-export interface StoryItem { id: string; author: string; city: string; generation: string; excerpt: string; featured: boolean; status: 'pending' | 'published'; }
+export interface StoryItem { id: string; author: string; city: string; generation: string; excerpt: string; featured: boolean; status: 'pending' | 'published'; fanId?: string; }
 export interface PageSection { heading: string; paragraphs: string[]; }
 export interface PageContent { href: string; title: string; lead: string; sections: PageSection[]; }
 export interface SocialLink { id: string; network: string; url: string; }

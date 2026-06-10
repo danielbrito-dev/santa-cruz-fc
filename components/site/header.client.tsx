@@ -7,6 +7,7 @@ import { routing } from '@/lib/i18n/routing';
 import { SITE_NAV } from '@/lib/site-nav';
 import { LocaleSwitcher } from './locale-switcher';
 import { ThemeToggle } from './theme-toggle';
+import { FanLink } from './fan-link';
 
 const THRESHOLD = 80;
 const DELTA = 6;
@@ -163,13 +164,7 @@ export function HeaderClient() {
           </div>
 
           <div className="header-right">
-            <Link href="/torcedor" className="header-link hide-mobile">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="12" cy="8" r="4" />
-                <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" />
-              </svg>
-              {nav('login')}
-            </Link>
+            <FanLink variant="header" />
             <ThemeToggle />
             <LocaleSwitcher />
           </div>
@@ -234,14 +229,7 @@ export function HeaderClient() {
 
           {/* Área do torcedor (cadastro do torcedor — não é o login do admin) */}
           <div className="drawer-item">
-            <Link
-              href="/torcedor"
-              className="drawer-item-trigger"
-              style={{ display: 'flex' }}
-              onClick={handleDrawerLinkClick}
-            >
-              {nav('login')}
-            </Link>
+            <FanLink variant="drawer" onNavigate={handleDrawerLinkClick} />
           </div>
         </nav>
 

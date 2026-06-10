@@ -1,7 +1,8 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState, useTransition } from 'react';
 import { useTranslations } from 'next-intl';
 import type { FormPageData } from '@/lib/site-pages';
+import { submitFanStory } from '@/server/content/fan-story-actions';
 import { Kicker } from './_shared';
 
 export function FormPage({
@@ -16,6 +17,44 @@ export function FormPage({
   const menu = useTranslations('menu');
   const p = useTranslations('page');
   const [sent, setSent] = useState(false);
+  const [err, setErr] = useState(false);
+  const [isPending, start] = useTransition();
+  // Modo história: pré-preenche nome/cidade com o torcedor logado (o gate garante login).
+  const [me, setMe] = useState<{ name: string; city?: string } | null>(null);
+  useEffect(() => {
+    if (!data.story) return;
+    fetch('/api/fan/me')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((f) => f && setMe(f))
+      .catch(() => null);
+  }, [data.story]);
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (!data.story) {
+      setSent(true);
+      return;
+    }
+    const fd = new FormData(e.currentTarget);
+    setErr(false);
+    start(async () => {
+      const res = await submitFanStory({
+        nome: String(fd.get('nome') ?? ''),
+        cidade: String(fd.get('cidade') ?? ''),
+        geracao: String(fd.get('geracao') ?? ''),
+        historia: String(fd.get('historia') ?? ''),
+      });
+      if (res.ok) setSent(true);
+      else setErr(true);
+    });
+  }
+
+  function fieldDefault(name: string): string | undefined {
+    if (!data.story || !me) return undefined;
+    if (name === 'nome') return me.name;
+    if (name === 'cidade') return me.city;
+    return undefined;
+  }
 
   return (
     <div className="sc-page" data-section={sectionKey}>
@@ -45,10 +84,8 @@ export function FormPage({
           ) : (
             <form
               className="sc-form-card sc-reveal"
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSent(true);
-              }}
+              onSubmit={handleSubmit}
+              key={me ? 'prefilled' : 'blank'}
             >
               {data.fields.map((f) => (
                 <label className="sc-field" key={f.name}>
@@ -70,7 +107,7 @@ export function FormPage({
                       ))}
                     </select>
                   ) : (
-                    <input type={f.type} name={f.name} required={f.required} />
+                    <input type={f.type} name={f.name} required={f.required} defaultValue={fieldDefault(f.name)} />
                   )}
                 </label>
               ))}
@@ -82,8 +119,14 @@ export function FormPage({
                 </label>
               )}
 
-              <button type="submit" className="sc-btn sc-submit">
-                {data.submitLabel} →
+              {err && (
+                <p className="sc-form-err" role="alert">
+                  {p('formError')}
+                </p>
+              )}
+
+              <button type="submit" className="sc-btn sc-submit" disabled={isPending}>
+                {isPending ? '…' : data.submitLabel} →
               </button>
             </form>
           )}

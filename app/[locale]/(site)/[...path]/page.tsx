@@ -6,6 +6,7 @@ import { routing, type Locale } from '@/lib/i18n/routing';
 import { INFO_PAGE_PATHS, resolvePage } from '@/lib/site-nav';
 import { getPageData, type EditorialData } from '@/lib/site-pages';
 import { SiteShell } from '@/components/site/site-shell';
+import { FanGate } from '@/components/site/fan-gate';
 import { Editorial } from '@/components/site/pages/editorial';
 import { Legal } from '@/components/site/pages/legal';
 import { Faq } from '@/components/site/pages/faq';
@@ -93,5 +94,13 @@ export default async function InternalPage({
       body = <Editorial {...common} data={fallback} />;
   }
 
-  return <SiteShell locale={locale}>{body}</SiteShell>;
+  return (
+    <SiteShell locale={locale}>
+      {FAN_GATED.has(href) && <FanGate next={href} />}
+      {body}
+    </SiteShell>
+  );
 }
+
+// Páginas exclusivas do torcedor logado — sem sessão, redireciona pro login/cadastro.
+const FAN_GATED = new Set(['/viva-o-santa/censo', '/viva-o-santa/experiencias', '/historias/enviar']);

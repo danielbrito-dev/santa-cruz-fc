@@ -91,8 +91,26 @@ export async function getSessionUser(): Promise<AdminUser | null> {
   if (!s) return null;
   const found = await findUserByEmail(s.email);
   if (found) return found.active ? found : null;
-  // Sessão válida sem perfil (DEV_USER de emergência) → admin root.
-  return { id: 'dev', email: s.email, name: DEV_USER.name, role: 'admin', active: true, isRoot: true };
+  // Fallback de emergência SÓ para o DEV_USER (evita que um não-admin vire admin).
+  if (norm(s.email) === DEV_USER.email) {
+    return { id: 'dev', email: s.email, name: DEV_USER.name, role: 'admin', active: true, isRoot: true };
+  }
+  return null;
+}
+
+/** É um usuário do admin? (tem perfil em usuarios, ou é o DEV_USER de emergência.) */
+export async function isAdminEmail(email: string): Promise<boolean> {
+  const e = norm(email);
+  const sql = getSql();
+  if (sql) {
+    try {
+      const r = await sql`select 1 from public.usuarios where lower(email) = ${e} limit 1`;
+      if (r.length) return true;
+    } catch {
+      /* indisponível → fallback */
+    }
+  }
+  return e === DEV_USER.email;
 }
 
 export async function listUsers(): Promise<AdminUser[]> {

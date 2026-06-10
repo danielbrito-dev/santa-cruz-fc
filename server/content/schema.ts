@@ -20,6 +20,7 @@ const docItem = z.object({
 const story = z.object({
   id: z.string(), author: z.string(), city: z.string(), generation: z.string(),
   excerpt: z.string(), featured: z.boolean(), status: z.enum(['pending', 'published']),
+  fanId: z.string().optional(),
 });
 const pageContent = z.object({
   href: z.string(), title: z.string(), lead: z.string(),
