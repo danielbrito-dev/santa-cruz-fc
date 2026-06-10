@@ -2,6 +2,11 @@ import { getTranslations } from 'next-intl/server';
 import { Link } from '@/lib/i18n/navigation';
 import type { SectionProps } from './types';
 import { resolveLocalized } from '@/server/content/localized';
+import bundled from '@/content/site.json';
+
+// Colunas do footer = NAVEGAÇÃO estática (do código, não do DB). Os links raramente
+// mudam e não são editáveis no admin; brandBlurb/chant seguem vindo do conteúdo (DB).
+const FOOTER_COLUMNS = bundled.footer.columns;
 
 export async function Footer({ content, locale }: SectionProps) {
   const t = await getTranslations('footer');
@@ -19,8 +24,8 @@ export async function Footer({ content, locale }: SectionProps) {
             <p>{resolveLocalized(footer.brandBlurb, locale)}</p>
           </div>
 
-          {/* 3 link columns from content */}
-          {footer.columns.map((col, i) => (
+          {/* 3 colunas de navegação — estáticas (links corrigidos no código) */}
+          {FOOTER_COLUMNS.map((col, i) => (
             <div key={i} className="footer-col">
               <h5>{resolveLocalized(col.heading, locale)}</h5>
               <ul>
