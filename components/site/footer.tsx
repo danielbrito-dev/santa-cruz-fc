@@ -111,14 +111,13 @@ export async function Footer({ content, locale }: SectionProps) {
             </span>
           </h3>
 
-          {/* Linha legal compacta: copyright + acesso administrativo */}
+          {/* Linha legal compacta: copyright + cadeado discreto de acesso (sem cara de botão) */}
           <div className="footer-legal">
             <span className="footer-copy">© {year} Santa Cruz Futebol Clube</span>
-            <Link href="/entrar" className="footer-admin-link">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+            <Link href="/entrar" className="footer-admin-link" aria-label={t('adminAccess')}>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                 <rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
               </svg>
-              {t('adminAccess')}
             </Link>
           </div>
         </div>

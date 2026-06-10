@@ -1221,10 +1221,11 @@ body{ background:var(--page-bg) }
 .footer-app--soon:hover{background:rgba(0,0,0,.22);box-shadow:none;transform:none}
 .footer-app .footer-app-soon{margin-left:auto;font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#1a1205;background:var(--gold);padding:3px 8px;border-radius:999px}
 /* Linha legal compacta (dentro do chant): copyright + acesso administrativo */
-.footer-legal{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:26px}
+.footer-legal{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:26px}
 .footer-copy{font-size:12px;color:rgba(255,255,255,.55)}
-.footer-admin-link{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.04em;color:rgba(255,255,255,.7);padding:5px 12px;border:1px solid rgba(255,255,255,.18);border-radius:999px;transition:background .2s,border-color .2s,color .2s}
-.footer-admin-link:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.4);color:#fff}
+/* Cadeado discreto — NÃO parece botão (sem borda/fundo/pill), só um ícone esmaecido */
+.footer-admin-link{display:inline-flex;align-items:center;color:rgba(255,255,255,.25);transition:color .2s}
+.footer-admin-link:hover{color:rgba(255,255,255,.5)}
 
 @media (max-width:1100px){
   .footer-top{grid-template-columns:1fr 1fr 1fr;gap:36px}
