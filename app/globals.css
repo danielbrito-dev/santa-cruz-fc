@@ -3678,7 +3678,13 @@ textarea.admin-input {
 [data-theme="dark"] .fan-hero-ava { box-shadow: 0 0 0 2px var(--red), 0 0 0 4px #fff; }
 .fan-hero-ava--ph { display: flex; align-items: center; justify-content: center; background: var(--red); color: #fff; font-size: 34px; font-weight: 900; }
 /* deck editorial: cards numerados sobre a superfície do tema */
-.fan-deck { flex: 1 0 auto; background: var(--panel); padding: 64px 0 110px; }
+.fan-deck { flex: 1 0 auto; background: var(--panel); padding: 64px 0 110px; position: relative; z-index: 0; }
+/* marca d'água da área do torcedor — pattern Coral (um pattern por página) */
+.fan-deck::before, .fan-area::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: url('/images/patterns/Pattern-Coral.png') top left / 460px repeat;
+  opacity: .05; pointer-events: none;
+}
 .fan-deck-grid { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; margin: 0 0 40px; padding: 0; }
 .fan-deck-grid > li { list-style: none; }
 .fan-deck-card { position: relative; display: block; height: 100%; padding: 26px 22px 34px; background: var(--panel); border: 1px solid var(--line); }
@@ -3772,7 +3778,8 @@ textarea.admin-input {
   .fan-auth-panel { padding: 44px 20px 90px; }
 }
 .fan-auth-form { display: flex; flex-direction: column; gap: 16px; text-align: left; }
-.fan-field { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.fan-field { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 0; }
+.fan-field input { width: 100%; min-width: 0; }
 .fan-field span { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
 .fan-field input { padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 6px; background: var(--bg-2); color: var(--ink); font-size: 15px; }
 .fan-field input:focus { outline: none; border-color: var(--red); box-shadow: 0 0 0 3px rgba(221,0,0,.18); }

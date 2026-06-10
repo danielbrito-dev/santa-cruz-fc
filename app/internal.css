@@ -39,6 +39,15 @@
 /* preenche o espaço quando o conteúdo é curto — mantém o footer coberto até o fim */
 .sc-fill{flex:1 0 auto;background:var(--sc-surface)}
 
+/* marca d'água: pattern de escudos por seção (--sc-pattern vem das skins §21).
+   z-index:-1 dentro do stacking context do .sc-page → acima do fundo, sob o conteúdo. */
+.sc-page::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:var(--sc-pattern,none) top left / 460px repeat;
+  opacity:.05;
+  pointer-events:none;
+}
+
 .sc-wrap{width:100%;max-width:1320px;margin:0 auto;padding-inline:var(--sc-edge)}
 .sc-wrap--narrow{max-width:940px}
 .sc-wrap--read{max-width:760px}
@@ -517,45 +526,45 @@
    ═════════════════════════════════════════════════════════════════════════ */
 
 /* ── O SANTA · herança / arquivo — papel quente, ouro, fade digno ── */
-.sc-page[data-section="oSanta"]{--sc-accent:#A07C2E}
+.sc-page[data-section="oSanta"]{--sc-accent:#A07C2E;--sc-pattern:url('/images/patterns/Pattern-Dourado.png')}
 [data-theme="light"] .sc-page[data-section="oSanta"]{--sc-surface:#F1ECDF}
 [data-theme="dark"]  .sc-page[data-section="oSanta"]{--sc-surface:#17130D;--sc-accent:#C9B896}
 
 /* ── FUTEBOL · jogo / energia — branco duríssimo, vermelho, clip-wipe ── */
-.sc-page[data-section="futebol"]{--sc-accent:var(--red)}
+.sc-page[data-section="futebol"]{--sc-accent:var(--red);--sc-pattern:url('/images/patterns/Pattern-Vermelho.png')}
 [data-theme="light"] .sc-page[data-section="futebol"]{--sc-surface:#FFFFFF}
 [data-theme="dark"]  .sc-page[data-section="futebol"]{--sc-surface:#090909}
 .sc-page[data-section="futebol"] .sc-dhero-ghost{-webkit-text-stroke-color:rgba(221,0,0,.14)}
 
 /* ── VIVA O SANTA · paixão / marketing — vermelho-claro vibrante, pop ── */
-.sc-page[data-section="vivaSanta"]{--sc-accent:var(--red)}
+.sc-page[data-section="vivaSanta"]{--sc-accent:var(--red);--sc-pattern:url('/images/patterns/Pattern-Coral.png')}
 [data-theme="light"] .sc-page[data-section="vivaSanta"]{--sc-surface:#FBE7E5}
 [data-theme="dark"]  .sc-page[data-section="vivaSanta"]{--sc-surface:#240F10}
 .sc-page[data-section="vivaSanta"] .sc-dhero--ink{background:#240F10}
 
 /* ── NOTÍCIAS E MÍDIA · jornalístico — branco grid, acento TINTA, slide ── */
-.sc-page[data-section="midia"]{--sc-accent:var(--ink)}
+.sc-page[data-section="midia"]{--sc-accent:var(--ink);--sc-pattern:url('/images/patterns/Pattern-Preto.png')}
 [data-theme="light"] .sc-page[data-section="midia"]{--sc-surface:#FFFFFF}
 [data-theme="dark"]  .sc-page[data-section="midia"]{--sc-surface:#0E0E0E;--sc-accent:#FFFFFF}
 
 /* ── CLUBE · institucional / sóbrio — cinza neutro, acento ardósia ── */
-.sc-page[data-section="clube"]{--sc-accent:#5C6066}
+.sc-page[data-section="clube"]{--sc-accent:#5C6066;--sc-pattern:url('/images/patterns/Pattern-Azul.png')}
 [data-theme="light"] .sc-page[data-section="clube"]{--sc-surface:#EAEBED}
 [data-theme="dark"]  .sc-page[data-section="clube"]{--sc-surface:#15171A;--sc-accent:#A2A7AD}
 
 /* ── CONTATO · direto / funcional — claro minimal, vermelho ── */
-.sc-page[data-section="contato"]{--sc-accent:var(--red)}
+.sc-page[data-section="contato"]{--sc-accent:var(--red);--sc-pattern:url('/images/patterns/Pattern-Branco.png')}
 [data-theme="light"] .sc-page[data-section="contato"]{--sc-surface:#F6F5F3}
 [data-theme="dark"]  .sc-page[data-section="contato"]{--sc-surface:#101010}
 
 /* ── HISTÓRIAS CORAL · íntimo / emocional — rosé quente + ouro, hero escuro ── */
-.sc-page[data-section="historias"]{--sc-accent:#A07C2E}
+.sc-page[data-section="historias"]{--sc-accent:#A07C2E;--sc-pattern:url('/images/patterns/Pattern-Dourado.png')}
 [data-theme="light"] .sc-page[data-section="historias"]{--sc-surface:#F4EAEA}
 [data-theme="dark"]  .sc-page[data-section="historias"]{--sc-surface:#140C0C;--sc-accent:#C9B896}
 .sc-page[data-section="historias"] .sc-dhero--ink{background:#140C0C}
 
 /* ── AJUDA / LEGAL · utilitário — neutro claro, vermelho discreto ── */
-.sc-page[data-section="ajuda"]{--sc-accent:var(--red)}
+.sc-page[data-section="ajuda"]{--sc-accent:var(--red);--sc-pattern:url('/images/patterns/Pattern-Branco.png')}
 [data-theme="light"] .sc-page[data-section="ajuda"]{--sc-surface:#F4F4F5}
 [data-theme="dark"]  .sc-page[data-section="ajuda"]{--sc-surface:#121212}
 
