@@ -3683,7 +3683,7 @@ textarea.admin-input {
 .fan-deck::before, .fan-area::before {
   content: ""; position: absolute; inset: 0; z-index: -1;
   background: url('/images/patterns/Pattern-Coral.png') top left / 460px repeat;
-  opacity: .05; pointer-events: none;
+  opacity: .12; pointer-events: none;
 }
 .fan-deck-grid { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; margin: 0 0 40px; padding: 0; }
 .fan-deck-grid > li { list-style: none; }
@@ -4745,7 +4745,14 @@ body:has(.athlete-hero) .site-header:not(.scrolled) .header-link{color:var(--ink
   background:var(--section-bg);color:var(--white);
   padding:56px 0 84px;
 }
-/* marca d'água removida — canvas escuro limpo (os cards carregam o visual) */
+/* marca d'água: pattern Vermelho (família Futebol) sobre o canvas escuro */
+.squad-body::before{
+  content:"";position:absolute;inset:0;z-index:0;
+  background:url('/images/patterns/Pattern-Vermelho.png') top left / 460px repeat;
+  opacity:.18; /* canvas preto engole o pattern — precisa de mais presença que os fundos claros */
+  pointer-events:none;
+}
+.squad-body > *{position:relative;z-index:1}
 .squad-group{scroll-margin-top:64px}
 .squad-group + .squad-group{margin-top:56px}
 .squad-group-head{display:flex;align-items:baseline;gap:14px;margin-bottom:24px}

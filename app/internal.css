@@ -44,7 +44,7 @@
 .sc-page::before{
   content:"";position:absolute;inset:0;z-index:-1;
   background:var(--sc-pattern,none) top left / 460px repeat;
-  opacity:.05;
+  opacity:.12;
   pointer-events:none;
 }
 
