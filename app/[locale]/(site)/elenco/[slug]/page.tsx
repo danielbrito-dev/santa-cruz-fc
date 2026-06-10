@@ -8,6 +8,8 @@ import { FooterParallax } from '@/components/site/footer.client';
 import { AthletePage } from '@/components/site/athlete-page';
 import { getSquad, getPlayerBySlug, slugifyName } from '@/server/squad/squad';
 
+export const revalidate = 60;
+
 export function generateStaticParams() {
   const players = getSquad().players;
   return routing.locales.flatMap((locale) =>

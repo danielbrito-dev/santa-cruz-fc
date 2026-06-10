@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { setRequestLocale } from 'next-intl/server';
+export const revalidate = 60;
 import { notFound } from 'next/navigation';
 import { routing, type Locale } from '@/lib/i18n/routing';
 import { INFO_PAGE_PATHS, resolvePage } from '@/lib/site-nav';

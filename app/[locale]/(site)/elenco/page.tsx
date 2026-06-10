@@ -7,6 +7,8 @@ import { FooterParallax } from '@/components/site/footer.client';
 import { SquadPage } from '@/components/site/squad-page';
 import { getSquad, groupPlayers } from '@/server/squad/squad';
 
+export const revalidate = 60;
+
 export default async function ElencoRoute({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   setRequestLocale(locale);

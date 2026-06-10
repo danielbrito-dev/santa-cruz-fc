@@ -13,6 +13,10 @@ import { SocialStrip } from '@/components/site/social-strip';
 import { Footer } from '@/components/site/footer';
 import { FooterParallax } from '@/components/site/footer.client';
 
+// ISR: prerender no build (fallback), regenera do DB em runtime. As Server Actions
+// do admin chamam revalidatePath, então os edits refletem imediatamente após salvar.
+export const revalidate = 60;
+
 export default async function HomePage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
