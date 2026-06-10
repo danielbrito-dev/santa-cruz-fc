@@ -3629,6 +3629,30 @@ textarea.admin-input {
 [data-theme="dark"] .adm-kpi-delta.down { color: var(--gold); }
 /* Donut: anel branco separa o arco vermelho da superfície escura do card */
 [data-theme="dark"] .adm-donut { box-shadow: 0 0 0 2px rgba(255,255,255,.92); }
+
+/* ── Admin · Upload de imagem ──────────────────────────────────────────── */
+.img-upload { display: flex; gap: 14px; align-items: flex-start; }
+.img-upload-preview { width: 84px; height: 84px; object-fit: cover; border: 1px solid var(--line); border-radius: 6px; background: var(--bg-2); flex: 0 0 auto; }
+.img-upload-ph { width: 84px; height: 84px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--line); border-radius: 6px; color: var(--muted); flex: 0 0 auto; }
+[data-theme="dark"] .img-upload-ph, [data-theme="dark"] .img-upload-preview { border-color: rgba(255,255,255,.12); }
+.img-upload-main { flex: 1; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.img-upload-actions { display: flex; gap: 8px; }
+.img-upload-err { color: var(--red); font-size: 12px; font-weight: 600; }
+[data-theme="dark"] .img-upload-err { color: #ff7a7a; }
+
+/* ── Área do Torcedor (scaffold) ───────────────────────────────────────── */
+.fan-area { padding: 84px 0 110px; }
+.fan-kicker { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: var(--red); margin-bottom: 14px; }
+.fan-title { font-size: clamp(32px, 5vw, 56px); font-weight: 900; letter-spacing: -.02em; line-height: 1.02; color: var(--ink); }
+[data-theme="dark"] .fan-title { color: #fff; }
+.fan-lead { max-width: 640px; margin: 18px 0 38px; font-size: 18px; line-height: 1.6; color: var(--muted); }
+.fan-grid { list-style: none; padding: 0; margin: 0 0 38px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.fan-card { background: var(--panel); border: 1px solid var(--line); border-top: 3px solid var(--red); padding: 22px; }
+[data-theme="dark"] .fan-card { background: #141414; border-color: rgba(255,255,255,.1); border-top-color: var(--gold); }
+.fan-card h3 { font-size: 16px; font-weight: 800; color: var(--ink); margin-bottom: 8px; }
+[data-theme="dark"] .fan-card h3 { color: #fff; }
+.fan-card p { font-size: 14px; color: var(--muted); line-height: 1.5; }
+.fan-soon { display: inline-block; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); border: 1px dashed var(--line); padding: 10px 16px; border-radius: 999px; }
 @media (max-width: 640px) {
   .admin-jogos-row { grid-template-columns: 1fr auto; row-gap: 8px; }
   .admin-jogos-row .admin-badge { grid-column: 1 / -1; justify-self: start; }

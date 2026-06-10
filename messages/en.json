@@ -3,7 +3,7 @@
     "title": "Santa Cruz Futebol Clube — Official Site",
     "description": "Official site of Santa Cruz Futebol Clube — Recife/PE, Brazil. News, schedule, tickets and Coral membership."
   },
-  "nav": { "news": "News", "calendar": "Schedule", "squad": "Squad", "tvCoral": "Coral TV", "login": "Sign in", "tickets": "Tickets", "shop": "Shop", "menu": "Menu" },
+  "nav": { "news": "News", "calendar": "Schedule", "squad": "Squad", "tvCoral": "Coral TV", "login": "Sign in", "fan": "Supporter", "tickets": "Tickets", "shop": "Shop", "menu": "Menu" },
   "menu": {
     "oSanta": "About Santa",
     "futebol": "Football",
@@ -154,6 +154,7 @@
     "errRequired": "Required field",
     "errEmail": "Invalid email",
     "errInvalid": "Incorrect email or password",
+    "errDisabled": "Your account is disabled. Contact an administrator.",
     "signingIn": "Signing in…",
     "soon": "Sign-in will be connected soon."
   },
@@ -352,7 +353,37 @@
     "devMobile": "Mobile",
     "devDesktop": "Desktop",
     "devTablet": "Tablet",
-    "ctaClicks": "Button clicks"
+    "ctaClicks": "Button clicks",
+    "addUser": "Add user",
+    "fEmail": "Email",
+    "fRole": "Role",
+    "fPassword": "Password",
+    "roleEditor": "Editor",
+    "roleAdmin": "Administrator",
+    "passwordHint": "Minimum 8 characters",
+    "newPasswordHint": "New password (min. 8)",
+    "resetPassword": "Reset password",
+    "usersNoPermission": "You don't have permission to manage users.",
+    "userCreated": "User created.",
+    "userUpdated": "User updated.",
+    "userDeleted": "User removed.",
+    "passwordReset": "Password reset.",
+    "userError": "Couldn't complete ({code}).",
+    "youBadge": "you",
+    "confirmDeleteUser": "Remove this user?",
+    "uploadBtn": "Upload image",
+    "uploading": "Uploading…",
+    "imageUrlPlaceholder": "Image URL",
+    "uploadError": "Upload failed",
+    "inviteUser": "Invite user",
+    "inviteHint": "The user gets an email with a link to set their password.",
+    "sendInvite": "Send invite",
+    "inviteSent": "Invite sent.",
+    "userActivated": "User activated.",
+    "userDeactivated": "User deactivated.",
+    "activate": "Activate",
+    "deactivate": "Deactivate",
+    "statusInactive": "inactive"
   },
   "drawer": {
     "home": "Home",
@@ -384,5 +415,33 @@
       "gallery": "Gallery",
       "pressContact": "Press Contact"
     }
+  },
+  "setPassword": {
+    "title": "Set password",
+    "subtitle": "Create your password to access the dashboard.",
+    "checking": "Validating your invite…",
+    "invalid": "Invalid or expired invite. Ask an administrator for a new one.",
+    "password": "New password",
+    "confirm": "Confirm password",
+    "tooShort": "Minimum 8 characters.",
+    "mismatch": "Passwords don't match.",
+    "save": "Save password",
+    "saving": "Saving…",
+    "done": "Password set! You can sign in now.",
+    "toLogin": "Go to login"
+  },
+  "fan": {
+    "kicker": "Supporter Area",
+    "title": "Home of the Coral Nation",
+    "lead": "Soon you'll be able to create a supporter account to enter raffles, answer the census, send suggestions and have a space of your own.",
+    "f_sorteios_title": "Raffles",
+    "f_sorteios_desc": "Win tickets, jerseys and exclusive experiences.",
+    "f_censo_title": "Coral Census",
+    "f_censo_desc": "Help the club get to know its supporters.",
+    "f_sugestoes_title": "Suggestions",
+    "f_sugestoes_desc": "Send ideas and talk directly to the club.",
+    "f_area_title": "Your area",
+    "f_area_desc": "Track your participation and news in one place.",
+    "soon": "Supporter sign-up coming soon."
   }
 }

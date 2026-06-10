@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { useRouter } from '@/lib/i18n/navigation';
 import type { Sponsor } from '@/server/content/types';
 import { createSponsor, updateSponsor, deleteSponsor } from '@/server/content/sponsor-actions';
+import { ImageUpload } from './image-upload';
 
 type Tier = Sponsor['tier'];
 const TIERS: Tier[] = ['master', 'fornecedor', 'apoio'];
@@ -93,20 +94,13 @@ export function PatrocinadoresAdmin({ sponsors }: { sponsors: Sponsor[] }) {
                 {TIERS.map((tr) => <option key={tr} value={tr}>{tierLabel(tr)}</option>)}
               </select>
             </label>
-            <label className="admin-field admin-jogos-field--wide">
-              <span className="admin-label">{t('fLogo')}</span>
-              <input className="admin-input" value={draft.logo} onChange={(e) => setDraft({ ...draft, logo: e.target.value })} placeholder="/images/sponsors/nome.png ou https://…" />
-            </label>
+            <div className="admin-field admin-jogos-field--wide">
+              <ImageUpload label={t('fLogo')} value={draft.logo} onChange={(v) => setDraft({ ...draft, logo: v })} folder="sponsors" />
+            </div>
             <label className="admin-field admin-jogos-field--wide">
               <span className="admin-label">{t('fUrl')}</span>
               <input className="admin-input" value={draft.url} onChange={(e) => setDraft({ ...draft, url: e.target.value })} placeholder="https://…" />
             </label>
-            <div className="admin-jogos-crest admin-jogos-crest--preview" aria-hidden="true">
-              {draft.logo.trim() ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={draft.logo} alt="" />
-              ) : (draft.name.slice(0, 3) || '?')}
-            </div>
           </div>
           <div className="admin-jogos-form-actions">
             <button type="button" className="admin-btn admin-btn--ghost admin-btn--sm" onClick={() => setDraft(null)} disabled={isPending}>{t('cancel')}</button>

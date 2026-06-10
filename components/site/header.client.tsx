@@ -163,12 +163,12 @@ export function HeaderClient() {
           </div>
 
           <div className="header-right">
-            <Link href="/entrar" className="header-link hide-mobile">
+            <Link href="/torcedor" className="header-link hide-mobile">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <circle cx="12" cy="8" r="4" />
                 <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" />
               </svg>
-              {nav('login')}
+              {nav('fan')}
             </Link>
             <ThemeToggle />
             <LocaleSwitcher />
@@ -232,15 +232,15 @@ export function HeaderClient() {
             </div>
           ))}
 
-          {/* Entrar (login) — caminho para o admin no mobile */}
+          {/* Área do torcedor (cadastro do torcedor — não é o login do admin) */}
           <div className="drawer-item">
             <Link
-              href="/entrar"
+              href="/torcedor"
               className="drawer-item-trigger"
               style={{ display: 'flex' }}
               onClick={handleDrawerLinkClick}
             >
-              {nav('login')}
+              {nav('fan')}
             </Link>
           </div>
         </nav>

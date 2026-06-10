@@ -7,6 +7,7 @@ import { Link } from '@/lib/i18n/navigation';
 import { createNews, updateNews, deleteNews } from '@/server/content/news-actions';
 import type { NewsInput } from '@/server/content/news-ops';
 import type { NewsItem } from '@/server/content/types';
+import { ImageUpload } from './image-upload';
 
 // ─── helpers ──────────────────────────────────────────────────────────────────
 
@@ -346,12 +347,11 @@ export function NewsForm({ locale: _locale, initial }: NewsFormProps) {
               hint="lowercase, hífens"
               placeholder="ex: vitoria-sobre-sport-3-1"
             />
-            <TextField
-              id="coverImage"
+            <ImageUpload
               label={t('fCover')}
               value={input.coverImage}
               onChange={(v) => setScalar('coverImage', v)}
-              placeholder="/images/nome-da-foto.jpg"
+              folder="news"
             />
 
             <div className="admin-news-form-row">

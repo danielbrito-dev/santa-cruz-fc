@@ -20,7 +20,7 @@ export function LoginForm() {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<FormErrors>({});
   const [showSoon, setShowSoon] = useState(false);
-  const [serverError, setServerError] = useState(false);
+  const [serverError, setServerError] = useState<null | 'invalid' | 'disabled'>(null);
   const [pending, startTransition] = useTransition();
 
   function validate(): FormErrors {
@@ -39,13 +39,13 @@ export function LoginForm() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setShowSoon(false);
-    setServerError(false);
+    setServerError(null);
     const errs = validate();
     setErrors(errs);
     if (Object.keys(errs).length === 0) {
       startTransition(async () => {
         const res = await login(email, password, locale);
-        if (res?.error === 'invalid') setServerError(true);
+        if (res?.error) setServerError(res.error);
         // on success the action redirects (navigation happens automatically)
       });
     }
@@ -61,7 +61,7 @@ export function LoginForm() {
       {/* Server-side invalid credentials error */}
       {serverError && (
         <p className="login-server-error" role="alert">
-          {t('errInvalid')}
+          {t(serverError === 'disabled' ? 'errDisabled' : 'errInvalid')}
         </p>
       )}
 
@@ -125,7 +125,7 @@ export function LoginForm() {
             onChange={(e) => {
               setEmail(e.target.value);
               if (errors.email) setErrors((prev) => ({ ...prev, email: undefined }));
-              if (serverError) setServerError(false);
+              if (serverError) setServerError(null);
             }}
             aria-invalid={!!errors.email}
             aria-describedby={errors.email ? 'login-email-error' : undefined}
@@ -152,7 +152,7 @@ export function LoginForm() {
             onChange={(e) => {
               setPassword(e.target.value);
               if (errors.password) setErrors((prev) => ({ ...prev, password: undefined }));
-              if (serverError) setServerError(false);
+              if (serverError) setServerError(null);
             }}
             aria-invalid={!!errors.password}
             aria-describedby={errors.password ? 'login-password-error' : undefined}

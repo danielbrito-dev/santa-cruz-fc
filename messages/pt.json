@@ -3,7 +3,7 @@
     "title": "Santa Cruz Futebol Clube — Site Oficial",
     "description": "Site oficial do Santa Cruz Futebol Clube — Recife/PE. Notícias, calendário, ingressos e Sócio Coral."
   },
-  "nav": { "news": "Notícias", "calendar": "Calendário", "squad": "Elenco", "tvCoral": "TV Coral", "login": "Entrar", "tickets": "Ingressos", "shop": "Loja", "menu": "Menu" },
+  "nav": { "news": "Notícias", "calendar": "Calendário", "squad": "Elenco", "tvCoral": "TV Coral", "login": "Entrar", "fan": "Torcedor", "tickets": "Ingressos", "shop": "Loja", "menu": "Menu" },
   "menu": {
     "oSanta": "O Santa",
     "futebol": "Futebol",
@@ -154,6 +154,7 @@
     "errRequired": "Campo obrigatório",
     "errEmail": "E-mail inválido",
     "errInvalid": "E-mail ou senha incorretos",
+    "errDisabled": "Sua conta está desativada. Fale com um administrador.",
     "signingIn": "Entrando…",
     "soon": "Login será conectado em breve."
   },
@@ -352,7 +353,37 @@
     "devMobile": "Celular",
     "devDesktop": "Computador",
     "devTablet": "Tablet",
-    "ctaClicks": "Cliques nos botões"
+    "ctaClicks": "Cliques nos botões",
+    "addUser": "Adicionar usuário",
+    "fEmail": "E-mail",
+    "fRole": "Papel",
+    "fPassword": "Senha",
+    "roleEditor": "Editor",
+    "roleAdmin": "Administrador",
+    "passwordHint": "Mínimo 8 caracteres",
+    "newPasswordHint": "Nova senha (mín. 8)",
+    "resetPassword": "Redefinir senha",
+    "usersNoPermission": "Você não tem permissão para gerenciar usuários.",
+    "userCreated": "Usuário criado.",
+    "userUpdated": "Usuário atualizado.",
+    "userDeleted": "Usuário removido.",
+    "passwordReset": "Senha redefinida.",
+    "userError": "Não foi possível concluir ({code}).",
+    "youBadge": "você",
+    "confirmDeleteUser": "Remover este usuário?",
+    "uploadBtn": "Enviar imagem",
+    "uploading": "Enviando…",
+    "imageUrlPlaceholder": "URL da imagem",
+    "uploadError": "Falha no upload",
+    "inviteUser": "Convidar usuário",
+    "inviteHint": "O usuário recebe um e-mail com link para definir a senha.",
+    "sendInvite": "Enviar convite",
+    "inviteSent": "Convite enviado.",
+    "userActivated": "Usuário ativado.",
+    "userDeactivated": "Usuário desativado.",
+    "activate": "Ativar",
+    "deactivate": "Desativar",
+    "statusInactive": "inativo"
   },
   "drawer": {
     "home": "Início",
@@ -384,5 +415,33 @@
       "gallery": "Galeria",
       "pressContact": "Contato Imprensa"
     }
+  },
+  "setPassword": {
+    "title": "Definir senha",
+    "subtitle": "Crie sua senha para acessar o painel.",
+    "checking": "Validando seu convite…",
+    "invalid": "Convite inválido ou expirado. Peça um novo convite ao administrador.",
+    "password": "Nova senha",
+    "confirm": "Confirmar senha",
+    "tooShort": "Mínimo 8 caracteres.",
+    "mismatch": "As senhas não coincidem.",
+    "save": "Salvar senha",
+    "saving": "Salvando…",
+    "done": "Senha definida! Já pode entrar.",
+    "toLogin": "Ir para o login"
+  },
+  "fan": {
+    "kicker": "Área do Torcedor",
+    "title": "A casa da Nação Coral",
+    "lead": "Em breve você vai poder criar sua conta de torcedor para participar de sorteios, responder ao censo, enviar sugestões e ter um espaço só seu.",
+    "f_sorteios_title": "Sorteios",
+    "f_sorteios_desc": "Concorra a ingressos, camisas e experiências exclusivas.",
+    "f_censo_title": "Censo Coral",
+    "f_censo_desc": "Ajude o clube a conhecer sua torcida.",
+    "f_sugestoes_title": "Sugestões",
+    "f_sugestoes_desc": "Mande ideias e fale direto com o clube.",
+    "f_area_title": "Sua área",
+    "f_area_desc": "Acompanhe sua participação e novidades num só lugar.",
+    "soon": "Cadastro do torcedor em breve."
   }
 }

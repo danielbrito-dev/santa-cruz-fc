@@ -1,7 +1,7 @@
 'use server';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { verifyCredentials } from './dev-user';
+import { verifyCredentials, isUserActive } from './users';
 import { createSessionToken, SESSION_COOKIE } from './session';
 
 const MAX_AGE = 60 * 60 * 24 * 7; // 7 days
@@ -10,9 +10,12 @@ export async function login(
   email: string,
   password: string,
   locale: string,
-): Promise<{ error?: 'invalid' }> {
-  if (!verifyCredentials(email, password)) {
+): Promise<{ error?: 'invalid' | 'disabled' }> {
+  if (!(await verifyCredentials(email, password))) {
     return { error: 'invalid' };
+  }
+  if (!(await isUserActive(email))) {
+    return { error: 'disabled' };
   }
   const jar = await cookies();
   jar.set(SESSION_COOKIE, createSessionToken(email.trim().toLowerCase()), {

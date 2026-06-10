@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { useRouter } from '@/lib/i18n/navigation';
 import type { GalleryImage } from '@/server/content/types';
 import { createImage, updateImage, deleteImage } from '@/server/content/site-extras-actions';
+import { ImageUpload } from './image-upload';
 
 interface Draft { id?: string; src: string; alt: string; }
 function errMsg(t: (k: string) => string, e: string) {
@@ -43,14 +44,11 @@ export function GaleriaAdmin({ images }: { images: GalleryImage[] }) {
       {draft && (
         <div className="admin-card admin-jogos-form">
           <div className="admin-jogos-grid">
-            <label className="admin-field admin-jogos-field--wide"><span className="admin-label">{t('fSrc')}</span>
-              <input className="admin-input" value={draft.src} onChange={(e) => setDraft({ ...draft, src: e.target.value })} placeholder="/images/…" /></label>
+            <div className="admin-field admin-jogos-field--wide">
+              <ImageUpload label={t('fSrc')} value={draft.src} onChange={(v) => setDraft({ ...draft, src: v })} folder="gallery" />
+            </div>
             <label className="admin-field admin-jogos-field--wide"><span className="admin-label">{t('fAlt')}</span>
               <input className="admin-input" value={draft.alt} onChange={(e) => setDraft({ ...draft, alt: e.target.value })} /></label>
-            <div className="admin-jogos-crest admin-jogos-crest--preview" aria-hidden="true">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              {draft.src.trim() ? <img src={draft.src} alt="" /> : '🖼'}
-            </div>
           </div>
           <div className="admin-jogos-form-actions">
             <button type="button" className="admin-btn admin-btn--ghost admin-btn--sm" onClick={() => setDraft(null)} disabled={isPending}>{t('cancel')}</button>
