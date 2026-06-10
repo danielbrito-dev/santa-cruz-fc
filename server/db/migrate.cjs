@@ -49,6 +49,9 @@ function readJson(rel) {
       created_at timestamptz not null default now()
     )`;
     await sql`create index if not exists form_submissions_created_idx on form_submissions (created_at desc)`;
+    // PII (e-mail/telefone): RLS sem policies bloqueia o acesso via REST/anon;
+    // o app lê/escreve pela conexão Postgres direta (owner), que não é afetada.
+    await sql`alter table form_submissions enable row level security`;
 
     // Perfil do admin — tabela NOSSA ligada ao auth.users do Supabase Auth.
     await sql`create table if not exists public.usuarios (
