@@ -13,8 +13,15 @@ export interface FanUser {
   name: string;
   photo?: string;
   phone?: string;
-  city?: string;
   birthDate?: string;
+  // endereço (preenchido via busca de CEP no perfil)
+  cep?: string;
+  street?: string;
+  number?: string;
+  complement?: string;
+  neighborhood?: string;
+  city?: string;
+  state?: string;
 }
 export type Result = { ok: true } | { ok: false; error: string };
 
@@ -27,16 +34,23 @@ function mapFan(r: Record<string, unknown>): FanUser {
     name: (r.name as string) || (r.email as string) || '',
     photo: (r.photo as string) || undefined,
     phone: (r.phone as string) || undefined,
-    city: (r.city as string) || undefined,
     birthDate: r.birth_date ? new Date(r.birth_date as string).toISOString().slice(0, 10) : undefined,
+    cep: (r.cep as string) || undefined,
+    street: (r.street as string) || undefined,
+    number: (r.number as string) || undefined,
+    complement: (r.complement as string) || undefined,
+    neighborhood: (r.neighborhood as string) || undefined,
+    city: (r.city as string) || undefined,
+    state: (r.state as string) || undefined,
   };
 }
+
 
 async function fanByEmail(email: string): Promise<FanUser | null> {
   const sql = getSql();
   if (!sql) return null;
   try {
-    const rows = await sql`select id, email, name, photo, phone, city, birth_date from public.torcedores where lower(email) = ${norm(email)} limit 1`;
+    const rows = await sql`select id, email, name, photo, phone, city, birth_date, cep, street, number, complement, neighborhood, state from public.torcedores where lower(email) = ${norm(email)} limit 1`;
     return rows.length ? mapFan(rows[0]) : null;
   } catch {
     return null;
@@ -47,7 +61,7 @@ async function fanById(id: string): Promise<FanUser | null> {
   const sql = getSql();
   if (!sql) return null;
   try {
-    const rows = await sql`select id, email, name, photo, phone, city, birth_date from public.torcedores where id = ${id} limit 1`;
+    const rows = await sql`select id, email, name, photo, phone, city, birth_date, cep, street, number, complement, neighborhood, state from public.torcedores where id = ${id} limit 1`;
     return rows.length ? mapFan(rows[0]) : null;
   } catch {
     return null;
@@ -121,9 +135,21 @@ export async function loginFan(email: string, password: string): Promise<Result>
   return { ok: true };
 }
 
-export async function updateFanProfile(
-  patch: { name?: string; photo?: string; phone?: string; city?: string; birthDate?: string },
-): Promise<Result> {
+export interface FanProfilePatch {
+  name?: string;
+  photo?: string;
+  phone?: string;
+  birthDate?: string;
+  cep?: string;
+  street?: string;
+  number?: string;
+  complement?: string;
+  neighborhood?: string;
+  city?: string;
+  state?: string;
+}
+
+export async function updateFanProfile(patch: FanProfilePatch): Promise<Result> {
   const me = await getFanUser();
   if (!me) return { ok: false, error: 'unauthorized' };
   const sql = getSql();
@@ -133,8 +159,14 @@ export async function updateFanProfile(
       name = coalesce(${patch.name ?? null}, name),
       photo = ${patch.photo ?? null},
       phone = ${patch.phone ?? null},
+      birth_date = ${patch.birthDate ? patch.birthDate : null},
+      cep = ${patch.cep ?? null},
+      street = ${patch.street ?? null},
+      number = ${patch.number ?? null},
+      complement = ${patch.complement ?? null},
+      neighborhood = ${patch.neighborhood ?? null},
       city = ${patch.city ?? null},
-      birth_date = ${patch.birthDate ? patch.birthDate : null}
+      state = ${patch.state ?? null}
       where id = ${me.id}`;
     if (patch.name && hasSupabase()) {
       try {

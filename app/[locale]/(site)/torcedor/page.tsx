@@ -50,7 +50,7 @@ export default async function TorcedorPage({ params }: { params: Promise<{ local
                       <span className="fan-deck-num" aria-hidden="true">0{i + 1}</span>
                       <h3>{t(`d_${c.key}_title`)}</h3>
                       <p>{t(`d_${c.key}_desc`)}</p>
-                      <span className="fan-deck-arrow" aria-hidden="true">→</span>
+                      <span className="fan-deck-go">{t('open')} <i aria-hidden="true">→</i></span>
                     </Link>
                   </li>
                 ))}

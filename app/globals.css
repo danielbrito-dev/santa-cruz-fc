@@ -3674,6 +3674,8 @@ textarea.admin-input {
 .fan-hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 30px; }
 .fan-hero-id { display: flex; align-items: center; gap: 20px; }
 .fan-hero-ava { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--red); flex: 0 0 auto; }
+/* BRAND.md: no dark o anel inverte (branco por fora) — vermelho nunca toca o near-black */
+[data-theme="dark"] .fan-hero-ava { box-shadow: 0 0 0 2px var(--red), 0 0 0 4px #fff; }
 .fan-hero-ava--ph { display: flex; align-items: center; justify-content: center; background: var(--red); color: #fff; font-size: 34px; font-weight: 900; }
 /* deck editorial: cards numerados sobre a superfície do tema */
 .fan-deck { flex: 1 0 auto; background: var(--panel); padding: 64px 0 110px; }
@@ -3685,11 +3687,20 @@ textarea.admin-input {
 .fan-deck-card h3 { font-size: 16px; font-weight: 800; text-transform: uppercase; letter-spacing: .02em; color: var(--ink); margin-bottom: 8px; }
 [data-theme="dark"] .fan-deck-card h3 { color: #fff; }
 .fan-deck-card p { font-size: 14px; line-height: 1.55; color: var(--muted); }
-.fan-deck-card--link { text-decoration: none; transition: transform .18s, box-shadow .18s, border-color .18s; }
+.fan-deck-card--link { text-decoration: none; transition: transform .18s, box-shadow .18s, border-color .18s; padding-bottom: 58px; }
 .fan-deck-card--link:hover { transform: translateY(-3px); box-shadow: 0 10px 24px -12px rgba(0,0,0,.45); border-color: var(--red); }
 [data-theme="dark"] .fan-deck-card--link:hover { border-color: var(--gold); }
-.fan-deck-arrow { position: absolute; right: 20px; bottom: 18px; font-weight: 900; color: var(--red); }
-[data-theme="dark"] .fan-deck-arrow { color: var(--gold); }
+/* rótulo de ação explícito — diferencia o card-menu do card informativo */
+.fan-deck-go {
+  position: absolute; left: 22px; right: 22px; bottom: 18px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 12px; border-top: 1px solid var(--line);
+  font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .14em;
+  color: var(--red);
+}
+[data-theme="dark"] .fan-deck-go { color: var(--gold); }
+.fan-deck-go i { font-style: normal; font-weight: 900; transition: transform .18s; }
+.fan-deck-card--link:hover .fan-deck-go i { transform: translateX(4px); }
 @media (max-width: 720px) {
   .fan-hero { min-height: 440px; }
   .fan-hero-inner { padding-top: 96px; padding-bottom: 72px; }
@@ -3781,11 +3792,13 @@ textarea.admin-input {
 /* ── Torcedor · perfil ────────────────────────────────────────────────── */
 .fan-title--dash { font-size: clamp(26px, 4vw, 42px); }
 .fan-narrow { max-width: 620px; }
-.fan-back { display: inline-block; font-size: 13px; font-weight: 700; color: var(--muted); margin-bottom: 18px; }
+.fan-back { display: block; width: fit-content; font-size: 13px; font-weight: 700; color: var(--muted); margin-bottom: 18px; }
 .fan-back:hover { color: var(--red); }
 .fan-profile { margin-top: 8px; }
 .fan-profile-photo-row { display: flex; align-items: center; gap: 18px; margin-bottom: 26px; }
 .fan-profile-photo { width: 88px; height: 88px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px #fff, 0 0 0 3.5px var(--red); flex: 0 0 auto; }
+/* BRAND.md: no dark o anel inverte (branco por fora) — vermelho nunca toca o near-black */
+[data-theme="dark"] .fan-profile-photo { box-shadow: 0 0 0 2px var(--red), 0 0 0 3.5px #fff; }
 .fan-profile-photo-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 .fan-chip-initial { display: inline-flex; align-items: center; justify-content: center; background: var(--red); color: #fff; font-weight: 900; }
 .fan-lgpd { margin-top: 26px; font-size: 12px; color: var(--muted); line-height: 1.5; }

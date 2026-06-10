@@ -82,6 +82,13 @@ function readJson(rel) {
       created_at timestamptz not null default now()
     )`;
     await sql`alter table public.torcedores enable row level security`;
+    // Endereço do torcedor (preenchido via busca de CEP no perfil).
+    await sql`alter table public.torcedores add column if not exists cep text`;
+    await sql`alter table public.torcedores add column if not exists street text`;
+    await sql`alter table public.torcedores add column if not exists number text`;
+    await sql`alter table public.torcedores add column if not exists complement text`;
+    await sql`alter table public.torcedores add column if not exists neighborhood text`;
+    await sql`alter table public.torcedores add column if not exists state text`;
 
     // Trigger: roteia o novo auth.user para torcedores (kind='fan') ou usuarios (admin).
     await sql`create or replace function public.handle_new_user() returns trigger

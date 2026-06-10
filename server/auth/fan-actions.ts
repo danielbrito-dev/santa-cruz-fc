@@ -1,7 +1,7 @@
 'use server';
 
 import { redirect } from 'next/navigation';
-import { signupFan, loginFan, clearFanCookie, updateFanProfile } from './fan';
+import { signupFan, loginFan, clearFanCookie, updateFanProfile, type FanProfilePatch } from './fan';
 
 export async function fanSignupAction(input: { email: string; name: string; password: string }, locale: string, next?: string): Promise<{ error?: string }> {
   const res = await signupFan(input);
@@ -20,7 +20,7 @@ export async function fanLogoutAction(locale: string): Promise<void> {
   redirect(`/${locale}/torcedor`);
 }
 
-export async function updateFanProfileAction(patch: { name?: string; photo?: string; phone?: string; city?: string; birthDate?: string }): Promise<{ ok: boolean; error?: string }> {
+export async function updateFanProfileAction(patch: FanProfilePatch): Promise<{ ok: boolean; error?: string }> {
   const res = await updateFanProfile(patch);
   return res.ok ? { ok: true } : { ok: false, error: res.error };
 }
