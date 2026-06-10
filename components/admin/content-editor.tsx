@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { saveContent } from '@/server/content/actions';
 import type { SiteContent, LocalizedText, CardItem } from '@/server/content/types';
 import { ImageUpload } from './image-upload';
+import { parseImagePos } from '@/lib/image-pos';
 
 // ─── types ────────────────────────────────────────────────────────────────────
 
@@ -73,12 +74,14 @@ function PreviewImage({ src, alt, className }: PreviewImageProps) {
     );
   }
 
+  const { src: cleanSrc, pos } = parseImagePos(src);
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src={src}
+      src={cleanSrc}
       alt={alt}
       className={className}
+      style={pos ? { objectPosition: pos } : undefined}
       onError={() => setErrored(true)}
     />
   );
@@ -308,6 +311,7 @@ function HeroSection({ hero, lang, setHero }: HeroSectionProps) {
           value={hero.backdrop}
           onChange={(v) => setHero((h) => ({ ...h, backdrop: v }))}
           folder="conteudo"
+          adjustable
         />
       </div>
       <div className="ce-preview-col">
@@ -367,6 +371,7 @@ function BannersSection({ banners, lang, setBanners }: BannersSectionProps) {
               value={card.image}
               onChange={(v) => update(idx, { image: v })}
               folder="conteudo"
+              adjustable
             />
           </div>
           <div className="ce-preview-col">
@@ -428,6 +433,7 @@ function InstitutionalSection({ institutional, lang, setInstitutional }: Institu
               value={card.image}
               onChange={(v) => update(idx, { image: v })}
               folder="conteudo"
+              adjustable
             />
           </div>
           <div className="ce-preview-col">

@@ -3611,6 +3611,11 @@ textarea.admin-input {
 
 /* ── Admin · Upload de imagem ──────────────────────────────────────────── */
 .img-upload { display: flex; gap: 14px; align-items: flex-start; }
+/* recorte arrastável: ajusta o object-position gravado na URL (#pos=x,y) */
+.img-upload-adjust { position: relative; width: 100%; max-width: 340px; aspect-ratio: 16/9; overflow: hidden; border: 1px solid var(--line); border-radius: 6px; background: var(--bg-2); cursor: grab; touch-action: none; }
+.img-upload-adjust:active { cursor: grabbing; }
+.img-upload-adjust img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; user-select: none; }
+.img-upload-adjust-hint { display: block; font-size: 11px; color: var(--muted); margin: 6px 0 8px; }
 .img-upload-preview { width: 84px; height: 84px; object-fit: cover; border: 1px solid var(--line); border-radius: 6px; background: var(--bg-2); flex: 0 0 auto; }
 .img-upload-ph { width: 84px; height: 84px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--line); border-radius: 6px; color: var(--muted); flex: 0 0 auto; }
 [data-theme="dark"] .img-upload-ph, [data-theme="dark"] .img-upload-preview { border-color: rgba(255,255,255,.12); }

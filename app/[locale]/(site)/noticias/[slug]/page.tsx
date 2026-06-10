@@ -6,6 +6,7 @@ import site from '@/content/site.json';
 import { readSiteContent } from '@/server/content/store';
 import { resolveLocalized } from '@/server/content/localized';
 import { SiteShell } from '@/components/site/site-shell';
+import { PosImg } from '@/components/site/pos-img';
 
 export const revalidate = 60;
 
@@ -41,8 +42,7 @@ export default async function NewsArticlePage({
     <SiteShell locale={locale}>
       <article className="news-article" data-section="midia">
         <header className="news-article-hero">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={item.coverImage} alt={resolveLocalized(item.title, locale)} />
+          <PosImg src={item.coverImage} alt={resolveLocalized(item.title, locale)} />
           <div className="news-article-hero-grad" aria-hidden="true" />
           <div className="container news-article-hero-body">
             <span className="news-article-tag">{resolveLocalized(item.tag, locale)}</span>

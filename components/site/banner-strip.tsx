@@ -1,5 +1,6 @@
 import type { SectionProps } from './types';
 import { resolveLocalized } from '@/server/content/localized';
+import { PosImg } from './pos-img';
 
 /** Classifica a URL do banner num id de CTA legível para o analytics. */
 function ctaId(url: string): string {
@@ -26,8 +27,7 @@ export function BannerStrip({ content, locale }: SectionProps) {
               data-cta={ctaId(b.ctaUrl)}
               data-cta-label={resolveLocalized(b.ctaLabel, locale) || resolveLocalized(b.title, locale)}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={b.image} alt={resolveLocalized(b.title, locale)} />
+              <PosImg src={b.image} alt={resolveLocalized(b.title, locale)} />
               <div className="grad" />
               <div className="body">
                 <span className="eyebrow">{resolveLocalized(b.eyebrow, locale)}</span>

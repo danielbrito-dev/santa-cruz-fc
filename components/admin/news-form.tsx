@@ -352,6 +352,7 @@ export function NewsForm({ locale: _locale, initial }: NewsFormProps) {
               value={input.coverImage}
               onChange={(v) => setScalar('coverImage', v)}
               folder="news"
+              adjustable
             />
 
             <div className="admin-news-form-row">

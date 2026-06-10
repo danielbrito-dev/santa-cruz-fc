@@ -1,6 +1,7 @@
 import { getTranslations, getFormatter } from 'next-intl/server';
 import type { SectionProps } from './types';
 import { resolveLocalized } from '@/server/content/localized';
+import { PosImg } from './pos-img';
 
 export async function NewsSection({ content, locale }: SectionProps) {
   const t = await getTranslations('news');
@@ -43,7 +44,7 @@ export async function NewsSection({ content, locale }: SectionProps) {
           {featured && (
             <a href={`/noticias/${featured.slug}`} className="news-feature">
               <div className="img-wrap">
-                <img
+                <PosImg
                   src={featured.coverImage}
                   alt={resolveLocalized(featured.title, locale)}
                 />
@@ -60,7 +61,7 @@ export async function NewsSection({ content, locale }: SectionProps) {
             {grid.map((item) => (
               <a key={item.id} href={`/noticias/${item.slug}`} className="news-item">
                 <div className="thumb">
-                  <img
+                  <PosImg
                     src={item.coverImage}
                     alt={resolveLocalized(item.title, locale)}
                   />

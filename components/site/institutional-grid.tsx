@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import type { SectionProps } from './types';
 import { resolveLocalized } from '@/server/content/localized';
+import { PosImg } from './pos-img';
 
 export async function InstitutionalGrid({ content, locale }: SectionProps) {
   const t = await getTranslations('identity');
@@ -20,8 +21,7 @@ export async function InstitutionalGrid({ content, locale }: SectionProps) {
               className={c.size === 'span' ? 'inst-card span-rows' : 'inst-card'}
               href={c.ctaUrl}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={c.image} alt={resolveLocalized(c.title, locale)} />
+              <PosImg src={c.image} alt={resolveLocalized(c.title, locale)} />
               <div className="grad" />
               <div className="body">
                 <span className="eyebrow">{resolveLocalized(c.eyebrow, locale)}</span>
