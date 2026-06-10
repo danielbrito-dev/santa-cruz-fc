@@ -3652,7 +3652,9 @@ textarea.admin-input {
 [data-theme="dark"] .img-upload-err { color: #ff7a7a; }
 
 /* ── Área do Torcedor (scaffold) ───────────────────────────────────────── */
-.fan-area { padding: 84px 0 110px; }
+/* position/z-index/min-height/background: cobre o footer fixo (parallax) — sem isso
+   páginas curtas deixam o footer vazar por trás (mesmo bug da página de atleta). */
+.fan-area { position: relative; z-index: 2; background: var(--page-bg); min-height: 100vh; padding: 84px 0 110px; }
 .fan-kicker { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: var(--red); margin-bottom: 14px; }
 .fan-title { font-size: clamp(32px, 5vw, 56px); font-weight: 900; letter-spacing: -.02em; line-height: 1.02; color: var(--ink); }
 [data-theme="dark"] .fan-title { color: #fff; }
@@ -3676,7 +3678,7 @@ textarea.admin-input {
 [data-theme="dark"] .fan-btn--ghost:hover { border-color: var(--gold); color: var(--gold); }
 
 /* ── Torcedor · auth (login/cadastro) ─────────────────────────────────── */
-.fan-auth { display: flex; justify-content: center; padding: 72px 20px 110px; }
+.fan-auth { position: relative; z-index: 2; background: var(--page-bg); min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; padding: 72px 20px 110px; }
 .fan-auth-card { width: 100%; max-width: 420px; background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--red); padding: 36px 32px; text-align: center; }
 [data-theme="dark"] .fan-auth-card { background: #161616; border-color: rgba(255,255,255,.1); border-top-color: var(--gold); }
 .fan-auth-crest { display: block; margin: 0 auto 14px; }
