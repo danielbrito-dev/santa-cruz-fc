@@ -40,6 +40,16 @@ function readJson(rel) {
     await sql`create index if not exists analytics_events_ts_idx on analytics_events (ts)`;
     await sql`create index if not exists analytics_events_type_idx on analytics_events (type)`;
 
+    // Envios dos formulários públicos do site (fale conosco, ouvidoria, trabalhe conosco…).
+    await sql`create table if not exists form_submissions (
+      id bigint generated always as identity primary key,
+      page text not null,
+      data jsonb not null,
+      read boolean not null default false,
+      created_at timestamptz not null default now()
+    )`;
+    await sql`create index if not exists form_submissions_created_idx on form_submissions (created_at desc)`;
+
     // Perfil do admin — tabela NOSSA ligada ao auth.users do Supabase Auth.
     await sql`create table if not exists public.usuarios (
       id uuid primary key references auth.users(id) on delete cascade,

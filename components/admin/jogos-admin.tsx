@@ -210,6 +210,10 @@ export function JogosAdmin({ matches, clubs }: { matches: MatchItem[]; clubs: Cl
                 <span className="admin-label">{t('fStatusEn')}</span>
                 <input className="admin-input" value={matchDraft.statusEn} onChange={(e) => setMatchDraft({ ...matchDraft, statusEn: e.target.value })} placeholder="SUN MAY 25 · FINAL" />
               </label>
+              <label className="admin-field admin-jogos-field--wide">
+                <span className="admin-label">{t('fMatchUrl')}</span>
+                <input className="admin-input" type="url" value={matchDraft.matchCenterUrl === '#' ? '' : matchDraft.matchCenterUrl} onChange={(e) => setMatchDraft({ ...matchDraft, matchCenterUrl: e.target.value.trim() || '#' })} placeholder="https://…" />
+              </label>
             </div>
             <div className="admin-jogos-form-actions">
               <button type="button" className="admin-btn admin-btn--ghost admin-btn--sm" onClick={() => setMatchDraft(null)} disabled={isPending}>{t('cancel')}</button>

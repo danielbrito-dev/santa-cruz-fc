@@ -80,7 +80,7 @@ export default async function InternalPage({
       body = <Landing {...common} data={data} />;
       break;
     case 'form':
-      body = <FormPage sectionKey={page.sectionKey} titleKey={page.titleKey} data={data} />;
+      body = <FormPage sectionKey={page.sectionKey} titleKey={page.titleKey} formId={href} data={data} />;
       break;
     case 'stories':
       body = <Stories {...common} data={data} />;

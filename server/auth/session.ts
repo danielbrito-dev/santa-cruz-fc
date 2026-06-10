@@ -2,7 +2,7 @@ import { createHmac, timingSafeEqual } from 'node:crypto';
 
 export const SESSION_COOKIE = 'scfc_session';
 
-// TODO(Phase 2): move to AUTH_SECRET env + Supabase sessions. Replaceable constant for now.
+// Defina AUTH_SECRET em produção; o fallback existe só para dev local.
 const SECRET = process.env.AUTH_SECRET ?? 'scfc-dev-session-secret-change-me';
 const MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000; // token lifetime (matches the cookie maxAge)
 

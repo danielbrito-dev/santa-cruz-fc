@@ -3,15 +3,18 @@ import { useEffect, useState, useTransition } from 'react';
 import { useTranslations } from 'next-intl';
 import type { FormPageData } from '@/lib/site-pages';
 import { submitFanStory } from '@/server/content/fan-story-actions';
+import { submitSiteForm } from '@/server/content/form-actions';
 import { Kicker } from './_shared';
 
 export function FormPage({
   sectionKey,
   titleKey,
+  formId,
   data,
 }: {
   sectionKey: string;
   titleKey: string;
+  formId: string;
   data: FormPageData;
 }) {
   const menu = useTranslations('menu');
@@ -31,12 +34,18 @@ export function FormPage({
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!data.story) {
-      setSent(true);
-      return;
-    }
     const fd = new FormData(e.currentTarget);
     setErr(false);
+    if (!data.story) {
+      const fields: Record<string, string> = {};
+      for (const f of data.fields) fields[f.name] = String(fd.get(f.name) ?? '');
+      start(async () => {
+        const res = await submitSiteForm(formId, fields);
+        if (res.ok) setSent(true);
+        else setErr(true);
+      });
+      return;
+    }
     start(async () => {
       const res = await submitFanStory({
         nome: String(fd.get('nome') ?? ''),

@@ -42,9 +42,9 @@ function renderForm() {
 }
 
 describe('LoginForm', () => {
-  it('renders the Google button', () => {
+  it('does not render a Google button (e-mail/senha only)', () => {
     renderForm();
-    expect(screen.getByRole('button', { name: /Google/i })).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /Google/i })).not.toBeInTheDocument();
   });
 
   it('renders the email and password fields', () => {
@@ -93,8 +93,6 @@ describe('LoginForm', () => {
     await waitFor(() => {
       expect(login).toHaveBeenCalledWith('torcedor@santacruz.com.br', 'senhasegura123', 'pt');
     });
-    // The "soon" notice should NOT appear — Google stub only
-    expect(screen.queryByText(/login será conectado em breve/i)).not.toBeInTheDocument();
   });
 
   it('shows the errInvalid message when login returns {error:"invalid"}', async () => {
@@ -109,27 +107,6 @@ describe('LoginForm', () => {
     await waitFor(() => {
       expect(screen.getByRole('alert', { name: undefined })).toBeInTheDocument();
       expect(screen.getByText(/e-mail ou senha incorretos/i)).toBeInTheDocument();
-    });
-  });
-
-  it('shows the "soon" notice when Google button is clicked', async () => {
-    renderForm();
-    const googleBtn = screen.getByRole('button', { name: /Google/i });
-    fireEvent.click(googleBtn);
-    await waitFor(() => {
-      expect(
-        screen.getByText(/login será conectado em breve/i),
-      ).toBeInTheDocument();
-    });
-  });
-
-  it('does not show "soon" notice when form has validation errors', async () => {
-    renderForm();
-    // Submit with empty fields — validation should block any action call
-    const submitBtn = screen.getByRole('button', { name: /entrar/i });
-    fireEvent.click(submitBtn);
-    await waitFor(() => {
-      expect(screen.queryByText(/login será conectado em breve/i)).not.toBeInTheDocument();
     });
   });
 

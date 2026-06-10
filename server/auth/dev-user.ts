@@ -1,4 +1,5 @@
-// TODO(Phase 2): replace this hardcoded user with Supabase Auth.
+// Fallback de emergência: usado só quando o Supabase Auth está indisponível
+// (queda de rede) ou sem configuração (dev local sem env). Ver users.ts.
 export const DEV_USER = {
   email: 'admin@santacruz.fc',
   password: 'cobracoral1914',
