@@ -140,7 +140,9 @@
     "appsHeading": "Baixe o app",
     "appsBlurb": "O app oficial do torcedor tricolor, disponível para iOS e Android.",
     "appStorePrefix": "Baixe na",
-    "googlePlayPrefix": "Disponível"
+    "googlePlayPrefix": "Disponível",
+    "appsSoon": "Em breve",
+    "adminAccess": "Acesso administrativo"
   },
   "auth": {
     "title": "Entrar",

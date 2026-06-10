@@ -140,7 +140,9 @@
     "appsHeading": "Download the app",
     "appsBlurb": "The official tricolor supporter app, available for iOS and Android.",
     "appStorePrefix": "Download on the",
-    "googlePlayPrefix": "Available on"
+    "googlePlayPrefix": "Available on",
+    "appsSoon": "Coming soon",
+    "adminAccess": "Admin access"
   },
   "auth": {
     "title": "Sign in",
