@@ -56,15 +56,35 @@ function readJson(rel) {
     await sql`do $$ begin
       create policy usuarios_read on public.usuarios for select to authenticated using (true);
     exception when duplicate_object then null; end $$`;
-    // Trigger: ao criar usuário no Supabase Auth, cria o perfil em public.usuarios.
+
+    // Perfil do TORCEDOR — tabela separada da de admin, também ligada a auth.users.
+    await sql`create table if not exists public.torcedores (
+      id uuid primary key references auth.users(id) on delete cascade,
+      email text,
+      name text not null default '',
+      photo text,
+      phone text,
+      city text,
+      birth_date date,
+      created_at timestamptz not null default now()
+    )`;
+    await sql`alter table public.torcedores enable row level security`;
+
+    // Trigger: roteia o novo auth.user para torcedores (kind='fan') ou usuarios (admin).
     await sql`create or replace function public.handle_new_user() returns trigger
       language plpgsql security definer set search_path = public as $$
       begin
-        insert into public.usuarios (id, email, name, role)
-        values (new.id, new.email,
-          coalesce(new.raw_user_meta_data->>'name', split_part(new.email, '@', 1)),
-          coalesce(new.raw_user_meta_data->>'role', 'editor'))
-        on conflict (id) do nothing;
+        if coalesce(new.raw_user_meta_data->>'kind', '') = 'fan' then
+          insert into public.torcedores (id, email, name)
+          values (new.id, new.email, coalesce(new.raw_user_meta_data->>'name', split_part(new.email, '@', 1)))
+          on conflict (id) do nothing;
+        else
+          insert into public.usuarios (id, email, name, role)
+          values (new.id, new.email,
+            coalesce(new.raw_user_meta_data->>'name', split_part(new.email, '@', 1)),
+            coalesce(new.raw_user_meta_data->>'role', 'editor'))
+          on conflict (id) do nothing;
+        end if;
         return new;
       end; $$`;
     await sql`drop trigger if exists on_auth_user_created on auth.users`;

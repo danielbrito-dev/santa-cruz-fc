@@ -1118,7 +1118,7 @@ body{ background:var(--page-bg) }
   position:fixed;left:0;right:0;bottom:0;
   z-index:0;
   background:var(--footer-bg);color:var(--white);
-  padding:72px 0 24px;
+  padding:56px 0 20px;
   overflow:hidden;
 }
 /* Mobile/tablet: parallax desligado (footer rola normalmente) — evita corte vertical em viewports menores */
@@ -1130,7 +1130,7 @@ body{ background:var(--page-bg) }
 /* ---- chant final — slogan da torcida no FIM absoluto, centralizado, staggered ---- */
 .footer-chant{
   position:relative;
-  padding:88px 0 72px;
+  padding:60px 0 44px;
   border-top:1px solid rgba(0,0,0,.22);
   overflow:hidden;
 }
@@ -1220,10 +1220,10 @@ body{ background:var(--page-bg) }
 .footer-app--soon{opacity:.6;cursor:default;pointer-events:none}
 .footer-app--soon:hover{background:rgba(0,0,0,.22);box-shadow:none;transform:none}
 .footer-app .footer-app-soon{margin-left:auto;font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#1a1205;background:var(--gold);padding:3px 8px;border-radius:999px}
-/* Barra inferior: copyright + acesso administrativo */
-.footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:36px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12)}
-.footer-copy{font-size:12px;color:rgba(255,255,255,.6)}
-.footer-admin-link{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;color:rgba(255,255,255,.78);padding:7px 14px;border:1px solid rgba(255,255,255,.18);border-radius:999px;transition:background .2s,border-color .2s,color .2s}
+/* Linha legal compacta (dentro do chant): copyright + acesso administrativo */
+.footer-legal{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:26px}
+.footer-copy{font-size:12px;color:rgba(255,255,255,.55)}
+.footer-admin-link{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.04em;color:rgba(255,255,255,.7);padding:5px 12px;border:1px solid rgba(255,255,255,.18);border-radius:999px;transition:background .2s,border-color .2s,color .2s}
 .footer-admin-link:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.4);color:#fff}
 
 @media (max-width:1100px){
