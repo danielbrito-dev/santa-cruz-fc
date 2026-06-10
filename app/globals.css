@@ -3625,29 +3625,81 @@ textarea.admin-input {
 .img-upload-ph--doc { border-style: solid; font-size: 12px; font-weight: 900; letter-spacing: .08em; color: var(--red); }
 [data-theme="dark"] .img-upload-err { color: #ff7a7a; }
 
-/* ── Área do Torcedor (scaffold) ───────────────────────────────────────── */
+/* ── Área do Torcedor (perfil + estados internos) ──────────────────────── */
 /* position/z-index/min-height/background: cobre o footer fixo (parallax) — sem isso
    páginas curtas deixam o footer vazar por trás (mesmo bug da página de atleta). */
-.fan-area { position: relative; z-index: 2; background: var(--page-bg); min-height: 100vh; padding: 84px 0 110px; }
+.fan-area { position: relative; z-index: 2; background: var(--panel); min-height: 100vh; padding: 84px 0 110px; }
 .fan-kicker { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: var(--red); margin-bottom: 14px; }
+[data-theme="dark"] .fan-kicker { color: var(--gold); }
 .fan-title { font-size: clamp(32px, 5vw, 56px); font-weight: 900; letter-spacing: -.02em; line-height: 1.02; color: var(--ink); }
 [data-theme="dark"] .fan-title { color: #fff; }
 .fan-lead { max-width: 640px; margin: 18px 0 38px; font-size: 18px; line-height: 1.6; color: var(--muted); }
-.fan-grid { list-style: none; padding: 0; margin: 0 0 38px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-.fan-card { background: var(--panel); border: 1px solid var(--line); border-top: 3px solid var(--red); padding: 22px; }
-[data-theme="dark"] .fan-card { background: #141414; border-color: rgba(255,255,255,.1); border-top-color: var(--gold); }
-.fan-card h3 { font-size: 16px; font-weight: 800; color: var(--ink); margin-bottom: 8px; }
-[data-theme="dark"] .fan-card h3 { color: #fff; }
-.fan-card p { font-size: 14px; color: var(--muted); line-height: 1.5; }
 .fan-soon { display: inline-block; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); border: 1px dashed var(--line); padding: 10px 16px; border-radius: 999px; }
 
+/* ── Torcedor · landing/dashboard (/torcedor) — hero coral + deck ──────── */
+.fan-stage { position: relative; z-index: 2; min-height: 100vh; display: flex; flex-direction: column; background: var(--panel); }
+/* hero: mosaico da torcida + scrim + costura diagonal (mesma linguagem do login) */
+.fan-hero {
+  position: relative; overflow: hidden; background: #000;
+  display: flex; align-items: flex-end;
+  min-height: clamp(460px, 58vh, 600px);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 48px), 0 100%);
+}
+.fan-hero--dash { min-height: clamp(360px, 44vh, 470px); }
+.fan-hero::before { content: ""; position: absolute; inset: 0; background: url('/images/torcida_santa_cruz_mosaico.jpg') center/cover no-repeat; }
+.fan-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.36) 0%, rgba(0,0,0,.18) 34%, rgba(0,0,0,.66) 66%, rgba(0,0,0,.94) 100%); }
+.fan-hero-ghost {
+  position: absolute; top: 84px; right: 40px; z-index: 1;
+  font-size: clamp(110px, 13vw, 210px); font-weight: 900; line-height: 1; letter-spacing: -.04em;
+  color: transparent; -webkit-text-stroke: 1.5px rgba(201,184,150,.45);
+  user-select: none; pointer-events: none;
+}
+.fan-hero-inner { position: relative; z-index: 1; width: 100%; padding-top: 120px; padding-bottom: 88px; }
+.fan-hero-kicker {
+  display: inline-flex; align-items: center; padding: 6px 11px;
+  background: var(--red); color: var(--white);
+  font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .2em;
+  box-shadow: 0 0 0 1.5px var(--white); /* BRAND.md: anel branco isola o vermelho */
+  margin-bottom: 18px;
+}
+.fan-hero-title { font-size: clamp(38px, 5vw, 64px); font-weight: 900; line-height: 1.03; letter-spacing: -.02em; text-transform: uppercase; color: var(--white); max-width: 780px; }
+.fan-hero-title--dash { font-size: clamp(30px, 3.6vw, 48px); }
+.fan-hero-lead { max-width: 600px; margin: 16px 0 0; font-size: 17px; line-height: 1.6; color: rgba(255,255,255,.78); }
+.fan-hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 30px; }
+.fan-hero-id { display: flex; align-items: center; gap: 20px; }
+.fan-hero-ava { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--red); flex: 0 0 auto; }
+.fan-hero-ava--ph { display: flex; align-items: center; justify-content: center; background: var(--red); color: #fff; font-size: 34px; font-weight: 900; }
+/* deck editorial: cards numerados sobre a superfície do tema */
+.fan-deck { flex: 1 0 auto; background: var(--panel); padding: 64px 0 110px; }
+.fan-deck-grid { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; margin: 0 0 40px; padding: 0; }
+.fan-deck-grid > li { list-style: none; }
+.fan-deck-card { position: relative; display: block; height: 100%; padding: 26px 22px 34px; background: var(--panel); border: 1px solid var(--line); }
+.fan-deck-num { display: block; font-size: 44px; font-weight: 900; line-height: 1; letter-spacing: -.03em; color: transparent; -webkit-text-stroke: 1.5px var(--red); margin-bottom: 16px; }
+[data-theme="dark"] .fan-deck-num { -webkit-text-stroke-color: var(--gold); }
+.fan-deck-card h3 { font-size: 16px; font-weight: 800; text-transform: uppercase; letter-spacing: .02em; color: var(--ink); margin-bottom: 8px; }
+[data-theme="dark"] .fan-deck-card h3 { color: #fff; }
+.fan-deck-card p { font-size: 14px; line-height: 1.55; color: var(--muted); }
+.fan-deck-card--link { text-decoration: none; transition: transform .18s, box-shadow .18s, border-color .18s; }
+.fan-deck-card--link:hover { transform: translateY(-3px); box-shadow: 0 10px 24px -12px rgba(0,0,0,.45); border-color: var(--red); }
+[data-theme="dark"] .fan-deck-card--link:hover { border-color: var(--gold); }
+.fan-deck-arrow { position: absolute; right: 20px; bottom: 18px; font-weight: 900; color: var(--red); }
+[data-theme="dark"] .fan-deck-arrow { color: var(--gold); }
+@media (max-width: 720px) {
+  .fan-hero { min-height: 440px; }
+  .fan-hero-inner { padding-top: 96px; padding-bottom: 72px; }
+  .fan-hero-ghost { top: 56px; right: 16px; }
+  .fan-deck { padding: 48px 0 90px; }
+}
+
 /* ── Torcedor · botões / CTAs ─────────────────────────────────────────── */
-.fan-cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
 .fan-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--red); color: #fff; box-shadow: 0 0 0 1.5px #fff; border: none; border-radius: 999px; padding: 13px 26px; font-size: 13px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; cursor: pointer; transition: transform .15s, filter .15s; }
 .fan-btn:hover { transform: translateY(-1px); filter: brightness(1.06); }
 .fan-btn:disabled { opacity: .6; cursor: default; transform: none; }
 .fan-btn--ghost { background: transparent; color: var(--ink); box-shadow: none; border: 1.5px solid var(--line); }
 [data-theme="dark"] .fan-btn--ghost { color: #fff; border-color: rgba(255,255,255,.25); }
+/* outline branco — para CTAs sobre o hero escuro */
+.fan-btn--outline { background: transparent; color: var(--white); box-shadow: none; border: 1.5px solid rgba(255,255,255,.55); }
+.fan-btn--outline:hover { border-color: #fff; filter: none; }
 .fan-btn--ghost:hover { filter: none; border-color: var(--red); color: var(--red); }
 [data-theme="dark"] .fan-btn--ghost:hover { border-color: var(--gold); color: var(--gold); }
 
@@ -3720,16 +3772,8 @@ textarea.admin-input {
 .fan-auth-swap a { color: var(--red); font-weight: 800; }
 [data-theme="dark"] .fan-auth-swap a { color: var(--gold); }
 
-/* ── Torcedor · dashboard + perfil ────────────────────────────────────── */
-.fan-dash-head { display: flex; align-items: center; gap: 18px; margin-bottom: 12px; }
-.fan-dash-photo { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px #fff, 0 0 0 3.5px var(--red); flex: 0 0 auto; }
+/* ── Torcedor · perfil ────────────────────────────────────────────────── */
 .fan-title--dash { font-size: clamp(26px, 4vw, 42px); }
-.fan-card--link { display: block; position: relative; text-decoration: none; transition: transform .15s, border-color .15s; }
-.fan-card--link:hover { transform: translateY(-2px); border-color: var(--red); }
-[data-theme="dark"] .fan-card--link:hover { border-color: var(--gold); }
-.fan-card-arrow { position: absolute; right: 18px; bottom: 14px; font-weight: 900; color: var(--red); }
-[data-theme="dark"] .fan-card-arrow { color: var(--gold); }
-.fan-grid > li { list-style: none; }
 .fan-narrow { max-width: 620px; }
 .fan-back { display: inline-block; font-size: 13px; font-weight: 700; color: var(--muted); margin-bottom: 18px; }
 .fan-back:hover { color: var(--red); }
