@@ -3638,6 +3638,12 @@ textarea.admin-input {
 
 /* ── Torcedor · landing/dashboard (/torcedor) — hero coral + deck ──────── */
 .fan-stage { position: relative; z-index: 2; min-height: 100vh; display: flex; flex-direction: column; background: var(--panel); }
+/* BRAND.md: vermelho não toca o near-black — filete branco separa a página do
+   footer vermelho (igual nos dois temas; no claro funde com a superfície branca) */
+.fan-stage::after, .fan-area::after, .fan-auth::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 8px;
+  background: var(--white); z-index: 1;
+}
 /* hero: mosaico da torcida + scrim + costura diagonal (mesma linguagem do login) */
 .fan-hero {
   position: relative; overflow: hidden; background: #000;
