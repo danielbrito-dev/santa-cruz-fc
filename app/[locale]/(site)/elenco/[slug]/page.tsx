@@ -6,7 +6,8 @@ import { Header } from '@/components/site/header';
 import { Footer } from '@/components/site/footer';
 import { FooterParallax } from '@/components/site/footer.client';
 import { AthletePage } from '@/components/site/athlete-page';
-import { getSquad, getPlayerBySlug, slugifyName } from '@/server/squad/squad';
+import { getSquad, slugifyName } from '@/server/squad/squad';
+import { readSquadFile } from '@/server/squad/store';
 
 export const revalidate = 60;
 
@@ -24,7 +25,9 @@ export default async function AthleteRoute({
 }) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
-  const player = getPlayerBySlug(slug);
+  // Runtime (DB-first): novos atletas cadastrados no admin ganham página sem redeploy.
+  const { players } = await readSquadFile();
+  const player = players.find((p) => slugifyName(p.name) === slug);
   if (!player) notFound();
 
   const api = await getServerApi();

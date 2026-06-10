@@ -1189,7 +1189,7 @@
               "pt": "Ingressos",
               "en": "Tickets"
             },
-            "url": "#"
+            "url": "/futebol/calendario"
           },
           {
             "label": {
@@ -1210,7 +1210,7 @@
               "pt": "Patrocinadores",
               "en": "Sponsors"
             },
-            "url": "#"
+            "url": "/#patrocinadores"
           }
         ]
       },

@@ -3,6 +3,7 @@
 import { useState, useTransition } from 'react';
 import { useTranslations } from 'next-intl';
 import { useRouter } from '@/lib/i18n/navigation';
+import { ImageUpload } from './image-upload';
 import type { DocItem } from '@/server/content/types';
 import { createDoc, updateDoc, deleteDoc } from '@/server/content/site-extras-actions';
 
@@ -64,8 +65,9 @@ export function DocumentosAdmin({ documents }: { documents: DocItem[] }) {
               <input className="admin-input" value={draft.kind} onChange={(e) => setDraft({ ...draft, kind: e.target.value })} placeholder="PDF" /></label>
             <label className="admin-field"><span className="admin-label">{t('fDocMeta')}</span>
               <input className="admin-input" value={draft.meta} onChange={(e) => setDraft({ ...draft, meta: e.target.value })} placeholder="2025" /></label>
-            <label className="admin-field admin-jogos-field--wide"><span className="admin-label">{t('fDocHref')}</span>
-              <input className="admin-input" value={draft.href} onChange={(e) => setDraft({ ...draft, href: e.target.value })} placeholder="#" /></label>
+            <div className="admin-field admin-jogos-field--wide">
+              <ImageUpload label={t('fDocHref')} value={draft.href === '#' ? '' : draft.href} onChange={(v) => setDraft({ ...draft, href: v })} folder="docs" accept="application/pdf,image/*" />
+            </div>
           </div>
           <div className="admin-jogos-form-actions">
             <button type="button" className="admin-btn admin-btn--ghost admin-btn--sm" onClick={() => setDraft(null)} disabled={isPending}>{t('cancel')}</button>

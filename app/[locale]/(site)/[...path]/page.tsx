@@ -4,7 +4,8 @@ export const revalidate = 60;
 import { notFound } from 'next/navigation';
 import { routing, type Locale } from '@/lib/i18n/routing';
 import { INFO_PAGE_PATHS, resolvePage } from '@/lib/site-nav';
-import { getPageData, type EditorialData } from '@/lib/site-pages';
+import { type EditorialData } from '@/lib/site-pages';
+import { getPageDataLive } from '@/lib/site-pages-live';
 import { SiteShell } from '@/components/site/site-shell';
 import { FanGate } from '@/components/site/fan-gate';
 import { Editorial } from '@/components/site/pages/editorial';
@@ -47,7 +48,7 @@ export default async function InternalPage({
     lead: 'Conteúdo em construção.',
     sections: [{ heading: 'Em breve', paragraphs: ['Esta página será preenchida em breve.'] }],
   };
-  const data = getPageData(href) ?? fallback;
+  const data = (await getPageDataLive(href)) ?? fallback;
 
   let body: ReactNode;
   switch (data.archetype) {

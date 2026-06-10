@@ -382,6 +382,7 @@
   border:1px solid var(--sc-hair);padding:26px 24px 28px;min-height:200px;transition:transform .25s,border-color .25s;
   clip-path:polygon(0 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%)}
 .sc-lcard:hover{transform:translateY(-5px);border-color:var(--sc-accent)}
+.sc-lcard--link{text-decoration:none;color:inherit;cursor:pointer}
 .sc-lcard:first-child{grid-column:span 2;grid-row:span 2;justify-content:flex-end;background:var(--section-bg);color:#fff;border-color:transparent}
 .sc-lcard:first-child .sc-lcard-title{font-size:clamp(24px,3vw,42px)}
 .sc-lcard:first-child .sc-lcard-meta{color:rgba(255,255,255,.7)}

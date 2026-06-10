@@ -3,6 +3,7 @@
 import { useState, useTransition } from 'react';
 import { useTranslations } from 'next-intl';
 import { useRouter } from '@/lib/i18n/navigation';
+import { ImageUpload } from './image-upload';
 import { GROUP_ORDER } from '@/server/squad/squad';
 import type { Player, StaffMember, PositionGroupKey } from '@/server/squad/squad';
 import {
@@ -143,8 +144,9 @@ export function ElencoAdmin({ players, staff }: { players: Player[]; staff: Staf
                 <input className="admin-input" value={pd.birthDate} onChange={(e) => setPd({ ...pd, birthDate: e.target.value })} placeholder="DD/MM/AAAA" /></label>
               <label className="admin-field"><span className="admin-label">{ts('lblNationality')}</span>
                 <input className="admin-input" value={pd.country} onChange={(e) => setPd({ ...pd, country: e.target.value })} placeholder="BRA" /></label>
-              <label className="admin-field admin-jogos-field--wide"><span className="admin-label">{t('fPhoto')}</span>
-                <input className="admin-input" value={pd.photo} onChange={(e) => setPd({ ...pd, photo: e.target.value })} placeholder="/images/atletas/…" /></label>
+              <div className="admin-field admin-jogos-field--wide">
+                <ImageUpload label={t('fPhoto')} value={pd.photo} onChange={(v) => setPd({ ...pd, photo: v })} folder="atletas" />
+              </div>
               <label className="admin-field"><span className="admin-label">{ts('lblGames')}</span>
                 <input className="admin-input" type="number" value={pd.jogos} onChange={(e) => setPd({ ...pd, jogos: e.target.value })} /></label>
               <label className="admin-field"><span className="admin-label">{ts('lblGoals')}</span>

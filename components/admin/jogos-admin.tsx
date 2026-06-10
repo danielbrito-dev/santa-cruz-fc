@@ -3,6 +3,7 @@
 import { useState, useTransition } from 'react';
 import { useTranslations } from 'next-intl';
 import { useRouter } from '@/lib/i18n/navigation';
+import { ImageUpload } from './image-upload';
 import type { MatchItem, Club } from '@/server/content/types';
 import {
   createMatch,
@@ -266,15 +267,8 @@ export function JogosAdmin({ matches, clubs }: { matches: MatchItem[]; clubs: Cl
                 <span className="admin-label">{t('fShortName')}</span>
                 <input className="admin-input" value={clubDraft.shortName} onChange={(e) => setClubDraft({ ...clubDraft, shortName: e.target.value })} placeholder="SPO" maxLength={4} />
               </label>
-              <label className="admin-field admin-jogos-field--wide">
-                <span className="admin-label">{t('fCrestUrl')}</span>
-                <input className="admin-input" value={clubDraft.crestUrl} onChange={(e) => setClubDraft({ ...clubDraft, crestUrl: e.target.value })} placeholder="https://… ou /images/…" />
-              </label>
-              <div className="admin-jogos-crest admin-jogos-crest--preview" aria-hidden="true">
-                {clubDraft.crestUrl.trim() ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={clubDraft.crestUrl} alt="" />
-                ) : (clubDraft.shortName || '?')}
+              <div className="admin-field admin-jogos-field--wide">
+                <ImageUpload label={t('fCrestUrl')} value={clubDraft.crestUrl} onChange={(v) => setClubDraft({ ...clubDraft, crestUrl: v })} folder="escudos" />
               </div>
             </div>
             <div className="admin-jogos-form-actions">

@@ -3,6 +3,7 @@ import { useTransition, useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { saveContent } from '@/server/content/actions';
 import type { SiteContent, LocalizedText, CardItem } from '@/server/content/types';
+import { ImageUpload } from './image-upload';
 
 // ─── types ────────────────────────────────────────────────────────────────────
 
@@ -302,11 +303,11 @@ function HeroSection({ hero, lang, setHero }: HeroSectionProps) {
           value={hero.ctaUrl}
           onChange={(v) => setHero((h) => ({ ...h, ctaUrl: v }))}
         />
-        <Field
-          id="hero-backdrop"
+        <ImageUpload
           label={t('fldBackdrop')}
           value={hero.backdrop}
           onChange={(v) => setHero((h) => ({ ...h, backdrop: v }))}
+          folder="conteudo"
         />
       </div>
       <div className="ce-preview-col">
@@ -361,11 +362,11 @@ function BannersSection({ banners, lang, setBanners }: BannersSectionProps) {
               value={card.ctaUrl}
               onChange={(v) => update(idx, { ctaUrl: v })}
             />
-            <Field
-              id={`banner-${idx}-image`}
+            <ImageUpload
               label={t('fldImage')}
               value={card.image}
               onChange={(v) => update(idx, { image: v })}
+              folder="conteudo"
             />
           </div>
           <div className="ce-preview-col">
@@ -422,11 +423,11 @@ function InstitutionalSection({ institutional, lang, setInstitutional }: Institu
               value={card.ctaUrl}
               onChange={(v) => update(idx, { ctaUrl: v })}
             />
-            <Field
-              id={`inst-${idx}-image`}
+            <ImageUpload
               label={t('fldImage')}
               value={card.image}
               onChange={(v) => update(idx, { image: v })}
+              folder="conteudo"
             />
           </div>
           <div className="ce-preview-col">

@@ -7,7 +7,7 @@ import { getFanUser } from '@/server/auth/fan';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
-const ALLOWED = ['image/png', 'image/jpeg', 'image/webp', 'image/avif', 'image/svg+xml', 'image/gif'];
+const ALLOWED = ['image/png', 'image/jpeg', 'image/webp', 'image/avif', 'image/svg+xml', 'image/gif', 'application/pdf'];
 const MAX = 10 * 1024 * 1024; // 10MB
 
 export async function POST(req: NextRequest) {

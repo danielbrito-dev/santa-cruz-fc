@@ -3,17 +3,20 @@
 import { useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 
-/** Campo de imagem com upload pro Supabase Storage (bucket media) + URL manual. */
+/** Campo de arquivo com upload pro Supabase Storage (bucket media) + URL manual. */
 export function ImageUpload({
   value,
   onChange,
   folder = 'uploads',
   label,
+  accept = 'image/*',
 }: {
   value: string;
   onChange: (url: string) => void;
   folder?: string;
   label?: string;
+  /** ex.: "application/pdf,image/*" para documentos */
+  accept?: string;
 }) {
   const t = useTranslations('admin');
   const inputRef = useRef<HTMLInputElement>(null);
@@ -42,7 +45,9 @@ export function ImageUpload({
     <div className="admin-field">
       {label && <span className="admin-label">{label}</span>}
       <div className="img-upload">
-        {value ? (
+        {value && /\.pdf($|[?#])/i.test(value) ? (
+          <div className="img-upload-ph img-upload-ph--doc" aria-hidden="true">PDF</div>
+        ) : value ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img className="img-upload-preview" src={value} alt="" />
         ) : (
@@ -60,7 +65,7 @@ export function ImageUpload({
             <input
               ref={inputRef}
               type="file"
-              accept="image/*"
+              accept={accept}
               hidden
               onChange={(e) => {
                 const f = e.target.files?.[0];

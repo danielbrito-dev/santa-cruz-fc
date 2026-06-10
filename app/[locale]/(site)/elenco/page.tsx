@@ -5,7 +5,8 @@ import { Header } from '@/components/site/header';
 import { Footer } from '@/components/site/footer';
 import { FooterParallax } from '@/components/site/footer.client';
 import { SquadPage } from '@/components/site/squad-page';
-import { getSquad, groupPlayers } from '@/server/squad/squad';
+import { groupPlayers } from '@/server/squad/squad';
+import { readSquadFile } from '@/server/squad/store';
 
 export const revalidate = 60;
 
@@ -14,7 +15,7 @@ export default async function ElencoRoute({ params }: { params: Promise<{ locale
   setRequestLocale(locale);
   const api = await getServerApi();
   const content = await api.content.site();
-  const squad = getSquad();
+  const squad = await readSquadFile(); // runtime (DB-first) — edits do admin refletem no site
   const groups = groupPlayers(squad.players);
 
   return (

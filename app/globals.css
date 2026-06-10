@@ -3648,6 +3648,7 @@ textarea.admin-input {
 .img-upload-main { flex: 1; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
 .img-upload-actions { display: flex; gap: 8px; }
 .img-upload-err { color: var(--red); font-size: 12px; font-weight: 600; }
+.img-upload-ph--doc { border-style: solid; font-size: 12px; font-weight: 900; letter-spacing: .08em; color: var(--red); }
 [data-theme="dark"] .img-upload-err { color: #ff7a7a; }
 
 /* ── Área do Torcedor (scaffold) ───────────────────────────────────────── */
@@ -3725,6 +3726,22 @@ textarea.admin-input {
 .fan-chip-photo { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 1.5px #fff; font-size: 13px; }
 .fan-chip-name { font-weight: 700; }
 .fan-gate-veil { position: fixed; inset: 0; z-index: 80; background: var(--page-bg); }
+
+/* ── Notícia · página do artigo ───────────────────────────────────────── */
+.news-article { background: var(--page-bg); position: relative; z-index: 2; min-height: 100vh; display: flex; flex-direction: column; }
+.news-article-hero { position: relative; min-height: 52vh; display: flex; align-items: flex-end; overflow: hidden; background: #0E0E0E; }
+.news-article-hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.news-article-hero-grad { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.1) 30%, rgba(0,0,0,.82) 100%); }
+.news-article-hero-body { position: relative; padding-top: 140px; padding-bottom: 42px; color: #fff; }
+.news-article-tag { display: inline-block; padding: 6px 12px; background: var(--red); color: #fff; box-shadow: 0 0 0 1.5px #fff; font-size: 11px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 16px; }
+.news-article-hero-body h1 { font-size: clamp(28px, 4.6vw, 54px); font-weight: 900; letter-spacing: -.02em; line-height: 1.05; max-width: 860px; }
+.news-article-hero-body time { display: block; margin-top: 14px; font-size: 13px; color: rgba(255,255,255,.75); font-weight: 600; }
+.news-article-body { max-width: 760px; padding-top: 48px; padding-bottom: 96px; flex: 1; }
+.news-article-lead { font-size: 20px; line-height: 1.55; font-weight: 600; color: var(--ink); margin-bottom: 26px; }
+[data-theme="dark"] .news-article-lead { color: #fff; }
+.news-article-body > p:not(.news-article-lead) { font-size: 16px; line-height: 1.75; color: var(--muted); margin-bottom: 20px; }
+.news-article-back { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--red); }
+[data-theme="dark"] .news-article-back { color: var(--gold); }
 .sc-form-err { font-size: 13px; font-weight: 700; color: var(--red); }
 @media (max-width: 520px) { .fan-field-row { flex-direction: column; } }
 @media (max-width: 640px) {

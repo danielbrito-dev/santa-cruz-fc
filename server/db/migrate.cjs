@@ -104,13 +104,19 @@ function readJson(rel) {
     if (SUPA_URL && SERVICE) {
       const admin = createClient(SUPA_URL, SERVICE, { auth: { persistSession: false } });
 
-      // Bucket público de imagens.
-      const { error: bErr } = await admin.storage.createBucket('media', {
+      // Bucket público de mídia (imagens + PDFs de documentos).
+      const MEDIA_OPTS = {
         public: true,
         fileSizeLimit: '10MB',
-        allowedMimeTypes: ['image/png', 'image/jpeg', 'image/webp', 'image/avif', 'image/svg+xml', 'image/gif'],
-      });
-      console.log(bErr ? `bucket media: ${bErr.message}` : 'bucket media ✓ (público)');
+        allowedMimeTypes: ['image/png', 'image/jpeg', 'image/webp', 'image/avif', 'image/svg+xml', 'image/gif', 'application/pdf'],
+      };
+      const { error: bErr } = await admin.storage.createBucket('media', MEDIA_OPTS);
+      if (bErr) {
+        const { error: uErr } = await admin.storage.updateBucket('media', MEDIA_OPTS);
+        console.log(uErr ? `bucket media: ${uErr.message}` : 'bucket media ✓ (atualizado: +pdf)');
+      } else {
+        console.log('bucket media ✓ (público)');
+      }
 
       // Usuário dono (idempotente).
       const { data: list } = await admin.auth.admin.listUsers();

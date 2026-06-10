@@ -1,4 +1,5 @@
 import { getTranslations } from 'next-intl/server';
+import { Link } from '@/lib/i18n/navigation';
 import type { Locale } from '@/lib/i18n/routing';
 import type { ListingData } from '@/lib/site-pages';
 import { Kicker } from './_shared';
@@ -31,13 +32,24 @@ export async function Listing({
       <div className="sc-listing">
         <div className="sc-wrap">
           <div className="sc-list-grid">
-            {data.items.map((it, i) => (
-              <article className="sc-lcard sc-reveal" key={i}>
-                {it.tag && <span className="sc-ltag">{it.tag}</span>}
-                <h3 className="sc-lcard-title">{it.title}</h3>
-                {it.meta && <span className="sc-lcard-meta">{it.meta}</span>}
-              </article>
-            ))}
+            {data.items.map((it, i) => {
+              const inner = (
+                <>
+                  {it.tag && <span className="sc-ltag">{it.tag}</span>}
+                  <h3 className="sc-lcard-title">{it.title}</h3>
+                  {it.meta && <span className="sc-lcard-meta">{it.meta}</span>}
+                </>
+              );
+              return it.href ? (
+                <Link className="sc-lcard sc-lcard--link sc-reveal" href={it.href} key={i}>
+                  {inner}
+                </Link>
+              ) : (
+                <article className="sc-lcard sc-reveal" key={i}>
+                  {inner}
+                </article>
+              );
+            })}
           </div>
         </div>
       </div>

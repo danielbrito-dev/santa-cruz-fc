@@ -155,6 +155,7 @@ const NEWS_ITEMS: ListingData['items'] = sj.news
     tag: n.tag.pt,
     title: n.title.pt,
     meta: n.publishedAt.slice(0, 10).split('-').reverse().join('/'),
+    href: `/noticias/${n.slug}`,
   }));
 const MATCH_ITEMS: ListingData['items'] = sj.matches.map((m) => ({
   group: m.competition,
