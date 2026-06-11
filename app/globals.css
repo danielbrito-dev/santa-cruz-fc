@@ -4845,3 +4845,17 @@ body:has(.athlete-hero) .site-header:not(.scrolled) .header-link{color:var(--ink
   .squad-group{scroll-margin-top:60px}
   .squad-body{padding:40px 0 64px}
 }
+
+/* ── Admin · Censo Coral (agregados) ──────────────────────────────────── */
+.adm-cns-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; }
+.adm-cns-card { padding: 22px; }
+.adm-cns-q { font-size: 15px; font-weight: 800; color: var(--ink); margin-bottom: 16px; }
+[data-theme="dark"] .adm-cns-q { color: #fff; }
+.adm-cns-bars { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.adm-cns-row { display: grid; grid-template-columns: 130px 1fr 76px; align-items: center; gap: 10px; font-size: 12px; }
+.adm-cns-label { color: var(--muted); font-weight: 700; }
+.adm-cns-track { display: block; height: 10px; background: var(--bg-2); border-radius: 5px; overflow: hidden; }
+.adm-cns-track i { display: block; height: 100%; background: var(--red); border-radius: 5px; }
+[data-theme="dark"] .adm-cns-track i { background: var(--gold); }
+.adm-cns-val { text-align: right; font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; }
+[data-theme="dark"] .adm-cns-val { color: #fff; }

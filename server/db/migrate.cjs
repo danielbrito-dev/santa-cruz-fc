@@ -89,6 +89,13 @@ function readJson(rel) {
     await sql`alter table public.torcedores add column if not exists complement text`;
     await sql`alter table public.torcedores add column if not exists neighborhood text`;
     await sql`alter table public.torcedores add column if not exists state text`;
+    // Censo Coral — uma resposta por torcedor (upsert), respostas em jsonb.
+    await sql`create table if not exists fan_census (
+      fan_id uuid primary key references auth.users(id) on delete cascade,
+      data jsonb not null,
+      updated_at timestamptz not null default now()
+    )`;
+    await sql`alter table fan_census enable row level security`;
 
     // Trigger: roteia o novo auth.user para torcedores (kind='fan') ou usuarios (admin).
     await sql`create or replace function public.handle_new_user() returns trigger

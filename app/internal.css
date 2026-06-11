@@ -604,3 +604,29 @@
 
 /* honeypot anti-spam — fora da tela, invisível e não-focável para humanos */
 .sc-hp{position:absolute !important;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   23 · CENSO CORAL — perguntas em pills (torcedor logado)
+   ───────────────────────────────────────────────────────────────────────── */
+.cns-section{padding:48px 0 84px}
+.cns-lead{max-width:60ch;font-size:clamp(16px,1.6vw,19px);line-height:1.55;color:var(--sc-ink-soft);margin-bottom:38px}
+.cns-q{border:0;padding:0;margin:0 0 34px}
+.cns-legend{display:flex;align-items:baseline;gap:12px;font-size:clamp(16px,1.8vw,20px);font-weight:900;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:14px}
+.cns-num{font-size:13px;font-weight:900;color:var(--sc-accent);font-variant-numeric:tabular-nums}
+.cns-opts{display:flex;flex-wrap:wrap;gap:10px}
+.cns-opt{
+  padding:11px 18px;border:1.5px solid var(--sc-hair);border-radius:999px;
+  background:var(--sc-surface);color:inherit;
+  font-size:13px;font-weight:700;cursor:pointer;
+  transition:border-color .15s,background .15s,color .15s,box-shadow .15s;
+}
+.cns-opt:hover{border-color:var(--sc-accent)}
+.cns-opt.is-on{
+  background:var(--red);color:#fff;border-color:var(--red);
+  box-shadow:0 0 0 1.5px #fff; /* BRAND.md: anel branco isola o vermelho */
+}
+.cns-ok{font-size:14px;font-weight:700;color:#1a8f3c;margin-bottom:16px}
+[data-theme="dark"] .cns-ok{color:#46d36f}
+.cns-err{font-size:14px;font-weight:700;color:var(--red);margin-bottom:16px}
+[data-theme="dark"] .cns-err{color:#ff7a7a}
+.cns-submit{margin-top:8px}
