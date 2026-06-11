@@ -5,6 +5,8 @@ import { cookies } from 'next/headers';
 import { SESSION_COOKIE, verifySessionToken } from '@/server/auth/session';
 import { getFanUser } from '@/server/auth/fan';
 import { getSql } from '@/server/db/client';
+import { notifyAllFans, notifyFans } from '@/server/notify/notifications';
+import { sendEmail, emailHtml, isEmailConfigured } from '@/server/email/resend';
 import type { DrawCriteria, DrawWinner } from './draw-store';
 
 type Result = { ok: true } | { ok: false; error: string };
@@ -45,6 +47,15 @@ export async function createDraw(input: {
               values (${title}, ${prize}, ${input.mode === 'filtro' ? 'filtro' : 'inscricao'},
                       ${input.prompt?.trim().slice(0, 400) || null},
                       ${input.criteria ? sql.json(input.criteria as unknown as Parameters<typeof sql.json>[0]) : null})`;
+    // sorteio por inscrição: avisa a nação inteira (best-effort)
+    if (input.mode !== 'filtro') {
+      await notifyAllFans({
+        type: 'draw-open',
+        title: `Novo sorteio: ${title}`,
+        body: `Prêmio: ${prize}. Inscreva-se na sua área do torcedor!`,
+        href: '/torcedor/sorteios',
+      });
+    }
     return { ok: true };
   } catch {
     return { ok: false, error: 'unknown' };
@@ -101,6 +112,28 @@ export async function runDraw(id: number, count: number): Promise<DrawResult> {
     const winners = pick(pool, n);
     await sql`update draws set status = 'sorteado', winners = ${sql.json(winners as unknown as Parameters<typeof sql.json>[0])},
               pool_size = ${pool.length}, drawn_at = now() where id = ${id}`;
+
+    // notifica os ganhadores in-app + e-mail (Resend, quando configurado) — best-effort
+    await notifyFans(winners.map((w) => w.fanId), {
+      type: 'draw-won',
+      title: `🏆 Você ganhou: ${draw.title}`,
+      body: `Parabéns! Seu prêmio: ${draw.prize}. O clube entrará em contato.`,
+      href: '/torcedor/sorteios',
+    });
+    if (isEmailConfigured()) {
+      for (const w of winners) {
+        await sendEmail({
+          to: w.email,
+          subject: `🏆 Você ganhou o sorteio "${draw.title}" — Santa Cruz FC`,
+          html: emailHtml(
+            `Parabéns, ${w.name.split(' ')[0]}!`,
+            `Você foi sorteado em <strong>${draw.title}</strong>.<br/>Prêmio: <strong>${draw.prize}</strong>.<br/>O clube entrará em contato para a entrega.`,
+            'Ver meus sorteios',
+            `${(process.env.NEXT_PUBLIC_SITE_URL || 'https://santa-ruby.vercel.app').replace(/\/$/, '')}/torcedor/sorteios`,
+          ),
+        });
+      }
+    }
     return { ok: true, winners, poolSize: pool.length };
   } catch {
     return { ok: false, error: 'unknown' };

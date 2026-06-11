@@ -538,6 +538,11 @@
     "loginLink": "Entrar",
     "signupLink": "Cadastre-se"
   },
+  "fanNotif": {
+    "title": "Notificações",
+    "markAll": "Marcar todas como lidas",
+    "unread": "Não lida"
+  },
   "fanDraw": {
     "kicker": "Área do Torcedor",
     "title": "Sorteios",

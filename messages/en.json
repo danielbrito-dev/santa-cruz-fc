@@ -538,6 +538,11 @@
     "loginLink": "Sign in",
     "signupLink": "Sign up"
   },
+  "fanNotif": {
+    "title": "Notifications",
+    "markAll": "Mark all as read",
+    "unread": "Unread"
+  },
   "fanDraw": {
     "kicker": "Supporter Area",
     "title": "Raffles",

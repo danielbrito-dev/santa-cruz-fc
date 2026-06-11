@@ -6,6 +6,7 @@ export interface FanMe {
   name: string;
   photo: string | null;
   city?: string;
+  unread?: number;
 }
 
 let cache: Promise<FanMe | null> | null = null;

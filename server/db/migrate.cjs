@@ -122,6 +122,20 @@ function readJson(rel) {
     )`;
     await sql`alter table draw_entries enable row level security`;
 
+    // Notificações in-app do torcedor (novos sorteios, vitórias, avisos do clube).
+    await sql`create table if not exists fan_notifications (
+      id bigint generated always as identity primary key,
+      fan_id uuid not null references auth.users(id) on delete cascade,
+      type text not null default 'info',
+      title text not null,
+      body text,
+      href text,
+      read boolean not null default false,
+      created_at timestamptz not null default now()
+    )`;
+    await sql`create index if not exists fan_notifications_fan_idx on fan_notifications (fan_id, read, created_at desc)`;
+    await sql`alter table fan_notifications enable row level security`;
+
     // Trigger: roteia o novo auth.user para torcedores (kind='fan') ou usuarios (admin).
     await sql`create or replace function public.handle_new_user() returns trigger
       language plpgsql security definer set search_path = public as $$

@@ -4891,3 +4891,29 @@ body:has(.athlete-hero) .site-header:not(.scrolled) .header-link{color:var(--ink
 .fdr-winners h3 { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin-bottom: 8px; }
 .fdr-winners ol { margin: 0; padding-left: 20px; display: grid; gap: 4px; font-size: 14px; font-weight: 700; color: var(--ink); }
 [data-theme="dark"] .fdr-winners ol { color: #fff; }
+
+/* ── Torcedor · Notificações ──────────────────────────────────────────── */
+.fnt { margin: 0 0 36px; border: 1px solid var(--line); background: var(--panel); }
+.fnt-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--line); }
+.fnt-title { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; color: var(--ink); }
+[data-theme="dark"] .fnt-title { color: #fff; }
+.fnt-count { display: inline-flex; align-items: center; justify-content: center; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 999px; background: var(--red); color: #fff; font-size: 11px; box-shadow: 0 0 0 1.5px #fff; }
+.fnt-readall { font-size: 12px; font-weight: 700; color: var(--red); background: none; border: 0; cursor: pointer; }
+[data-theme="dark"] .fnt-readall { color: var(--gold); }
+.fnt-readall:hover { text-decoration: underline; }
+.fnt-list { list-style: none; margin: 0; padding: 0; max-height: 320px; overflow-y: auto; }
+.fnt-item + .fnt-item { border-top: 1px solid var(--line); }
+.fnt-link { display: flex; align-items: flex-start; gap: 12px; width: 100%; padding: 14px 20px; text-decoration: none; color: inherit; background: none; border: 0; text-align: left; cursor: pointer; font: inherit; }
+.fnt-item.is-unread .fnt-link { background: var(--bg-3); }
+.fnt-link:hover { background: var(--bg-2); }
+.fnt-icon { font-size: 18px; line-height: 1.2; flex: 0 0 auto; }
+.fnt-body { display: grid; gap: 2px; min-width: 0; }
+.fnt-body strong { font-size: 14px; font-weight: 800; color: var(--ink); }
+[data-theme="dark"] .fnt-body strong { color: #fff; }
+.fnt-body small { font-size: 13px; color: var(--muted); line-height: 1.4; }
+.fnt-body time { font-size: 11px; color: var(--muted); opacity: .8; }
+.fnt-dot { flex: 0 0 auto; width: 8px; height: 8px; border-radius: 50%; background: var(--red); margin: 6px 0 0 auto; box-shadow: 0 0 0 1.5px #fff; }
+
+/* badge de não lidas no chip do header */
+.fan-chip-ava { position: relative; display: inline-flex; }
+.fan-chip-badge { position: absolute; top: -6px; right: -8px; display: inline-flex; align-items: center; justify-content: center; min-width: 16px; height: 16px; padding: 0 4px; border-radius: 999px; background: var(--red); color: #fff; font-size: 10px; font-weight: 800; box-shadow: 0 0 0 1.5px #fff; }

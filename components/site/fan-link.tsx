@@ -48,7 +48,10 @@ export function FanLink({ variant, onNavigate }: { variant: 'header' | 'drawer';
     <Link href="/torcedor" className={`header-link hide-mobile${me ? ' header-link--fan' : ''}`}>
       {me ? (
         <>
-          <Avatar me={me} />
+          <span className="fan-chip-ava">
+            <Avatar me={me} />
+            {(me.unread ?? 0) > 0 && <span className="fan-chip-badge" aria-label={`${me.unread} notificações`}>{me.unread! > 9 ? '9+' : me.unread}</span>}
+          </span>
           <span className="fan-chip-name">{me.name.split(' ')[0]}</span>
         </>
       ) : (

@@ -2,8 +2,10 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import type { Locale } from '@/lib/i18n/routing';
 import { Link } from '@/lib/i18n/navigation';
 import { SiteShell } from '@/components/site/site-shell';
+import { FanNotifications } from '@/components/site/fan-notifications';
 import { getFanUser } from '@/server/auth/fan';
 import { fanLogoutAction } from '@/server/auth/fan-actions';
+import { listNotifications } from '@/server/notify/notifications';
 
 export const dynamic = 'force-dynamic';
 
@@ -20,6 +22,7 @@ export default async function TorcedorPage({ params }: { params: Promise<{ local
       { key: 'sorteios', href: '/torcedor/sorteios' },
       { key: 'area', href: '/torcedor/perfil' },
     ] as const;
+    const notifications = await listNotifications(fan.id, 20);
     return (
       <SiteShell locale={locale}>
         <section className="fan-stage">
@@ -43,6 +46,7 @@ export default async function TorcedorPage({ params }: { params: Promise<{ local
           </header>
           <div className="fan-deck">
             <div className="container">
+              <FanNotifications items={notifications} />
               <ul className="fan-deck-grid">
                 {cards.map((c, i) => (
                   <li key={c.key}>
