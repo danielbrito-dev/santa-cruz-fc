@@ -4859,3 +4859,35 @@ body:has(.athlete-hero) .site-header:not(.scrolled) .header-link{color:var(--ink
 [data-theme="dark"] .adm-cns-track i { background: var(--gold); }
 .adm-cns-val { text-align: right; font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; }
 [data-theme="dark"] .adm-cns-val { color: #fff; }
+
+/* ── Admin · Sorteios ─────────────────────────────────────────────────── */
+.adm-draw-count { width: 72px; text-align: center; }
+.adm-draw-check { flex-direction: row; align-items: center; gap: 8px; }
+.adm-draw-check input { width: 16px; height: 16px; accent-color: var(--red); }
+.adm-draw-winners { margin: 10px 0 0; padding: 12px 14px; background: var(--bg-2); border-radius: 6px; display: grid; gap: 6px; list-style: none; font-size: 13px; }
+.adm-draw-winners small { color: var(--muted); }
+.adm-draw-answer { display: block; color: var(--muted); font-style: italic; font-size: 12px; }
+
+/* ── Torcedor · Sorteios ──────────────────────────────────────────────── */
+.fdr-list { display: grid; gap: 18px; }
+.fdr-card { border: 1px solid var(--line); padding: 24px 22px; background: var(--panel); }
+.fdr-card--closed { opacity: .85; }
+.fdr-badge { display: inline-block; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; padding: 4px 10px; border-radius: 999px; background: var(--bg-2); color: var(--muted); margin-bottom: 10px; }
+.fdr-badge.is-open { background: var(--red); color: #fff; box-shadow: 0 0 0 1.5px #fff; }
+.fdr-title { font-size: 20px; font-weight: 900; text-transform: uppercase; letter-spacing: -.01em; color: var(--ink); }
+[data-theme="dark"] .fdr-title { color: #fff; }
+.fdr-prize { font-size: 14px; font-weight: 700; color: var(--muted); margin: 6px 0 16px; }
+.fdr-join { display: grid; gap: 12px; }
+.fdr-join textarea { padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 6px; background: var(--bg-2); color: var(--ink); font-size: 15px; font-family: inherit; resize: vertical; }
+.fdr-join textarea:focus { outline: none; border-color: var(--red); box-shadow: 0 0 0 3px rgba(221,0,0,.18); }
+[data-theme="dark"] .fdr-join textarea { background: rgba(255,255,255,.06); color: #fff; border-color: rgba(255,255,255,.15); }
+.fdr-join .fan-btn { justify-self: start; }
+.fdr-ok { font-size: 14px; font-weight: 800; color: #1a8f3c; }
+[data-theme="dark"] .fdr-ok { color: #46d36f; }
+.fdr-myanswer { font-size: 13px; font-style: italic; color: var(--muted); margin: 6px 0 12px; }
+.fdr-err { font-size: 13px; font-weight: 700; color: var(--red); }
+[data-theme="dark"] .fdr-err { color: #ff7a7a; }
+.fdr-empty { font-size: 15px; color: var(--muted); }
+.fdr-winners h3 { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin-bottom: 8px; }
+.fdr-winners ol { margin: 0; padding-left: 20px; display: grid; gap: 4px; font-size: 14px; font-weight: 700; color: var(--ink); }
+[data-theme="dark"] .fdr-winners ol { color: #fff; }

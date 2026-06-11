@@ -115,6 +115,17 @@ const navItems = [
     ),
   },
   {
+    key: 'sorteios' as const,
+    href: '/admin/sorteios',
+    icon: (
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M8 21h8M12 17v4" />
+        <path d="M7 4h10v4a5 5 0 0 1-10 0V4Z" />
+        <path d="M7 6H4a2 2 0 0 0 2 4h1M17 6h3a2 2 0 0 1-2 4h-1" />
+      </svg>
+    ),
+  },
+  {
     key: 'censo' as const,
     href: '/admin/censo',
     icon: (

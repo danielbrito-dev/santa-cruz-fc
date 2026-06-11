@@ -17,7 +17,7 @@ export default async function TorcedorPage({ params }: { params: Promise<{ local
     const cards = [
       { key: 'censo', href: '/viva-o-santa/censo' },
       { key: 'sugestoes', href: '/historias/enviar' },
-      { key: 'sorteios', href: '/viva-o-santa/experiencias' },
+      { key: 'sorteios', href: '/torcedor/sorteios' },
       { key: 'area', href: '/torcedor/perfil' },
     ] as const;
     return (

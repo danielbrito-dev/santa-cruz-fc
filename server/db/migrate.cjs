@@ -97,6 +97,31 @@ function readJson(rel) {
     )`;
     await sql`alter table fan_census enable row level security`;
 
+    // Sorteios — criados no admin; modo 'inscricao' (torcedor se inscreve, com
+    // desafio dinâmico opcional) ou 'filtro' (sorteia direto da base filtrada).
+    await sql`create table if not exists draws (
+      id bigint generated always as identity primary key,
+      title text not null,
+      prize text not null,
+      mode text not null default 'inscricao',
+      prompt text,
+      criteria jsonb,
+      status text not null default 'aberto',
+      winners jsonb,
+      pool_size int,
+      created_at timestamptz not null default now(),
+      drawn_at timestamptz
+    )`;
+    await sql`alter table draws enable row level security`;
+    await sql`create table if not exists draw_entries (
+      draw_id bigint references draws(id) on delete cascade,
+      fan_id uuid references auth.users(id) on delete cascade,
+      answer text,
+      created_at timestamptz not null default now(),
+      primary key (draw_id, fan_id)
+    )`;
+    await sql`alter table draw_entries enable row level security`;
+
     // Trigger: roteia o novo auth.user para torcedores (kind='fan') ou usuarios (admin).
     await sql`create or replace function public.handle_new_user() returns trigger
       language plpgsql security definer set search_path = public as $$
