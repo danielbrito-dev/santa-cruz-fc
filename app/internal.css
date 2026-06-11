@@ -601,3 +601,6 @@
 .tvc-date{display:block;margin-top:4px;font-size:12px;color:var(--sc-ink-soft)}
 .tvc-empty{font-size:15px;color:var(--sc-ink-soft);margin:24px 0}
 .tvc-channel{margin-top:44px}
+
+/* honeypot anti-spam — fora da tela, invisível e não-focável para humanos */
+.sc-hp{position:absolute !important;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden}

@@ -21,7 +21,7 @@ export async function InstitutionalGrid({ content, locale }: SectionProps) {
               className={c.size === 'span' ? 'inst-card span-rows' : 'inst-card'}
               href={c.ctaUrl}
             >
-              <PosImg src={c.image} alt={resolveLocalized(c.title, locale)} />
+              <PosImg src={c.image} alt={resolveLocalized(c.title, locale)} sizes="(max-width: 768px) 100vw, 25vw" />
               <div className="grad" />
               <div className="body">
                 <span className="eyebrow">{resolveLocalized(c.eyebrow, locale)}</span>

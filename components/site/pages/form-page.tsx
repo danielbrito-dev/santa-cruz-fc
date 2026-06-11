@@ -39,8 +39,9 @@ export function FormPage({
     if (!data.story) {
       const fields: Record<string, string> = {};
       for (const f of data.fields) fields[f.name] = String(fd.get(f.name) ?? '');
+      const honeypot = String(fd.get('website') ?? '');
       start(async () => {
-        const res = await submitSiteForm(formId, fields);
+        const res = await submitSiteForm(formId, fields, honeypot);
         if (res.ok) setSent(true);
         else setErr(true);
       });
@@ -96,6 +97,11 @@ export function FormPage({
               onSubmit={handleSubmit}
               key={me ? 'prefilled' : 'blank'}
             >
+              {/* honeypot anti-spam: invisível para humanos; bots preenchem e o envio é descartado */}
+              <label className="sc-hp" aria-hidden="true">
+                Website
+                <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+              </label>
               {data.fields.map((f) => (
                 <label className="sc-field" key={f.name}>
                   <span>

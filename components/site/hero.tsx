@@ -13,6 +13,8 @@ export async function Hero({ content, locale }: SectionProps) {
         className="hero-backdrop"
         src={hero.backdrop}
         alt={a11y('heroBackdrop')}
+        sizes="100vw"
+        priority
       />
       <div className="hero-grad" />
       <div className="hero-grain" />

@@ -42,7 +42,7 @@ export default async function NewsArticlePage({
     <SiteShell locale={locale}>
       <article className="news-article" data-section="midia">
         <header className="news-article-hero">
-          <PosImg src={item.coverImage} alt={resolveLocalized(item.title, locale)} />
+          <PosImg src={item.coverImage} alt={resolveLocalized(item.title, locale)} sizes="100vw" priority />
           <div className="news-article-hero-grad" aria-hidden="true" />
           <div className="container news-article-hero-body">
             <span className="news-article-tag">{resolveLocalized(item.tag, locale)}</span>

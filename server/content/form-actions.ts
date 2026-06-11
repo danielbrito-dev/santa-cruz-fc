@@ -10,8 +10,10 @@ const MAX_FIELDS = 12;
 const MAX_KEY = 40;
 const MAX_VALUE = 4000;
 
-/** Envio público dos formulários do site — persiste em form_submissions. */
-export async function submitSiteForm(page: string, fields: Record<string, string>): Promise<Result> {
+/** Envio público dos formulários do site — persiste em form_submissions.
+ *  `honeypot` é o campo-isca invisível: preenchido = bot → finge sucesso e descarta. */
+export async function submitSiteForm(page: string, fields: Record<string, string>, honeypot?: string): Promise<Result> {
+  if (honeypot && honeypot.trim() !== '') return { ok: true };
   const sql = getSql();
   if (!sql) return { ok: false, error: 'readonly' };
 

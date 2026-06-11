@@ -9,6 +9,10 @@ const nextConfig = {
     '/[locale]/admin/conteudo': ['./content/site.json'],
     '/[locale]': ['./content/site.json'],
   },
+  images: {
+    // uploads do admin (Supabase Storage). Hosts fora daqui caem no <img> normal (PosImg).
+    remotePatterns: [{ protocol: 'https' as const, hostname: 'hnbmfseltirzruidodve.supabase.co' }],
+  },
 };
 
 export default withNextIntl(nextConfig);

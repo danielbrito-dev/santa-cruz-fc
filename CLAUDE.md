@@ -1,19 +1,25 @@
 # Projeto: Site Santa Cruz FC
 
+App **Next.js (App Router) bilíngue PT/EN** com site público, área do torcedor e admin próprio. Persistência **Supabase** (Postgres + Auth + Storage), DB-first com fallback para o JSON empacotado (`content/site.json`) — nada quebra com o banco fora.
+
 ## Regra zero — leia antes de qualquer coisa
 
-**Antes de tocar em qualquer página deste projeto, leia `BRAND.md`.**
+**Antes de tocar em qualquer página, leia `BRAND.md`** — fonte da verdade visual (paleta, tipografia, escudo, narrativa) extraída do manual de marca oficial de 2025. Regra de ouro: **vermelho e preto nunca se tocam** — sempre branco/hairline entre eles (anéis brancos em botões vermelhos sobre fundo escuro, faixa branca antes do footer no dark, etc.).
 
-`BRAND.md` é a fonte da verdade visual (paleta, tipografia, escudo, narrativa) extraída do manual de marca oficial de 2025 (`manualdemarca1.pdf`). Em qualquer conflito entre o estado atual de `index.html` e `BRAND.md`, **`BRAND.md` vence** — `index.html` está em estética antiga (cordel/xilogravura) e deve ser migrado conforme novas páginas forem feitas.
+Regra de temas: **dark e light têm estrutura CSS idêntica** (sombras, anéis, tamanhos) — só as cores mudam, via tokens. O dark é a fonte de verdade estrutural.
 
 ## Estrutura
 
-- `index.html` — home atual (single file, ~2700 linhas, estética cordel — fora do padrão de marca).
-- `images/` — assets reais usados pelo HTML (escudos históricos, jogadores, estádio).
-- `BRAND.md` — regras de marca **autoridade**.
-- `manualdemarca1.pdf` — manual original (300 páginas, sem camada de texto — usar `pdftoppm` para rasterizar se precisar consultar).
-- `.vercel/` — projeto Vercel linkado a `meu-trato/santa`. Deploy com `vercel deploy --yes`.
-- `.vercelignore` — exclui mockups, .exe e arquivos pesados não usados.
+- `app/[locale]/(site)/` — site público (home, elenco, notícias, torcedor, catch-all `[...path]` para as páginas internas por arquétipo).
+- `app/[locale]/admin/` — admin (Supabase Auth + cookie HMAC; conteúdo, notícias, jogos, elenco, galeria, documentos, histórias, mensagens, usuários).
+- `app/api/` — upload (Supabase Storage bucket `media`), tRPC, analytics, fan/me.
+- `components/site/` e `components/admin/` — UI. `lib/` — i18n, helpers. `server/` — auth, content (ops puras + Server Actions), db, analytics.
+- `app/globals.css` (site/admin/torcedor) e `app/internal.css` (páginas internas `.sc-*`, skins por seção + patterns de marca d'água).
+- `messages/pt.json` / `en.json` — i18n (next-intl). Toda string nova entra nos DOIS.
+- `server/db/migrate.cjs` — migração idempotente (`node --env-file=.env.local server/db/migrate.cjs`). **Rodar contra o banco exige aprovação explícita do usuário.**
+- `content/site.json` — fallback de build; o runtime lê do Postgres (`site_content`).
+- `legacy/` — HTML antigo (referência de layout, não editar).
+- `.env.local` — credenciais Supabase locais (gitignored; produção usa as envs da Vercel).
 
 ## Títulos e datas históricas do Santa Cruz
 
@@ -27,13 +33,17 @@ Fonte: confirmado pelo usuário. Usar essas datas/títulos em qualquer referênc
 - **2015** — Campeão do **Centenário** do Campeonato Pernambucano
 - **2016** — **Copa do Nordeste** ← NÃO 2006
 
-## Convenções de código
+## Convenções
 
-- HTML único hoje, mas qualquer página nova **deve** usar a paleta e fontes do `BRAND.md`.
 - Idioma: português brasileiro nas copies (sem hífens em nomes próprios estrangeiros).
-- Nada de bibliotecas pesadas — manter o site estático e leve.
+- Nada de bibliotecas pesadas; CSS puro (sem Tailwind nas páginas — o config existe mas o design system é manual).
+- Dados reais só com fonte; placeholder honesto no resto; **nunca fabricar fato**.
+- Imagens dinâmicas: posição de recorte vai no fragmento da URL (`#pos=x,y` → `lib/image-pos.ts` + `<PosImg>`).
+- Verificação visual: Playwright local em `tmpplaywright-temp/` (`node tmpplaywright-temp/<script>.cjs`; npx falha — registry CodeArtifact privado).
+- Testes: `npm test` (vitest) + `npm run typecheck` antes de todo commit.
 
-## Deploy
+## Build e deploy
 
-URL pública: <https://santa-ruby.vercel.app>
-Team Vercel: `meu-trato` (login `danielmedeiros52`).
+- **Build com webpack** (`next build --webpack` — Turbopack quebra o middleware Edge na Vercel). Manter `middleware.ts` (não migrar para proxy.ts).
+- Deploy: `npx vercel deploy --prod --yes` (team `meu-trato`, projeto `santa`).
+- URL pública: <https://santa-ruby.vercel.app>

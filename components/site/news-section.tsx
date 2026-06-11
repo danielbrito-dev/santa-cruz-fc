@@ -47,6 +47,7 @@ export async function NewsSection({ content, locale }: SectionProps) {
                 <PosImg
                   src={featured.coverImage}
                   alt={resolveLocalized(featured.title, locale)}
+                  sizes="(max-width: 768px) 100vw, 55vw"
                 />
               </div>
               <div className="meta">
@@ -64,6 +65,7 @@ export async function NewsSection({ content, locale }: SectionProps) {
                   <PosImg
                     src={item.coverImage}
                     alt={resolveLocalized(item.title, locale)}
+                    sizes="(max-width: 768px) 35vw, 260px"
                   />
                 </div>
                 <div className="body">

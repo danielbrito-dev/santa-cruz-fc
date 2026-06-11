@@ -27,7 +27,7 @@ export function BannerStrip({ content, locale }: SectionProps) {
               data-cta={ctaId(b.ctaUrl)}
               data-cta-label={resolveLocalized(b.ctaLabel, locale) || resolveLocalized(b.title, locale)}
             >
-              <PosImg src={b.image} alt={resolveLocalized(b.title, locale)} />
+              <PosImg src={b.image} alt={resolveLocalized(b.title, locale)} sizes="(max-width: 768px) 100vw, 33vw" />
               <div className="grad" />
               <div className="body">
                 <span className="eyebrow">{resolveLocalized(b.eyebrow, locale)}</span>
