@@ -138,17 +138,20 @@ function readJson(rel) {
         console.log('bucket media ✓ (público)');
       }
 
-      // Usuário dono (idempotente).
+      // Usuário dono (idempotente). Senha NUNCA hardcoded: vem de OWNER_PASSWORD
+      // ou é gerada aleatória e impressa UMA vez.
       const { data: list } = await admin.auth.admin.listUsers();
       const owner = list?.users?.find((u) => u.email === 'admin@santacruz.fc');
       if (!owner) {
+        const pwd = process.env.OWNER_PASSWORD
+          || require('crypto').randomBytes(16).toString('base64url').slice(0, 20);
         const { error } = await admin.auth.admin.createUser({
           email: 'admin@santacruz.fc',
-          password: 'cobracoral1914',
+          password: pwd,
           email_confirm: true,
           user_metadata: { name: 'Admin', role: 'admin' },
         });
-        console.log(error ? `owner: ${error.message}` : 'owner admin@santacruz.fc ✓ (role admin)');
+        console.log(error ? `owner: ${error.message}` : `owner admin@santacruz.fc ✓ (role admin) — senha: ${pwd} (ANOTE)`);
       } else {
         console.log('owner já existe ✓');
       }

@@ -23,7 +23,8 @@ function siteUrl(): string {
   return (process.env.NEXT_PUBLIC_SITE_URL || 'https://santa-ruby.vercel.app').replace(/\/$/, '');
 }
 
-/** Verifica a senha via Supabase Auth. Só em falha de rede cai no DEV_USER. */
+/** Verifica a senha via Supabase Auth. O DEV_USER só vale quando o Supabase
+ *  NÃO está configurado (dev local) — em produção não há fallback de senha. */
 export async function verifyCredentials(email: string, password: string): Promise<boolean> {
   const e = norm(email);
   if (hasSupabase()) {
@@ -31,7 +32,7 @@ export async function verifyCredentials(email: string, password: string): Promis
       const { data, error } = await supabaseAnon().auth.signInWithPassword({ email: e, password });
       return !error && !!data?.user;
     } catch {
-      /* indisponível → fallback */
+      return false; // indisponibilidade não abre porta de emergência
     }
   }
   return e === DEV_USER.email && password === DEV_USER.password;

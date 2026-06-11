@@ -1,5 +1,5 @@
-// Fallback de emergência: usado só quando o Supabase Auth está indisponível
-// (queda de rede) ou sem configuração (dev local sem env). Ver users.ts.
+// Credencial de DEV LOCAL: só vale quando o Supabase NÃO está configurado
+// (sem envs). Em produção o login é 100% Supabase Auth. Ver users.ts.
 export const DEV_USER = {
   email: 'admin@santacruz.fc',
   password: 'cobracoral1914',
